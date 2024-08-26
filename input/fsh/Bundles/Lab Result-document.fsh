@@ -1,4 +1,4 @@
-Instance: lab-result-document-bundle
+/*Instance: lab-result-document-bundle
 InstanceOf: Bundle
 Usage: #example
 Description: "Bundle - Lab Result (Document)"
@@ -19,4 +19,4 @@ Title: "Lab order has been completed"
 * insert ExampleDocumentEntry(AvailableSpecimenForCompletedRequestsExample, Specimen)
 * insert ExampleDocumentEntry(CompletedServiceRequestExample, ServiceRequest)
 * insert ExampleDocumentEntry(LabResultsDiagnosticReportExample, DiagnosticReport)
-* insert ExampleDocumentEntry(TestResultExample, Observation)
+* insert ExampleDocumentEntry(TestResultExample, Observation)*/

@@ -99,11 +99,11 @@ Description: "Is used to document demographics and other administrative informat
 * managingOrganization 1..1
 * managingOrganization only Reference(UATServiceProvider)
 
-Profile: UATLabTask
+Profile: GenericUATLabTask
 Parent: Task
-Id: uat-lab-order-task
-Title: "Task - Lab Orders"
-Description: "Assists with tracking the state of the lab order and its completion status."
+Id: uat-generic-lab-order-task
+Title: "Task - Generic"
+Description: "Base Task elements that are inherited by other Task profiles."
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
@@ -115,7 +115,9 @@ Description: "Assists with tracking the state of the lab order and its completio
 * identifier[FILL].system = "http://moh.gov.bw/fhir/identifier/task-id"
 * identifier[FILL].type = http://terminology.hl7.org/CodeSystem/v2-0203#FILL
 
-* basedOn only Reference(UATServiceRequest)
+* basedOn 1..*
+* basedOn only Reference(PimsServiceRequest or OpenMrsServiceRequest)
+
 * statusReason 0..1 MS
 * statusReason ^definition = "Indicates a reason to support the status. For example, why the lab order was cancelled or rejected"
 * statusReason ^short = "Indicates a reason for the lab order being cancelled or rejected."
@@ -132,13 +134,13 @@ Description: "Assists with tracking the state of the lab order and its completio
 * output.type 1..1
 * output.type.text 1..1
 * output.valueReference 1..1
-* output.valueReference only Reference(UATDiagnosticReport)
+* output.valueReference only Reference(PimsUATDiagnosticReport or OpenMrsUATDiagnosticReport)
 
-Profile: UATServiceRequest
+Profile: UATGenericServiceRequest
 Parent: ServiceRequest
-Id: uat-lab-order-service-request
-Title: "Service Request - Lab Orders"
-Description: "Represents the service request for lab orders."
+Id: uat-generic-lab-order-service-request
+Title: "ServiceRequest - Generic"
+Description: "Base ServiceRequest elements that are inherited by other ServiceRequest profiles."
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
@@ -152,7 +154,6 @@ Description: "Represents the service request for lab orders."
 
 * intent = #order
 * code 1..1
-* code.text 1..1
 * subject 1..1
 * subject only Reference(UATBwPatient)
 * encounter 1..1
@@ -178,11 +179,11 @@ Description:
     "reason(s) why this should be supported."
 * telecom 1..*
 
-Profile: UATSpecimen
+Profile: GenericUATSpecimen
 Parent: Specimen
-Id: uat-specimen
-Title: "Specimen - Lab Orders"
-Description: "The specimen associated with the lab order."
+Id: uat-generic-specimen
+Title: "Specimen - Generic"
+Description: "Base Specimen elements that are inherited by other Specimen profiles."
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
@@ -198,18 +199,20 @@ Description: "The specimen associated with the lab order."
 * type from VSSpecimenType (extensible)
 * subject 1..1
 * subject only Reference(UATBwPatient)
-* request 1..1
-* request only Reference(UATServiceRequest)
+
+* request 1..*
+* request only Reference(PimsServiceRequest or OpenMrsServiceRequest)
+
 * collection 1..1
 * collection.collected[x] only dateTime
 * collection.collectedDateTime 1..1
 * receivedTime 1..1
 
-Profile: UATDiagnosticTestResultObservation
+Profile: GenericUATDiagnosticTestResultObservation
 Parent: Observation
-Id: uat-diagnostic-test-result-observation
-Title: "Observation - Diagnostic Test Result"
-Description: "Documents the patient's diagnostic test result."
+Id: uat-generic-diagnostic-test-result-observation
+Title: "Observation - Generic Lab Result"
+Description: "Base lab result Observation elements that are inherited by other lab result Observation profiles."
 * category 1..1
 * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 * code.text 1..1
@@ -222,13 +225,13 @@ Description: "Documents the patient's diagnostic test result."
 * performer 1..*
 * performer only Reference(UATServiceProvider or UATPractitioner)
 * specimen 1..1
-* specimen only Reference(UATSpecimen)
+* specimen only Reference(PimsUATSpecimen or OpenMrsUATSpecimen)
 
-Profile: UATDiagnosticReport
+Profile: GenericUATDiagnosticReport
 Parent: DiagnosticReport
-Id: uat-diagnostic-report
-Title: "Diagnostic Report - Lab Result"
-Description: "Represents the results for the lab order."
+Id: uat-generic-diagnostic-report
+Title: "Diagnostic Report - Generic"
+Description: "Base DiagnosticReport elements that are inherited by other DiagnosticReport profiles."
 * category 1..1
 * category = $LNC#11502-2
 * code.text 1..1
@@ -237,14 +240,16 @@ Description: "Represents the results for the lab order."
 * encounter 1..1
 * encounter only Reference(UATTargetFacilityEncounter)
 * result 1..*
-* result only Reference(UATDiagnosticTestResultObservation)
+* result only Reference(PimsUATDiagnosticTestResultObservation or OpenMrsUATDiagnosticTestResultObservation)
 * issued 1..1
-* basedOn 1..1
-* basedOn only Reference(UATServiceRequest)
+
+* basedOn 1..*
+* basedOn only Reference(PimsServiceRequest or OpenMrsServiceRequest)
+
 * performer 1..*
 * performer only Reference(UATPractitioner or UATServiceProvider)
 
-Profile: LabReportComposition
+/*Profile: LabReportComposition
 Parent: Composition
 Id: lab-report-composition
 Title: "Composition - Lab report"
@@ -284,7 +289,7 @@ Description: "Clinical document used to represent the outcome for a lab order an
 * insert CompositionEntry(Practitioner, UATPractitioner, sectionPractitioners, $LNC#LA9327-3, List of practitioners section, practitioner, 
     Practitioners relevant for the scope of the lab report, This lists the practitioners relevant for the scope of the lab report., 1..*)
 
-* insert CompositionEntry(ServiceRequest, UATServiceRequest, sectionServiceRequest, $SCT#165332000, Lab order summary section, serviceRequest, 
+* insert CompositionEntry(ServiceRequest, PimsServiceRequest or OpenMrsServiceRequest, sectionServiceRequest, $SCT#165332000, Lab order summary section, serviceRequest, 
     Lab order relevant for the scope of the lab report, This lists the lab order relevant for the scope of the lab report., 1..1)
 
 * insert CompositionEntry(Task, UATLabTask, sectionTask, $LNC#92235-1, Task summary section, task, 
@@ -297,4 +302,78 @@ Description: "Clinical document used to represent the outcome for a lab order an
     Lab results relevant for the scope of the lab report, This lists the lab results relevant for the scope of the lab report., 1..*)
 
 * insert CompositionEntry(DiagnosticReport, UATDiagnosticReport, sectionDiagnosticReport, $LNC#LP420386-7, Diagnostic report summary section, report, 
-    Diagnostic report relevant for the scope of the lab report, This lists the diagnostic report relevant for the scope of the lab report., 1..1)
+    Diagnostic report relevant for the scope of the lab report, This lists the diagnostic report relevant for the scope of the lab report., 1..1)*/
+
+Profile: PimsServiceRequest
+Parent: UATGenericServiceRequest
+Id: uat-pims-lab-order-service-request
+Title: "Service Request - PIMS Lab Orders"
+Description: "Represents the service request for PIMS lab orders."
+* code from VSPimsLabOrderCodes (extensible)
+
+Profile: OpenMrsServiceRequest
+Parent: UATGenericServiceRequest
+Id: uat-openmrs-lab-order-service-request
+Title: "Service Request - OpenMRS Lab Orders"
+Description: "Represents the service request for OpenMRS lab orders."
+* code from VSOpenMrsLabOrderCodes (extensible)
+
+Profile: PimsUATLabTask
+Parent: GenericUATLabTask
+Id: uat-pims-lab-order-task
+Title: "Task - PIMS Lab Orders"
+Description: "Assists with tracking the state of the lab order and its completion status."
+* basedOn only Reference(PimsServiceRequest)
+* output.valueReference only Reference(PimsUATDiagnosticReport)
+
+Profile: OpenMrsUATLabTask
+Parent: GenericUATLabTask
+Id: uat-openmrs-lab-order-task
+Title: "Task - OpenMRS Lab Orders"
+Description: "Assists with tracking the state of the lab order and its completion status."
+* basedOn only Reference(OpenMrsServiceRequest)
+* output.valueReference only Reference(OpenMrsUATDiagnosticReport)
+
+Profile: PimsUATSpecimen
+Parent: GenericUATSpecimen
+Id: uat-pims-specimen
+Title: "Specimen - PIMS Lab Orders"
+Description: "The specimen associated with the lab order."
+* request only Reference(PimsServiceRequest)
+
+Profile: OpenMrsUATSpecimen
+Parent: GenericUATSpecimen
+Id: uat-openmrs-specimen
+Title: "Specimen - OpenMRS Lab Orders"
+Description: "The specimen associated with the lab order."
+* request only Reference(OpenMrsServiceRequest)
+
+Profile: PimsUATDiagnosticReport
+Parent: GenericUATDiagnosticReport
+Id: uat-pims-diagnostic-report
+Title: "Diagnostic Report - PIMS Lab Result"
+Description: "Represents the results for the lab order."
+* basedOn only Reference(PimsServiceRequest)
+* result only Reference(PimsUATDiagnosticTestResultObservation)
+
+Profile: OpenMrsUATDiagnosticReport
+Parent: GenericUATDiagnosticReport
+Id: uat-openmrs-diagnostic-report
+Title: "Diagnostic Report - OpenMRS Lab Result"
+Description: "Represents the results for the lab order."
+* basedOn only Reference(OpenMrsServiceRequest)
+* result only Reference(OpenMrsUATDiagnosticTestResultObservation)
+
+Profile: PimsUATDiagnosticTestResultObservation
+Parent: GenericUATDiagnosticTestResultObservation
+Id: uat-pims-diagnostic-test-result-observation
+Title: "Observation - PIMS Diagnostic Test Result"
+Description: "Documents the patient's diagnostic test result."
+* specimen only Reference(PimsUATSpecimen)
+
+Profile: OpenMrsUATDiagnosticTestResultObservation
+Parent: GenericUATDiagnosticTestResultObservation
+Id: uat-openmrs-diagnostic-test-result-observation
+Title: "Observation - OpenMRS Diagnostic Test Result"
+Description: "Documents the patient's diagnostic test result."
+* specimen only Reference(OpenMrsUATSpecimen)

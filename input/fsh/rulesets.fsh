@@ -38,3 +38,12 @@ RuleSet: CompositionEntry(allowedResourcesForEntry, resourceID, sectionSLice, se
   * entry[{entrySLice}] only Reference({resourceID})
 
   * text 1..1
+
+RuleSet: SliceForResolve(item, definition, rule, description, ordered)
+* {item} 
+  * ^definition = "{definition}"
+  * ^slicing.discriminator[+].type = #profile
+  * ^slicing.discriminator[=].path = "resolve()"
+  * ^slicing.rules = #{rule}
+  * ^slicing.description = "{description}"
+  * ^slicing.ordered = {ordered}
