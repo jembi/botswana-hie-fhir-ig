@@ -1,8 +1,8 @@
 Instance: openmrs-lab-order-bundle
 InstanceOf: Bundle
 Usage: #example
-Description: "OpenMRS Bundle - Lab Order"
-Title: "Submit new lab orders"
+Title: "OpenMRS Bundle - Lab Order"
+Description: "Submit new lab orders"
 * type = #transaction
 
 * insert ExampleTransactionalEntry(OpenMrsGeneralPatientExample, Patient)

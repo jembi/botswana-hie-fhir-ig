@@ -1,8 +1,8 @@
 Instance: pims-cancelled-lab-order-bundle
 InstanceOf: Bundle
 Usage: #example
-Description: "PIMS Bundle - Cancelled Lab Order"
-Title: "Lab order has been cancelled"
+Title: "PIMS Bundle - Cancelled Lab Order"
+Description: "Lab order has been cancelled"
 * type = #transaction
 
 * insert ExampleTransactionalEntry(PimsLabOrderCancellationTaskExample, Task)

@@ -1,8 +1,8 @@
 Instance: pims-lab-order-bundle
 InstanceOf: Bundle
 Usage: #example
-Description: "PIMS Bundle - Lab Order"
-Title: "Submit new lab orders"
+Title: "PIMS Bundle - Lab Order"
+Description: "Submit new lab orders"
 * type = #transaction
 
 * insert ExampleTransactionalEntry(PimsGeneralPatientExample, Patient)
