@@ -6,5 +6,5 @@ Title: "Lab order has been rejected"
 * type = #transaction
 
 * insert ExampleTransactionalEntry(OpenMrsLabOrderRejectionTaskExample, Task)
-* insert ExampleTransactionalEntry(OpenMrsAvailableSpecimenForCompletedRequestsExample, Specimen)
+//* insert ExampleTransactionalEntry(OpenMrsAvailableSpecimenForCompletedRequestsExample, Specimen)
 * insert ExampleTransactionalEntry(OpenMrsCompletedServiceRequestExample, ServiceRequest)

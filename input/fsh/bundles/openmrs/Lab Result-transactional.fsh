@@ -6,7 +6,7 @@ Title: "Lab order has been completed"
 * type = #transaction
 
 * insert ExampleTransactionalEntry(OpenMrsLabResultTaskExample, Task)
-* insert ExampleTransactionalEntry(OpenMrsAvailableSpecimenForCompletedRequestsExample, Specimen)
+//* insert ExampleTransactionalEntry(OpenMrsAvailableSpecimenForCompletedRequestsExample, Specimen)
 * insert ExampleTransactionalEntry(OpenMrsCompletedServiceRequestExample, ServiceRequest)
-* insert ExampleTransactionalEntry(OpenMrsLabResultsDiagnosticReportExample, DiagnosticReport)
+//* insert ExampleTransactionalEntry(OpenMrsLabResultsDiagnosticReportExample, DiagnosticReport)
 * insert ExampleTransactionalEntry(OpenMrsTestResultExample, Observation)

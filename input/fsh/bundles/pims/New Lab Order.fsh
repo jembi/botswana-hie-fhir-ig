@@ -7,5 +7,5 @@ Title: "Submit new lab orders"
 
 //* insert ExampleDocumentEntry(GeneralPatientExample, Patient)
 * insert ExampleTransactionalEntry(PimsLabOrderTaskExample, Task)
-* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
+//* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
 * insert ExampleTransactionalEntry(PimsActiveServiceRequestExample, ServiceRequest)

@@ -6,5 +6,5 @@ Title: "Lab order has been cancelled"
 * type = #transaction
 
 * insert ExampleTransactionalEntry(PimsLabOrderCancellationTaskExample, Task)
-* insert ExampleTransactionalEntry(PimsAvailableSpecimenForRevokedRequestExample, Specimen)
+//* insert ExampleTransactionalEntry(PimsAvailableSpecimenForRevokedRequestExample, Specimen)
 * insert ExampleTransactionalEntry(PimsRevokedServiceRequestExample, ServiceRequest)

@@ -11,10 +11,10 @@ Description: "Current organization providing health related services."
 * address[=].district = "Kirkos woreda 9"
 
 * identifier[MOHID][+].value = "MOH001"
-* identifier[MOHID][=].system = "http://moh.gov.bw/fhir/identifier/mohid"
+* identifier[MOHID][=].system = "http://moh.bw.org/identifier/mohid"
 
 * identifier[HFUID][+].value = "HFUID001"
-* identifier[HFUID][=].system = "http://moh.gov.bw/fhir/identifier/hfuid"
+* identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
 
 * type[+] = $SCT#257622000
 * type[=].text = "Current Healthcare Provider"
@@ -32,36 +32,21 @@ Description: "Current organization providing laboratory related services."
 * address[=].district = "Kirkos woreda 9"
 
 * identifier[MOHID][+].value = "MOH001"
-* identifier[MOHID][=].system = "http://moh.gov.bw/fhir/identifier/mohid"
+* identifier[MOHID][=].system = "http://moh.bw.org/identifier/mohid"
 
 * identifier[HFUID][+].value = "HFUID001"
-* identifier[HFUID][=].system = "http://moh.gov.bw/fhir/identifier/hfuid"
+* identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
 
 * type[+] = $SCT#45899008
 * type[=].text = "Laboratory"
 
-Instance: GeneralEncounterExample
-InstanceOf: UATTargetFacilityEncounter
-Usage: #example
-Title: "Encounter - Initiated By The Facility Providing the Service" 
-Description: "Represents the current facility at which the patient is receiving health services."
-* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#OBSENC
-* status = #finished
-* subject = Reference(GeneralPatientExample)
-* period.start = "2012-12-09"
-* period.end = "2012-12-09"
-* serviceProvider = Reference(CurrentServiceProviderExample)
-
-Instance: GeneralPatientExample
-InstanceOf: UATBwPatient
+/*Instance: GeneralPatientExample
+InstanceOf: GenericUATBwPatient
 Usage: #example
 Title: "Patient - General"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345671"
-* identifier[MRN].system = "http://moh.gov.bw/fhir/identifier/mrn"
-* identifier[MRN].type = http://terminology.hl7.org/CodeSystem/v2-0203#MR
-* identifier[EMR-ID].value = "NID12345671"
-* identifier[EMR-ID].system = "http://moh.gov.bw/fhir/identifier/emr-id"
+* identifier[MRN].system = "http://moh.bw.org/identifier/mrn"
 
 * name[+].given[+] = "Mark"
 * name[=].family = "Adams"
@@ -83,7 +68,7 @@ Description: "Is used to document demographics and other administrative informat
 * telecom[=].use = #work
 * telecom[+].system = #email
 * telecom[=].value = "someone@something.org"
-* telecom[=].use = #home
+* telecom[=].use = #home*/
 
 Instance: GeneralPractitionerExample
 InstanceOf: UATPractitioner
@@ -108,7 +93,7 @@ Usage: #example
 Title: "Composition - Lab report"
 Description: "Clinical document used to represent the outcome for a lab order and when applicable, with lab results."
 * identifier.value = "PAT0001-v1"
-* identifier.system = "http://moh.gov.bw/fhir/identifier/lab-report-document"
+* identifier.system = "http://moh.bw.org/identifier/lab-report-document"
 * status = #final
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)

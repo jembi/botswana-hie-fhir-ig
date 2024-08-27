@@ -1,8 +1,9 @@
 == Suppressed Messages ==
 
 # Not all generic profiles need an Example
-WARNING: StructureDefinition.where(url = 'http://moh.gov.bw/fhir/StructureDefinition/uat-generic-lab-order-service-request'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://moh.gov.bw/fhir/StructureDefinition/uat-generic-diagnostic-report'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://moh.gov.bw/fhir/StructureDefinition/uat-generic-diagnostic-test-result-observation'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://moh.gov.bw/fhir/StructureDefinition/uat-generic-lab-order-task'): The Implementation Guide contains no examples for this profile
-WARNING: StructureDefinition.where(url = 'http://moh.gov.bw/fhir/StructureDefinition/uat-generic-specimen'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://moh.bw.org/StructureDefinition/uat-generic-lab-order-service-request'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://moh.bw.org/StructureDefinition/uat-generic-diagnostic-report'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://moh.bw.org/StructureDefinition/uat-generic-diagnostic-test-result-observation'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://moh.bw.org/StructureDefinition/uat-generic-lab-order-task'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://moh.bw.org/StructureDefinition/uat-generic-specimen'): The Implementation Guide contains no examples for this profile
+WARNING: StructureDefinition.where(url = 'http://moh.bw.org/StructureDefinition/uat-patient'): The Implementation Guide contains no examples for this profile

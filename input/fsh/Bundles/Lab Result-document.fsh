@@ -6,7 +6,7 @@ Title: "Lab order has been completed"
 * type = #document
 * timestamp = "2024-02-18T09:30:00+02:00"
 * identifier.value = "Lab-Report-12345"
-* identifier.system = "http://moh.gov.bw/fhir/identifier/lab-report"
+* identifier.system = "http://moh.bw.org/identifier/lab-report"
 
 * insert ExampleDocumentEntry(LabReportCompositionExample, Composition)
 

@@ -12,10 +12,10 @@ Description: "Organization providing health related services."
     HFUID 0..1 MS
 
 * identifier[MOHID].value 1..1
-* identifier[MOHID].system = "http://moh.gov.bw/fhir/identifier/mohid"
+* identifier[MOHID].system = "http://moh.bw.org/identifier/mohid"
 
 * identifier[HFUID].value 1..1
-* identifier[HFUID].system = "http://moh.gov.bw/fhir/identifier/hfuid"
+* identifier[HFUID].system = "http://moh.bw.org/identifier/hfuid"
 
 * active 1..1
 * name 1..1
@@ -38,7 +38,7 @@ Id: uat-target-facility-encounter
 Title: "Encounter - Initiated By The Facility Providing the Service" 
 Description: "Represents the current facility at which the patient is receiving health services."
 * subject 1..1 
-* subject only Reference(UATBwPatient)
+* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
 * period 1..1
 * period.start 1..1
 * period.end 0..1 MS
@@ -46,26 +46,35 @@ Description: "Represents the current facility at which the patient is receiving 
 * serviceProvider 1..1
 * serviceProvider only Reference(UATServiceProvider)
 
-Profile: UATBwPatient
+Profile: GenericUATBwPatient
 Parent: Patient
 Id: uat-patient
-Title: "Patient"
-Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
+Title: "Patient - Generic"
+Description: "Base Patient elements that are inherited by other Patient profiles."
 * identifier 1..*
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MRN 0..1 MS and
-    EMR-ID 0..1 MS
+    OMANG 0..1 MS and
+    Birth 0..1 MS and
+    Passport 0..1 MS
 
 * identifier[MRN] ^definition = "reason(s) why this should be supported."
 * identifier[MRN].value 1..1
-* identifier[MRN].system = "http://moh.gov.bw/fhir/identifier/mrn"
-* identifier[MRN].type = http://terminology.hl7.org/CodeSystem/v2-0203#MR
+* identifier[MRN].system = "http://moh.bw.org/identifier/mrn"
 
-* identifier[EMR-ID] ^definition = "reason(s) why this should be supported."
-* identifier[EMR-ID].value 1..1
-* identifier[EMR-ID].system = "http://moh.gov.bw/fhir/identifier/emr-id"
+* identifier[OMANG] ^definition = "reason(s) why this should be supported."
+* identifier[OMANG].value 1..1
+* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+
+* identifier[Birth] ^definition = "reason(s) why this should be supported."
+* identifier[Birth].value 1..1
+* identifier[Birth].system = "http://moh.bw.org/ext/identifier/birth"
+
+* identifier[Passport] ^definition = "reason(s) why this should be supported."
+* identifier[Passport].value 1..1
+* identifier[Passport].system = "http://moh.bw.org/ext/identifier/passport"
 
 * name 1..*
 * name.given 1..*
@@ -112,8 +121,7 @@ Description: "Base Task elements that are inherited by other Task profiles."
     FILL 1..1
   
 * identifier[FILL].value 1..1
-* identifier[FILL].system = "http://moh.gov.bw/fhir/identifier/task-id"
-* identifier[FILL].type = http://terminology.hl7.org/CodeSystem/v2-0203#FILL
+* identifier[FILL].system = "http://moh.bw.org/identifier/task-id"
 
 * basedOn 1..*
 * basedOn only Reference(PimsServiceRequest or OpenMrsServiceRequest)
@@ -149,21 +157,25 @@ Description: "Base ServiceRequest elements that are inherited by other ServiceRe
     PLAC 1..1 
 
 * identifier[PLAC].value 1..1
-* identifier[PLAC].system = "http://moh.gov.bw/fhir/identifier/service-request-id"
-* identifier[PLAC].type = http://terminology.hl7.org/CodeSystem/v2-0203#PLAC
+* identifier[PLAC].system = "http://moh.bw.org/identifier/service-request-id"
 
 * intent = #order
 * code 1..1
 * subject 1..1
-* subject only Reference(UATBwPatient)
-* encounter 1..1
+* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* encounter 0..1 MS
+* encounter ^definition =
+    "reason(s) why this should be supported."
 * encounter only Reference(UATTargetFacilityEncounter)
 * occurrenceDateTime 1..1
 * requester 1..1
 * requester only Reference(UATPractitioner or UATServiceProvider)
 * performer 1..*
 * performer only Reference(UATPractitioner or UATServiceProvider)
-* specimen 1..1
+* specimen 0..1 MS
+* specimen ^definition =
+    "reason(s) why this should be supported."
+* specimen only Reference(PimsUATSpecimen or OpenMrsUATSpecimen)
 
 Profile: UATPractitioner
 Parent: Practitioner
@@ -192,13 +204,12 @@ Description: "Base Specimen elements that are inherited by other Specimen profil
     USID 1..1
   
 * identifier[USID].value 1..1
-* identifier[USID].system = "http://moh.gov.bw/fhir/identifier/specimen-id"
-* identifier[USID].type = http://terminology.hl7.org/CodeSystem/v2-0203#USID
+* identifier[USID].system = "http://moh.bw.org/identifier/specimen-id"
 
 * type 1..1
 * type from VSSpecimenType (extensible)
 * subject 1..1
-* subject only Reference(UATBwPatient)
+* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
 
 * request 1..*
 * request only Reference(PimsServiceRequest or OpenMrsServiceRequest)
@@ -218,13 +229,17 @@ Description: "Base lab result Observation elements that are inherited by other l
 * code.text 1..1
 * value[x] 1..1
 * subject 1..1
-* subject only Reference(UATBwPatient)
-* encounter 1..1
+* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* encounter 0..1 MS
+* encounter ^definition =
+    "reason(s) why this should be supported."
 * encounter only Reference(UATTargetFacilityEncounter)
 * effectiveDateTime 1..1
 * performer 1..*
 * performer only Reference(UATServiceProvider or UATPractitioner)
-* specimen 1..1
+* specimen 0..1 MS
+* specimen ^definition =
+    "reason(s) why this should be supported."
 * specimen only Reference(PimsUATSpecimen or OpenMrsUATSpecimen)
 
 Profile: GenericUATDiagnosticReport
@@ -236,8 +251,10 @@ Description: "Base DiagnosticReport elements that are inherited by other Diagnos
 * category = $LNC#11502-2
 * code.text 1..1
 * subject 1..1
-* subject only Reference(UATBwPatient)
-* encounter 1..1
+* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* encounter 0..1 MS
+* encounter ^definition =
+    "reason(s) why this should be supported."
 * encounter only Reference(UATTargetFacilityEncounter)
 * result 1..*
 * result only Reference(PimsUATDiagnosticTestResultObservation or OpenMrsUATDiagnosticTestResultObservation)
@@ -256,10 +273,10 @@ Title: "Composition - Lab report"
 Description: "Clinical document used to represent the outcome for a lab order and when applicable, with lab results."
 * identifier.value 1..1
 * identifier.system 1..1
-* identifier.system = "http://moh.gov.bw/fhir/identifier/lab-report-document"
+* identifier.system = "http://moh.bw.org/identifier/lab-report-document"
 * status 1..1
 * subject 1..1
-* subject only Reference(UATBwPatient)
+* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
 * encounter 1..1
 * encounter only Reference(UATTargetFacilityEncounter)
 * type 1..1
@@ -377,3 +394,25 @@ Id: uat-openmrs-diagnostic-test-result-observation
 Title: "Observation - OpenMRS Diagnostic Test Result"
 Description: "Documents the patient's diagnostic test result."
 * specimen only Reference(OpenMrsUATSpecimen)
+
+Profile: PimsUATBwPatient
+Parent: GenericUATBwPatient
+Id: uat-pims-patient
+Title: "PIMS Patient"
+Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
+* identifier contains
+    PIMS 1..1
+
+* identifier[PIMS].value 1..1
+* identifier[PIMS].system = "http://moh.bw.org/ext/identifier/pims"
+
+Profile: OpenMrsUATBwPatient
+Parent: GenericUATBwPatient
+Id: uat-openmrs-patient
+Title: "OpenMRS Patient"
+Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
+* identifier contains
+    OpenMRS 1..1
+
+* identifier[OpenMRS].value 1..1
+* identifier[OpenMRS].system = "http://moh.bw.org/ext/identifier/openmrs"
