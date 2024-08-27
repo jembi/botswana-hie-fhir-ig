@@ -51,14 +51,36 @@ Parent: Patient
 Id: uat-patient
 Title: "Patient - Generic"
 Description: "Base Patient elements that are inherited by other Patient profiles."
+* meta 0..1 MS
+* meta ^definition = "reason(s) why this should be supported."
+* meta.tag 0..* MS
+* meta.tag ^definition = "reason(s) why this should be supported."
+
+
+* insert Slice(meta.tag, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+
+* meta.tag contains
+    OpenMRS 0..1 MS and
+    Facility 0..1 MS
+
+* meta.tag[OpenMRS] ^definition = "reason(s) why this should be supported."
+* meta.tag[OpenMRS].code 1..1
+* meta.tag[OpenMRS].system = "http://openclientregistry.org/fhir/source"
+
+* meta.tag[Facility] ^definition = "reason(s) why this should be supported."
+* meta.tag[Facility].code 1..1
+* meta.tag[Facility].system = "http://openclientregistry.org/fhir/facility"
+
 * identifier 1..*
+
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MRN 0..1 MS and
     OMANG 0..1 MS and
     Birth 0..1 MS and
-    Passport 0..1 MS
+    Passport 0..1 MS and
+    Internal 0..1 MS
 
 * identifier[MRN] ^definition = "reason(s) why this should be supported."
 * identifier[MRN].value 1..1
@@ -75,6 +97,10 @@ Description: "Base Patient elements that are inherited by other Patient profiles
 * identifier[Passport] ^definition = "reason(s) why this should be supported."
 * identifier[Passport].value 1..1
 * identifier[Passport].system = "http://moh.bw.org/ext/identifier/passport"
+
+* identifier[Internal] ^definition = "reason(s) why this should be supported."
+* identifier[Internal].value 1..1
+* identifier[Internal].system = "http://moh.bw.org/ext/identifier/internalid"
 
 * name 1..*
 * name.given 1..*
@@ -134,6 +160,8 @@ Description: "Base Task elements that are inherited by other Task profiles."
 * executionPeriod 1..1
 * requester 1..1
 * requester only Reference(UATPractitioner or UATServiceProvider)
+* for 1..1
+* for only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
 * owner 1..1
 * owner only Reference(UATPractitioner or UATServiceProvider)
 * output 0..* MS
@@ -183,6 +211,17 @@ Id: uat-practitioner
 Title: "Practitioner - General Practitioner"
 Description: 
     "Represents the practitioner who participated in the health related service."
+* identifier 1..*
+
+* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+
+* identifier contains
+    OMANG 0..1 MS
+
+* identifier[OMANG] ^definition = "reason(s) why this should be supported."
+* identifier[OMANG].value 1..1
+* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+
 * name 1..*
 * name.given 1..*
 * name.family 1..1
@@ -342,6 +381,7 @@ Title: "Task - PIMS Lab Orders"
 Description: "Assists with tracking the state of the lab order and its completion status."
 * basedOn only Reference(PimsServiceRequest)
 * output.valueReference only Reference(PimsUATDiagnosticReport)
+* for only Reference(PimsUATBwPatient)
 
 Profile: OpenMrsUATLabTask
 Parent: GenericUATLabTask
@@ -350,6 +390,7 @@ Title: "Task - OpenMRS Lab Orders"
 Description: "Assists with tracking the state of the lab order and its completion status."
 * basedOn only Reference(OpenMrsServiceRequest)
 * output.valueReference only Reference(OpenMrsUATDiagnosticReport)
+* for only Reference(OpenMrsUATBwPatient)
 
 Profile: PimsUATSpecimen
 Parent: GenericUATSpecimen

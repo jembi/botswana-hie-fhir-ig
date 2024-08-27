@@ -95,6 +95,7 @@ Description: "Indicates that the task that has been initiated for the lab reques
 * owner = Reference(CurrentServiceProviderExample)
 * output.type.text = "Some Lab Result"
 * output.valueReference = Reference(PimsLabResultsDiagnosticReportExample)
+* for = Reference(PimsGeneralPatientExample)
 
 Instance: PimsLabOrderRejectionTaskExample
 InstanceOf: PimsUATLabTask
@@ -111,6 +112,7 @@ Description: "Indicates that the task that has been initiated for the lab reques
 * executionPeriod.end = "2022-07-30"
 * requester = Reference(CurrentServiceProviderExample)
 * owner = Reference(CurrentServiceProviderExample)
+* for = Reference(PimsGeneralPatientExample)
 
 Instance: PimsAvailableSpecimenForCompletedRequestsExample
 InstanceOf: PimsUATSpecimen
@@ -169,6 +171,7 @@ Description: "Represents a task that has been initiated to facilitate the overal
 * executionPeriod.start = "2022-07-28"
 * requester = Reference(CurrentServiceProviderExample)
 * owner = Reference(CurrentServiceProviderExample)
+* for = Reference(PimsGeneralPatientExample)
 
 Instance: PimsLabOrderCancellationTaskExample
 InstanceOf: PimsUATLabTask
@@ -185,6 +188,7 @@ Description: "Indicates that the task that has been initiated for the lab reques
 * executionPeriod.end = "2022-07-30"
 * requester = Reference(CurrentServiceProviderExample)
 * owner = Reference(CurrentServiceProviderExample)
+* for = Reference(PimsGeneralPatientExample)
 
 Instance: PimsTestResultExample
 InstanceOf: PimsUATDiagnosticTestResultObservation
@@ -231,6 +235,9 @@ Description: "Is used to document demographics and other administrative informat
 
 * identifier[PIMS].value = "pims id"
 * identifier[PIMS].system = "http://moh.bw.org/ext/identifier/pims"
+
+* identifier[Internal].value = "internal id"
+* identifier[Internal].system = "http://moh.bw.org/ext/identifier/internalid"
 
 * name[+].given[+] = "Mark"
 * name[=].family = "Adams"

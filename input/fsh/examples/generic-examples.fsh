@@ -76,6 +76,8 @@ Usage: #example
 Title: "Practitioner - General Practitioner"
 Description: 
 "Represents the practitioners who participated in the health-related event."
+* identifier[OMANG].value = "omang1234"
+* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
 * name[+].prefix[+] = "Dr"
 * name[=].given[+] = "Tom"
 * name[=].given[+] = "Junes"
