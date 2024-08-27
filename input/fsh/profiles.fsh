@@ -398,7 +398,7 @@ Description: "Documents the patient's diagnostic test result."
 Profile: PimsUATBwPatient
 Parent: GenericUATBwPatient
 Id: uat-pims-patient
-Title: "PIMS Patient"
+Title: "Patient - PIMS"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier contains
     PIMS 1..1
@@ -409,7 +409,7 @@ Description: "Is used to document demographics and other administrative informat
 Profile: OpenMrsUATBwPatient
 Parent: GenericUATBwPatient
 Id: uat-openmrs-patient
-Title: "OpenMRS Patient"
+Title: "Patient - OpenMRS"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier contains
     OpenMRS 1..1
