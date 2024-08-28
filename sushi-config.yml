@@ -8,8 +8,8 @@
 
 
 id: botswana.fhir.lab
-canonical: http://moh.gov.bw/fhir
-url: http://moh.gov.bw/fhir/ImplementationGuide/botswana.fhir.lab
+canonical: http://moh.bw.org
+url: http://moh.bw.org/ImplementationGuide/botswana.fhir.lab
 name: BwLabIG
 title: "Botswana FHIR Implementation Guide - Laboratory"
 description: A FHIR Implementation Guide - Botswana Laboratory
