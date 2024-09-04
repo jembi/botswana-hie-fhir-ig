@@ -8,5 +8,5 @@ Description: "Lab order has been completed"
 * insert ExampleTransactionalEntry(PimsLabResultTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForCompletedRequestsExample, Specimen)
 * insert ExampleTransactionalEntry(PimsCompletedServiceRequestExample, ServiceRequest)
-//* insert ExampleTransactionalEntry(PimsLabResultsDiagnosticReportExample, DiagnosticReport)
+* insert ExampleTransactionalEntry(PimsLabResultsDiagnosticReportExample, DiagnosticReport)
 * insert ExampleTransactionalEntry(PimsTestResultExample, Observation)

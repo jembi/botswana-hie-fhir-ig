@@ -62,7 +62,7 @@ Description: "The specimen associated with the lab order that will be used durin
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(PimsActiveServiceRequestExample)
+//* request = Reference(PimsActiveServiceRequestExample)
 
 Instance: PimsAvailableSpecimenForRevokedRequestExample
 InstanceOf: PimsUATSpecimen
@@ -77,7 +77,7 @@ Description: "The specimen associated with the lab order that was considered rea
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(PimsRevokedServiceRequestExample)
+//* request = Reference(PimsRevokedServiceRequestExample)
 
 Instance: PimsLabResultTaskExample
 InstanceOf: PimsUATLabTask
@@ -127,7 +127,7 @@ Description: "The specimen associated with the lab order that was used during te
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(PimsCompletedServiceRequestExample)
+//* request = Reference(PimsCompletedServiceRequestExample)
 
 Instance: PimsUnsatisfactorySpecimenExample
 InstanceOf: PimsUATSpecimen
@@ -142,7 +142,7 @@ Description: "The specimen associated with the lab order is considered unsatisfa
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #unsatisfactory
-* request = Reference(PimsCompletedServiceRequestExample)
+//* request = Reference(PimsCompletedServiceRequestExample)
 
 Instance: PimsLabResultsDiagnosticReportExample
 InstanceOf: PimsUATDiagnosticReport
@@ -260,3 +260,21 @@ Description: "Is used to document demographics and other administrative informat
 * telecom[+].system = #email
 * telecom[=].value = "someone@something.org"
 * telecom[=].use = #home
+
+Instance: PimsLabOrderTaskWithConditionalOwnerRefExample
+InstanceOf: PimsUATLabTask
+Usage: #example
+Title: "PIMS Task - New Lab Order Requested"
+Description: 
+    "Represents a task that has been initiated to facilitate the overall progress of the new lab request.
+
+    Note: This example includes an condtional Owner reference!"
+* identifier[FILL].system = "http://moh.bw.org/identifier/task-id"
+* identifier[FILL].value = "ORDER12345"
+* basedOn = Reference(PimsActiveServiceRequestExample)
+* status = #requested
+* intent = #order
+* executionPeriod.start = "2022-07-28"
+* requester = Reference(CurrentServiceProviderExample)
+* owner = Reference(Organization?identifier=http://moh.bw.org/identifier/mohid|mohid123456)
+* for = Reference(PimsGeneralPatientExample)
