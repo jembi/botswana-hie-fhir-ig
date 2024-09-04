@@ -28,7 +28,7 @@
     <li>the example resources in <a href="examples.json.zip">json</a>, <a href="examples.xml.zip">xml</a> or <a href="examples.ttl.zip">ttl</a> format.</li>
   </ul>
 
-  <p>The source code for this Implementation Guide can be found on <a href="https://github.com/jembi/bw-laboratory-workflows-ig">GitHub</a>.</p>
+  <p>The source code for this Implementation Guide can be found on <a href="https://github.com/jembi/botswana-hie-fhir-ig">GitHub</a>.</p>
 Cross Version Analysis
   <h3>Cross Version Analysis</h3> <a name="cross-version-analysis"></a>
   <div>
