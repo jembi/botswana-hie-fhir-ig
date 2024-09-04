@@ -250,8 +250,8 @@ Description: "Base Specimen elements that are inherited by other Specimen profil
 * subject 1..1
 * subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
 
-* request 1..*
-* request only Reference(PimsServiceRequest or OpenMrsServiceRequest)
+//* request 1..*
+//* request only Reference(PimsServiceRequest or OpenMrsServiceRequest)
 
 * collection 1..1
 * collection.collected[x] only dateTime
@@ -397,14 +397,16 @@ Parent: GenericUATSpecimen
 Id: uat-pims-specimen
 Title: "Specimen - PIMS Lab Orders"
 Description: "The specimen associated with the lab order."
-* request only Reference(PimsServiceRequest)
+//* request only Reference(PimsServiceRequest)
+* subject only Reference(PimsUATBwPatient)
 
 Profile: OpenMrsUATSpecimen
 Parent: GenericUATSpecimen
 Id: uat-openmrs-specimen
 Title: "Specimen - OpenMRS Lab Orders"
 Description: "The specimen associated with the lab order."
-* request only Reference(OpenMrsServiceRequest)
+//* request only Reference(OpenMrsServiceRequest)
+* subject only Reference(OpenMrsUATBwPatient)
 
 Profile: PimsUATDiagnosticReport
 Parent: GenericUATDiagnosticReport

@@ -62,7 +62,7 @@ Description: "The specimen associated with the lab order that will be used durin
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(OpenMrsActiveServiceRequestExample)
+//* request = Reference(OpenMrsActiveServiceRequestExample)
 
 Instance: OpenMrsAvailableSpecimenForRevokedRequestExample
 InstanceOf: OpenMrsUATSpecimen
@@ -77,7 +77,7 @@ Description: "The specimen associated with the lab order that was considered rea
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(OpenMrsRevokedServiceRequestExample)
+//* request = Reference(OpenMrsRevokedServiceRequestExample)
 
 Instance: OpenMrsLabResultTaskExample
 InstanceOf: OpenMrsUATLabTask
@@ -127,7 +127,7 @@ Description: "The specimen associated with the lab order that was used during te
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(OpenMrsCompletedServiceRequestExample)
+//* request = Reference(OpenMrsCompletedServiceRequestExample)
 
 Instance: OpenMrsUnsatisfactorySpecimenExample
 InstanceOf: OpenMrsUATSpecimen
@@ -142,7 +142,7 @@ Description: "The specimen associated with the lab order is considered unsatisfa
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #unsatisfactory
-* request = Reference(OpenMrsCompletedServiceRequestExample)
+//* request = Reference(OpenMrsCompletedServiceRequestExample)
 
 Instance: OpenMrsLabResultsDiagnosticReportExample
 InstanceOf: OpenMrsUATDiagnosticReport

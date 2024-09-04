@@ -62,7 +62,7 @@ Description: "The specimen associated with the lab order that will be used durin
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(PimsActiveServiceRequestExample)
+//* request = Reference(PimsActiveServiceRequestExample)
 
 Instance: PimsAvailableSpecimenForRevokedRequestExample
 InstanceOf: PimsUATSpecimen
@@ -77,7 +77,7 @@ Description: "The specimen associated with the lab order that was considered rea
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(PimsRevokedServiceRequestExample)
+//* request = Reference(PimsRevokedServiceRequestExample)
 
 Instance: PimsLabResultTaskExample
 InstanceOf: PimsUATLabTask
@@ -127,7 +127,7 @@ Description: "The specimen associated with the lab order that was used during te
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #available
-* request = Reference(PimsCompletedServiceRequestExample)
+//* request = Reference(PimsCompletedServiceRequestExample)
 
 Instance: PimsUnsatisfactorySpecimenExample
 InstanceOf: PimsUATSpecimen
@@ -142,7 +142,7 @@ Description: "The specimen associated with the lab order is considered unsatisfa
 * collection.collectedDateTime = "2022-07-28"
 * receivedTime = "2022-07-28"
 * status = #unsatisfactory
-* request = Reference(PimsCompletedServiceRequestExample)
+//* request = Reference(PimsCompletedServiceRequestExample)
 
 Instance: PimsLabResultsDiagnosticReportExample
 InstanceOf: PimsUATDiagnosticReport
