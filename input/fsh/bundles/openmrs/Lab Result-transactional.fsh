@@ -8,5 +8,5 @@ Description: "Lab order has been completed"
 * insert ExampleTransactionalEntry(OpenMrsLabResultTaskExample, Task)
 //* insert ExampleTransactionalEntry(OpenMrsAvailableSpecimenForCompletedRequestsExample, Specimen)
 * insert ExampleTransactionalEntry(OpenMrsCompletedServiceRequestExample, ServiceRequest)
-//* insert ExampleTransactionalEntry(OpenMrsLabResultsDiagnosticReportExample, DiagnosticReport)
+* insert ExampleTransactionalEntry(OpenMrsLabResultsDiagnosticReportExample, DiagnosticReport)
 * insert ExampleTransactionalEntry(OpenMrsTestResultExample, Observation)
