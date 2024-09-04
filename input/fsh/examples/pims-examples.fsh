@@ -260,3 +260,21 @@ Description: "Is used to document demographics and other administrative informat
 * telecom[+].system = #email
 * telecom[=].value = "someone@something.org"
 * telecom[=].use = #home
+
+Instance: PimsLabOrderTaskWithConditionalOwnerRefExample
+InstanceOf: PimsUATLabTask
+Usage: #example
+Title: "PIMS Task - New Lab Order Requested"
+Description: 
+    "Represents a task that has been initiated to facilitate the overall progress of the new lab request.
+
+    Note: This example includes an condtional Owner reference!"
+* identifier[FILL].system = "http://moh.bw.org/identifier/task-id"
+* identifier[FILL].value = "ORDER12345"
+* basedOn = Reference(PimsActiveServiceRequestExample)
+* status = #requested
+* intent = #order
+* executionPeriod.start = "2022-07-28"
+* requester = Reference(CurrentServiceProviderExample)
+* owner = Reference("Organization?identifier=http://moh.bw.org/identifier/mohid|mohid123456")
+* for = Reference(PimsGeneralPatientExample)

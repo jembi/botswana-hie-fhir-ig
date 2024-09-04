@@ -219,7 +219,7 @@ Description: "Represents the current facility at which the patient is receiving 
 Instance: OpenMrsGeneralPatientExample
 InstanceOf: OpenMrsUATBwPatient
 Usage: #example
-Title: "Patient - PIMS"
+Title: "Patient - OpenMRS"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345671"
 * identifier[MRN].system = "http://moh.bw.org/identifier/mrn"

@@ -7,12 +7,12 @@
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 
-id: botswana.fhir.lab
+id: botswana.hie.fhir
 canonical: http://moh.bw.org
-url: http://moh.bw.org/ImplementationGuide/botswana.fhir.lab
-name: BwLabIG
-title: "Botswana FHIR Implementation Guide - Laboratory"
-description: A FHIR Implementation Guide - Botswana Laboratory
+url: http://moh.bw.org/ImplementationGuide/botswana.hie.fhir
+name: BotswanaHIE
+title: "Botswana FHIR Implementation Guide"
+description: A FHIR Implementation Guide - Botswana HIE
 status: active
 license: CC0-1.0
 date: 2024-07-25
