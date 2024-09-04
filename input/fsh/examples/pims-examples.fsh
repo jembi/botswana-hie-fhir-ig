@@ -276,5 +276,5 @@ Description:
 * intent = #order
 * executionPeriod.start = "2022-07-28"
 * requester = Reference(CurrentServiceProviderExample)
-* owner = Reference("Organization?identifier=http://moh.bw.org/identifier/mohid|mohid123456")
+* owner = Reference(Organization?identifier=http://moh.bw.org/identifier/mohid|mohid123456)
 * for = Reference(PimsGeneralPatientExample)
