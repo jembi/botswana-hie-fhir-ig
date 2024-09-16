@@ -9,13 +9,19 @@ Description: "Organization providing health related services."
 
 * identifier contains
     MOHID 0..1 MS and
-    HFUID 0..1 MS
+    HFUID 0..1 MS and
+    MFL 0..1 MS
 
 * identifier[MOHID].value 1..1
 * identifier[MOHID].system = "http://moh.bw.org/identifier/mohid"
 
 * identifier[HFUID].value 1..1
 * identifier[HFUID].system = "http://moh.bw.org/identifier/hfuid"
+
+* identifier[MFL].value 1..1
+* identifier[MFL].value = "MFL"
+* identifier[MFL].value.extension contains MasterFacilityListCodeExtension named MFLCode 1..1
+* identifier[MFL].system = "http://moh.bw.org/ext/identifier/mfl-code"
 
 * active 1..1
 * name 1..1
