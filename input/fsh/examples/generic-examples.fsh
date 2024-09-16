@@ -16,6 +16,10 @@ Description: "Current organization providing health related services."
 * identifier[HFUID][+].value = "HFUID001"
 * identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
 
+* identifier[MFL][+].value = "MFL"
+* identifier[MFL][=].value.extension[MFLCode].valueCodeableConcept = http://moh.bw.org/CodeSystem/cs-master-facility-list#703564-5
+* identifier[MFL][=].system = "http://moh.bw.org/ext/identifier/mfl-code"
+
 * type[+] = $SCT#257622000
 * type[=].text = "Current Healthcare Provider"
 
@@ -36,6 +40,10 @@ Description: "Current organization providing laboratory related services."
 
 * identifier[HFUID][+].value = "HFUID001"
 * identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
+
+* identifier[MFL][+].value = "MFL"
+* identifier[MFL][=].value.extension[MFLCode].valueCodeableConcept = http://moh.bw.org/CodeSystem/cs-master-facility-list#537111-7
+* identifier[MFL][=].system = "http://moh.bw.org/ext/identifier/mfl-code"
 
 * type[+] = $SCT#45899008
 * type[=].text = "Laboratory"
