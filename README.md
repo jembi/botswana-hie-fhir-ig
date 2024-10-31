@@ -1,4 +1,4 @@
-Ethiopia HIV
+Botswana HIE
 ---
 This is a Laboratory IG for Botswana.
 <br> </br>
