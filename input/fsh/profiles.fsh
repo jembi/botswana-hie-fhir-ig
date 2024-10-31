@@ -19,8 +19,8 @@ Description: "Organization providing health related services."
 * identifier[HFUID].system = "http://moh.bw.org/identifier/hfuid"
 
 * identifier[MFL].value 1..1
-* identifier[MFL].value = "MFL"
-* identifier[MFL].value.extension contains MasterFacilityListCodeExtension named MFLCode 1..1
+* identifier[MFL].value from VSMasterFacilityListCodes (extensible)
+////* identifier[MFL].value.extension contains MasterFacilityListCodeExtension named MFLCode 1..1
 * identifier[MFL].system = "http://moh.bw.org/ext/identifier/mfl-code"
 
 * active 1..1

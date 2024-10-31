@@ -1,4 +1,4 @@
-Extension: MasterFacilityListCodeExtension
+/*Extension: MasterFacilityListCodeExtension
 Id: master-facility-list-code
 Title: "Master Facility List (MFL) Code"
 Description: "An extension to capture a code that identifies the organization in the MFL."
@@ -6,4 +6,4 @@ Description: "An extension to capture a code that identifies the organization in
 * valueCodeableConcept 1..1
 * valueCodeableConcept from VSMasterFacilityListCodes (extensible)
 * ^context[+].type = #element
-* ^context[=].expression = "Organization.identifier.value"
+* ^context[=].expression = "Organization.identifier.value"*/
