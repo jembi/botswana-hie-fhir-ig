@@ -1,4 +1,4 @@
-Instance: openmrs-lab-order-auto-generate-ids-bundle
+/*Instance: openmrs-lab-order-auto-generate-ids-bundle
 InstanceOf: Bundle
 Usage: #example
 Title: "OpenMRS Bundle - Lab Order"
@@ -12,4 +12,4 @@ Description:
 * insert ExampleTransactionalEntryWithAutoIDGenerate(OpenMrsGeneralPatientExample, Patient)
 * insert ExampleTransactionalEntryWithAutoIDGenerate(OpenMrsLabOrderTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
-* insert ExampleTransactionalEntryWithAutoIDGenerate(OpenMrsActiveServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntryWithAutoIDGenerate(OpenMrsActiveServiceRequestExample, ServiceRequest)*/

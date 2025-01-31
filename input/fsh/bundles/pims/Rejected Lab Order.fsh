@@ -1,4 +1,4 @@
-Instance: pims-rejected-lab-order-bundle
+/*Instance: pims-rejected-lab-order-bundle
 InstanceOf: Bundle
 Usage: #example
 Title: "PIMS Bundle - Rejected Lab Order"
@@ -7,4 +7,4 @@ Description: "Lab order has been rejected"
 
 * insert ExampleTransactionalEntry(PimsLabOrderRejectionTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForCompletedRequestsExample, Specimen)
-* insert ExampleTransactionalEntry(PimsCompletedServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntry(PimsCompletedServiceRequestExample, ServiceRequest)*/

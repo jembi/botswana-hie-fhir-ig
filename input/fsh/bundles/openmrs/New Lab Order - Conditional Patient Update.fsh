@@ -1,4 +1,4 @@
-Instance: openmrs-lab-order-conditional-patient-update-bundle
+/*Instance: openmrs-lab-order-conditional-patient-update-bundle
 InstanceOf: Bundle
 Usage: #example
 Title: "OpenMRS Bundle - Lab Order"
@@ -11,4 +11,4 @@ Description:
 * insert ExampleTransactionalEntryWithConditionalUpdate(OpenMrsGeneralPatientExample, Patient, Patient?identifier=http://moh.bw.org/ext/identifier/omang|123)
 * insert ExampleTransactionalEntry(OpenMrsLabOrderTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
-* insert ExampleTransactionalEntry(OpenMrsActiveServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntry(OpenMrsActiveServiceRequestExample, ServiceRequest)*/

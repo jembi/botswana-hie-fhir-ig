@@ -1,4 +1,4 @@
-Instance: OpenMrsActiveServiceRequestExample
+/*Instance: OpenMrsActiveServiceRequestExample
 InstanceOf: OpenMrsServiceRequest
 Usage: #example
 Title: "OpenMRS Service Request - Lab Order (Active)"
@@ -259,4 +259,4 @@ Description: "Is used to document demographics and other administrative informat
 * telecom[=].use = #work
 * telecom[+].system = #email
 * telecom[=].value = "someone@something.org"
-* telecom[=].use = #home
+* telecom[=].use = #home*/

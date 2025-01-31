@@ -1,4 +1,4 @@
-Instance: pims-lab-order-bundle
+/*Instance: pims-lab-order-bundle
 InstanceOf: Bundle
 Usage: #example
 Title: "PIMS Bundle - Lab Order"
@@ -8,4 +8,4 @@ Description: "Submit new lab orders"
 * insert ExampleTransactionalEntry(PimsGeneralPatientExample, Patient)
 * insert ExampleTransactionalEntry(PimsLabOrderTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
-* insert ExampleTransactionalEntry(PimsActiveServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntry(PimsActiveServiceRequestExample, ServiceRequest)*/

@@ -1,4 +1,4 @@
-Instance: CurrentServiceProviderExample
+/*Instance: CurrentServiceProviderExample
 InstanceOf: UATServiceProvider
 Usage: #example
 Title: "Organization - Current Facility"
@@ -76,7 +76,7 @@ Description: "Is used to document demographics and other administrative informat
 * telecom[=].value = "someone@something.org"
 * telecom[=].use = #home*/
 
-Instance: GeneralPractitionerExample
+/*Instance: GeneralPractitionerExample
 InstanceOf: UATPractitioner
 Usage: #example
 Title: "Practitioner - General Practitioner"

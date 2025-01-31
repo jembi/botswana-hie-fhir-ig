@@ -49,12 +49,12 @@ Description: "Codes used during PIMS lab orders."
 * #14 "Erythrocyte sed rate" "PIMS Lab Code"
 * #2 "CD4%" "PIMS Lab Code"
 
-ValueSet: VSPimsLabOrderCodes
+/*ValueSet: VSPimsLabOrderCodes
 Id: vs-pims-lab-codes
 Title: "PIMS Lab Codes"
 Description: "Codes used during PIMS lab orders."
 * ^experimental = false
-* include codes from system CSPimsLabOrderCodes
+* include codes from system CSPimsLabOrderCodes*/
 
 CodeSystem: CSOpenMrsLabOrderCodes
 Id: cs-openmrs-lab-codes
@@ -92,11 +92,19 @@ Description: "Codes used during OpenMRS lab orders."
 * #3067593 "TB AFB MICROSCOPY" "OpenMRS Lab Code"
 * #2947299 "CD4%" "OpenMRS Lab Code"
 
-ValueSet: VSOpenMrsLabOrderCodes
+/*ValueSet: VSOpenMrsLabOrderCodes
 Id: vs-openmrs-lab-codes
 Title: "OpenMRS Lab Codes"
 Description: "Codes used during OpenMRS lab orders."
 * ^experimental = false
+* include codes from system CSOpenMrsLabOrderCodes*/
+
+ValueSet: VSLabOrderCodes
+Id: vs-lab-order-codes
+Title: "Lab Order Codes"
+Description: "Codes used during lab orders."
+* ^experimental = false
+* include codes from system CSPimsLabOrderCodes
 * include codes from system CSOpenMrsLabOrderCodes
 
 CodeSystem: CSMasterFacilityListCodes

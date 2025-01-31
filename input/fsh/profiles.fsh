@@ -1,15 +1,14 @@
-
-Profile: UATServiceProvider
+Profile: ServiceProvider
 Parent: Organization
-Id: uat-organization
+Id: service-organization
 Title: "Organization"
 Description: "Organization providing health related services."
 * identifier 1..*
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
-    MOHID 0..1 MS and
-    HFUID 0..1 MS and
+    MOHID 0..1 MS and // Ministry of Health Identifier
+    HFUID 0..1 MS and // Health Facility Identifier
     MFL 0..1 MS
 
 * identifier[MOHID].value 1..1
@@ -20,7 +19,7 @@ Description: "Organization providing health related services."
 
 * identifier[MFL].value 1..1
 * identifier[MFL].value from VSMasterFacilityListCodes (extensible)
-////* identifier[MFL].value.extension contains MasterFacilityListCodeExtension named MFLCode 1..1
+//* identifier[MFL].value.extension contains MasterFacilityListCodeExtension named MFLCode 1..1
 * identifier[MFL].system = "http://moh.bw.org/ext/identifier/mfl-code"
 
 * active 1..1
@@ -31,33 +30,33 @@ Description: "Organization providing health related services."
 * type.text 1..1
 
 * address 1..1
-* address.state 1..1
-* address.city 1..1
-* address.district 0..1
+//* address.state 1..1
 * address.line 0..* MS
-* address.line ^definition =
-    "reason(s) why this should be supported."
+* address.line ^definition = "Indicates a reason to support the address line. For example, to capture the physical address of the organization."
+* address.city 1..1
+* address.district 0..1 MS
+* address.district ^definition = "Indicates a reason to support the address district. For example, to capture the district where the organization is located."
 
-Profile: UATTargetFacilityEncounter
+Profile: TargetFacilityEncounter
 Parent: Encounter
-Id: uat-target-facility-encounter
+Id: target-facility-encounter
 Title: "Encounter - Initiated By The Facility Providing the Service" 
 Description: "Represents the current facility at which the patient is receiving health services."
 * subject 1..1 
-* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* subject only Reference(BwPatient)
 * period 1..1
 * period.start 1..1
 * period.end 0..1 MS
-* period.end ^definition = "reason(s) why this should be supported."
+* period.end ^definition = "Indicates a reason to support the period end. For example, to capture the end date for the encounter."
 * serviceProvider 1..1
-* serviceProvider only Reference(UATServiceProvider)
+* serviceProvider only Reference(ServiceProvider)
 
-Profile: GenericUATBwPatient
+Profile: BwPatient
 Parent: Patient
-Id: uat-patient
-Title: "Patient - Generic"
-Description: "Base Patient elements that are inherited by other Patient profiles."
-* meta 0..1 MS
+Id: bw-patient
+Title: "Botswana Patient"
+Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
+/* meta 0..1 MS
 * meta ^definition = "reason(s) why this should be supported."
 * meta.tag 0..* MS
 * meta.tag ^definition = "reason(s) why this should be supported."
@@ -75,8 +74,8 @@ Description: "Base Patient elements that are inherited by other Patient profiles
 
 * meta.tag[Facility] ^definition = "reason(s) why this should be supported."
 * meta.tag[Facility].code 1..1
-* meta.tag[Facility].system = "http://openclientregistry.org/fhir/facility"
-
+* meta.tag[Facility].system = "http://openclientregistry.org/fhir/facility"*/
+* obeys PatientIdentifier-OpenMRS-PIMS
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
@@ -86,27 +85,38 @@ Description: "Base Patient elements that are inherited by other Patient profiles
     OMANG 0..1 MS and
     Birth 0..1 MS and
     Passport 0..1 MS and
-    Internal 0..1 MS
+    Internal 0..1 MS and
+    PIMS 0..1 MS and
+    OpenMRS 0..1 MS
 
-* identifier[MRN] ^definition = "reason(s) why this should be supported."
+* identifier[MRN] ^definition = "Indicates a reason to support the identifier slice for MRN. For example, to allow EMR systems to capture the identifier for the patient"
 * identifier[MRN].value 1..1
 * identifier[MRN].system = "http://moh.bw.org/identifier/mrn"
 
-* identifier[OMANG] ^definition = "reason(s) why this should be supported."
+* identifier[OMANG] ^definition = "Indicates a reason to support the identifier slice for OMANG. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[OMANG].value 1..1
 * identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
 
-* identifier[Birth] ^definition = "reason(s) why this should be supported."
+* identifier[Birth] ^definition = "Indicates a reason to support the slice for Birth identifier. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[Birth].value 1..1
 * identifier[Birth].system = "http://moh.bw.org/ext/identifier/birth"
 
-* identifier[Passport] ^definition = "reason(s) why this should be supported."
+* identifier[Passport] ^definition = "Indicates a reason to support the slice for Passport identifier. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[Passport].value 1..1
 * identifier[Passport].system = "http://moh.bw.org/ext/identifier/passport"
 
-* identifier[Internal] ^definition = "reason(s) why this should be supported."
+* identifier[Internal] ^definition = "Indicates a reason to support the slice for Internal identifier. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[Internal].value 1..1
 * identifier[Internal].system = "http://moh.bw.org/ext/identifier/internalid"
+
+* identifier[PIMS] ^definition = "Indicates a reason to support the slice for PIMS identifier. For example, to allow participating systems to capture the identifier for the patient"
+* identifier[PIMS].value 1..1
+* identifier[PIMS].system = "http://moh.bw.org/ext/identifier/pims"
+
+* identifier[OpenMRS] ^definition = "Indicates a reason to support the slice for OpenMRS identifier. For example, to allow participating systems to capture the identifier for the patient"
+  //* obeys PatientIdentifier-OpenMRS-PIMS
+* identifier[OpenMRS].value 1..1
+* identifier[OpenMRS].system = "http://moh.bw.org/ext/identifier/openmrs"
 
 * name 1..*
 * name.given 1..*
@@ -115,48 +125,42 @@ Description: "Base Patient elements that are inherited by other Patient profiles
 * gender 1..1
 * birthDate 1..1
 * maritalStatus 0..1 MS
-* maritalStatus ^definition =
-    "reason(s) why this should be supported."
+* maritalStatus ^definition = "Indicates a reason to support the marital status. For example, to capture the marital status for the patient."
 * address 0..* MS
-* address ^definition =
-    "reason(s) why this should be supported."
-* address.city 0..1 MS
-* address.city ^definition =
-    "reason(s) why this should be supported."
+* address ^definition = "Indicates a reason to support the address. For example, to capture the full address of the patient."
 * address.line 0..* MS
-* address.line ^definition =
-    "reason(s) why this should be supported."
+* address.line ^definition = "Indicates a reason to support the address line. For example, to capture the physical address of the patient."
+* address.city 0..1 MS
+* address.city ^definition = "Indicates a reason to support the address city. For example, to capture the city where the patient is resides."
 * address.district 0..1 MS
-* address.district ^definition =
-    "reason(s) why this should be supported."
-* address.state 0..1 MS
-* address.state ^definition =
-    "reason(s) why this should be supported."
+* address.district ^definition = "Indicates a reason to support the address district. For example, to capture the district where the patient is resides."
+//* address.state 0..1 MS
+//* address.state ^definition =
+//    "reason(s) why this should be supported."
 
 * telecom 0..* MS
-* telecom ^definition =
-    "reason(s) why this should be supported."
+* telecom ^definition = "Indicates a reason to support the telecom. For example, to capture phone number or email details for the patient."
 
 * managingOrganization 1..1
-* managingOrganization only Reference(UATServiceProvider)
+* managingOrganization only Reference(ServiceProvider)
 
-Profile: GenericUATLabTask
+Profile: LabOrderTask
 Parent: Task
-Id: uat-generic-lab-order-task
-Title: "Task - Generic"
-Description: "Base Task elements that are inherited by other Task profiles."
+Id: lab-order-task
+Title: "Lab Order Task"
+Description: "Assists with tracking the state of the lab order and its completion status."
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
-    FILL 1..1
+    FILL 1..1 // FILL = Filler Identifier
   
 * identifier[FILL].value 1..1
 * identifier[FILL].system = "http://moh.bw.org/identifier/task-id"
 
 * basedOn 1..*
-* basedOn only Reference(PimsServiceRequest or OpenMrsServiceRequest)
+* basedOn only Reference(LabOrderServiceRequest)
 
 * statusReason 0..1 MS
 * statusReason ^definition = "Indicates a reason to support the status. For example, why the lab order was cancelled or rejected"
@@ -165,55 +169,53 @@ Description: "Base Task elements that are inherited by other Task profiles."
 * intent = #order
 * executionPeriod 1..1
 * requester 1..1
-* requester only Reference(UATPractitioner or UATServiceProvider)
+* requester only Reference(GeneralPractitioner or ServiceProvider)
 * for 1..1
-* for only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* for only Reference(BwPatient)
 * owner 1..1
-* owner only Reference(UATPractitioner or UATServiceProvider)
+* owner only Reference(GeneralPractitioner or ServiceProvider)
 * output 0..* MS
 * output ^definition = "Indicates artifacts that are directly associated with the task. For example, the specimen used or the diagnostic report for successfully completed lab orders"
 * output ^short = "Indicates artifacts directly associated with the task."
 * output.type 1..1
 * output.type.text 1..1
 * output.valueReference 1..1
-* output.valueReference only Reference(PimsUATDiagnosticReport or OpenMrsUATDiagnosticReport)
+* output.valueReference only Reference(LabOrderDiagnosticReport)
 
-Profile: UATGenericServiceRequest
+Profile: LabOrderServiceRequest
 Parent: ServiceRequest
-Id: uat-generic-lab-order-service-request
-Title: "ServiceRequest - Generic"
-Description: "Base ServiceRequest elements that are inherited by other ServiceRequest profiles."
+Id: lab-order-service-request
+Title: "Lab Order Service Request"
+Description: "Represents the service request for OpenMRS lab orders."
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
-    PLAC 1..1 
+    PLAC 1..1 //PLAC = Placer Identifier
 
 * identifier[PLAC].value 1..1
 * identifier[PLAC].system = "http://moh.bw.org/identifier/service-request-id"
 
 * intent = #order
 * code 1..1
+* code from VSLabOrderCodes (extensible)
 * subject 1..1
-* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* subject only Reference(BwPatient)
 * encounter 0..1 MS
-* encounter ^definition =
-    "reason(s) why this should be supported."
-* encounter only Reference(UATTargetFacilityEncounter)
+* encounter ^definition = "Indicates a reason to support the encounter. For example, to capture the encounter details that triggered the service request."
+* encounter only Reference(TargetFacilityEncounter)
 * occurrenceDateTime 1..1
 * requester 1..1
-* requester only Reference(UATPractitioner or UATServiceProvider)
+* requester only Reference(GeneralPractitioner or ServiceProvider)
 * performer 1..*
-* performer only Reference(UATPractitioner or UATServiceProvider)
-* specimen 0..1 MS
-* specimen ^definition =
-    "reason(s) why this should be supported."
-* specimen only Reference(PimsUATSpecimen or OpenMrsUATSpecimen)
+* performer only Reference(GeneralPractitioner or ServiceProvider)
+* specimen 1..1
+* specimen only Reference(LabOrderSpecimen)
 
-Profile: UATPractitioner
+Profile: GeneralPractitioner
 Parent: Practitioner
-Id: uat-practitioner
+Id: practitioner
 Title: "Practitioner - General Practitioner"
 Description: 
     "Represents the practitioner who participated in the health related service."
@@ -224,7 +226,7 @@ Description:
 * identifier contains
     OMANG 0..1 MS
 
-* identifier[OMANG] ^definition = "reason(s) why this should be supported."
+* identifier[OMANG] ^definition = "Indicates a reason to support the identifier slice for OMANG. For example, to allow participating systems to capture the identifier for the practitioner."
 * identifier[OMANG].value 1..1
 * identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
 
@@ -232,15 +234,14 @@ Description:
 * name.given 1..*
 * name.family 1..1
 * name.prefix 0..* MS
-* name.prefix ^definition =
-    "reason(s) why this should be supported."
+* name.prefix ^definition = "Indicates a reason to support the prefix for the name. For example, to allow participating systems to capture the prefix as part of the patient name."
 * telecom 1..*
 
-Profile: GenericUATSpecimen
+Profile: LabOrderSpecimen
 Parent: Specimen
-Id: uat-generic-specimen
-Title: "Specimen - Generic"
-Description: "Base Specimen elements that are inherited by other Specimen profiles."
+Id: lab-order-specimen
+Title: "Lab Order Specimen"
+Description: "The specimen associated with the lab order."
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
@@ -253,63 +254,77 @@ Description: "Base Specimen elements that are inherited by other Specimen profil
 
 * type 1..1
 * type from VSSpecimenType (extensible)
-* subject 1..1
-* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
 
-//* request 1..*
-//* request only Reference(PimsServiceRequest or OpenMrsServiceRequest)
+  * ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+  * ^binding.extension[=].extension[+].url = "purpose"
+  * ^binding.extension[=].extension[=].valueCode = #extensible
+  * ^binding.extension[=].extension[+].url = "valueSet"
+  * ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-snomed-ct-ips-free-set"
+  * ^binding.extension[=].extension[+].url = "documentation"
+  * ^binding.extension[=].extension[=].valueMarkdown = "Results Specimen Type - SNOMED CT IPS Free Set"
+
+  * ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+  * ^binding.extension[=].extension[+].url = "purpose"
+  * ^binding.extension[=].extension[=].valueCode = #extensible
+  * ^binding.extension[=].extension[+].url = "valueSet"
+  * ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-uv-ips"
+  * ^binding.extension[=].extension[+].url = "documentation"
+  * ^binding.extension[=].extension[=].valueMarkdown = "Results Specimen Type - IPS"
+
+* subject 1..1
+* subject only Reference(BwPatient)
+
+* request 1..*
+* request only Reference(LabOrderServiceRequest)
 
 * collection 1..1
 * collection.collected[x] only dateTime
 * collection.collectedDateTime 1..1
-* receivedTime 1..1
+* receivedTime 0..1 MS
+* receivedTime ^definition = "Indicates a reason to support the received time for the specimen. For example, to allow participating systems to capture the time to indicate when the specimen was received."
 
-Profile: GenericUATDiagnosticTestResultObservation
+Profile: DiagnosticTestResultObservation
 Parent: Observation
-Id: uat-generic-diagnostic-test-result-observation
-Title: "Observation - Generic Lab Result"
-Description: "Base lab result Observation elements that are inherited by other lab result Observation profiles."
+Id: diagnostic-test-result-observation
+Title: "Lab Result Observation"
+Description: "Documents the patient's diagnostic test result."
 * category 1..1
 * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 * code.text 1..1
 * value[x] 1..1
 * subject 1..1
-* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* subject only Reference(BwPatient)
 * encounter 0..1 MS
-* encounter ^definition =
-    "reason(s) why this should be supported."
-* encounter only Reference(UATTargetFacilityEncounter)
+* encounter ^definition = "Indicates a reason to support the encounter. For example, to capture the encounter details that triggered the observation."
+* encounter only Reference(TargetFacilityEncounter)
 * effectiveDateTime 1..1
 * performer 1..*
-* performer only Reference(UATServiceProvider or UATPractitioner)
-* specimen 0..1 MS
-* specimen ^definition =
-    "reason(s) why this should be supported."
-* specimen only Reference(PimsUATSpecimen or OpenMrsUATSpecimen)
+* performer only Reference(ServiceProvider or GeneralPractitioner)
+* specimen 1..1
+* specimen only Reference(LabOrderSpecimen)
 
-Profile: GenericUATDiagnosticReport
+Profile: LabOrderDiagnosticReport
 Parent: DiagnosticReport
-Id: uat-generic-diagnostic-report
-Title: "Diagnostic Report - Generic"
-Description: "Base DiagnosticReport elements that are inherited by other DiagnosticReport profiles."
+Id: lab-order-diagnostic-report
+Title: "Lab Order Diagnostic Report"
+Description: "Represents the results for the lab order."
 * category 1..1
 * category = $LNC#11502-2
 * code.text 1..1
 * subject 1..1
-* subject only Reference(PimsUATBwPatient or OpenMrsUATBwPatient)
+* subject only Reference(BwPatient)
 * encounter 0..1 MS
-* encounter ^definition =
-    "reason(s) why this should be supported."
-* encounter only Reference(UATTargetFacilityEncounter)
-* result 1..*
-* result only Reference(PimsUATDiagnosticTestResultObservation or OpenMrsUATDiagnosticTestResultObservation)
+* encounter ^definition = "Indicates a reason to support the encounter. For example, to capture the encounter details that triggered the diagnostic report."
+* encounter only Reference(TargetFacilityEncounter)
+* result 1..1
+* result only Reference(DiagnosticTestResultObservation)
 * issued 1..1
 
-* basedOn 1..*
-* basedOn only Reference(PimsServiceRequest or OpenMrsServiceRequest)
+* basedOn 1..1
+* basedOn only Reference(LabOrderServiceRequest)
 
 * performer 1..*
-* performer only Reference(UATPractitioner or UATServiceProvider)
+* performer only Reference(GeneralPractitioner or ServiceProvider)
 
 /*Profile: LabReportComposition
 Parent: Composition
@@ -366,7 +381,7 @@ Description: "Clinical document used to represent the outcome for a lab order an
 * insert CompositionEntry(DiagnosticReport, UATDiagnosticReport, sectionDiagnosticReport, $LNC#LP420386-7, Diagnostic report summary section, report, 
     Diagnostic report relevant for the scope of the lab report, This lists the diagnostic report relevant for the scope of the lab report., 1..1)*/
 
-Profile: PimsServiceRequest
+/*Profile: PimsServiceRequest
 Parent: UATGenericServiceRequest
 Id: uat-pims-lab-order-service-request
 Title: "Service Request - PIMS Lab Orders"
@@ -378,9 +393,9 @@ Parent: UATGenericServiceRequest
 Id: uat-openmrs-lab-order-service-request
 Title: "Service Request - OpenMRS Lab Orders"
 Description: "Represents the service request for OpenMRS lab orders."
-* code from VSOpenMrsLabOrderCodes (extensible)
+* code from VSOpenMrsLabOrderCodes (extensible)*/
 
-Profile: PimsUATLabTask
+/*Profile: PimsUATLabTask
 Parent: GenericUATLabTask
 Id: uat-pims-lab-order-task
 Title: "Task - PIMS Lab Orders"
@@ -396,9 +411,9 @@ Title: "Task - OpenMRS Lab Orders"
 Description: "Assists with tracking the state of the lab order and its completion status."
 * basedOn only Reference(OpenMrsServiceRequest)
 * output.valueReference only Reference(OpenMrsUATDiagnosticReport)
-* for only Reference(OpenMrsUATBwPatient)
+* for only Reference(OpenMrsUATBwPatient)*/
 
-Profile: PimsUATSpecimen
+/*Profile: PimsUATSpecimen
 Parent: GenericUATSpecimen
 Id: uat-pims-specimen
 Title: "Specimen - PIMS Lab Orders"
@@ -412,9 +427,9 @@ Id: uat-openmrs-specimen
 Title: "Specimen - OpenMRS Lab Orders"
 Description: "The specimen associated with the lab order."
 //* request only Reference(OpenMrsServiceRequest)
-* subject only Reference(OpenMrsUATBwPatient)
+* subject only Reference(OpenMrsUATBwPatient)*/
 
-Profile: PimsUATDiagnosticReport
+/*Profile: PimsUATDiagnosticReport
 Parent: GenericUATDiagnosticReport
 Id: uat-pims-diagnostic-report
 Title: "Diagnostic Report - PIMS Lab Result"
@@ -428,9 +443,9 @@ Id: uat-openmrs-diagnostic-report
 Title: "Diagnostic Report - OpenMRS Lab Result"
 Description: "Represents the results for the lab order."
 * basedOn only Reference(OpenMrsServiceRequest)
-* result only Reference(OpenMrsUATDiagnosticTestResultObservation)
+* result only Reference(OpenMrsUATDiagnosticTestResultObservation)*/
 
-Profile: PimsUATDiagnosticTestResultObservation
+/*Profile: PimsUATDiagnosticTestResultObservation
 Parent: GenericUATDiagnosticTestResultObservation
 Id: uat-pims-diagnostic-test-result-observation
 Title: "Observation - PIMS Diagnostic Test Result"
@@ -442,9 +457,9 @@ Parent: GenericUATDiagnosticTestResultObservation
 Id: uat-openmrs-diagnostic-test-result-observation
 Title: "Observation - OpenMRS Diagnostic Test Result"
 Description: "Documents the patient's diagnostic test result."
-* specimen only Reference(OpenMrsUATSpecimen)
+* specimen only Reference(OpenMrsUATSpecimen)*/
 
-Profile: PimsUATBwPatient
+/*Profile: PimsUATBwPatient
 Parent: GenericUATBwPatient
 Id: uat-pims-patient
 Title: "Patient - PIMS"
@@ -464,4 +479,4 @@ Description: "Is used to document demographics and other administrative informat
     OpenMRS 1..1
 
 * identifier[OpenMRS].value 1..1
-* identifier[OpenMRS].system = "http://moh.bw.org/ext/identifier/openmrs"
+* identifier[OpenMRS].system = "http://moh.bw.org/ext/identifier/openmrs"*/

@@ -1,4 +1,4 @@
-Instance: pims-lab-order-auto-generate-ids-bundle
+/*Instance: pims-lab-order-auto-generate-ids-bundle
 InstanceOf: Bundle
 Usage: #example
 Title: "PIMS Bundle - Lab Order"
@@ -12,4 +12,4 @@ Description:
 * insert ExampleTransactionalEntryWithAutoIDGenerate(PimsGeneralPatientExample, Patient)
 * insert ExampleTransactionalEntryWithAutoIDGenerate(PimsLabOrderTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
-* insert ExampleTransactionalEntryWithAutoIDGenerate(PimsActiveServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntryWithAutoIDGenerate(PimsActiveServiceRequestExample, ServiceRequest)*/

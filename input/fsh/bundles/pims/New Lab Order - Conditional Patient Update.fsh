@@ -1,4 +1,4 @@
-Instance: pims-lab-order-conditional-patient-update-bundle
+/*Instance: pims-lab-order-conditional-patient-update-bundle
 InstanceOf: Bundle
 Usage: #example
 Title: "PIMS Bundle - Lab Order"
@@ -11,4 +11,4 @@ Description:
 * insert ExampleTransactionalEntryWithConditionalUpdate(PimsGeneralPatientExample, Patient, Patient?identifier=http://moh.bw.org/ext/identifier/omang|123)
 * insert ExampleTransactionalEntry(PimsLabOrderTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
-* insert ExampleTransactionalEntry(PimsActiveServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntry(PimsActiveServiceRequestExample, ServiceRequest)*/
