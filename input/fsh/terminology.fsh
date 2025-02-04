@@ -23,16 +23,17 @@ Description: "Code used for representing the classification of organizations pro
 * $SCT#257622000 "Healthcare facility"
 * $SCT#45899008 "Free-standing laboratory facility"
 
-ValueSet: VSSpecimenType
+/*ValueSet: VSSpecimenType
 Id: vs-specimen-type
 Title: "Specimen Type Used In Viral Load testing"
 Description:  "A list of specimen types."
 * ^experimental = false
-* $SCT#119361006 "Plasma specimen"
-* $SCT#440500007 "Dried blood spot specimen"
+//* $SCT#119361006 "Plasma specimen"
+//* $LNC#LA17760-2 "Plasma"
+//* $SCT#440500007 "Dried blood spot specimen"
 * $SCT#441620008 "Oral fluid specimen"
-* $SCT#258580003 "Whole blood specimen"
-* $SCT#119364003 "Serum specimen"
+//* $SCT#258580003 "Whole blood specimen"
+//* $SCT#119364003 "Serum specimen"*/
 
 CodeSystem: CSPimsLabOrderCodes
 Id: cs-pims-lab-codes

@@ -253,7 +253,7 @@ Description: "The specimen associated with the lab order."
 * identifier[USID].system = "http://moh.bw.org/identifier/specimen-id"
 
 * type 1..1
-* type from VSSpecimenType (extensible)
+* type from http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-uv-ips (extensible) //VSSpecimenType
 
   * ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
   * ^binding.extension[=].extension[+].url = "purpose"
@@ -263,13 +263,13 @@ Description: "The specimen associated with the lab order."
   * ^binding.extension[=].extension[+].url = "documentation"
   * ^binding.extension[=].extension[=].valueMarkdown = "Results Specimen Type - SNOMED CT IPS Free Set"
 
-  * ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
-  * ^binding.extension[=].extension[+].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #extensible
-  * ^binding.extension[=].extension[+].url = "valueSet"
-  * ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-uv-ips"
-  * ^binding.extension[=].extension[+].url = "documentation"
-  * ^binding.extension[=].extension[=].valueMarkdown = "Results Specimen Type - IPS"
+  //* ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+  //* ^binding.extension[=].extension[+].url = "purpose"
+  //* ^binding.extension[=].extension[=].valueCode = #extensible
+  //* ^binding.extension[=].extension[+].url = "valueSet"
+  //* ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-uv-ips"
+  //* ^binding.extension[=].extension[+].url = "documentation"
+  //* ^binding.extension[=].extension[=].valueMarkdown = "Results Specimen Type - IPS"
 
 * subject 1..1
 * subject only Reference(BwPatient)
