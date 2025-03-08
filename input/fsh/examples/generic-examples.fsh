@@ -17,7 +17,7 @@ Description: "Current organization providing health related services."
 * identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
 
 * identifier[MFL][+].value = http://moh.bw.org/CodeSystem/cs-master-facility-list#703564-5
-* identifier[MFL][=].system = "http://moh.bw.org/ext/identifier/mfl-code"
+* identifier[MFL][=].system = "http://moh.bw.org//identifier/mfl-code"
 
 * type[+] = $SCT#257622000
 * type[=].text = "Current Healthcare Provider"
@@ -41,7 +41,7 @@ Description: "Current organization providing laboratory related services."
 * identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
 
 * identifier[MFL][+].value = http://moh.bw.org/CodeSystem/cs-master-facility-list#537111-7
-* identifier[MFL][=].system = "http://moh.bw.org/ext/identifier/mfl-code"
+* identifier[MFL][=].system = "http://moh.bw.org//identifier/mfl-code"
 
 * type[+] = $SCT#45899008
 * type[=].text = "Laboratory"
@@ -83,7 +83,7 @@ Title: "Practitioner - General Practitioner"
 Description: 
 "Represents the practitioners who participated in the health-related event."
 * identifier[OMANG].value = "omang1234"
-* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+* identifier[OMANG].system = "http://moh.bw.org//identifier/omang"
 * name[+].prefix[+] = "Dr"
 * name[=].given[+] = "Tom"
 * name[=].given[+] = "Junes"

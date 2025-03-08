@@ -8,7 +8,7 @@ Description:
     Note: This bundle includes the Patient Resource as a conditional create!"
 * type = #transaction
 
-* insert ExampleTransactionalEntryWithConditionalCreate(OpenMrsGeneralPatientExample, Patient, identifier=http://moh.bw.org/ext/identifier/omang|123)
+* insert ExampleTransactionalEntryWithConditionalCreate(OpenMrsGeneralPatientExample, Patient, identifier=http://moh.bw.org//identifier/omang|123)
 * insert ExampleTransactionalEntry(OpenMrsLabOrderTaskExample, Task)
 //* insert ExampleTransactionalEntry(PimsAvailableSpecimenForActiveRequestsExample, Specimen)
 * insert ExampleTransactionalEntry(OpenMrsActiveServiceRequestExample, ServiceRequest)*/

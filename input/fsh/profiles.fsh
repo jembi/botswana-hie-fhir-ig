@@ -19,15 +19,14 @@ Description: "Organization providing health related services."
 
 * identifier[MFL].value 1..1
 * identifier[MFL].value from VSMasterFacilityListCodes (extensible)
-//* identifier[MFL].value.extension contains MasterFacilityListCodeExtension named MFLCode 1..1
-* identifier[MFL].system = "http://moh.bw.org/ext/identifier/mfl-code"
+* identifier[MFL].system = "http://moh.bw.org//identifier/mfl-code"
 
 * active 1..1
 * name 1..1
 
-* type 1..*
+/** type 1..*
 * type from VSServiceProviderType (extensible)
-* type.text 1..1
+* type.text 1..1*/
 
 * address 1..1
 //* address.state 1..1
@@ -99,28 +98,28 @@ Description: "Is used to document demographics and other administrative informat
 
 * identifier[OMANG] ^definition = "Indicates a reason to support the identifier slice for OMANG. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[OMANG].value 1..1
-* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+* identifier[OMANG].system = "http://moh.bw.org//identifier/omang"
 
 * identifier[Birth] ^definition = "Indicates a reason to support the slice for Birth identifier. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[Birth].value 1..1
-* identifier[Birth].system = "http://moh.bw.org/ext/identifier/birth"
+* identifier[Birth].system = "http://moh.bw.org//identifier/birth"
 
 * identifier[Passport] ^definition = "Indicates a reason to support the slice for Passport identifier. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[Passport].value 1..1
-* identifier[Passport].system = "http://moh.bw.org/ext/identifier/passport"
+* identifier[Passport].system = "http://moh.bw.org//identifier/passport"
 
 * identifier[Internal] ^definition = "Indicates a reason to support the slice for Internal identifier. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[Internal].value 1..1
-* identifier[Internal].system = "http://moh.bw.org/ext/identifier/internalid"
+* identifier[Internal].system = "http://moh.bw.org//identifier/internalid"
 
 * identifier[PIMS] ^definition = "Indicates a reason to support the slice for PIMS identifier. For example, to allow participating systems to capture the identifier for the patient"
 * identifier[PIMS].value 1..1
-* identifier[PIMS].system = "http://moh.bw.org/ext/identifier/pims"
+* identifier[PIMS].system = "http://moh.bw.org//identifier/pims"
 
 * identifier[OpenMRS] ^definition = "Indicates a reason to support the slice for OpenMRS identifier. For example, to allow participating systems to capture the identifier for the patient"
   //* obeys PatientIdentifier-OpenMRS-PIMS
 * identifier[OpenMRS].value 1..1
-* identifier[OpenMRS].system = "http://moh.bw.org/ext/identifier/openmrs"
+* identifier[OpenMRS].system = "http://moh.bw.org//identifier/openmrs"
 
 * name 1..*
 * name.given 1..*
@@ -233,7 +232,7 @@ Description:
 
 * identifier[OMANG] ^definition = "Indicates a reason to support the identifier slice for OMANG. For example, to allow participating systems to capture the identifier for the practitioner."
 * identifier[OMANG].value 1..1
-* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+* identifier[OMANG].system = "http://moh.bw.org//identifier/omang"
 
 * name 1..*
 * name.given 1..*
@@ -477,7 +476,7 @@ Description: "Is used to document demographics and other administrative informat
     PIMS 1..1
 
 * identifier[PIMS].value 1..1
-* identifier[PIMS].system = "http://moh.bw.org/ext/identifier/pims"
+* identifier[PIMS].system = "http://moh.bw.org//identifier/pims"
 
 Profile: OpenMrsUATBwPatient
 Parent: GenericUATBwPatient
@@ -488,4 +487,4 @@ Description: "Is used to document demographics and other administrative informat
     OpenMRS 1..1
 
 * identifier[OpenMRS].value 1..1
-* identifier[OpenMRS].system = "http://moh.bw.org/ext/identifier/openmrs"*/
+* identifier[OpenMRS].system = "http://moh.bw.org//identifier/openmrs"*/

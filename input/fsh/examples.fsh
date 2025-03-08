@@ -10,7 +10,7 @@ Description: "Current organization providing health related services."
 * identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
 
 * identifier[MFL][+].value = http://moh.bw.org/CodeSystem/cs-master-facility-list#703564-5
-* identifier[MFL][=].system = "http://moh.bw.org/ext/identifier/mfl-code"
+* identifier[MFL][=].system = "http://moh.bw.org//identifier/mfl-code"
 
 * active = true
 * name = "Kweneng Health Post"
@@ -33,7 +33,7 @@ Description: "Current organization providing laboratory related services."
 * identifier[HFUID][=].system = "http://moh.bw.org/identifier/hfuid"
 
 * identifier[MFL][+].value = http://moh.bw.org/CodeSystem/cs-master-facility-list#537111-7
-* identifier[MFL][=].system = "http://moh.bw.org/ext/identifier/mfl-code"
+* identifier[MFL][=].system = "http://moh.bw.org//identifier/mfl-code"
 
 * active = true
 * name = "Kweneng Laboratory"
@@ -51,7 +51,7 @@ Title: "Practitioner - General Practitioner"
 Description: 
 "Represents the practitioners who participated in the health-related event."
 * identifier[OMANG].value = "omang1234"
-* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+* identifier[OMANG].system = "http://moh.bw.org//identifier/omang"
 * name[+].prefix[+] = "Dr"
 * name[=].given[+] = "Tom"
 * name[=].given[+] = "Junes"
@@ -72,22 +72,22 @@ Description: "Is used to document demographics and other administrative informat
 * identifier[MRN].system = "http://moh.bw.org/identifier/mrn"
 
 * identifier[OMANG].value = "omang1234"
-* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+* identifier[OMANG].system = "http://moh.bw.org//identifier/omang"
 
 * identifier[Birth].value = "001209565658"
-* identifier[Birth].system = "http://moh.bw.org/ext/identifier/birth"
+* identifier[Birth].system = "http://moh.bw.org//identifier/birth"
 
 * identifier[Passport].value = "ppn1234"
-* identifier[Passport].system = "http://moh.bw.org/ext/identifier/passport"
+* identifier[Passport].system = "http://moh.bw.org//identifier/passport"
 
 * identifier[OpenMRS].value = "Openmrs12345"
-* identifier[OpenMRS].system = "http://moh.bw.org/ext/identifier/openmrs"
+* identifier[OpenMRS].system = "http://moh.bw.org//identifier/openmrs"
 
 * identifier[Internal].value = "SysId12345"
-* identifier[Internal].system = "http://moh.bw.org/ext/identifier/internalid"
+* identifier[Internal].system = "http://moh.bw.org//identifier/internalid"
 
 * identifier[PIMS].value = "PIMS12345"
-* identifier[PIMS].system = "http://moh.bw.org/ext/identifier/pims"
+* identifier[PIMS].system = "http://moh.bw.org//identifier/pims"
 
 * name[+].given[+] = "Mark"
 * name[=].family = "Adams"

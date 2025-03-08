@@ -21,6 +21,7 @@ Description: "Code used for representing the classification of organizations pro
 * $SCT#185483006 "Outreach clinic"
 * $SCT#310391008 "Community clinic"
 * $SCT#257622000 "Healthcare facility"
+//* $LNC#LA31049-2 "Healthcare facility"
 * $SCT#45899008 "Free-standing laboratory facility"
 
 /*ValueSet: VSSpecimenType

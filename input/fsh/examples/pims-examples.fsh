@@ -225,19 +225,19 @@ Description: "Is used to document demographics and other administrative informat
 * identifier[MRN].system = "http://moh.bw.org/identifier/mrn"
 
 * identifier[OMANG].value = "omang1234"
-* identifier[OMANG].system = "http://moh.bw.org/ext/identifier/omang"
+* identifier[OMANG].system = "http://moh.bw.org//identifier/omang"
 
 * identifier[Birth].value = "birth certificate number"
-* identifier[Birth].system = "http://moh.bw.org/ext/identifier/birth"
+* identifier[Birth].system = "http://moh.bw.org//identifier/birth"
 
 * identifier[Passport].value = "ppn1234"
-* identifier[Passport].system = "http://moh.bw.org/ext/identifier/passport"
+* identifier[Passport].system = "http://moh.bw.org//identifier/passport"
 
 * identifier[PIMS].value = "pims id"
-* identifier[PIMS].system = "http://moh.bw.org/ext/identifier/pims"
+* identifier[PIMS].system = "http://moh.bw.org//identifier/pims"
 
 * identifier[Internal].value = "internal id"
-* identifier[Internal].system = "http://moh.bw.org/ext/identifier/internalid"
+* identifier[Internal].system = "http://moh.bw.org//identifier/internalid"
 
 * name[+].given[+] = "Mark"
 * name[=].family = "Adams"
