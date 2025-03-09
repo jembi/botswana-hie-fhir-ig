@@ -64,11 +64,6 @@ jurisdiction: urn:iso:std:iso:3166#BW "Botswana"
 #    id: mcode
 #    uri: http://hl7.org/fhir/us/mcode/ImplementationGuide/hl7.fhir.us.mcode
 #    version: 1.0.0
-dependencies:
-  hl7.fhir.uv.ips:
-    id: InternationalPatientSummaryIG
-    uri: http://hl7.org/fhir/uv/ips/ImplementationGuide/hl7.fhir.uv.ips
-    version: 2.0.0
 
 # The global property corresponds to the IG.global property, but it
 # uses the type as the YAML key and the profile as its value. Since

@@ -18,9 +18,6 @@ Description: "Current organization providing health related services."
 * address[=].city = "Mogoditshane"
 * address[=].district = "Kweneng"
 
-* type[+] = $OrganizationType#prov
-* type[=].text = "Current Healthcare Provider"
-
 Instance: LaboratoryProviderExample
 InstanceOf: ServiceProvider
 Usage: #example
@@ -40,9 +37,6 @@ Description: "Current organization providing laboratory related services."
 * address[+].line[+] = "Kweneng East"
 * address[=].city = "Mogoditshane"
 * address[=].district = "Kweneng"
-
-* type[+] = $OrganizationType#team
-* type[=].text = "Laboratory"
 
 Instance: GeneralPractitionerExample
 InstanceOf: GeneralPractitioner
@@ -180,7 +174,7 @@ Title: "Specimen - Used During Testing (Order is Active)"
 Description: "The specimen associated with the lab order that will be used during testing."
 * identifier[USID].value = "abc123"
 * identifier[USID].system = "http://moh.bw.org/identifier/specimen-id"
-* type = $SCT#119361006
+* type = $LNC#LA17760-2
 * type.text = "Plasma specimen"
 * subject = Reference(BwPatientExample)
 * collection.collectedDateTime = "2012-12-21"
@@ -195,7 +189,7 @@ Title: "Specimen - Considered Ready For Testing"
 Description: "The specimen associated with the lab order that was considered ready for testing but the service request was revoked."
 * identifier[USID].value = "abc123"
 * identifier[USID].system = "http://moh.bw.org/identifier/specimen-id"
-* type = $SCT#119361006
+* type = $LNC#LA17760-2
 * type.text = "Plasma specimen"
 * subject = Reference(BwPatientExample)
 * collection.collectedDateTime = "2012-12-21"
@@ -210,7 +204,7 @@ Title: "Specimen - Used During Testing (Completed Order)"
 Description: "The specimen associated with the lab order that was used during testing."
 * identifier[USID].value = "abc123"
 * identifier[USID].system = "http://moh.bw.org/identifier/specimen-id"
-* type = $SCT#119361006
+* type = $LNC#LA17760-2
 * type.text = "Plasma specimen"
 * subject = Reference(BwPatientExample)
 * collection.collectedDateTime = "2012-12-21"
@@ -260,7 +254,7 @@ Description: "Indicates that the task that has been initiated for the lab reques
 * identifier[FILL].value = "ORDER12345"
 * basedOn = Reference(LabOrderCompletedServiceRequestExample)
 * status = #rejected
-* statusReason = $SCT#123840003
+//* statusReason = $SCT#123840003
 * intent = #order
 * executionPeriod.start = "2012-12-22"
 * executionPeriod.end = "2012-12-24"
@@ -277,7 +271,7 @@ Description: "Indicates that the task that has been initiated for the lab reques
 * identifier[FILL].value = "ORDER12345"
 * basedOn = Reference(LabOrderRevokedServiceRequestExample)
 * status = #cancelled
-* statusReason = $SCT#281264009
+//* statusReason = $SCT#281264009
 * intent = #order
 * executionPeriod.start = "2012-12-22"
 * executionPeriod.end = "2012-12-24"

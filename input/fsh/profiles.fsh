@@ -24,9 +24,6 @@ Description: "Organization providing health related services."
 * active 1..1
 * name 1..1
 
-* type 1..*
-* type.text 1..1
-
 * address 1..1
 //* address.state 1..1
 * address.line 0..* MS
@@ -164,10 +161,10 @@ Description: "Assists with tracking the state of the lab order and its completio
 * basedOn 1..*
 * basedOn only Reference(LabOrderServiceRequest)
 
-* statusReason 0..1 MS
+/* statusReason 0..1 MS
 * statusReason ^definition = "Indicates a reason to support the status. For example, why the lab order was cancelled or rejected"
 * statusReason ^short = "Indicates a reason for the lab order being cancelled or rejected."
-* statusReason from VSReasonForSampleCancellationOrRejection (extensible)
+* statusReason from VSReasonForSampleCancellationOrRejection (extensible)*/
 * intent = #order
 * executionPeriod 1..1
 * requester 1..1
@@ -259,24 +256,9 @@ Description: "The specimen associated with the lab order."
 * container.additiveCodeableConcept from http://terminology.hl7.org/ValueSet/v2-0371|2.9
 * condition from http://terminology.hl7.org/ValueSet/v2-0493|2.9
 
-* type 1..1
-* type from http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-uv-ips (extensible) //VSSpecimenType
-
-  * ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
-  * ^binding.extension[=].extension[+].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #extensible
-  * ^binding.extension[=].extension[+].url = "valueSet"
-  * ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-uv-ips"
-  * ^binding.extension[=].extension[+].url = "documentation"
-  * ^binding.extension[=].extension[=].valueMarkdown = "Results Specimen Type - SNOMED CT IPS Free Set"
-
-  //* ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
-  //* ^binding.extension[=].extension[+].url = "purpose"
-  //* ^binding.extension[=].extension[=].valueCode = #extensible
-  //* ^binding.extension[=].extension[+].url = "valueSet"
-  //* ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/results-specimen-type-uv-ips"
-  //* ^binding.extension[=].extension[+].url = "documentation"
-  //* ^binding.extension[=].extension[=].valueMarkdown = "Results Specimen Type - IPS"
+* type 0..1 MS
+  * ^definition = "Indicates the specimen type directly associated with the task."
+  * ^short = "Type of specimen being collected."
 
 * subject 1..1
 * subject only Reference(BwPatient)

@@ -1,4 +1,4 @@
-ValueSet: VSReasonForSampleCancellationOrRejection
+/*ValueSet: VSReasonForSampleCancellationOrRejection
 Id: vs-reason-sample-cancelled-or-rejected
 Title: "Reasons why a lab order was cancelled or rejected"
 Description: "Reasons why a lab order was cancelled or rejected."
@@ -9,7 +9,7 @@ Description: "Reasons why a lab order was cancelled or rejected."
 * $SCT#281264009 "Inappropriate bottle or container for sample"
 * $SCT#281268007 "Insufficient sample"
 * $SCT#281265005 "Sample incorrectly labeled"
-* $SCT#419182006 "Supplies not available"
+* $SCT#419182006 "Supplies not available"*/
 
 /*ValueSet: VSServiceProviderType
 Id: vs-service-provider
