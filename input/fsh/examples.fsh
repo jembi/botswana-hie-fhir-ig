@@ -18,7 +18,7 @@ Description: "Current organization providing health related services."
 * address[=].city = "Mogoditshane"
 * address[=].district = "Kweneng"
 
-* type[+] = $SCT#257622000
+* type[+] = $OrganizationType#prov
 * type[=].text = "Current Healthcare Provider"
 
 Instance: LaboratoryProviderExample
@@ -41,7 +41,7 @@ Description: "Current organization providing laboratory related services."
 * address[=].city = "Mogoditshane"
 * address[=].district = "Kweneng"
 
-* type[+] = $SCT#45899008
+* type[+] = $OrganizationType#team
 * type[=].text = "Laboratory"
 
 Instance: GeneralPractitionerExample

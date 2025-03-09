@@ -24,9 +24,8 @@ Description: "Organization providing health related services."
 * active 1..1
 * name 1..1
 
-/** type 1..*
-* type from VSServiceProviderType (extensible)
-* type.text 1..1*/
+* type 1..*
+* type.text 1..1
 
 * address 1..1
 //* address.state 1..1

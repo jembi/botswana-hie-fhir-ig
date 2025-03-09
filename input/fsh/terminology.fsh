@@ -11,7 +11,7 @@ Description: "Reasons why a lab order was cancelled or rejected."
 * $SCT#281265005 "Sample incorrectly labeled"
 * $SCT#419182006 "Supplies not available"
 
-ValueSet: VSServiceProviderType
+/*ValueSet: VSServiceProviderType
 Id: vs-service-provider
 Title: "Service Providers"
 Description: "Code used for representing the classification of organizations providing health services."
@@ -21,8 +21,15 @@ Description: "Code used for representing the classification of organizations pro
 * $SCT#185483006 "Outreach clinic"
 * $SCT#310391008 "Community clinic"
 * $SCT#257622000 "Healthcare facility"
-//* $LNC#LA31049-2 "Healthcare facility"
 * $SCT#45899008 "Free-standing laboratory facility"
+//* $LNC#LA31049-2 "Healthcare facility"
+//* $LNC#LA24318-0 "Clinic"
+//* $LNC#LA16386-7 "Nonprofit"
+//* $LNC#LA31957-6 "Health center - community"
+//* $LNC#LA31944-4 "Public health provider - public health clinic"
+//* $LNC#LA31968-3 "Public health provider - Federally Qualified Health Center"
+//* $LNC#LA31969-1 "Public health provider - Rural Health Clinic"
+//* $LNC#LA6218-7 "Hospital"*/
 
 /*ValueSet: VSSpecimenType
 Id: vs-specimen-type
