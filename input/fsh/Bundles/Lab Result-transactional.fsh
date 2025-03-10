@@ -9,4 +9,4 @@ Description: "Lab order has been completed"
 * insert ExampleTransactionalEntry(AvailableSpecimenForCompletedRequestsExample, Specimen)
 * insert ExampleTransactionalEntry(LabOrderCompletedServiceRequestExample, ServiceRequest)
 * insert ExampleTransactionalEntry(LabResultsDiagnosticReportExample, DiagnosticReport)
-* insert ExampleTransactionalEntry(DiagnosticTestResultObservationExample, Observation)
+* insert ExampleTransactionalEntry(LabResultObservationExample, Observation)
