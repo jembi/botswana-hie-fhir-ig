@@ -6,6 +6,7 @@ Description:
     "Submit new lab orders.
 
     Note: This bundle includes the Patient Resource as a conditional create!"
+    
 * type = #transaction
 
 * insert ExampleTransactionalEntryWithConditionalCreate(BwPatientExample, Patient, identifier=http://moh.bw.org/identifier/omang|123)

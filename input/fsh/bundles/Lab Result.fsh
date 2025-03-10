@@ -1,7 +1,7 @@
-Instance: lab-result-transactional-bundle
+Instance: lab-result-bundle
 InstanceOf: Bundle
 Usage: #example
-Title: "Bundle - Lab Result (Transactional)"
+Title: "Bundle - Lab Result"
 Description: "Lab order has been completed"
 * type = #transaction
 
