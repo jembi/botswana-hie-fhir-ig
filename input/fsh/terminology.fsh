@@ -58,7 +58,7 @@ Description: "Codes used during lab orders."
 * include codes from system CSOpenMrsLabOrderCodes
 
 CodeSystem: CSMasterFacilityListCodes
-Id: cs-master-facility-list
+Id: cs-master-facility-list-codes
 Title: "Master Facility List (MFL) Codes"
 Description: "Codes found in the MFL."
 * ^experimental = false
@@ -1075,7 +1075,7 @@ Description: "Codes found in the MFL."
 * #484650-7 "Takatokwane Clinic"
 
 ValueSet: VSMasterFacilityListCodes
-Id: vs-master-facility-list
+Id: vs-master-facility-list-codes
 Title: "Master Facility List (MFL) Codes"
 Description: "Codes found in the MFL."
 * ^experimental = false
