@@ -1,4 +1,4 @@
-## Functional Requirements
+### Functional Requirements
 
 Clinician should be able to do the following;
 - Log in to system and access the laboratory module.
@@ -30,7 +30,7 @@ The system should be able to;
 - Ping SHR for available lab test results and avail them to the clinicians- (PIMS)
 - Send lab test results to the SHR-(IPMS) 
 
-### NON FUNCTIONAL REQUIREMENTS
+### Non Functional Requirements
 - The systems should be able to recovered 1 hour from downtime
 - The system should have 95% uptime
 - Data should be shared/transmitted over a secure layer (Interoperability Layer)
