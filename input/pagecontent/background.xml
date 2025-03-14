@@ -1,9 +1,0 @@
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
-  <!--<h3>Overview</h3>-->
-  <p>The Lab Order workflow between OpenELIS and OpenMRS will use the FHIR Workflow Module and suggested Communication Patterns to implement the ordering of lab tests from OpenMRS to OpenELIS and the returning the results to OpenMRS.</p>
-  <p>The current communication workflow uses HL7 V2.5.1 messages as documented here: (<a href="https://github.com/openelisglobal/openelisglobal-core/wiki/Result-Reporting">https://github.com/openelisglobal/openelisglobal-core/wiki/Result-Reporting</a>). This functionality is implemented in openmrs-module-labintegration, an OpenMRS module made for an implementation of OpenMRS deployed in Haiti called iSantePlus.</p>
-
-	<p>
-    See <a href="https://wiki.openmrs.org/display/projects/Lab+Integration+Workflow">https://wiki.openmrs.org/display/projects/Lab+Integration+Workflow</a> for more information.
-	</p>
-</div>
