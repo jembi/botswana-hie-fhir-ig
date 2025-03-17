@@ -12,25 +12,62 @@
   <h3>Introduction</h3> <a name="intro"> </a>
 
   <p>This Fast Healthcare Interoperability Resources (FHIR) Implementation Guide (IG) is designed to facilitate a standardized and secure exchange of healthcare information in Botswana; specifically the handling of laboratory orders in both OpenMRS and PIMS systems to and from the National laboratory system: IPMS. The guide is crafted for  Botswana's Health Information Exchange (HIE) and provides a structured approach to managing patient data and laboratory orders.</p>
-  <p>The goal of this IG is to ensure that laboratory data, including test results, specimen information, and diagnostic reports, can be efficiently exchanged and integrated across various healthcare settings. By leveraging FHIR, this guide promotes a flexible and scalable model that enhances clinical decision-making, improves patient care, and supports health data sharing across institutions.</p>
-  <p>This document outlines the specific profiles, extensions, and best practices required to implement the laboratory-related resources within the FHIR ecosystem, providing healthcare organizations, developers, and implementers with the necessary tools to adopt FHIR for laboratory data exchange.</p>
-  <p>The FHIR bundle within this guide supports a conditional patient creation approach, i.e. a new patient record will only be created within the client registry if no matching patient exists based on the specific identifiers. This aims to reduce duplication of patient records and maintain patient data integrity across integrated systems. The guide currently covers the Laboratory workflow use case that entails submitting a lab order, checking lab order status, and getting results from IPMS.</p>
+  <p>The goal of this IG is to ensure that laboratory data, including test results, specimen information, and diagnostic reports, can be efficiently exchanged and integrated within the Botswana healthcare setting. </p>
+  <p>This IG outlines the specific profiles to implement Botswana's LAB-EMR data exchange.</p>
+
+  <p>This IG implements FHIR bundles that support conditional patient creates and/or updates:</p>
+  <ul>
+    <li><a href="Bundle-lab-order-conditional-patient-create-bundle.html">Create</a>: Only create the patient in the Client Registry (CR) if no matches are found for a given business identifier.</li>
+    <li><a href="Bundle-lab-order-conditional-patient-update-bundle.html">Update</a>: Instead of creating a new patient in the CR, ONLY update the administrative information for the patient matching the given business identifier.</li>
+  </ul>
+  <p> 
+    This aims to reduce duplication of patient records and maintain patient data integrity across integrated systems. 
+  </p>
+  <p>
+    This IG currently supports the lab workflow FHIR profiles for:
+  </p>
+  <ol>
+    <li>
+      <a href="StructureDefinition-lab-order-task.html">Submitting and managing lab orders</a>
+      <ul>
+        <li>
+          Example bundles:
+          <ol>
+            <li><a href ="Bundle-lab-order-bundle.html">New lab order</a></li>
+            <li><a href ="Bundle-cancelled-lab-order-bundle.html">Cancel lab order</a></li>
+            <li><a href ="Bundle-rejected-lab-order-bundle.html">Reject lab order</a></li>
+          </ol>
+        </li>
+      </ul>
+    </li>
+
+    <li><a href="StructureDefinition-lab-order-diagnostic-report.html">Capturing lab results</a>
+      <ul>
+          <li>
+            Example bundles:
+            <ol>
+              <li><a href ="Bundle-lab-result-bundle.html">Lab result</a></li>
+            </ol>
+          </li>
+      </ul>
+    </li>
+  </ol>
+  <p>
+      This FHIR IG provides guidance on how to apply FHIR profiles to Botswana's laboratory workflow, ensuring that laboratory systems and 
+      EMRs can communicate and share data in a standardized and consistent manner.
+  </p>
 
 <h3>Background</h3> <a name="background"> </a>
+  
+<p>To be completed...</p>
 
-  <p>The healthcare industry is increasingly moving toward interoperable systems that can seamlessly exchange critical patient data across different platforms. One area where interoperability is particularly vital is laboratory data exchange. Laboratory results, specimen information, diagnostic reports, and related data are essential to the diagnostic and treatment processes in healthcare, yet these data are often siloed across various systems and formats. As a result, healthcare providers face challenges in accessing, sharing, and utilizing laboratory data efficiently.</p>
-  <p>The FHIR standard, developed by Health Level Seven (HL7), addresses these challenges by providing a modern, flexible, and scalable framework for exchanging healthcare data. FHIR has rapidly gained adoption as a means to facilitate interoperability, offering a set of standardized resources, protocols, and APIs for sharing healthcare information.</p>
-  <p>However, while FHIR provides the foundation for interoperability, different sectors within healthcare often require specific adaptations to meet their unique needs. For laboratories, this means ensuring that FHIR-based solutions can adequately represent the diversity and complexity of laboratory data, including test orders, results, specimens, and diagnostic reporting.</p>
-  <p>This Laboratory FHIR IG was created to bridge this gap. It provides guidance on how to apply FHIR resources to the laboratory domain, ensuring that laboratory systems, EHRs, and other healthcare platforms can communicate and share data in a standardized and consistent manner. By building on FHIR's core resources, this guide offers detailed profiles, extensions, and use cases for the laboratory context, ensuring comprehensive data capture and exchange that supports high-quality patient care.</p>
-  <p>The adoption of FHIR in the laboratory space will allow for more timely and accurate sharing of test results, improve workflow efficiencies, and enhance clinical decision-making. It will also facilitate compliance with regulatory requirements and improve the overall quality of patient outcomes by ensuring that laboratory data can be easily accessed and integrated into broader healthcare systems.</p>
+<h3>Data Flow</h3>
 
-  <h3>Workflow and Data Flow</h3>
+<p>The following diagram gives an overview of the flow of data from the EMR systems (OpenMRS/PIMS) to the laboratory system (IPMS) and back.</p>
 
-  <p>The following diagram gives an overview of the flow of data from the EMR systems(OpenMRS/PIMS) to the laboratory system(IPMS) and back.</p>
-
-  <figure>
-    {% include DataFlow.svg %}
-  </figure>
+<figure>
+  {% include DataFlow.svg %}
+</figure>
 
 <h3>Download</h3> <a name="download"></a>
   <p>You can also download:</p>
