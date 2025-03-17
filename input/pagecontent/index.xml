@@ -5,15 +5,17 @@
    </p>
 	<blockquote class="stu-note">
 	<strong>This documentation and set of artefacts are still undergoing development.</strong>
-	This content is only for demonstrative purposes.
 	</blockquote>
 	<p> </p>
 
   <h3>Introduction</h3> <a name="intro"> </a>
 
-  <p>This Fast Healthcare Interoperability Resources (FHIR) Implementation Guide (IG) is designed to facilitate a standardized and secure exchange of healthcare information in Botswana; specifically the handling of laboratory orders in both OpenMRS and PIMS systems to and from the National laboratory system: IPMS. The guide is crafted for  Botswana's Health Information Exchange (HIE) and provides a structured approach to managing patient data and laboratory orders.</p>
-  <p>The goal of this IG is to ensure that laboratory data, including test results, specimen information, and diagnostic reports, can be efficiently exchanged and integrated within the Botswana healthcare setting. </p>
-  <p>This IG outlines the specific profiles to implement Botswana's LAB-EMR data exchange.</p>
+  <p>
+    This Fast Healthcare Interoperability Resources (FHIR)® Implementation Guide (IG) is designed to facilitate the standardized exchange of healthcare information in Botswana; 
+    specifically the handling of laboratory orders in both OpenMRS and PIMS systems to and from the national laboratory system, IPMS. 
+    The guide is crafted for Botswana's Health Information Exchange (HIE) and provides a structured approach to managing lab orders.
+  </p>
+  <p>The goal of this IG is to ensure that laboratory data can be efficiently exchanged and integrated within Botswana. </p>
 
   <p>This IG implements FHIR bundles that support conditional patient creates and/or updates:</p>
   <ul>
@@ -24,7 +26,7 @@
     This aims to reduce duplication of patient records and maintain patient data integrity across integrated systems. 
   </p>
   <p>
-    This IG currently supports the lab workflow FHIR profiles for:
+    This IG currently implements the following two key laboratory profiles to support Botswana's LAB-EMR exchange worflow requirements:
   </p>
   <ol>
     <li>
@@ -52,10 +54,6 @@
       </ul>
     </li>
   </ol>
-  <p>
-      This FHIR IG provides guidance on how to apply FHIR profiles to Botswana's laboratory workflow, ensuring that laboratory systems and 
-      EMRs can communicate and share data in a standardized and consistent manner.
-  </p>
 
 <h3>Background</h3> <a name="background"> </a>
   
