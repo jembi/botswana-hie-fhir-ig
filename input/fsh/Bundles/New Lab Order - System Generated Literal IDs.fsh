@@ -1,7 +1,7 @@
 Instance: lab-order-auto-generate-ids-bundle
-InstanceOf: Bundle
+InstanceOf: LabOrdersBundle
 Usage: #example
-Title: "Bundle - Lab Order - System Generated Literal ID"
+Title: "Bundle - Create New Lab Order (Uses System Generated IDs)"
 Description: 
     "Submit new lab orders.
 

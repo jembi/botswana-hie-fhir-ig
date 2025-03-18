@@ -31,3 +31,8 @@ RuleSet: ExampleTransactionalEntryWithAutoIDGenerate(resourceID, resourceType)
 * entry[=].resource = {resourceID}
 * entry[=].request.method = #POST
 * entry[=].request.url = "{resourceType}"
+
+RuleSet: BundleEntry(resourceID, entrySLice)
+* entry[{entrySLice}]
+  * resource 1..
+  * resource only {resourceID}

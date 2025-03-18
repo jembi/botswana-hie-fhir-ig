@@ -38,6 +38,9 @@
     </a>
     <ul class="dropdown-menu">
       <li>
+        <a href="CapabilityStatement-bw-hie-server.html">CapabilityStatement</a>
+      </li>
+      <li>
         <a href="artifacts.html">Artifacts</a>
       </li>
     </ul>

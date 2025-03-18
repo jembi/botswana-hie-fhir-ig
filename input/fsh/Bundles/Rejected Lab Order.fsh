@@ -1,5 +1,5 @@
 Instance: rejected-lab-order-bundle
-InstanceOf: Bundle
+InstanceOf: LabOrdersBundle
 Usage: #example
 Title: "Bundle - Rejected Lab Order"
 Description: "Lab order has been rejected"

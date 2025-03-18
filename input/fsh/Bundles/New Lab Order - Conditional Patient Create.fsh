@@ -1,7 +1,7 @@
 Instance: lab-order-conditional-patient-create-bundle
-InstanceOf: Bundle
+InstanceOf: LabOrdersBundle
 Usage: #example
-Title: "Bundle - Lab Order - Conditional Patient Create"
+Title: "Bundle - Create New Lab Order (Incl. Conditional Patient Create)"
 Description: 
     "Submit new lab orders.
 
