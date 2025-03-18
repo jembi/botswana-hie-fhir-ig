@@ -26,6 +26,8 @@ Usage: #definition
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest.resource[=].extension.valueCode = #SHALL
 * rest.resource[=].profile = "http://moh.bw.org/StructureDefinition/lab-orders-bundle"
+* rest.resource[=].interaction[+].code = #create
+* rest.resource[=].interaction[+].code = #read
 
 * rest.resource[+].type = #Patient
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
@@ -43,6 +45,8 @@ Usage: #definition
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest.resource[=].extension.valueCode = #SHALL
 * rest.resource[=].profile = "http://moh.bw.org/StructureDefinition/lab-order-service-request"
+* rest.resource[=].interaction[+].code = #read
+* rest.resource[=].interaction[+].code = #vread
 
 * rest.resource[+].type = #Specimen
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
@@ -53,6 +57,8 @@ Usage: #definition
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest.resource[=].extension.valueCode = #SHALL
 * rest.resource[=].profile = "http://moh.bw.org/StructureDefinition/lab-order-task"
+* rest.resource[=].interaction[+].code = #read
+* rest.resource[=].interaction[+].code = #vread
 
 * rest.resource[+].type = #Practitioner
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
