@@ -1,7 +1,7 @@
 Profile: ServiceProvider
 Parent: Organization
 Id: service-organization
-Title: "Organization"
+Title: "Service Provider"
 Description: "Organization providing health related services."
 * identifier 1..*
 
@@ -38,7 +38,7 @@ Description: "Represents the current facility at which the patient is receiving 
 * subject 1..1 
 * subject only Reference(BwPatient)
 * period 1..1
-* serviceProvider 1..1
+* serviceProvider 0..1 MS
 * serviceProvider only Reference(ServiceProvider)
 
 Profile: BwPatient
@@ -91,7 +91,7 @@ Description: "Is used to document demographics and other administrative informat
 * address 0..* MS
 * telecom 0..* MS
 
-* managingOrganization 1..1
+* managingOrganization 0..1 MS
 * managingOrganization only Reference(ServiceProvider)
 
 Profile: LabOrderTask
@@ -153,7 +153,7 @@ Description: "Represents the service request for lab orders."
 * subject 1..1
 * subject only Reference(BwPatient)
 
-* encounter 1..1
+* encounter 0..1 MS
 * encounter only Reference(TargetFacilityEncounter)
 
 * occurrenceDateTime 1..1
@@ -238,7 +238,7 @@ Description: "Represents the patient's test result for a given lab order."
 * subject 1..1
 * subject only Reference(BwPatient)
 
-* encounter 1..1
+* encounter 0..1 MS
 * encounter only Reference(TargetFacilityEncounter)
 
 * effectiveDateTime 1..1
@@ -263,7 +263,7 @@ Description: "Represents the results for the lab order."
 * subject 1..1
 * subject only Reference(BwPatient)
 
-* encounter 1..1
+* encounter 0..1 MS
 * encounter only Reference(TargetFacilityEncounter)
 
 * result 1..1
@@ -276,3 +276,49 @@ Description: "Represents the results for the lab order."
 
 * performer 1..*
 * performer only Reference(BwPractitioner or ServiceProvider)
+
+Profile: LabOrdersBundle
+Parent: Bundle
+Id: lab-orders-bundle
+Title: "Lab Orders Bundle"
+Description: "This bundle contains all of the lab order profiles for managing lab orders."
+* type = #transaction
+
+* entry 1..*
+
+* entry ^slicing.discriminator[+].type = #type
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.discriminator[+].type = #profile
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.rules = #open
+* entry ^slicing.ordered = false
+* entry ^slicing.description = "Entry resources for capturing lab order information."
+
+* entry contains
+    patient 0..1 MS and 
+    encounters 0..1 MS and
+    serviceRequest 1..1 and
+    specimen 1..1 and 
+    task 1..1 and
+    practitioner 0..1 MS and
+    diagnosticReport 0..1 MS and
+    observation 0..1 MS and
+    organization 0..1 MS
+
+* entry[patient]
+  * fullUrl 1..1
+  * resource 1..
+  * resource only BwPatient
+
+* entry[encounters]
+  * fullUrl 1..1
+  * resource 1..
+  * resource only TargetFacilityEncounter
+
+* insert BundleEntry(LabOrderServiceRequest, serviceRequest)
+* insert BundleEntry(LabOrderSpecimen, specimen)
+* insert BundleEntry(LabOrderTask, task)
+* insert BundleEntry(BwPractitioner, practitioner)
+* insert BundleEntry(LabOrderDiagnosticReport, diagnosticReport)
+* insert BundleEntry(LabResultObservation, observation)
+* insert BundleEntry(ServiceProvider, organization)

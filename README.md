@@ -6,7 +6,7 @@ This is a Laboratory IG for Botswana.
 ### Publication
 This ImplementationGuide is published in the following locations:
 
-Canonical / permanent URL: __https://build.fhir.org/ig/jembi/botswana-hie-fhir-ig/branches/master__
+Canonical / permanent URL: __https://build.fhir.org/ig/jembi/botswana-hie-fhir-ig/__
 <br> </br>
 
 ### Issues

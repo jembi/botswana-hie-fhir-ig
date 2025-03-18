@@ -1,7 +1,7 @@
 Instance: lab-order-bundle
-InstanceOf: Bundle
+InstanceOf: LabOrdersBundle
 Usage: #example
-Title: "Bundle - Lab Order"
+Title: "Bundle - Create New Lab Order"
 Description: "Submit new lab orders"
 * type = #transaction
 
