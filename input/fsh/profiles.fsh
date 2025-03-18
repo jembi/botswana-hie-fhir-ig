@@ -305,16 +305,8 @@ Description: "This bundle contains all of the lab order profiles for managing la
     observation 0..1 MS and
     organization 0..1 MS
 
-* entry[patient]
-  * fullUrl 1..1
-  * resource 1..
-  * resource only BwPatient
-
-* entry[encounters]
-  * fullUrl 1..1
-  * resource 1..
-  * resource only TargetFacilityEncounter
-
+* insert BundleEntry(BwPatient, patient)
+* insert BundleEntry(TargetFacilityEncounter, encounters)
 * insert BundleEntry(LabOrderServiceRequest, serviceRequest)
 * insert BundleEntry(LabOrderSpecimen, specimen)
 * insert BundleEntry(LabOrderTask, task)
