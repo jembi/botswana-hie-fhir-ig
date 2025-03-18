@@ -34,6 +34,5 @@ RuleSet: ExampleTransactionalEntryWithAutoIDGenerate(resourceID, resourceType)
 
 RuleSet: BundleEntry(resourceID, entrySLice)
 * entry[{entrySLice}]
-  * fullUrl 1..1
   * resource 1..
   * resource only {resourceID}

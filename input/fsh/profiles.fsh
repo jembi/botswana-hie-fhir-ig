@@ -285,6 +285,7 @@ Description: "This bundle contains all of the lab order profiles for managing la
 * type = #transaction
 
 * entry 1..*
+  * fullUrl 1..1
 
 * entry ^slicing.discriminator[+].type = #type
 * entry ^slicing.discriminator[=].path = "resource"
