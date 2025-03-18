@@ -301,7 +301,7 @@ Description: "This bundle contains all of the lab order profiles for managing la
     serviceRequest 1..1 and
     specimen 1..1 and 
     task 1..1 and
-    practitioner 0..1 MS and
+    practitioner 0..* MS and
     diagnosticReport 0..1 MS and
     observation 0..1 MS and
     organization 0..1 MS
