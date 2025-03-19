@@ -315,3 +315,35 @@ Description: "This bundle contains all of the lab order profiles for managing la
 * insert BundleEntry(LabOrderDiagnosticReport, diagnosticReport)
 * insert BundleEntry(LabResultObservation, observations)
 * insert BundleEntry(ServiceProvider, organization)
+
+Profile: RestrictedPatient
+Parent: Patient
+Id: patient-identity-cross-reference
+Title: "Patient Identity Cross Reference"
+Description: 
+    "Is used by the Client Register (CR) to re-identify the patient with his/her corresponding longitudinal clinical record"
+* identifier 1..1
+* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+
+* identifier contains
+    MasterPatientIndex 1..1
+
+* identifier[MasterPatientIndex].value 1..1
+* identifier[MasterPatientIndex].system = "http://moh.bw.org/identifier/mpi"
+
+* name 0..0
+* active 0..0
+* telecom 0..0
+* gender 0..0
+* birthDate 0..0
+* deceased[x] 0..0
+* address 0..0
+* maritalStatus 0..0
+* multipleBirth[x] 0..0
+* photo 0..0
+* contact 0..0
+* communication 0..0
+* generalPractitioner 0..0
+* managingOrganization 0..0
+* contained 0..0
+* link 0..0

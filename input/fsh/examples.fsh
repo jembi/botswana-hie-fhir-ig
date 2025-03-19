@@ -269,3 +269,11 @@ Description: "Documents the patient's diagnostic test result."
 * valueInteger = 900
 * performer = Reference(ServiceProviderExample)
 * specimen = Reference(AvailableSpecimenForCompletedRequestsExample)
+
+Instance: RestrictedPatientExample
+InstanceOf: RestrictedPatient
+Usage: #example
+Title: "Patient Identity Cross Reference"
+Description: 
+    "Is used by the Client Register (CR) to re-identify the patient with his/her corresponding longitudinal clinical record"
+* identifier[MasterPatientIndex].value = "abc123"
