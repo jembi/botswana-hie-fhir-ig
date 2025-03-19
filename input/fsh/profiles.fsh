@@ -154,7 +154,7 @@ Description: "Represents the service request for lab orders."
 * subject only Reference(BwPatient)
 
 * encounter 0..1 MS
-* encounter only Reference(TargetFacilityEncounter)
+//* encounter only Reference(TargetFacilityEncounter)
 
 * occurrenceDateTime 1..1
 
@@ -239,7 +239,7 @@ Description: "Represents the patient's test result for a given lab order."
 * subject only Reference(BwPatient)
 
 * encounter 0..1 MS
-* encounter only Reference(TargetFacilityEncounter)
+//* encounter only Reference(TargetFacilityEncounter)
 
 * effectiveDateTime 1..1
 
@@ -264,9 +264,9 @@ Description: "Represents the results for the lab order."
 * subject only Reference(BwPatient)
 
 * encounter 0..1 MS
-* encounter only Reference(TargetFacilityEncounter)
+//* encounter only Reference(TargetFacilityEncounter)
 
-* result 1..1
+* result 1..*
 * result only Reference(LabResultObservation)
 
 * issued 1..1
@@ -297,21 +297,21 @@ Description: "This bundle contains all of the lab order profiles for managing la
 
 * entry contains
     patient 0..1 MS and 
-    encounters 0..1 MS and
+    //encounter 0..1 MS and
     serviceRequest 1..1 and
-    specimen 1..* and 
+    specimens 1..* and 
     task 1..1 and
-    practitioner 0..* MS and
+    practitioners 0..* MS and
     diagnosticReport 0..1 MS and
-    observation 0..1 MS and
+    observations 0..* MS and
     organization 0..1 MS
 
 * insert BundleEntry(BwPatient, patient)
-* insert BundleEntry(TargetFacilityEncounter, encounters)
+//* insert BundleEntry(TargetFacilityEncounter, encounter)
 * insert BundleEntry(LabOrderServiceRequest, serviceRequest)
-* insert BundleEntry(LabOrderSpecimen, specimen)
+* insert BundleEntry(LabOrderSpecimen, specimens)
 * insert BundleEntry(LabOrderTask, task)
-* insert BundleEntry(BwPractitioner, practitioner)
+* insert BundleEntry(BwPractitioner, practitioners)
 * insert BundleEntry(LabOrderDiagnosticReport, diagnosticReport)
-* insert BundleEntry(LabResultObservation, observation)
+* insert BundleEntry(LabResultObservation, observations)
 * insert BundleEntry(ServiceProvider, organization)

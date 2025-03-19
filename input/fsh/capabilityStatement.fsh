@@ -67,15 +67,15 @@ Usage: #definition
 
 * rest.resource[+].type = #DiagnosticReport
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest.resource[=].extension.valueCode = #MAY
+* rest.resource[=].extension.valueCode = #SHALL
 * rest.resource[=].profile = "http://moh.bw.org/StructureDefinition/lab-order-diagnostic-report"
 
 * rest.resource[+].type = #Observation
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest.resource[=].extension.valueCode = #MAY
+* rest.resource[=].extension.valueCode = #SHALL
 * rest.resource[=].profile = "http://moh.bw.org/StructureDefinition/lab-result-observation"
 
 * rest.resource[+].type = #Organization
 * rest.resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest.resource[=].extension.valueCode = #MAY
+* rest.resource[=].extension.valueCode = #SHALL
 * rest.resource[=].profile = "http://moh.bw.org/StructureDefinition/service-organization"
