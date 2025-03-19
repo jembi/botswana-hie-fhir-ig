@@ -164,7 +164,7 @@ Description: "Represents the service request for lab orders."
 * performer 1..*
 * performer only Reference(BwPractitioner or ServiceProvider)
 
-* specimen 1..1
+* specimen 1..*
 * specimen only Reference(LabOrderSpecimen)
 
 * locationCode from http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType|2014-03-26
@@ -299,7 +299,7 @@ Description: "This bundle contains all of the lab order profiles for managing la
     patient 0..1 MS and 
     encounters 0..1 MS and
     serviceRequest 1..1 and
-    specimen 1..1 and 
+    specimen 1..* and 
     task 1..1 and
     practitioner 0..* MS and
     diagnosticReport 0..1 MS and
