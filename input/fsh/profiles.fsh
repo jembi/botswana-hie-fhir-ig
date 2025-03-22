@@ -322,11 +322,11 @@ Id: patient-identity-cross-reference
 Title: "Patient Identity Cross Reference"
 Description: 
     "Is used by the Client Register (CR) to re-identify the patient with his/her corresponding longitudinal clinical record"
-* identifier 1..1
+* identifier 1..*
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
-    MasterPatientIndex 1..1
+    MasterPatientIndex 1..*
 
 * identifier[MasterPatientIndex].value 1..1
 * identifier[MasterPatientIndex].system = "http://moh.bw.org/identifier/mpi"
@@ -346,4 +346,18 @@ Description:
 * generalPractitioner 0..0
 * managingOrganization 0..0
 * contained 0..0
-* link 0..0
+
+* link 1..*
+  * ^slicing.discriminator[+].type = #profile
+  * ^slicing.discriminator[=].path = "other.resolve()"
+  * ^slicing.rules = #open
+  * ^slicing.description = "Slicing link based on the \"other\""
+  * ^slicing.ordered = false
+
+* link contains
+    TruePatient 1..1
+
+* link[TruePatient].other.display 1..1
+* link[TruePatient].other.display = "True patient reference"
+* link[TruePatient].other only Reference(BwPatient)
+* link[TruePatient].type = #refer

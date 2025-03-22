@@ -36,3 +36,12 @@ RuleSet: BundleEntry(resourceID, entrySLice)
 * entry[{entrySLice}]
   * resource 1..
   * resource only {resourceID}
+
+RuleSet: SliceForResolve(item, definition, rule, description, ordered)
+* {item} 
+  * ^definition = "{definition}"
+  * ^slicing.discriminator[+].type = #profile
+  * ^slicing.discriminator[=].path = "resolve()"
+  * ^slicing.rules = #{rule}
+  * ^slicing.description = "{description}"
+  * ^slicing.ordered = {ordered}

@@ -276,4 +276,6 @@ Usage: #example
 Title: "Patient Identity Cross Reference"
 Description: 
     "Is used by the Client Register (CR) to re-identify the patient with his/her corresponding longitudinal clinical record"
-* identifier[MasterPatientIndex].value = "abc123"
+* identifier[MasterPatientIndex][+].value = "some id value"
+* identifier[MasterPatientIndex][+].value = "some other id value for some reason"
+* link[TruePatient].other = Reference(BwPatientExample)
