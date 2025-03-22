@@ -323,13 +323,15 @@ Title: "Patient Identity Cross Reference"
 Description: 
     "Is used by the Client Registry to re-identify the patient with his/her corresponding longitudinal clinical record"
 * identifier 1..*
+* identifier.system 1..1
+* identifier.system = "http://moh.bw.org/identifier/mpi"
+
 * insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MasterPatientIndex 1..*
 
 * identifier[MasterPatientIndex].value 1..1
-* identifier[MasterPatientIndex].system = "http://moh.bw.org/identifier/mpi"
 
 * name 0..0
 * active 0..0
