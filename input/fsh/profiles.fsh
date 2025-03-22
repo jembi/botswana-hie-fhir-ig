@@ -322,7 +322,8 @@ Id: patient-identity-cross-reference
 Title: "Patient Identity Cross Reference"
 Description: 
     "Is used by the Client Registry to re-identify the patient with his/her corresponding longitudinal clinical record."
-
+    
+//* obeys PatientContained-1
 * id
   * ^short = "Must be the same ID as the patient resource that suppplied the personal data during creation"
   * ^definition = "Once the patient data has been stored in the FHIR server, a literal ID (FHIR server generated) will have been assigned or some client/system could have provided a preferred ID. This ID SHALL be assigned to this resource after the data supplying patient resource has been deleted from the server."
@@ -352,13 +353,15 @@ Description:
 * generalPractitioner 0..0
 * managingOrganization 0..0
 * contained 0..1 MS
+  * ^short = "Contained patient data"
+  * ^definition = "Patient data supplied by the Client Registry."
 
 * link 0..* MS
 * insert Slice(link, value, other.display, open, Slicing link based on \"other\" display value, false)
 
 * link contains
     //TruePatientRef 1..1 and
-    TruePatientData 0..1 MS
+    PatientData 0..1 MS
 
 /** link[TruePatientRef].other.display 1..1
 * link[TruePatientRef].other.display = "True patient reference"
@@ -366,7 +369,7 @@ Description:
 * link[TruePatientRef].other.extension contains TruePatientReferenceExtension named TruePatientRefExt 1..1
 * link[TruePatientRef].type = #seealso*/
 
-* link[TruePatientData].other.display 1..1
-* link[TruePatientData].other.display = "True patient data"
-* link[TruePatientData].other.reference 1..1
-* link[TruePatientData].type = #seealso
+* link[PatientData].other.display 1..1
+* link[PatientData].other.display = "Patient data provided by Client Registry"
+* link[PatientData].other.reference 1..1
+* link[PatientData].type = #seealso

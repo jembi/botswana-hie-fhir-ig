@@ -291,7 +291,7 @@ Description:
 * identifier[MasterPatientIndex][+].value = "some id value"
 * identifier[MasterPatientIndex][+].value = "some other id value for some reason"
 //* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
-* link[TruePatientData].other = Reference(BwPatientDataFromCR)
+* link[PatientData].other = Reference(BwPatientDataFromCR)
 * contained = BwPatientDataFromCR
 
 Instance: BwPatientDataFromCR
