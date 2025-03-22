@@ -5,7 +5,7 @@ Title: "Service Provider"
 Description: "Organization providing health related services."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MOHID 0..1 MS and // Ministry of Health Identifier
@@ -45,12 +45,12 @@ Profile: BwPatient
 Parent: Patient
 Id: bw-patient
 Title: "Botswana Patient"
-Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
+Description: "Is used to document demographics and other personal information about an individual receiving care or other health-related services."
 * obeys PatientIdentifier-1
 
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MRN 0..1 MS and
@@ -101,7 +101,7 @@ Title: "Task - Lab Orders"
 Description: "Assists with tracking the state of the lab order and its completion status."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
     FILL 1..1
@@ -137,7 +137,7 @@ Title: "ServiceRequest - Lab Orders"
 Description: "Represents the service request for lab orders."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
     PLAC 1..1
@@ -176,7 +176,7 @@ Title: "Practitioner"
 Description: "Represents the practitioner who participated in the health related service."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     OMANG 0..1 MS
@@ -197,7 +197,7 @@ Title: "Specimen"
 Description: "The specimen associated with the lab order."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
     USID 1..1
@@ -321,9 +321,9 @@ Parent: Patient
 Id: patient-identity-cross-reference
 Title: "Patient Identity Cross Reference"
 Description: 
-    "Is used by the Client Register (CR) to re-identify the patient with his/her corresponding longitudinal clinical record"
+    "Is used by the Client Registry to re-identify the patient with his/her corresponding longitudinal clinical record"
 * identifier 1..*
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MasterPatientIndex 1..*
@@ -345,19 +345,22 @@ Description:
 * communication 0..0
 * generalPractitioner 0..0
 * managingOrganization 0..0
-* contained 0..0
+* contained 0..1 MS
 
 * link 1..*
-  * ^slicing.discriminator[+].type = #profile
-  * ^slicing.discriminator[=].path = "other.resolve()"
-  * ^slicing.rules = #open
-  * ^slicing.description = "Slicing link based on the \"other\""
-  * ^slicing.ordered = false
+* insert Slice(link, value, other.display, open, Slicing link based on \"other\" display value, false)
 
 * link contains
-    TruePatient 1..1
+    TruePatientRef 1..1 and
+    TruePatientData 0..1 MS
 
-* link[TruePatient].other.display 1..1
-* link[TruePatient].other.display = "True patient reference"
-* link[TruePatient].other only Reference(BwPatient)
-* link[TruePatient].type = #refer
+* link[TruePatientRef].other.display 1..1
+* link[TruePatientRef].other.display = "True patient reference"
+* link[TruePatientRef].other 1..1
+* link[TruePatientRef].other.extension contains TruePatientReferenceExtension named TruePatientRefExt 1..1
+* link[TruePatientRef].type = #seealso
+
+* link[TruePatientData].other.display 1..1
+* link[TruePatientData].other.display = "True patient data"
+* link[TruePatientData].other.reference 1..1
+* link[TruePatientData].type = #seealso

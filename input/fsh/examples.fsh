@@ -36,7 +36,7 @@ Instance: BwPatientExample
 InstanceOf: BwPatient
 Usage: #example
 Title: "Botswana Patient"
-Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
+Description: "Is used to document demographics and other personal information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345671"
 * identifier[OMANG].value = "omang1234"
 * identifier[Birth].value = "001209565658"
@@ -270,12 +270,57 @@ Description: "Documents the patient's diagnostic test result."
 * performer = Reference(ServiceProviderExample)
 * specimen = Reference(AvailableSpecimenForCompletedRequestsExample)
 
-Instance: RestrictedPatientExample
+Instance: RestrictedPatientExample1
 InstanceOf: RestrictedPatient
 Usage: #example
-Title: "Patient Identity Cross Reference"
+Title: "Excludes all personal patient data - After new patient submitted for creation."
 Description: 
-    "Is used by the Client Register (CR) to re-identify the patient with his/her corresponding longitudinal clinical record"
+    "The patient resource that should be stored in the FHIR database when using a Client Registry."
+
 * identifier[MasterPatientIndex][+].value = "some id value"
 * identifier[MasterPatientIndex][+].value = "some other id value for some reason"
-* link[TruePatient].other = Reference(BwPatientExample)
+* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
+
+Instance: RestrictedPatientExample2
+InstanceOf: RestrictedPatient
+Usage: #example
+Title: "Includes all personal patient data  - After being supplied by the Client Registry."
+Description: 
+    "The patient resource after having its data populated by the Client Registry."
+
+* identifier[MasterPatientIndex][+].value = "some id value"
+* identifier[MasterPatientIndex][+].value = "some other id value for some reason"
+* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
+* link[TruePatientData].other = Reference(BwPatientDataFromCR)
+* contained = BwPatientDataFromCR
+
+Instance: BwPatientDataFromCR
+InstanceOf: BwPatient
+Usage: #inline
+* identifier[MRN].value = "MRN12345671"
+* identifier[OMANG].value = "omang1234"
+* identifier[Birth].value = "001209565658"
+* identifier[Passport].value = "ppn1234"
+* identifier[OpenMRS].value = "Openmrs12345"
+* identifier[Internal].value = "SysId12345"
+* identifier[PIMS].value = "PIMS12345"
+
+* name[+].given[+] = "Mark"
+* name[=].family = "Adams"
+
+* gender = #male
+* birthDate = "2000-11-11"
+* address[+].line[+] = "5630"
+* address[=].line[+] = "Maboneng Street"
+* address[=].line[+] = "Kweneng East"
+* address[=].city = "Mogoditshane"
+* address[=].district = "Kweneng"
+
+* managingOrganization = Reference(ServiceProviderExample)
+
+* telecom[+].system = #phone
+* telecom[=].value = "27537652509"
+* telecom[=].use = #work
+* telecom[+].system = #email
+* telecom[=].value = "someone@something.org"
+* telecom[=].use = #home
