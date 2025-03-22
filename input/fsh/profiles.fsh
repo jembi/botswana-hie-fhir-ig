@@ -325,8 +325,7 @@ Description:
 
 * id
   * ^short = "Must be the same ID as the patient resource that suppplied the personal data during creation"
-  * ^definition = "Once the patient data has been stored in the FHIR server, a literal ID (FHIR server generated) will have been assigned or some 
-    client/system could have provided a preferred ID. This ID SHALL be assigned to this resource after the data supplying patient resource has been deleted from the server."
+  * ^definition = "Once the patient data has been stored in the FHIR server, a literal ID (FHIR server generated) will have been assigned or some client/system could have provided a preferred ID. This ID SHALL be assigned to this resource after the data supplying patient resource has been deleted from the server."
 * identifier 1..*
 * identifier.system 1..1
 * identifier.system = "http://moh.bw.org/identifier/mpi"
