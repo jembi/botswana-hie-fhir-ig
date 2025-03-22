@@ -36,7 +36,7 @@ Description: "Represents the current facility at which the patient is receiving 
 * priority from http://terminology.hl7.org/ValueSet/v3-ActPriority|3.0.0
 * hospitalization.reAdmission from http://terminology.hl7.org/ValueSet/v2-0092|2.9
 * subject 1..1 
-* subject only Reference(BwPatient or RestrictedPatient)
+* subject only Reference(BwPatient)
 * period 1..1
 * serviceProvider 0..1 MS
 * serviceProvider only Reference(ServiceProvider)
@@ -119,7 +119,7 @@ Description: "Assists with tracking the state of the lab order and its completio
 * requester only Reference(BwPractitioner or ServiceProvider)
 
 * for 1..1
-* for only Reference(BwPatient or RestrictedPatient)
+* for only Reference(BwPatient)
 
 * owner 1..1
 * owner only Reference(BwPractitioner or ServiceProvider)
@@ -151,7 +151,7 @@ Description: "Represents the service request for lab orders."
 * code from VSLabOrderCodes (extensible)
 
 * subject 1..1
-* subject only Reference(BwPatient or RestrictedPatient)
+* subject only Reference(BwPatient)
 
 * encounter 0..1 MS
 //* encounter only Reference(TargetFacilityEncounter)
@@ -212,7 +212,7 @@ Description: "The specimen associated with the lab order."
 * type 0..1 MS
 
 * subject 1..1
-* subject only Reference(BwPatient or RestrictedPatient)
+* subject only Reference(BwPatient)
 
 * request 1..*
 * request only Reference(LabOrderServiceRequest)
@@ -236,7 +236,7 @@ Description: "Represents the patient's test result for a given lab order."
 * value[x] 1..1
 
 * subject 1..1
-* subject only Reference(BwPatient or RestrictedPatient)
+* subject only Reference(BwPatient)
 
 * encounter 0..1 MS
 //* encounter only Reference(TargetFacilityEncounter)
@@ -261,7 +261,7 @@ Description: "Represents the results for the lab order."
 * code.text 1..1
 
 * subject 1..1
-* subject only Reference(BwPatient or RestrictedPatient)
+* subject only Reference(BwPatient)
 
 * encounter 0..1 MS
 //* encounter only Reference(TargetFacilityEncounter)
@@ -349,18 +349,18 @@ Description:
 * managingOrganization 0..0
 * contained 0..1 MS
 
-* link 1..*
+* link 0..* MS
 * insert Slice(link, value, other.display, open, Slicing link based on \"other\" display value, false)
 
 * link contains
-    TruePatientRef 1..1 and
+    //TruePatientRef 1..1 and
     TruePatientData 0..1 MS
 
-* link[TruePatientRef].other.display 1..1
+/** link[TruePatientRef].other.display 1..1
 * link[TruePatientRef].other.display = "True patient reference"
 * link[TruePatientRef].other 1..1
 * link[TruePatientRef].other.extension contains TruePatientReferenceExtension named TruePatientRefExt 1..1
-* link[TruePatientRef].type = #seealso
+* link[TruePatientRef].type = #seealso*/
 
 * link[TruePatientData].other.display 1..1
 * link[TruePatientData].other.display = "True patient data"
