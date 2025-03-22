@@ -322,6 +322,9 @@ Id: patient-identity-cross-reference
 Title: "Patient Identity Cross Reference"
 Description: 
     "Is used by the Client Registry to re-identify the patient with his/her corresponding longitudinal clinical record"
+
+* id
+  * ^short = "Must be the same ID as the patient resource that suppplied the personal data during creation"
 * identifier 1..*
 * identifier.system 1..1
 * identifier.system = "http://moh.bw.org/identifier/mpi"
