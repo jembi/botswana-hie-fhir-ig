@@ -280,7 +280,7 @@ Description: "Represents the results for the lab order."
 Profile: LabOrdersBundle
 Parent: Bundle
 Id: lab-orders-bundle
-Title: "Lab Orders Bundle"
+Title: "Bundle - Lab Orders"
 Description: "This bundle contains all of the lab order profiles for managing lab orders."
 * type = #transaction
 
@@ -373,3 +373,28 @@ Description:
 * link[PatientData].other.display = "Patient data provided by Client Registry"
 * link[PatientData].other.reference 1..1
 * link[PatientData].type = #seealso
+
+Profile: ProcessPatientInFHIRBundle
+Parent: Bundle
+Id: process-patient-bundle
+Title: "Bundle - Process Patient in FHIR"
+Description: "While this bundle contains all of the lab order profiles for managing lab orders as defined in the bundle for \"Lab Orders\", it also includes the \"RestrictedPatient\" profile that will replace the \"Botswana Patient\" in the FHIR server."
+* type = #transaction
+
+* entry 1..*
+  * fullUrl 1..1
+
+* entry ^slicing.discriminator[+].type = #type
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.discriminator[+].type = #profile
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.rules = #open
+* entry ^slicing.ordered = false
+* entry ^slicing.description = "Entry resources for capturing lab order information."
+
+* entry contains
+    patientData 1..1 and
+    restrictedPatient 1..1
+
+* insert BundleEntry(BwPatient, patientData)
+* insert BundleEntry(RestrictedPatient, restrictedPatient)

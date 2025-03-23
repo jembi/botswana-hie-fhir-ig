@@ -9,6 +9,6 @@ Description:
     The system will auto-generate the Resource.id values (Literal ID) during the POST request."
 * type = #transaction
 
-* insert ExampleTransactionalEntryWithAutoIDGenerate(LabOrderTaskExample, Task)
-* insert ExampleTransactionalEntryWithAutoIDGenerate(AvailableSpecimenForActiveRequestsExample, Specimen)
-* insert ExampleTransactionalEntryWithAutoIDGenerate(LabOrderActiveServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntryWithAutoIDGenerateAndSlice(LabOrderTaskExample, Task, task)
+* insert ExampleTransactionalEntryWithAutoIDGenerateAndSlice(AvailableSpecimenForActiveRequestsExample, Specimen, specimens)
+* insert ExampleTransactionalEntryWithAutoIDGenerateAndSlice(LabOrderActiveServiceRequestExample, ServiceRequest, serviceRequest)
