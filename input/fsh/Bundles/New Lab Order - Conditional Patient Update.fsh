@@ -9,7 +9,7 @@ Description:
 
 * type = #transaction
 
-* insert ExampleTransactionalEntryWithConditionalUpdateAndSlice(BwPatientExample, Patient, Patient?identifier=http://moh.bw.org/identifier/omang|123, patient)
-* insert ExampleTransactionalEntryWithSlice(LabOrderTaskExample, Task, task)
-* insert ExampleTransactionalEntryWithSlice(AvailableSpecimenForActiveRequestsExample, Specimen, specimens)
-* insert ExampleTransactionalEntryWithSlice(LabOrderActiveServiceRequestExample, ServiceRequest, serviceRequest)
+* insert ExampleTransactionalEntryWithConditionalUpdate(BwPatientExample, Patient, Patient?identifier=http://moh.bw.org/identifier/omang|123, patient)
+* insert ExampleTransactionalEntry(LabOrderTaskExample, Task, task)
+* insert ExampleTransactionalEntry(AvailableSpecimenForActiveRequestsExample, Specimen, specimens)
+* insert ExampleTransactionalEntry(LabOrderActiveServiceRequestExample, ServiceRequest, serviceRequest)

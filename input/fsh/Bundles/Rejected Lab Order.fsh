@@ -5,6 +5,6 @@ Title: "Bundle - Rejected Lab Order"
 Description: "Lab order has been rejected"
 * type = #transaction
 
-* insert ExampleTransactionalEntryWithSlice(LabOrderRejectionTaskExample, Task, task)
-* insert ExampleTransactionalEntryWithSlice(AvailableSpecimenForCompletedRequestsExample, Specimen, specimens)
-* insert ExampleTransactionalEntryWithSlice(LabOrderCompletedServiceRequestExample, ServiceRequest, serviceRequest)
+* insert ExampleTransactionalEntry(LabOrderRejectionTaskExample, Task, task)
+* insert ExampleTransactionalEntry(AvailableSpecimenForCompletedRequestsExample, Specimen, specimens)
+* insert ExampleTransactionalEntry(LabOrderCompletedServiceRequestExample, ServiceRequest, serviceRequest)

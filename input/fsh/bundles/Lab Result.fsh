@@ -5,8 +5,8 @@ Title: "Bundle - Document Lab Result"
 Description: "Lab order has been completed"
 * type = #transaction
 
-* insert ExampleTransactionalEntryWithSlice(LabOrderResultTaskExample, Task, task)
-* insert ExampleTransactionalEntryWithSlice(AvailableSpecimenForCompletedRequestsExample, Specimen, specimens)
-* insert ExampleTransactionalEntryWithSlice(LabOrderCompletedServiceRequestExample, ServiceRequest, serviceRequest)
-* insert ExampleTransactionalEntryWithSlice(LabResultsDiagnosticReportExample, DiagnosticReport, diagnosticReport)
-* insert ExampleTransactionalEntryWithSlice(LabResultObservationExample, Observation, observations)
+* insert ExampleTransactionalEntry(LabOrderResultTaskExample, Task, task)
+* insert ExampleTransactionalEntry(AvailableSpecimenForCompletedRequestsExample, Specimen, specimens)
+* insert ExampleTransactionalEntry(LabOrderCompletedServiceRequestExample, ServiceRequest, serviceRequest)
+* insert ExampleTransactionalEntry(LabResultsDiagnosticReportExample, DiagnosticReport, diagnosticReport)
+* insert ExampleTransactionalEntry(LabResultObservationExample, Observation, observations)
