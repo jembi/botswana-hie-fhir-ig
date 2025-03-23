@@ -368,7 +368,9 @@ Description:
 * contact 0..0
 * communication 0..0
 * generalPractitioner 0..0
-* managingOrganization 0..0
+* managingOrganization 0..1 MS
+* managingOrganization only Reference(ServiceProvider)
+
 * contained 0..1 MS
   * ^short = "Contained patient data"
   * ^definition = "Patient data supplied by the Client Registry."

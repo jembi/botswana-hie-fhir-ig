@@ -284,6 +284,8 @@ Description:
 * identifier[Internal].value = "SysId12345"
 * identifier[PIMS].value = "PIMS12345"
 
+* managingOrganization = Reference(ServiceProviderExample)
+
 //* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
 
 Instance: RestrictedPatientExample2
@@ -303,17 +305,14 @@ Description:
 //* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
 * link[PatientData].other = Reference(BwPatientDataFromCR)
 * contained = BwPatientDataFromCR
+* managingOrganization = Reference(ServiceProviderExample)
 
 Instance: BwPatientDataFromCR
-InstanceOf: BwPatient
+InstanceOf: Patient
 Usage: #inline
-* identifier[MRN].value = "MRN12345671"
 * identifier[OMANG].value = "omang1234"
 * identifier[Birth].value = "001209565658"
 * identifier[Passport].value = "ppn1234"
-* identifier[OpenMRS].value = "Openmrs12345"
-* identifier[Internal].value = "SysId12345"
-* identifier[PIMS].value = "PIMS12345"
 
 * name[+].given[+] = "Mark"
 * name[=].family = "Adams"
@@ -325,8 +324,6 @@ Usage: #inline
 * address[=].line[+] = "Kweneng East"
 * address[=].city = "Mogoditshane"
 * address[=].district = "Kweneng"
-
-* managingOrganization = Reference(ServiceProviderExample)
 
 * telecom[+].system = #phone
 * telecom[=].value = "27537652509"
