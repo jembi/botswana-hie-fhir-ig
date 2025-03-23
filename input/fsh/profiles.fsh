@@ -374,6 +374,7 @@ Description:
 * contained 0..1 MS
   * ^short = "Contained patient data"
   * ^definition = "Patient data supplied by the Client Registry."
+* contained only Patient
 
 * link 0..* MS
 * insert Slice(link, value, other.display, open, Slicing link based on \"other\" display value, false)

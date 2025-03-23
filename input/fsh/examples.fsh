@@ -310,9 +310,14 @@ Description:
 Instance: BwPatientDataFromCR
 InstanceOf: Patient
 Usage: #inline
-* identifier[OMANG].value = "omang1234"
-* identifier[Birth].value = "001209565658"
-* identifier[Passport].value = "ppn1234"
+* identifier[+].value = "omang1234"
+* identifier[=].system = "http://moh.bw.org/identifier/omang"
+
+* identifier[+].value = "001209565658"
+* identifier[=].system = "http://moh.bw.org/identifier/birth"
+
+* identifier[+].value = "ppn1234"
+* identifier[=].system = "http://moh.bw.org/identifier/passport"
 
 * name[+].given[+] = "Mark"
 * name[=].family = "Adams"
