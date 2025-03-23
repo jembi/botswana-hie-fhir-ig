@@ -45,6 +45,7 @@ Usage: #definition
 * rest[=].resource[=].operation.extension.valueCode = #SHOULD
 * rest[=].resource[=].operation.name = "validate"
 * rest[=].resource[=].operation.definition = "https://hl7.org/fhir/R4/operation-resource-validate"
+* rest[=].resource[=].operation.documentation = "https://hl7.org/fhir/R4/operation-resource-validate"
 
 * rest[=].resource[+].type = #Encounter
 * rest[=].resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
