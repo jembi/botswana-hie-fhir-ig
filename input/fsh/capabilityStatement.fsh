@@ -25,7 +25,8 @@ Usage: #definition
 * rest[=].resource[+].type = #Bundle
 * rest[=].resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension.valueCode = #SHALL
-* rest[=].resource[=].profile = "http://moh.bw.org/StructureDefinition/lab-orders-bundle"
+* rest[=].resource[=].supportedProfile[+] = "http://moh.bw.org/StructureDefinition/lab-orders-bundle"
+* rest[=].resource[=].supportedProfile[+] = "http://moh.bw.org/StructureDefinition/process-patient-bundle"
 * rest[=].resource[=].interaction[+].code = #create
 * rest[=].resource[=].interaction[+].code = #read
 
