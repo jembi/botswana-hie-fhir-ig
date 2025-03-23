@@ -35,3 +35,10 @@ RuleSet: BundleEntry(resourceID, entrySLice)
 * entry[{entrySLice}]
   * resource 1..
   * resource only {resourceID}
+
+RuleSet: ExampleTransactionalEntryWithCustomID(resourceID, resourceType, entrySLice, customID)
+* entry[{entrySLice}][+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{customID}"
+* entry[{entrySLice}][=].resource = {resourceID}
+* entry[{entrySLice}][=].resource.id = "{customID}"
+* entry[{entrySLice}][=].request.method = #PUT
+* entry[{entrySLice}][=].request.url = "{resourceType}/{customID}"
