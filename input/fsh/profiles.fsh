@@ -403,4 +403,8 @@ Description: "While this bundle contains all of the lab order profiles for manag
 * entry contains
     restrictedPatient 1..1
 
+* id
+  * ^short = "Matching patient ID"
+  * ^definition = "Set to the ID used by all patient references in the bundle."
+
 * insert BundleEntry(RestrictedPatient, restrictedPatient)
