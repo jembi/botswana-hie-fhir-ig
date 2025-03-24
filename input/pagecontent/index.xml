@@ -21,55 +21,9 @@
   </p>
   <p>The goal of this IG is to ensure that laboratory data can be efficiently exchanged and integrated within Botswana. </p>
 
-  <p>This IG implements FHIR bundles that support conditional patient creates and/or updates:</p>
-  <ul>
-    <li><a href="Bundle-lab-order-conditional-patient-create-bundle.html">Create</a>: Only create the patient in the Client Registry (CR) if no matches are found for a given business identifier.</li>
-    <li><a href="Bundle-lab-order-conditional-patient-update-bundle.html">Update</a>: Instead of creating a new patient in the CR, ONLY update the administrative information for the patient matching the given business identifier.</li>
-  </ul>
-  <p> 
-    This aims to reduce duplication of patient records and maintain patient data integrity across integrated systems. 
-  </p>
-  <p>
-    This IG currently implements the following two key laboratory profiles to support Botswana's LAB-EMR exchange worflow requirements:
-  </p>
-  <ol>
-    <li>
-      <a href="StructureDefinition-lab-order-task.html">Submitting and managing lab orders</a>
-      <ul>
-        <li>
-          Example bundles:
-          <ol>
-            <li><a href ="Bundle-lab-order-bundle.html">New lab order</a></li>
-            <li><a href ="Bundle-cancelled-lab-order-bundle.html">Cancel lab order</a></li>
-            <li><a href ="Bundle-rejected-lab-order-bundle.html">Reject lab order</a></li>
-          </ol>
-        </li>
-      </ul>
-    </li>
-
-    <li><a href="StructureDefinition-lab-order-diagnostic-report.html">Capturing lab results</a>
-      <ul>
-          <li>
-            Example bundles:
-            <ol>
-              <li><a href ="Bundle-lab-result-bundle.html">Lab result</a></li>
-            </ol>
-          </li>
-      </ul>
-    </li>
-  </ol>
-
 <h3>Background</h3> <a name="background"> </a>
   
 <p>To be completed...</p>
-
-<h3>Data Flow</h3>
-
-<p>The following diagram gives an overview of the flow of data from the EMR systems (OpenMRS/PIMS) to the laboratory system (IPMS) and back.</p>
-
-<figure>
-  {% include DataFlow.svg %}
-</figure>
 
 <h3>Download</h3> <a name="download"></a>
   <p>You can also download:</p>
