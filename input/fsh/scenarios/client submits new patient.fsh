@@ -2,6 +2,7 @@ Instance: CreateNewPatientFlow
 InstanceOf: ExampleScenario
 Usage: #definition
 * name = "CreateNewPatientFlow"
+* version = "1"
 * status = #active
 * experimental = true
 * purpose = "Purpose: this serves to demonstrate the performing of medication administration, by using remote / mobile devices to a) Get the planned medication administrations and b) Record the performing of these administrations without a permanent connection to the EHR."
