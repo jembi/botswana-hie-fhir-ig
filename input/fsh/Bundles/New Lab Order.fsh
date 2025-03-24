@@ -5,6 +5,6 @@ Title: "Bundle - Create New Lab Order"
 Description: "Submit new lab orders"
 * type = #transaction
 
-* insert ExampleTransactionalEntry(LabOrderTaskExample, Task)
-* insert ExampleTransactionalEntry(AvailableSpecimenForActiveRequestsExample, Specimen)
-* insert ExampleTransactionalEntry(LabOrderActiveServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntry(LabOrderTaskExample, Task, task)
+* insert ExampleTransactionalEntry(AvailableSpecimenForActiveRequestsExample, Specimen, specimens)
+* insert ExampleTransactionalEntry(LabOrderActiveServiceRequestExample, ServiceRequest, serviceRequest)

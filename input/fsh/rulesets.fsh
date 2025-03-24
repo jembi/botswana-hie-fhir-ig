@@ -6,32 +6,39 @@ RuleSet: Slice(item, discriminatorType, discriminatorPath, rule, description, or
   * ^slicing.description = "{description}"
   * ^slicing.ordered = {ordered}
 
-RuleSet: ExampleTransactionalEntry(resourceID, resourceType)
-* entry[+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
-* entry[=].resource = {resourceID}
-* entry[=].request.method = #PUT
-* entry[=].request.url = "{resourceType}/{resourceID}"
+RuleSet: ExampleTransactionalEntry(resourceID, resourceType, entrySLice)
+* entry[{entrySLice}][+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
+* entry[{entrySLice}][=].resource = {resourceID}
+* entry[{entrySLice}][=].request.method = #PUT
+* entry[{entrySLice}][=].request.url = "{resourceType}/{resourceID}"
 
-RuleSet: ExampleTransactionalEntryWithConditionalCreate(resourceID, resourceType, parameters)
-* entry[+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
-* entry[=].resource = {resourceID}
-* entry[=].request.method = #PUT
-* entry[=].request.url = "{resourceType}/{resourceID}"
-* entry[=].request.ifNoneExist = "{parameters}"
+RuleSet: ExampleTransactionalEntryWithConditionalCreate(resourceID, resourceType, parameters, entrySLice)
+* entry[{entrySLice}][+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
+* entry[{entrySLice}][=].resource = {resourceID}
+* entry[{entrySLice}][=].request.method = #PUT
+* entry[{entrySLice}][=].request.url = "{resourceType}/{resourceID}"
+* entry[{entrySLice}][=].request.ifNoneExist = "{parameters}"
 
-RuleSet: ExampleTransactionalEntryWithConditionalUpdate(resourceID, resourceType, parameters)
-* entry[+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
-* entry[=].resource = {resourceID}
-* entry[=].request.method = #PUT
-* entry[=].request.url = "{parameters}"
+RuleSet: ExampleTransactionalEntryWithConditionalUpdate(resourceID, resourceType, parameters, entrySLice)
+* entry[{entrySLice}][+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
+* entry[{entrySLice}][=].resource = {resourceID}
+* entry[{entrySLice}][=].request.method = #PUT
+* entry[{entrySLice}][=].request.url = "{parameters}"
 
-RuleSet: ExampleTransactionalEntryWithAutoIDGenerate(resourceID, resourceType)
-* entry[+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
-* entry[=].resource = {resourceID}
-* entry[=].request.method = #POST
-* entry[=].request.url = "{resourceType}"
+RuleSet: ExampleTransactionalEntryWithAutoIDGenerate(resourceID, resourceType, entrySLice)
+* entry[{entrySLice}][+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
+* entry[{entrySLice}][=].resource = {resourceID}
+* entry[{entrySLice}][=].request.method = #POST
+* entry[{entrySLice}][=].request.url = "{resourceType}"
 
 RuleSet: BundleEntry(resourceID, entrySLice)
 * entry[{entrySLice}]
   * resource 1..
   * resource only {resourceID}
+
+RuleSet: ExampleTransactionalEntryWithCustomID(resourceID, resourceType, entrySLice, customID)
+* entry[{entrySLice}][+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{customID}"
+* entry[{entrySLice}][=].resource = {resourceID}
+* entry[{entrySLice}][=].resource.id = "{customID}"
+* entry[{entrySLice}][=].request.method = #PUT
+* entry[{entrySLice}][=].request.url = "{resourceType}/{customID}"

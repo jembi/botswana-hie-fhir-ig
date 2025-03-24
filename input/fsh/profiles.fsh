@@ -44,7 +44,7 @@ Description: "Represents the current facility at which the patient is receiving 
 Profile: BwPatient
 Parent: Patient
 Id: bw-patient
-Title: "Botswana Patient"
+Title: "Patient - Botswana Patient"
 Description: "Is used to document demographics and other personal information about an individual receiving care or other health-related services."
 * obeys PatientIdentifier-1
 
@@ -280,7 +280,7 @@ Description: "Represents the results for the lab order."
 Profile: LabOrdersBundle
 Parent: Bundle
 Id: lab-orders-bundle
-Title: "Lab Orders Bundle"
+Title: "Bundle - Lab Orders"
 Description: "This bundle contains all of the lab order profiles for managing lab orders."
 * type = #transaction
 
@@ -319,7 +319,7 @@ Description: "This bundle contains all of the lab order profiles for managing la
 Profile: RestrictedPatient
 Parent: Patient
 Id: patient-identity-cross-reference
-Title: "Patient Identity Cross Reference"
+Title: "Patient - Patient Identity Cross Reference"
 Description: 
     "Is used by the Client Registry to re-identify the patient with his/her corresponding longitudinal clinical record."
     
@@ -328,15 +328,32 @@ Description:
   * ^short = "Must be the same ID as the patient resource that suppplied the personal data during creation"
   * ^definition = "Once the patient data has been stored in the FHIR server, a literal ID (FHIR server generated) will have been assigned or some client/system could have provided a preferred ID. This ID SHALL be assigned to this resource after the data supplying patient resource has been deleted from the server."
 * identifier 1..*
-* identifier.system 1..1
-* identifier.system = "http://moh.bw.org/identifier/mpi"
+//* identifier.system 1..1
+//* identifier.system = "http://moh.bw.org/identifier/mpi"
 
 * insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
-    MasterPatientIndex 1..*
+    MasterPatientIndex 1..* and
+    MRN 0..1 MS and
+    Internal 0..1 MS and
+    PIMS 0..1 MS and
+    OpenMRS 0..1 MS
 
 * identifier[MasterPatientIndex].value 1..1
+* identifier[MasterPatientIndex].system = "http://moh.bw.org/identifier/mpi"
+
+* identifier[MRN].value 1..1
+* identifier[MRN].system = "http://moh.bw.org/identifier/mrn"
+
+* identifier[Internal].value 1..1
+* identifier[Internal].system = "http://moh.bw.org/identifier/internalid"
+
+* identifier[PIMS].value 1..1
+* identifier[PIMS].system = "http://moh.bw.org/identifier/pims"
+
+* identifier[OpenMRS].value 1..1
+* identifier[OpenMRS].system = "http://moh.bw.org/identifier/openmrs"
 
 * name 0..0
 * active 0..0
@@ -351,10 +368,13 @@ Description:
 * contact 0..0
 * communication 0..0
 * generalPractitioner 0..0
-* managingOrganization 0..0
+* managingOrganization 0..1 MS
+* managingOrganization only Reference(ServiceProvider)
+
 * contained 0..1 MS
   * ^short = "Contained patient data"
   * ^definition = "Patient data supplied by the Client Registry."
+* contained only Patient
 
 * link 0..* MS
 * insert Slice(link, value, other.display, open, Slicing link based on \"other\" display value, false)
@@ -373,3 +393,18 @@ Description:
 * link[PatientData].other.display = "Patient data provided by Client Registry"
 * link[PatientData].other.reference 1..1
 * link[PatientData].type = #seealso
+
+Profile: ProcessPatientInFHIRBundle
+Parent: LabOrdersBundle
+Id: process-patient-bundle
+Title: "Bundle - Process Patient in FHIR"
+Description: "While this bundle contains all of the lab order profiles for managing lab orders as defined in the bundle for \"Lab Orders\", it also includes the \"RestrictedPatient\" profile that will replace the \"Botswana Patient\" in the FHIR server."
+
+* entry contains
+    restrictedPatient 1..1
+
+* id
+  * ^short = "Matching patient ID"
+  * ^definition = "SHALL be set to the same ID used by all patient references in the bundle."
+
+* insert BundleEntry(RestrictedPatient, restrictedPatient)

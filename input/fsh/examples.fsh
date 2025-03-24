@@ -279,6 +279,13 @@ Description:
 
 * identifier[MasterPatientIndex][+].value = "some id value"
 * identifier[MasterPatientIndex][+].value = "some other id value for some reason"
+* identifier[MRN].value = "MRN12345671"
+* identifier[OpenMRS].value = "Openmrs12345"
+* identifier[Internal].value = "SysId12345"
+* identifier[PIMS].value = "PIMS12345"
+
+* managingOrganization = Reference(ServiceProviderExample)
+
 //* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
 
 Instance: RestrictedPatientExample2
@@ -290,20 +297,27 @@ Description:
 
 * identifier[MasterPatientIndex][+].value = "some id value"
 * identifier[MasterPatientIndex][+].value = "some other id value for some reason"
-//* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
-* link[PatientData].other = Reference(BwPatientDataFromCR)
-* contained = BwPatientDataFromCR
-
-Instance: BwPatientDataFromCR
-InstanceOf: BwPatient
-Usage: #inline
 * identifier[MRN].value = "MRN12345671"
-* identifier[OMANG].value = "omang1234"
-* identifier[Birth].value = "001209565658"
-* identifier[Passport].value = "ppn1234"
 * identifier[OpenMRS].value = "Openmrs12345"
 * identifier[Internal].value = "SysId12345"
 * identifier[PIMS].value = "PIMS12345"
+
+//* link[TruePatientRef].other.extension[TruePatientRefExt].valueString = "Patient/85c29cd8-8469-4ad5-be71-09d00a6ef816"
+* link[PatientData].other = Reference(BwPatientDataFromCR)
+* contained = BwPatientDataFromCR
+* managingOrganization = Reference(ServiceProviderExample)
+
+Instance: BwPatientDataFromCR
+InstanceOf: Patient
+Usage: #inline
+* identifier[+].value = "omang1234"
+* identifier[=].system = "http://moh.bw.org/identifier/omang"
+
+* identifier[+].value = "001209565658"
+* identifier[=].system = "http://moh.bw.org/identifier/birth"
+
+* identifier[+].value = "ppn1234"
+* identifier[=].system = "http://moh.bw.org/identifier/passport"
 
 * name[+].given[+] = "Mark"
 * name[=].family = "Adams"
@@ -315,8 +329,6 @@ Usage: #inline
 * address[=].line[+] = "Kweneng East"
 * address[=].city = "Mogoditshane"
 * address[=].district = "Kweneng"
-
-* managingOrganization = Reference(ServiceProviderExample)
 
 * telecom[+].system = #phone
 * telecom[=].value = "27537652509"

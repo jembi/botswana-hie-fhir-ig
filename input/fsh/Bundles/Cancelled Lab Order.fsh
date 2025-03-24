@@ -5,6 +5,6 @@ Title: "Bundle - Cancelled Lab Order"
 Description: "Lab order has been cancelled"
 * type = #transaction
 
-* insert ExampleTransactionalEntry(LabOrderCancellationTaskExample, Task)
-* insert ExampleTransactionalEntry(AvailableSpecimenForRevokedRequestsExample, Specimen)
-* insert ExampleTransactionalEntry(LabOrderRevokedServiceRequestExample, ServiceRequest)
+* insert ExampleTransactionalEntry(LabOrderCancellationTaskExample, Task, task)
+* insert ExampleTransactionalEntry(AvailableSpecimenForRevokedRequestsExample, Specimen, specimens)
+* insert ExampleTransactionalEntry(LabOrderRevokedServiceRequestExample, ServiceRequest, serviceRequest)
