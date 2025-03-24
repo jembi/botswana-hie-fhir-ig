@@ -1,9 +1,7 @@
-/*Extension: MasterFacilityListCodeExtension
-Id: master-facility-list-code
-Title: "Master Facility List (MFL) Code"
-Description: "An extension to capture a code that identifies the organization in the MFL."
-* value[x] only CodeableConcept
-* valueCodeableConcept 1..1
-* valueCodeableConcept from VSMasterFacilityListCodes (extensible)
+/*Extension: TruePatientReferenceExtension
+Id: true-patient-id
+Title: "True Patient Reference"
+Description: "An extension to capture the literal ID that was used when creating the Patient Resource."
+* value[x] only string
 * ^context[+].type = #element
-* ^context[=].expression = "Organization.identifier.value"*/
+* ^context[=].expression = "Patient.link.other"*/

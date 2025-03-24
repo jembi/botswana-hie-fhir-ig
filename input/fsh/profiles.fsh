@@ -5,7 +5,7 @@ Title: "Service Provider"
 Description: "Organization providing health related services."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MOHID 0..1 MS and // Ministry of Health Identifier
@@ -45,12 +45,12 @@ Profile: BwPatient
 Parent: Patient
 Id: bw-patient
 Title: "Botswana Patient"
-Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
+Description: "Is used to document demographics and other personal information about an individual receiving care or other health-related services."
 * obeys PatientIdentifier-1
 
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     MRN 0..1 MS and
@@ -101,7 +101,7 @@ Title: "Task - Lab Orders"
 Description: "Assists with tracking the state of the lab order and its completion status."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
     FILL 1..1
@@ -137,7 +137,7 @@ Title: "ServiceRequest - Lab Orders"
 Description: "Represents the service request for lab orders."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
     PLAC 1..1
@@ -176,7 +176,7 @@ Title: "Practitioner"
 Description: "Represents the practitioner who participated in the health related service."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
 
 * identifier contains
     OMANG 0..1 MS
@@ -197,7 +197,7 @@ Title: "Specimen"
 Description: "The specimen associated with the lab order."
 * identifier 1..*
 
-* insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing identifier based on the system value, false)
+* insert Slice(identifier, value, system, open, Slicing identifier based on the system value, false)
 
 * identifier contains
     USID 1..1
@@ -315,3 +315,61 @@ Description: "This bundle contains all of the lab order profiles for managing la
 * insert BundleEntry(LabOrderDiagnosticReport, diagnosticReport)
 * insert BundleEntry(LabResultObservation, observations)
 * insert BundleEntry(ServiceProvider, organization)
+
+Profile: RestrictedPatient
+Parent: Patient
+Id: patient-identity-cross-reference
+Title: "Patient Identity Cross Reference"
+Description: 
+    "Is used by the Client Registry to re-identify the patient with his/her corresponding longitudinal clinical record."
+    
+//* obeys PatientContained-1
+* id
+  * ^short = "Must be the same ID as the patient resource that suppplied the personal data during creation"
+  * ^definition = "Once the patient data has been stored in the FHIR server, a literal ID (FHIR server generated) will have been assigned or some client/system could have provided a preferred ID. This ID SHALL be assigned to this resource after the data supplying patient resource has been deleted from the server."
+* identifier 1..*
+* identifier.system 1..1
+* identifier.system = "http://moh.bw.org/identifier/mpi"
+
+* insert Slice(identifier, value, system, open, Slicing the identifier based on the system value, false)
+
+* identifier contains
+    MasterPatientIndex 1..*
+
+* identifier[MasterPatientIndex].value 1..1
+
+* name 0..0
+* active 0..0
+* telecom 0..0
+* gender 0..0
+* birthDate 0..0
+* deceased[x] 0..0
+* address 0..0
+* maritalStatus 0..0
+* multipleBirth[x] 0..0
+* photo 0..0
+* contact 0..0
+* communication 0..0
+* generalPractitioner 0..0
+* managingOrganization 0..0
+* contained 0..1 MS
+  * ^short = "Contained patient data"
+  * ^definition = "Patient data supplied by the Client Registry."
+
+* link 0..* MS
+* insert Slice(link, value, other.display, open, Slicing link based on \"other\" display value, false)
+
+* link contains
+    //TruePatientRef 1..1 and
+    PatientData 0..1 MS
+
+/** link[TruePatientRef].other.display 1..1
+* link[TruePatientRef].other.display = "True patient reference"
+* link[TruePatientRef].other 1..1
+* link[TruePatientRef].other.extension contains TruePatientReferenceExtension named TruePatientRefExt 1..1
+* link[TruePatientRef].type = #seealso*/
+
+* link[PatientData].other.display 1..1
+* link[PatientData].other.display = "Patient data provided by Client Registry"
+* link[PatientData].other.reference 1..1
+* link[PatientData].type = #seealso
