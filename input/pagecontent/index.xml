@@ -1,4 +1,8 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd" lang="en">
+  <style>
+    {% include custom.css %}
+  </style>
+
   <a name="scope">  </a>
 	<p>
     This is our FHIR Implementation Guide. It contains the specifications developed by our community. 
@@ -110,4 +114,30 @@
     This specification is provided without warranty of completeness or consistency, and the official publication supersedes this draft.
     No liability can be inferred from the use or misuse of this specification, or its consequences.
   </p>
+
+   <h3>Credits and Acknowledgements</h3>  <a name="credits"> </a>
+  <p>
+    This specification is based on FHIR and the FHIR tooling ecosystem and community processes. 
+    It has been defined with the support and participation of the following institutions.
+  </p>
+
+  <p class="heading">Institutions</p>
+
+  <ul>
+    <li>Centers for Disease Control and Prevention (<a href="https://www.cdc.gov/" target="_blank">CDC</a>)</li>
+    <li>Jembi Health Systems (<a href="https://www.jembi.org/" target="_blank">Jembi</a>)</li>
+  </ul>
+
+  <p class="heading">Contributors</p>
+
+  <ul>
+    <li>Richard Langford (Jembi) - Principal Author</li>
+    <li>Xhanti Mdyeshana (Jembi) - Author</li>
+  </ul>
+
+   <p class="heading">Viewers</p>
+
+  <ul>
+    <li>Wendy Blumenthal (CDC) - Program Lead</li>
+  </ul>
 </div>
