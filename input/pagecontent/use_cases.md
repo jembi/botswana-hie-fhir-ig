@@ -20,6 +20,7 @@ ORDINARY SEQUENCE:
 STEPS:
 
     > ACTIONS:
+
 > 1. Log into the system.
 > 2. Access the Laboratory module.
 > 3. Enter specimen details in lab order form available in the lab module.
@@ -39,6 +40,7 @@ EXCEPTIONS:
 STEPS:
 
     > ACTIONS:
+
 > 1. Where the patient does not exist, the clinician creates the patient before paturing the order.
 > 2. System caches the lab order details when there is network failure and resend late
 
@@ -65,6 +67,7 @@ ORDINARY SEQUENCE:
 STEPS:
 
     > ACTIONS:
+
 > 1. Access the Lab Order component/module.
 > 2. Access lab order details in to IPMS.
 > 3. Update order details with lab test results.
@@ -81,6 +84,7 @@ EXCEPTIONS:
 STEPS:
 
     > ACTIONS:
+
 > 1. Enter/Capture the lab order.
 
 
@@ -102,6 +106,7 @@ ORDINARY SEQUENCE:
 STEPS:
 
     > ACTIONS:
+
 > 1. Access the Lab Order module.
 > 2. Search lab test results using lab order ID or Patient ID.
 > 3. Open the selected results and consult with the patient.
@@ -165,12 +170,12 @@ EXCEPTIONS:
 STEPS:
 
     > ACTIONS:
+
 > 1. Unidentifiable orders and order results sent to the interoperability layer are rejected.
 
 <br />
 
 ### USE CASE DIAGRAM
-<br />
 <br />
 
 #### CAPTURE LAB ORDERS
