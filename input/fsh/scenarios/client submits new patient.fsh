@@ -12,7 +12,8 @@ Usage: #definition
 * insert ScenarioActor(CR, entity, Client Registry, The entity that stores PII and demoprahic information for the patient included in the PoS request)
 * insert ScenarioActor(FHIR, entity, FHIR Server, The entity that stores clinical information for the patient included in the PoS request)
 
-* insert ScenarioInstance(pos.01, Patient, Patient Resource, The Patient involved in the scenario.)
+* insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario.)
+* insert ScenarioInstance(pos.09, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII.)
 * insert ScenarioInstance(pos.02, Task, Task Resource, The task associated with the patient.)
 * insert ScenarioInstance(pos.03, ServiceRequest, ServiceRequest Resource, The lab order service request associated with the task.)
 * insert ScenarioInstance(pos.04, Specimen, Specimen Resource, The specimens associated with the lab order service request.)
@@ -20,8 +21,17 @@ Usage: #definition
 * insert ScenarioInstance(pos.06, Observation, Observation Resource, The lab results associated with the diagnostic report.)
 * insert ScenarioInstance(pos.07, Practitioner, Practitioner Resource, The practitioners associated with the lab order service request.)
 
-* insert ScenarioInstance(pos.08, Bundle, Bundle of requests, The FHIR bundle provided in the request to create the patient record.)
+* insert ScenarioInstance(pos.08, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record.)
 * insert ScenarioContainedInstance(pos.01)
+* insert ScenarioContainedInstance(pos.02)
+* insert ScenarioContainedInstance(pos.03)
+* insert ScenarioContainedInstance(pos.04)
+* insert ScenarioContainedInstance(pos.05)
+* insert ScenarioContainedInstance(pos.06)
+* insert ScenarioContainedInstance(pos.07)
+
+* insert ScenarioInstance(pos.10, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\".)
+* insert ScenarioContainedInstance(pos.09)
 * insert ScenarioContainedInstance(pos.02)
 * insert ScenarioContainedInstance(pos.03)
 * insert ScenarioContainedInstance(pos.04)
@@ -43,6 +53,10 @@ Usage: #definition
         * resourceId = "pos.08"
 
 * insert ScenarioProcessStep(2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
+* process[=]
+  * step[=]
+    * operation
+      * receiverActive = true
 
 * insert ScenarioProcessStep(3, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
 * process[=]
@@ -54,3 +68,7 @@ Usage: #definition
 * insert ScenarioProcessStep(4, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 
 * insert ScenarioProcessStep(5, MPI, CR, IL, CR responds with an MPI for the patient.)
+* process[=]
+  * step[=]
+    * operation
+      * receiverActive = true
