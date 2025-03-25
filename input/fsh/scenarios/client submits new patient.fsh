@@ -66,7 +66,7 @@ Usage: #definition
 
   * insert ScenarioProcessStep(4, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 
-  * insert ScenarioProcessStep(5, Assign MPI, CR, IL, CR responds with an MPI for the patient.)
+  * insert ScenarioProcessStep(5, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
     * operation
       * receiverActive = true
