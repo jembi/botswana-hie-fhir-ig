@@ -91,8 +91,8 @@ jurisdiction: urn:iso:std:iso:3166#BW "Botswana"
 # The following are simple examples to demonstrate what this might
 # look like:
 resources:
-  ExampleScenario/CreateNewPatientFlow:
-    name: Create new patient flow
+  ExampleScenario/CreateNewPatientRecord:
+    name: Create new patient record
     description: Demonstrates the process flow between the Client Registry and FHIR server
     exampleBoolean: false
 #  Patient/my-example-patient:
