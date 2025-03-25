@@ -58,15 +58,22 @@ Usage: #definition
     * operation
       * initiatorActive = true
 
-  * insert ScenarioProcessStep(3, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
+  * insert ScenarioProcessStep(3, Validate patient data, IL, FHIR, FHIR's $validate operation ensures that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
+
+  * insert ScenarioProcessStep(4, Validation response, FHIR, IL, FHIR issues a response to the validation request.)
+  * step[=]
+    * operation
+      * receiverActive = true
+
+  * insert ScenarioProcessStep(5, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
   * step[=]
     * operation
       * request
         * resourceId = "pos.01"
 
-  * insert ScenarioProcessStep(4, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
+  * insert ScenarioProcessStep(6, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 
-  * insert ScenarioProcessStep(5, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
+  * insert ScenarioProcessStep(7, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
     * operation
       * receiverActive = true
@@ -80,5 +87,4 @@ Usage: #definition
   * insert ScenarioProcessStep(2, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
   * step[=]
     * operation
-      * request
-        * resourceId = "pos.10"
+      * initiatorActive = true
