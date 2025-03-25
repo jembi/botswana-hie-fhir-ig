@@ -41,7 +41,7 @@ Usage: #definition
 
 * insert ScenarioProcess(Register Patient, 
     PoS entity has submitted the FHIR Bundle Resource for HIE,
-    CR entity has stored the patient's personal information and sent a response back to the IL which inlcudes a MPI identifier)
+    CR entity has stored the patient's personal information and sent a response back to the IL which inlcudes a MPI identifier. The FHIR entity must store the MPI in the Restricted Patient Resource.)
 
 * process[=].step[+].process[+]
   * title = "Register Patient in CR"
@@ -68,6 +68,7 @@ Usage: #definition
   * insert ScenarioProcessStep(5, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
   * step[=]
     * operation
+      * receiverActive = true
       * request
         * resourceId = "pos.01"
 
