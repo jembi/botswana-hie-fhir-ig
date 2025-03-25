@@ -56,7 +56,7 @@ Usage: #definition
 * process[=]
   * step[=]
     * operation
-      * receiverActive = true
+      * initiatorActive = true
 
 * insert ScenarioProcessStep(3, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
 * process[=]
