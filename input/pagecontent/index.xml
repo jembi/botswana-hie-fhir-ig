@@ -19,11 +19,25 @@
     specifically the handling of laboratory orders in both OpenMRS and PIMS systems to and from the national laboratory system, IPMS. 
     The guide is crafted for Botswana's Health Information Exchange (HIE) and provides a structured approach to managing lab orders.
   </p>
-  <p>The goal of this IG is to ensure that laboratory data can be efficiently exchanged and integrated within Botswana. </p>
 
 <h3>Background</h3> <a name="background"> </a>
   
-<p>To be completed...</p>
+<p>Botswana's health information systems have historically faced challenges such as fragmentation, limited interoperability, inconsistent connectivity across facilities, and usability concerns. 
+These issues have impeded the seamless exchange of critical health data, leading to inefficiencies like duplicate data capture, delays in responding to emerging health issues, and the generation of reports that may not fully support timely decision-making.​</p>
+
+<p>A particularly pressing concern has been the management of HIV laboratory data. Traditionally, HIV-related lab information has been recorded in standalone Electronic Medical Records (EMR) systems at healthcare facilities. 
+To initiate laboratory tests, this data is manually transcribed onto paper-based request forms and physically transported to laboratories. 
+This manual process increases the risk of data loss, delays in result retrieval, and inefficiencies in patient care. 
+Furthermore, laboratory results are manually collected and re-entered into the standalone EMR systems, exacerbating data fragmentation. 
+Such disjointed processes contribute to the loss to follow-up of Antiretroviral Therapy (ART) patients, as the lack of data sharing between standalone systems hampers the tracking of patient adherence and continuity of care.​</p>
+
+<p>In response to these challenges, the Botswana Ministry of Health and Wellness introduced the <a href="https://ehealth.ub.bw/bhdc/Docs/MOH%20ehealth%20Strategy%20Book%20A4.pdf" target="_blank">eHealth Strategy (2020-2024)</a>, aiming to strengthen health service delivery through the utilization of digital solutions that address the needs of the health system. 
+This strategy emphasizes the importance of integrated health information systems, improved data management, and enhanced interoperability among various health platforms.​</p>
+
+<p>The implementation of the Laboratory FHIR® IG aligns with the objectives outlined in the eHealth Strategy. 
+By standardizing data exchange between health information systems, the FHIR IG facilitates seamless electronic sharing of laboratory orders and results. 
+This interoperability ensures that critical patient data is accessible across facilities, reduces the need for duplicate data entry, and supports timely decision-making. 
+Ultimately, such advancements contribute to improved patient outcomes in HIV care and other health programs, reflecting the strategic vision of Botswana's eHealth initiatives.</p>
 
 <h3>Download</h3> <a name="download"></a>
   <p>You can also download:</p>
