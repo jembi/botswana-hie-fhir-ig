@@ -35,7 +35,7 @@ Usage: #definition
 * process[=]
   * description = "This scenario demonstrates the process of storing the patient's personal information acquired from the Patient Resource in the CR and returning a Master Patient Index (MPI) identifier for the patient."
 
-* insert ScenarioProcessStep(1, Patient data, PoS, IL, Patient data contains PII and clinical information)
+* insert ScenarioProcessStep(1, New patient data, PoS, IL, Patient data contains PII and clinical information)
 * process[=]
   * step[=]
     * operation
@@ -44,7 +44,7 @@ Usage: #definition
 
 * insert ScenarioProcessStep(2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
 
-* insert ScenarioProcessStep(3, Patient data, IL, CR, Patient Resource is sent to the CR for processing.)
+* insert ScenarioProcessStep(3, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
 * process[=]
   * step[=]
     * operation
