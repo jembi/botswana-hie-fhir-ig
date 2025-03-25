@@ -8,10 +8,10 @@ rectangle "Data Transmission Layer" as dataTransmissionLayer {
     rectangle "FHIR Translation Layer" as translationLayer
   }
 
-  rectangle OpenHIM {
+  rectangle "Interoperability Layer" as OpenHIM {
     usecase "HL7 v2.4 -- FHIR translation" as OHIM1
     usecase "Shared Health Record" as OHIM2
-    rectangle "OpenHIM Mediator" as Mediator
+    rectangle "Mediator" as Mediator
     Mediator ..> OHIM1 : "<<use>>"
     Mediator --> OHIM2 : "Update Records"
   }

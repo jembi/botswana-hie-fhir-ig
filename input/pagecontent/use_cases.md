@@ -132,7 +132,7 @@ STEP/s:
 
 #### USE CASE NAME: TRANSMISSION OF LABORATORY RESULTS
 <br />
-ACTOR: PIMS, IPMS, OpenHIM, SHR, OpenCR
+ACTOR: PIMS, IPMS, Interoperability Layer, SHR, OpenCR
 <br />
 <br />
 DEPENDENCIES:

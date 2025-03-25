@@ -17,7 +17,7 @@ labTech --> LOR1 : "Enters Credentials"
 LOR1 --> LOR3 : "Successful Login"
 
   rectangle "Interoperability Layer" {
-  usecase "OpenHIM Mediator" as IL1
+  usecase "Mediator" as IL1
   usecase "Shared Health Record" as IL2
   usecase "HL7 v2.4 to FHIR translation" as IL3
   }
