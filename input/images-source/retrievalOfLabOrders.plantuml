@@ -1,0 +1,45 @@
+@startuml RetrievalOfLabOrders
+left to right direction
+rectangle "OpenHIE - Retrieval Of Lab Orders" as RetrievalOfLabOrders {
+  actor "Lab Tech" as labTech
+  rectangle IPMS {
+  usecase "Login" as RLO1
+  usecase "Authenticate User" as RLO2
+  usecase "Lab Order module" as RLO3
+  usecase "Update Lab Order Results" as RLO4
+  usecase "Create New Lab Orders" as RLO5
+  }
+
+labTech --> RLO1
+
+(RLO1) ..> (RLO2) : "<<use>>"
+(RLO3) ..> (RLO4) : "<<use>>"
+
+RLO1 --> RLO3
+RLO5 --> RLO3 : "Extends"
+
+  rectangle "Interoperability Layer" {
+  usecase "Update records" as IL1
+  usecase "Shared Health Record" as IL2
+  usecase "OpenHIM mediator" as IL3
+  usecase "Translate FHIR messages to HL7 v2.4" as IL4
+  usecase "OpenCR" as IL5
+  }
+
+  IL3 --> RLO3 : "Pushes HL7 v2.4 messages"
+  RLO5 --> IL3 : "Create New Client"
+  RLO5 --> IL3 : "Create a new lab order"
+  IL5 --> IL3 : "Sends patient data"
+  IL2 --> IL3 : "Pull Lab Orders"
+
+  (IL2) ..> (IL1) : "<<use>>"
+  (IL3) ..> (IL4) : "<<use>>"
+
+  rectangle "Omang and BDRS" as Omang
+  rectangle "Master Facility List" as MFL
+
+  (Omang) --> (IL5) : "Update Patients details"
+  (MFL) --> (IL5) : "Update Facility details"
+}
+
+@enduml
