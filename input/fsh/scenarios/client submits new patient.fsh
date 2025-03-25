@@ -40,7 +40,7 @@ Usage: #definition
 //* insert ScenarioContainedInstance(pos.07)
 
 * insert ScenarioProcess(Register Patient, 
-    PoS entity has submitted the FHIR Bundle Resource for HIE,
+    PoS entity has submitted the FHIR Bundle Resource for HIE.,
     CR entity has stored the patient's personal information and sent a response back to the IL which inlcudes a MPI identifier. The FHIR entity must store the MPI in the Restricted Patient Resource.)
 
 * process[=].step[+].process[+]
@@ -75,17 +75,14 @@ Usage: #definition
   * insert ScenarioProcessStep(6, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 
   * insert ScenarioProcessStep(7, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
-  * step[=]
-    * operation
-      * receiverActive = true
-
+ 
 * process[=].step[+].process[+]
   * title = "Register Patient in FHIR"
   * description = "This scenario demonstrates the process of storing a restricted version of the Patient Resource which excludes all PII to ensure patient privacy. This Patient Resource includes the MPI identifier issued by the CR so that the IL can reassociate the clinical information (FHIR) with the PII (CR) during GET requests."
 
   * insert ScenarioProcessStep(1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
-
-  * insert ScenarioProcessStep(2, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
   * step[=]
     * operation
       * initiatorActive = true
+
+  * insert ScenarioProcessStep(2, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
