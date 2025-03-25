@@ -19,7 +19,7 @@ CLO1 --> CLO3
 CLO3 --> CLO4 : "Label"
 
  
-  rectangle "Interoperability Layer - OpenHIM" as OpenHIM {
+  rectangle "Interoperability Layer" as OpenHIM {
     usecase "Update records" as OHIM1
     usecase "Shared Health Record" as OHIM2
     usecase "Validate Patients details" as OHIM3
