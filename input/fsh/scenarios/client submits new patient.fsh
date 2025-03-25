@@ -39,36 +39,46 @@ Usage: #definition
 //* insert ScenarioContainedInstance(pos.06)
 //* insert ScenarioContainedInstance(pos.07)
 
-* insert ScenarioProcess(Process Patient in CR, 
+* insert ScenarioProcess(Register Patient, 
     PoS entity has submitted the FHIR Bundle Resource for HIE,
-    CR entity has stored the patient's personal information and sent a response bacl to the IL which inlcudes a MPI identifier)
-* process[=]
+    CR entity has stored the patient's personal information and sent a response back to the IL which inlcudes a MPI identifier)
+
+* process[=].step[+].process[+]
+  * title = "Register Patient in CR"
   * description = "This scenario demonstrates the process of storing the patient's personal information acquired from the Patient Resource in the CR and returning a Master Patient Index (MPI) identifier for the patient."
 
-* insert ScenarioProcessStep(1, New patient data, PoS, IL, Patient data contains PII and clinical information)
-* process[=]
+  * insert ScenarioProcessStep(1, New patient data, PoS, IL, Patient data contains PII and clinical information)
   * step[=]
     * operation
       * request
         * resourceId = "pos.08"
 
-* insert ScenarioProcessStep(2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
-* process[=]
+  * insert ScenarioProcessStep(2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
   * step[=]
     * operation
       * initiatorActive = true
 
-* insert ScenarioProcessStep(3, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
-* process[=]
+  * insert ScenarioProcessStep(3, Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
   * step[=]
     * operation
       * request
         * resourceId = "pos.01"
 
-* insert ScenarioProcessStep(4, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
+  * insert ScenarioProcessStep(4, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 
-* insert ScenarioProcessStep(5, MPI, CR, IL, CR responds with an MPI for the patient.)
-* process[=]
+  * insert ScenarioProcessStep(5, Assign MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
     * operation
       * receiverActive = true
+
+* process[=].step[+].process[+]
+  * title = "Register Patient in FHIR"
+  * description = "This scenario demonstrates the process of storing a restricted version of the Patient Resource which excludes all PII to ensure patient privacy. This Patient Resource includes the MPI identifier issued by the CR so that the IL can reassociate the clinical information (FHIR) with the PII (CR) during GET requests."
+
+  * insert ScenarioProcessStep(1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
+
+  * insert ScenarioProcessStep(2, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
+  * step[=]
+    * operation
+      * request
+        * resourceId = "pos.10"

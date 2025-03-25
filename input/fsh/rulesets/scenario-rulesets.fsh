@@ -24,11 +24,10 @@ RuleSet: ScenarioProcess(title, preConditions, postConditions)
   * postConditions = "{postConditions}"
 
 RuleSet: ScenarioProcessStep(number, name, initiator, receiver, description)
-* process[=]
-  * step[+]
-    * operation
-      * number = "{number}"
-      * name = "{name}"
-      * initiator = "{initiator}"
-      * receiver = "{receiver}"
-      * description = "{description}"
+* step[+]
+  * operation
+    * number = "{number}"
+    * name = "{name}"
+    * initiator = "{initiator}"
+    * receiver = "{receiver}"
+    * description = "{description}"
