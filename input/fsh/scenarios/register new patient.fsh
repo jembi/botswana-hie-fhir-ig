@@ -10,7 +10,7 @@ Usage: #definition
 
 * insert ScenarioActor(PoS, system, Point of Service, The entity that registers the patient.)
 * insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the registration request submitted by PoS entity.)
-* insert ScenarioActor(CR, system, Client Registry, The entity that stores PII and demographic information for the patient included in the registration request submitted by PoS entity.)
+* insert ScenarioActor(CR, system, Client Registry, The entity that stores PII and demographic information for the patient included in the lab order bundle submitted by PoS entity.)
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores clinical information for the patient included in the request submitted by PoS entity.)
 
 * insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
@@ -26,7 +26,7 @@ CR entity has stored the patient's personal information and sent a response back
 
 * process[=].step[=].process[+]
   * title = "Register Patient in CR"
-  * description = "This scenario demonstrates the process of storing the patient's personal information acquired from the Patient Resource in the CR and returning a Master Patient Index (MPI) identifier for the patient."
+  * description = "This scenario demonstrates the process of storing the patient's personal information in the CR, acquired from the Patient Resource and returning a Master Patient Index (MPI) identifier for the patient."
 
   * insert ScenarioProcessStep(1.1, New patient data, PoS, IL, Patient data contains PII and clinical information)
   * step[=]
@@ -62,7 +62,7 @@ CR entity has stored the patient's personal information and sent a response back
 
 * insert ScenarioProcess(2, Register Patient in FHIR, 
     CR has provided a MPI identifier in its response sent back to the IL.,
-    FHIR entity has stored the MPI in the Restricted Patient Resource.)
+    FHIR entity has processed the lab order bundle which incl. the Restricted Patient Resource that documents the MPI for re-identification purposes.)
 
 * process[=].step[=].process[+]
   * title = "Register Patient in FHIR"
