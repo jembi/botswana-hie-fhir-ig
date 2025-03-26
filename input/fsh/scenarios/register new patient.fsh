@@ -6,7 +6,7 @@ Usage: #definition
 * version = "1"
 * status = #active
 * experimental = false
-* purpose = "Purpose: this serves to demonstrate the creation of Personally Identifiable Information (PII), when using A Client Registry (CR) and a FHIR datastore during Health Information Exchange (HIE)."
+* purpose = "This serves to demonstrate the creation of a patient record, when using a Client Registry (CR) and a FHIR datastore."
 
 * insert ScenarioActor(PoS, system, Point of Service, The entity that registers the patient.)
 * insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the registration request submitted by PoS entity.)
@@ -45,7 +45,13 @@ Usage: #definition
   * step[=]
     * operation
       * receiverActive = true
-
+    
+  * insert ScenarioProcessStep(1.5, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
+  * step[=]
+    * operation
+      * receiverActive = true
+      * request
+        * instanceReference = "pos.01"
 
   * insert ScenarioProcessStep(1.6, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 

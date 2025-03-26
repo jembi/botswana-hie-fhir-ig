@@ -33,15 +33,3 @@ RuleSet: ScenarioProcessStep(number, name, initiator, receiver, description)
     * initiator = "{initiator}"
     * receiver = "{receiver}"
     * description = "{description}"
-
-RuleSet: ScenarioProcessStepWithAlternateStep(number, name, initiator, receiver, description, alternateTitle, alternateDescription)
-* alternative[+]
-  * title = "{alternateTitle}"
-  * description = "{alternateDescription}"
-  * step[+]
-    * number = "{number}"
-    * operation
-      * title = "{name}"
-      * initiator = "{initiator}"
-      * receiver = "{receiver}"
-      * description = "{description}"
