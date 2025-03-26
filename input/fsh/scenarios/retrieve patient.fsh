@@ -12,3 +12,13 @@ Usage: #definition
 * insert ScenarioActor(IL, system, Interoperability Layer, The entity that retrieves the patient data from the CR and FHIR entities.)
 * insert ScenarioActor(CR, system, Client Registry, The entity that will provide PII and demographic information for the patient.)
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that will provide the clinical information for the patient.)
+
+* insert ScenarioProcess(1, Retrieve Patient in CR, 
+    PoS entity has submitted a request for the patient's record,
+CR entity has responded with the patient's personal information which includes a MPI identifier.)
+
+* process[=].step[=].process[+]
+  * title = "Retrieve Patient in CR"
+  * description = "This scenario demonstrates the process of retrieving the patient's personal information in the CR, which includes the Master Patient Index (MPI) identifier for the patient."
+
+  * insert ScenarioProcessStep(1.1, Request for patient record, PoS, IL, Request containes one or more business identifiers.)
