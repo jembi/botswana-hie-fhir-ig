@@ -9,9 +9,9 @@ Description: "Current organization providing health related services."
 
 * active = true
 * name = "Kweneng Health Post"
-* address[+].line[+] = "Kweneng East"
-* address[=].city = "Mogoditshane"
-* address[=].district = "Kweneng"
+* contact.address[+].line[+] = "Kweneng East"
+* contact.address[=].city = "Mogoditshane"
+* contact.address[=].district = "Kweneng"
 
 Instance: BwPractitionerExample
 InstanceOf: BwPractitioner
@@ -71,10 +71,10 @@ Usage: #example
 Title: "Encounter - Initiated By The Facility Providing the Service" 
 Description: "Represents the current facility at which the patient is receiving health services."
 * class = $V3ActCode#OBSENC
-* status = #finished
+* status = #completed
 * subject = Reference(BwPatientExample)
-* period.start = "2012-12-09"
-* period.end = "2012-12-09"
+* actualPeriod.start = "2012-12-09"
+* actualPeriod.end = "2012-12-09"
 * serviceProvider = Reference(ServiceProviderExample)
 
 Instance: LabOrderActiveServiceRequestExample

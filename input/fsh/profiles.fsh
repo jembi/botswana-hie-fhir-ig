@@ -24,20 +24,21 @@ Description: "Organization providing health related services."
 
 * active 1..1
 * name 1..1
-* address 1..1
+* contact 1..1
+* contact.address 1..1
 
 Profile: TargetFacilityEncounter
 Parent: Encounter
 Id: target-facility-encounter
 Title: "Encounter - Initiated By The Facility Providing the Service" 
 Description: "Represents the current facility at which the patient is receiving health services."
-* class from http://terminology.hl7.org/ValueSet/v3-ActEncounterCode|3.0.0
-* classHistory.class from http://terminology.hl7.org/ValueSet/v3-ActEncounterCode|3.0.0
-* priority from http://terminology.hl7.org/ValueSet/v3-ActPriority|3.0.0
-* hospitalization.reAdmission from http://terminology.hl7.org/ValueSet/v2-0092|2.9
+//* class from http://terminology.hl7.org/ValueSet/v3-ActEncounterCode|3.0.0
+//* classHistory.class from http://terminology.hl7.org/ValueSet/v3-ActEncounterCode|3.0.0
+//* priority from http://terminology.hl7.org/ValueSet/v3-ActPriority|3.0.0
+//* hospitalization.reAdmission from http://terminology.hl7.org/ValueSet/v2-0092|2.9
 * subject 1..1 
 * subject only Reference(BwPatient)
-* period 1..1
+* actualPeriod 1..1
 * serviceProvider 0..1 MS
 * serviceProvider only Reference(ServiceProvider)
 
@@ -167,7 +168,7 @@ Description: "Represents the service request for lab orders."
 * specimen 1..*
 * specimen only Reference(LabOrderSpecimen)
 
-* locationCode from http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType|2014-03-26
+//* locationCode from http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType|2014-03-26
 
 Profile: BwPractitioner
 Parent: Practitioner
@@ -205,9 +206,9 @@ Description: "The specimen associated with the lab order."
 * identifier[USID].value 1..1
 * identifier[USID].system = "http://moh.bw.org/identifier/specimen-id"
 
-* collection.fastingStatusCodeableConcept from http://terminology.hl7.org/ValueSet/v2-0916|2.9
-* container.additiveCodeableConcept from http://terminology.hl7.org/ValueSet/v2-0371|2.9
-* condition from http://terminology.hl7.org/ValueSet/v2-0493|2.9
+//* collection.fastingStatusCodeableConcept from http://terminology.hl7.org/ValueSet/v2-0916|2.9
+//* container.additiveCodeableConcept from http://terminology.hl7.org/ValueSet/v2-0371|2.9
+//* condition from http://terminology.hl7.org/ValueSet/v2-0493|2.9
 
 * type 0..1 MS
 

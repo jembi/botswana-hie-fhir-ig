@@ -21,7 +21,7 @@ version: 1.0.0
 # Although fhirVersions is 0..* in the ImplementationGuide resource
 # it can be a single item OR and array here, but the current tooling 
 # only supports one FHIR version per Implementation Guide
-fhirVersion: 4.0.1
+fhirVersion: 5.0.0
 
 # The following two lines correspond to items that used to be in
 # ig.ini but were moved to IG.definition.parameter. For
@@ -91,9 +91,9 @@ jurisdiction: urn:iso:std:iso:3166#BW "Botswana"
 # The following are simple examples to demonstrate what this might
 # look like:
 resources:
-  ExampleScenario/CreateNewPatientRecord:
-    name: Create new patient record
-    description: Demonstrates the process flow between the Client Registry and FHIR server
+  ExampleScenario/RegisterNewPatient:
+    name: Register New Patient
+    description: Demonstrates the process flow between the Client Registry and FHIR server during patient registration.
     exampleBoolean: false
 #  Patient/my-example-patient:
 #    name: My Example Patient
