@@ -13,11 +13,11 @@ Usage: #definition
 * insert ScenarioActor(CR, system, Client Registry, The entity that stores PII and demographic information for the patient included in the registration request submitted by PoS entity.)
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores clinical information for the patient included in the request submitted by PoS entity.)
 
-* insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario.)
-* insert ScenarioInstance(pos.09, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII.)
-* insert ScenarioInstance(pos.08, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record.)
+* insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
+* insert ScenarioInstance(pos.09, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
+* insert ScenarioInstance(pos.08, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record., LabOrdersBundle, lab-order-with-patient-bundle)
 * insert ScenarioContainedInstance(pos.01)
-* insert ScenarioInstance(pos.10, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\".)
+* insert ScenarioInstance(pos.10, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
 * insert ScenarioContainedInstance(pos.09)
 
 * insert ScenarioProcess(1, Register Patient in CR, 

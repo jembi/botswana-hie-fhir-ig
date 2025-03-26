@@ -5,12 +5,14 @@ RuleSet: ScenarioActor(actorId, type, name, description)
   * title = "{name}"
   * description = "{description}"
 
-RuleSet: ScenarioInstance(resourceId, resourceType, name, description)
+RuleSet: ScenarioInstance(resourceId, resourceType, name, description, structureProfileCanonical, exampleResource)
 * instance[+]
   * key = "{resourceId}"
   * structureType = http://hl7.org/fhir/fhir-types#{resourceType}
   * title = "{name}"
   * description = "{description}"
+  * structureProfileCanonical	= Canonical({structureProfileCanonical})
+  * content = Reference({exampleResource})
 
 RuleSet: ScenarioContainedInstance(resourceId)
 * instance[=]
