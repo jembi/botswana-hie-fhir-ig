@@ -21,8 +21,8 @@ Usage: #definition
 * insert ScenarioContainedInstance(pos.09)
 
 * insert ScenarioProcess(1, Register Patient in CR, 
-    PoS entity has submitted the FHIR Bundle Resource for HIE.,
-    CR entity has stored the patient's personal information and sent a response back to the IL which inlcudes a MPI identifier.)
+    PoS entity has submitted the Lab Order Bundle which contains the Data Supplying Patient Resource.,
+CR entity has stored the patient's personal information and sent a response back to the IL which inlcudes a MPI identifier.)
 
 * process[=].step[=].process[+]
   * title = "Register Patient in CR"
@@ -71,6 +71,31 @@ Usage: #definition
   * insert ScenarioProcessStep(2.1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
   * step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = false
 
-  * insert ScenarioProcessStep(2.2, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
+  * insert ScenarioProcessStep(2.2, Add Restricted Patient Resource, IL, IL, Add the Restricted Patient Resource to the lab order bundle)
+  * step[=]
+    * operation
+      * initiatorActive = false
+
+  * insert ScenarioProcessStep(2.3, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
+  * step[=]
+    * operation
+      * initiatorActive = false
+
+  * insert ScenarioProcessStep(2.4, Set the Restricted Patient Resource literal ID, IL, IL, Set the literal ID in the Restricted Patient Resource to the same value as the ID used as a patient reference in the other resources in the bundle. Note: There can only be one!.)
+  * step[=]
+    * operation
+      * initiatorActive = false
+
+  * insert ScenarioProcessStep(2.5, Send data for further validation, IL, FHIR, Lab order bundle is sent to the FHIR server for further processing.)
+  * step[=]
+    * operation
+      * initiatorActive = true
+      * request
+        * instanceReference = "pos.09"
+
+  * insert ScenarioProcessStep(2.6, Request status, FHIR, IL, FHIR generates HTTP status code indicating the request outcome.)
+  * step[=]
+    * operation
+      * receiverActive = true
