@@ -95,8 +95,8 @@ resources:
     name: Register New Patient
     description: Demonstrates the process flow between the Client Registry and FHIR server during patient registration.
     exampleBoolean: false
-  ExampleScenario/RetrievePatient:
-    name: Retrieve Patient
+  ExampleScenario/RetrievePatientRecord:
+    name: Retrieve Patient Record
     description: Demonstrates the process flow to retrieve a patient record from the Client Registry and FHIR server.
     exampleBoolean: false
 #  Patient/my-example-patient:

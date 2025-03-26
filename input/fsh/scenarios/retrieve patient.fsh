@@ -1,8 +1,8 @@
-Instance: RetrievePatient
+Instance: RetrievePatientRecord
 InstanceOf: ExampleScenario
 Usage: #definition
-* name = "RetrievePatient"
-* title = "Retrieve Patient"
+* name = "RetrievePatientRecord"
+* title = "Retrieve Patient Record"
 * version = "1"
 * status = #active
 * experimental = false
