@@ -17,8 +17,10 @@ RuleSet: ScenarioContainedInstance(resourceId)
   * containedInstance[+]
     * instanceReference = "{resourceId}"
 
-RuleSet: ScenarioProcess(title, preConditions, postConditions)
+RuleSet: ScenarioProcess(number, title, preConditions, postConditions)
 * process[+]
+  * step[+]
+    * number = "{number}"
   * title = "{title}"
   * preConditions = "{preConditions}"
   * postConditions = "{postConditions}"
