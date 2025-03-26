@@ -31,6 +31,7 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.1, New patient data, PoS, IL, Patient data contains PII and clinical information)
   * step[=]
     * operation
+      * type = http://hl7.org/fhir/restful-interaction#update
       * request
         * instanceReference = "pos.08"
 
@@ -40,6 +41,9 @@ CR entity has stored the patient's personal information and sent a response back
       * initiatorActive = true
 
   * insert ScenarioProcessStep(1.3, Validate patient data, IL, FHIR, FHIR's $validate operation ensures that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
+  * step[=]
+    * operation
+      * type = http://hl7.org/fhir/restful-interaction#operation
 
   * insert ScenarioProcessStep(1.4, Validation response, FHIR, IL, FHIR issues a response to the validation request.)
   * step[=]
@@ -49,6 +53,7 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.5, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
   * step[=]
     * operation
+      * type = http://hl7.org/fhir/restful-interaction#update
       * receiverActive = true
       * request
         * instanceReference = "pos.01"
@@ -91,6 +96,7 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(2.5, Send data for further validation, IL, FHIR, Lab order bundle is sent to the FHIR server for further processing.)
   * step[=]
     * operation
+      * type = http://hl7.org/fhir/restful-interaction#update
       * initiatorActive = true
       * request
         * instanceReference = "pos.09"
