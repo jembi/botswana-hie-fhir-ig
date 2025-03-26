@@ -35,16 +35,24 @@ Usage: #definition
         * instanceReference = "pos.08"
 
   * insert ScenarioProcessStep(1.2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
+  * step[=]
+    * operation
+      * initiatorActive = true
 
   * insert ScenarioProcessStep(1.3, Validate patient data, IL, FHIR, FHIR's $validate operation ensures that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
 
   * insert ScenarioProcessStep(1.4, Validation response, FHIR, IL, FHIR issues a response to the validation request.)
-
+  * step[=]
+    * operation
+      * receiverActive = true
 
 
   * insert ScenarioProcessStep(1.6, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 
   * insert ScenarioProcessStep(1.7, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
+  * step[=]
+    * operation
+      * receiverActive = true
 
 * insert ScenarioProcess(2, Register Patient in FHIR, 
     CR has provided a MPI identifier in its response sent back to the IL.,
@@ -54,9 +62,9 @@ Usage: #definition
   * title = "Register Patient in FHIR"
   * description = "This scenario demonstrates the process of storing a restricted version of the Patient Resource which excludes all PII to ensure patient privacy. This Patient Resource includes the MPI identifier issued by the CR so that the IL can reassociate the clinical information (FHIR) with the PII (CR) during GET requests."
 
-  * insert ScenarioProcessStep(1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
-  /** step[=]
+  * insert ScenarioProcessStep(2.1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
+  * step[=]
     * operation
-      * initiatorActive = true*/
+      * initiatorActive = true
 
-  * insert ScenarioProcessStep(2, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
+  * insert ScenarioProcessStep(2.2, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
