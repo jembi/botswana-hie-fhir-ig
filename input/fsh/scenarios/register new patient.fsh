@@ -51,7 +51,7 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.5, Validation response, FHIR, IL, FHIR issues a HTTP response to the validation request.)
   * step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = false
 
   * insert ScenarioProcessStep(1.6, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
   * step[=]
@@ -61,7 +61,6 @@ CR entity has stored the patient's personal information and sent a response back
         * instanceReference = "pos.01"
 
   * insert ScenarioProcessStep(1.7, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
-
 
   * insert ScenarioProcessStep(1.8, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
