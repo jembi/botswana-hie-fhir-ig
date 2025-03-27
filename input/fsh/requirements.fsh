@@ -151,4 +151,4 @@ Description: "Non Functional Requirements"
   * requirement = """For browser compatibility - If a public user is attempting to access the system without a compatible browser, the system shall display a message to the user that identifies the compatibility requirements necessary to access the system."""
 * statement[+]
   * key = "BOTS.NFR.010"
-  * requirement = """For maintainability - The software shall exhibit high maintainability to facilitate efficient and timely modifications, updates, and enhancements, ensuring that changes can be made with minimal impact on existing functionality."""
+  * requirement = """For maintainability - The software shall exhibit high maintainability to facilitate efficient and timely modifications, updates, and enhancements, ensuring that changes can be made with minimal impact on existing functionality.""" 

@@ -21,9 +21,6 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <!--<li>-->
-        <!--<a href="system_specification.html">System Requirements</a>-->
-      <!--</li>-->
       <li>
         <a href="use_cases.html">Use Cases</a>
       </li>
