@@ -22,13 +22,32 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="system_specification.html">System Requirements</a>
-      </li>
-      <li>
         <a href="use_cases.html">Use Cases</a>
       </li>
       <li>
         <a href="sequence-diagrams.html">Sequence Diagrams</a>
+      </li>
+    </ul>
+  </li>
+    <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">System Requirements
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="Requirements-ClinicianRequirements.html">Clinician Requirements</a>
+      </li>
+      <li>
+        <a href="Requirements-LaboratoryTechnicianRequirements.html">Laboratory Technician Requirements</a>
+      </li>
+      <li>
+        <a href="Requirements-InteroperabilityLayerRequirements.html">Interoperability Layer Requirements</a>
+      </li>
+      <li>
+        <a href="Requirements-HIESystemRequirements.html">HIE System Requirements</a>
+      </li>
+      <li>
+        <a href="Requirements-NonFunctionalRequirements.html">Non Functional Requirements</a>
       </li>
     </ul>
   </li>
