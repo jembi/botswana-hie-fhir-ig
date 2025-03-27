@@ -66,9 +66,9 @@ CR entity has stored the patient's personal information and sent a response back
         * instanceReference = "pos.01"
 
   * insert ScenarioProcessStep(1.7, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
-  * step[=]
+  /** step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = true*/
 
   * insert ScenarioProcessStep(1.8, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
@@ -84,6 +84,9 @@ CR entity has stored the patient's personal information and sent a response back
   * description = "This scenario demonstrates the process of storing a restricted version of the Patient Resource which excludes all PII to ensure patient privacy. This Patient Resource includes the MPI identifier issued by the CR so that the IL can reassociate the clinical information (FHIR) with the PII (CR) during GET requests."
 
   * insert ScenarioProcessStep(2.1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
+  * step[=]
+    * operation
+      * initiatorActive = true
 
   * insert ScenarioProcessStep(2.2, Add Restricted Patient Resource, IL, IL, Add the Restricted Patient Resource to the lab order bundle)
 
