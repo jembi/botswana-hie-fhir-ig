@@ -31,16 +31,16 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.1, Lab order bundle, PoS, IL, Patient data contains PII and clinical information)
   * step[=]
     * operation
-      * receiverActive = true
       * type = http://hl7.org/fhir/restful-interaction#update
       * request
         * instanceReference = "pos.08"
 
   * insert ScenarioProcessStep(1.2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
 
-  * insert ScenarioProcessStep(1.3, Verify patient data compliance, IL, FHIR, Request for FHIR's $validate operation to check that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
+  * insert ScenarioProcessStep(1.3, Verify patient data for compliance, IL, FHIR, Request for FHIR's $validate operation to check that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
   * step[=]
     * operation
+      * initiatorActive = true
       * type = http://hl7.org/fhir/restful-interaction#operation
 
   * insert ScenarioProcessStep(1.4, Validate, FHIR, FHIR, FHIR's $validate operation validates the message structure and its data to ensure that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
@@ -56,17 +56,18 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.6, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
   * step[=]
     * operation
-      * receiverActive = true
       * type = http://hl7.org/fhir/restful-interaction#update
       * request
         * instanceReference = "pos.01"
 
   * insert ScenarioProcessStep(1.7, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
 
+
   * insert ScenarioProcessStep(1.8, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
     * operation
       * initiatorActive = true
+ 
 
 * insert ScenarioProcess(2, Register Patient in FHIR, 
     CR has provided a MPI identifier in its response sent back to the IL.,
@@ -77,24 +78,15 @@ CR entity has stored the patient's personal information and sent a response back
   * description = "This scenario demonstrates the process of storing a restricted version of the Patient Resource which excludes all PII to ensure patient privacy. This Patient Resource includes the MPI identifier issued by the CR so that the IL can reassociate the clinical information (FHIR) with the PII (CR) during GET requests."
 
   * insert ScenarioProcessStep(2.1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
-  * step[=]
-    * operation
-      * receiverActive = true
 
   * insert ScenarioProcessStep(2.2, Add Restricted Patient Resource, IL, IL, Add the Restricted Patient Resource to the lab order bundle)
-  * step[=]
-    * operation
-      * receiverActive = true
 
   * insert ScenarioProcessStep(2.3, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
-  * step[=]
-    * operation
-      * receiverActive = true
 
   * insert ScenarioProcessStep(2.4, Set the Restricted Patient Resource literal ID, IL, IL, Set the literal ID in the Restricted Patient Resource to the same value as the ID used as a patient reference in the other resources in the bundle. Note: There can only be one!.)
   * step[=]
     * operation
-      * receiverActive = true
+      * initiatorActive = true
 
   * insert ScenarioProcessStep(2.5, Send data for further validation, IL, FHIR, Lab order bundle is sent to the FHIR server for further processing.)
   * step[=]
