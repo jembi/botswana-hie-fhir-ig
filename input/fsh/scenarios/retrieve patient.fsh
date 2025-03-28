@@ -35,19 +35,15 @@ Usage: #definition
   * insert ScenarioProcessStep(1.2, Find patient, IL, CR, Request fo find the patient's personal information in the CR.)
   * step[=]
     * operation
-      * initiatorActive = false
+      * receiverActive = true
       * type = http://hl7.org/fhir/restful-interaction#search
 
   * insert ScenarioProcessStep(1.3, Match patient, CR, CR, Find the patient's personal information in the CR matching the business identifiers supplied in the search request.)
-  * step[=]
-    * operation
-      * initiatorActive = true
-      //* receiverActive = false
   
-  * insert ScenarioProcessStep(1.4, Search response, CR, IL, CR issues a HTTP response to the request which may include the patient's personal information and assigned MPI identifier.)
+  * insert ScenarioProcessStep(1.4, Successful match, CR, IL, CR issues a HTTP response to the request which may include the patient's personal information and assigned MPI identifier.)
   * step[=]
     * operation
-      * initiatorActive = false
+      * receiverActive = false
   
 * insert ScenarioProcess(2, Retrieve Patient Record in FHIR, 
     CR has matched the patient using provided business identifiers and responded to the IL with the patient's personal information which includes a MPI identifier.,
@@ -58,8 +54,16 @@ Usage: #definition
   * description = "This scenario demonstrates the process of retrieving the patient's record in FHIR, using the MPI."
 
   * insert ScenarioProcessStep(2.1, Get patient record, IL, FHIR, Mediator uses the patient's MPI and executes a search request for the patient's record.)
-  /** step[=]
+  * step[=]
     * operation
       * type = http://hl7.org/fhir/restful-interaction#search
       * request
-        * instanceReference = "pos.02"*/
+        * instanceReference = "pos.02"
+
+  * insert ScenarioProcessStep(2.2, Find patient, FHIR, FHIR, Find the patient's record using the MPI supplied in the search request.)
+  * step[=]
+    * operation
+      * initiatorActive = true
+      //* receiverActive = true
+
+  * insert ScenarioProcessStep(2.3, Success: record found, FHIR, IL, FHIR responds with bundle containing the patient's clinical data as well as Restricted Patient Resource which contains non-personally identifiable information.)

@@ -50,7 +50,7 @@ CR entity has stored the patient's personal information and sent a response back
       * initiatorActive = true
       * receiverActive = true
 
-  * insert ScenarioProcessStep(1.5, Validation response, FHIR, IL, FHIR issues a HTTP response to the validation request.)
+  * insert ScenarioProcessStep(1.5, Validation response, FHIR, IL, FHIR issues a response to the validation request.)
   * step[=]
     * operation
       * receiverActive = true
