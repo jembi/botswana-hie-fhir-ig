@@ -1,8 +1,8 @@
-Instance: RegisterNewPatient
+Instance: RegisterNewPatientInBundle
 InstanceOf: ExampleScenario
 Usage: #definition
-* name = "RegisterNewPatient"
-* title = "Register New Patient"
+* name = "RegisterNewPatientInBundle"
+* title = "Register New Patient (Included in a Bundle Resource)"
 * version = "1"
 * status = #active
 * experimental = false
