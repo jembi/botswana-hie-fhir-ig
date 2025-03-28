@@ -80,10 +80,19 @@ CR entity has stored the patient's personal information and sent a response back
   * description = "This scenario demonstrates the process of storing a restricted version of the Patient Resource which excludes all PII to ensure patient privacy. This Patient Resource includes the MPI identifier issued by the CR so that the IL can reassociate the clinical information (FHIR) with the PII (CR) during GET requests."
 
   * insert ScenarioProcessStep(2.1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
+  * step[=]
+    * operation
+      * initiatorActive = false
 
   * insert ScenarioProcessStep(2.2, Add Restricted Patient Resource, IL, IL, Add the Restricted Patient Resource to the lab order bundle)
+  * step[=]
+    * operation
+      * initiatorActive = true
 
   * insert ScenarioProcessStep(2.3, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
+  * step[=]
+    * operation
+      * initiatorActive = false
 
   * insert ScenarioProcessStep(2.4, Set the Restricted Patient Resource literal ID, IL, IL, Set the literal ID in the Restricted Patient Resource to the same value as the ID used as a patient reference in the other resources in the bundle. Note: There can only be one!.)
   * step[=]
