@@ -31,6 +31,7 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.1, Lab order bundle, PoS, IL, Patient data contains PII and clinical information)
   * step[=]
     * operation
+      * receiverActive = true
       * type = http://hl7.org/fhir/restful-interaction#update
       * request
         * instanceReference = "pos.08"
@@ -40,22 +41,24 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.3, Verify patient data for compliance, IL, FHIR, Request for FHIR's $validate operation to check that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
   * step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = false
       * type = http://hl7.org/fhir/restful-interaction#operation
 
   * insert ScenarioProcessStep(1.4, Validate, FHIR, FHIR, FHIR's $validate operation validates the message structure and its data to ensure that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
   * step[=]
     * operation
       * initiatorActive = true
+      * receiverActive = true
 
   * insert ScenarioProcessStep(1.5, Validation response, FHIR, IL, FHIR issues a HTTP response to the validation request.)
   * step[=]
     * operation
-      * initiatorActive = false
+      * receiverActive = true
 
   * insert ScenarioProcessStep(1.6, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
   * step[=]
     * operation
+      * receiverActive = true
       * type = http://hl7.org/fhir/restful-interaction#update
       * request
         * instanceReference = "pos.01"
@@ -65,7 +68,7 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.8, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = false
  
 
 * insert ScenarioProcess(2, Register Patient in FHIR, 
