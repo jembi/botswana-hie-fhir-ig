@@ -68,7 +68,7 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.8, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
   * step[=]
     * operation
-      * initiatorActive = false
+      * receiverActive = true
  
 
 * insert ScenarioProcess(2, Register Patient in FHIR, 
