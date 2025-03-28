@@ -13,6 +13,8 @@ Usage: #definition
 * insert ScenarioActor(CR, system, Client Registry, The entity that will provide PII and demographic information for the patient.)
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that will provide the clinical information for the patient.)
 
+* insert ScenarioInstance(pos.01, Endpoint, Search request, The Patient involved in the scenario., Endpoint, SearchForPatient)
+
 * insert ScenarioProcess(1, Retrieve Patient in CR, 
     PoS entity has submitted a request for the patient's record,
 CR entity has responded with the patient's personal information which includes a MPI identifier.)
@@ -21,4 +23,8 @@ CR entity has responded with the patient's personal information which includes a
   * title = "Retrieve Patient in CR"
   * description = "This scenario demonstrates the process of retrieving the patient's personal information in the CR, which includes the Master Patient Index (MPI) identifier for the patient."
 
-  * insert ScenarioProcessStep(1.1, Request for patient record, PoS, IL, Request containes one or more business identifiers.)
+  * insert ScenarioProcessStep(1.1, Request for patient record, PoS, IL, Request contains one or more business identifiers.)
+  * step[=]
+    * operation
+      * receiverActive = true
+      * type = http://hl7.org/fhir/restful-interaction#search

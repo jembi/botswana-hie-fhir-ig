@@ -336,3 +336,18 @@ Usage: #inline
 * telecom[+].system = #email
 * telecom[=].value = "someone@something.org"
 * telecom[=].use = #home
+
+Instance: SearchForPatient
+InstanceOf: Endpoint
+Usage: #example
+Title: "Search Patient - Using business identifiers."
+Description: 
+    "Point-of-Service systems can search for a patient using one or more business identifiers."
+* status = #active
+* connectionType = $EndpointConnectionType#hl7-fhir-rest
+* name = "Patient"
+* description = "The Patient endpoint coming with the FHIR API."
+* payload[+]
+  * type = $EndpointPayloadType#any
+  * mimeType[+] = #application/fhir+json
+* address = "http://server.url/fhir/Patient?identifier=http://moh.bw.org/identifier/omang|omang123,identifier=http://moh.bw.org/identifier/birth|birth456,identifier=http://moh.bw.org/identifier/passport|passport789"
