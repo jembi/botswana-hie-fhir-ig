@@ -69,13 +69,13 @@ Usage: #definition
   * step[=]
     * operation
       * initiatorActive = true
+      * response
+        * instanceReference = "pos.05"
 
   * insert ScenarioProcessStep(2.3, Success: record found, FHIR, IL, FHIR responds with bundle containing the patient's clinical data as well as Restricted Patient Resource which contains non-personally identifiable information.)
   * step[=]
     * operation
       * type = http://hl7.org/fhir/restful-interaction#search
-      //* response
-      //  * instanceReference = "pos.05"
 
 * insert ScenarioProcess(3, Update Patient Record, 
     FHIR has responded with the patient's record.,
