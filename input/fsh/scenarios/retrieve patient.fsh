@@ -45,10 +45,11 @@ Usage: #definition
 
   * insert ScenarioProcessStep(1.3, Match patient, CR, CR, Find the patient's personal information in the CR matching the business identifiers supplied in the search request.)
   
+  
   * insert ScenarioProcessStep(1.4, Successful match, CR, IL, CR issues a HTTP response to the request which may include the patient's personal information and assigned MPI identifier.)
-  * step[=]
+  /** step[=]
     * operation
-      * receiverActive = false
+      * receiverActive = false*/
   
 * insert ScenarioProcess(2, Retrieve Patient Record in FHIR, 
     CR has matched the patient using provided business identifiers and responded to the IL with the patient's personal information which includes a MPI identifier.,
@@ -64,18 +65,17 @@ Usage: #definition
       * type = http://hl7.org/fhir/restful-interaction#search
       * request
         * instanceReference = "pos.02"
+      * response
+        * instanceReference = "pos.05"
 
-  * insert ScenarioProcessStep(2.2, Find patient, FHIR, FHIR, Find the patient's record using the MPI supplied in the search request.)
+  /** insert ScenarioProcessStep(2.2, Find patient, FHIR, FHIR, Find the patient's record using the MPI supplied in the search request.)
   * step[=]
     * operation
       * initiatorActive = true
       * response
-        * instanceReference = "pos.05"
+        * instanceReference = "pos.05"*/
 
-  * insert ScenarioProcessStep(2.3, Success: record found, FHIR, IL, FHIR responds with bundle containing the patient's clinical data as well as Restricted Patient Resource which contains non-personally identifiable information.)
-  /** step[=]
-    * operation
-      * type = http://hl7.org/fhir/restful-interaction#search*/
+  * insert ScenarioProcessStep(2.3, Success: record found, IL, IL, IL asserts that the response Bundle from FHIR contains the patient's clinical data as well as incl. the Restricted Patient Resource which contains non-personally identifiable information for the patient.)
 
 * insert ScenarioProcess(3, Update Patient Record, 
     FHIR has responded with the patient's record.,
