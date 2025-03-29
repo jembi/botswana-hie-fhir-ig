@@ -337,12 +337,12 @@ Usage: #inline
 * telecom[=].value = "someone@something.org"
 * telecom[=].use = #home
 
-Instance: SearchForPatient
+Instance: SearchForPatientInFHIR
 InstanceOf: Endpoint
 Usage: #example
-Title: "Search Patient - Using business identifiers."
+Title: "Search Patient in FHIR - Using business identifiers."
 Description: 
-    "Point-of-Service systems can search for a patient using one or more business identifiers."
+    "Point-of-Service systems can search for a patient in FHIR using one or more business identifiers."
 * status = #active
 * connectionType = $EndpointConnectionType#hl7-fhir-rest
 * name = "Patient"
@@ -351,3 +351,33 @@ Description:
   * type = $EndpointPayloadType#any
   * mimeType[+] = #application/fhir+json
 * address = "http://server.url/fhir/Patient?identifier=http://moh.bw.org/identifier/omang|omang123,identifier=http://moh.bw.org/identifier/birth|birth456,identifier=http://moh.bw.org/identifier/passport|passport789"
+
+Instance: SearchForPatientInCR
+InstanceOf: Endpoint
+Usage: #example
+Title: "Search Patient in Client Registry - Using XXX."
+Description: 
+    "Interoperability layer searches for a patient in the client registry using XXX."
+* status = #active
+* connectionType = $EndpointConnectionTypeCodeSystem#CR-rest
+* name = "CR endpoint name"
+* description = "The endpoint used for XXX."
+* payload[+]
+  * type = $EndpointPayloadType#any
+  * mimeType[+] = #application/json
+* address = "http://server.url/CR/endopint?params"
+
+Instance: SearchForPatientInCRResponse
+InstanceOf: Endpoint
+Usage: #example
+Title: "Search Patient in Client Registry - Response."
+Description: 
+    "Interoperability layer receives a response from the CR for the search request."
+* status = #active
+* connectionType = $EndpointConnectionTypeCodeSystem#CR-rest
+* name = "CR endpoint name"
+* description = "The endpoint used for XXX."
+* payload[+]
+  * type = $EndpointPayloadType#any
+  * mimeType[+] = #application/json
+* address = "http://server.url/IL/endpoint"

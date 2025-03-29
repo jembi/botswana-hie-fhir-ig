@@ -7,3 +7,4 @@ Alias: $V3ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $MasterFacilityList = http://moh.bw.org/CodeSystem/cs-master-facility-list
 Alias: $EndpointConnectionType = http://terminology.hl7.org/CodeSystem/endpoint-connection-type
 Alias: $EndpointPayloadType = http://terminology.hl7.org/CodeSystem/endpoint-payload-type
+Alias: $EndpointConnectionTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-connection-type-codes

@@ -14,12 +14,14 @@ Usage: #definition
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that will provide the clinical information for the patient.)
 
 * insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
-* insert ScenarioInstance(pos.02, Endpoint, Search request, The search query., Endpoint, SearchForPatient)
+* insert ScenarioInstance(pos.02, Endpoint, FHIR Search request, The search query to find a patient in FHIR using business identifiers., Endpoint, SearchForPatientInFHIR)
 * insert ScenarioInstance(pos.03, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
 * insert ScenarioInstance(pos.04, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record., LabOrdersBundle, lab-order-with-patient-bundle)
 * insert ScenarioContainedInstance(pos.01)
 * insert ScenarioInstance(pos.05, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
 * insert ScenarioContainedInstance(pos.03)
+* insert ScenarioInstance(pos.06, Endpoint, CR Search request, The search query to find a patient in CR using XXX., Endpoint, SearchForPatientInCR)
+* insert ScenarioInstance(pos.07, Endpoint, CR Search response, The response to the search request issued by the CR., Endpoint, SearchForPatientInCRResponse)
 
 * insert ScenarioProcess(1, Retrieve Patient in CR, 
     PoS entity has submitted a request for the patient's record,
@@ -40,13 +42,16 @@ Usage: #definition
   * insert ScenarioProcessStep(1.2, Find patient, IL, CR, Request fo find the patient's personal information in the CR.)
   * step[=]
     * operation
-      * receiverActive = true
       * type = http://hl7.org/fhir/restful-interaction#search
+      * request
+        * instanceReference = "pos.06"
+      * response
+        * instanceReference = "pos.07"
 
-  * insert ScenarioProcessStep(1.3, Match patient, CR, CR, Find the patient's personal information in the CR matching the business identifiers supplied in the search request.)
+  //* insert ScenarioProcessStep(1.3, Match patient, CR, CR, Find the patient's personal information in the CR matching the business identifiers supplied in the search request.)
   
   
-  * insert ScenarioProcessStep(1.4, Successful match, CR, IL, CR issues a HTTP response to the request which may include the patient's personal information and assigned MPI identifier.)
+  * insert ScenarioProcessStep(1.4, Successful match, IL, IL, IL asserts that the response from CR contains the patient's personally identifiable information for the patient and a MPI.)
   /** step[=]
     * operation
       * receiverActive = false*/
