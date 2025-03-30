@@ -34,7 +34,7 @@ Usage: #definition
   * insert ScenarioProcessStep(1.1, Request for patient record, PoS, IL, Request contains one or more business identifiers.)
   * step[=]
     * operation
-      * receiverActive = true
+      //* receiverActive = true
       * type = http://hl7.org/fhir/restful-interaction#search
       * request
         * instanceReference = "pos.02"
@@ -42,6 +42,7 @@ Usage: #definition
   * insert ScenarioProcessStep(1.2, Find patient, IL, CR, Request fo find the patient's personal information in the CR.)
   * step[=]
     * operation
+      //* initiatorActive = true
       * type = http://hl7.org/fhir/restful-interaction#search
       * request
         * instanceReference = "pos.06"
@@ -51,7 +52,8 @@ Usage: #definition
   //* insert ScenarioProcessStep(1.3, Match patient, CR, CR, Find the patient's personal information in the CR matching the business identifiers supplied in the search request.)
   
   
-  * insert ScenarioProcessStep(1.4, Successful match, IL, IL, IL asserts that the response from CR contains the patient's personally identifiable information for the patient and a MPI.)
+  * insert ScenarioProcessStep(1.4, Success: match found, IL, IL, IL asserts that the response from CR contains the patient's personally identifiable information for the patient and a MPI.)
+
   
 * insert ScenarioProcess(2, Retrieve Patient Record in FHIR, 
     CR has matched the patient using provided business identifiers and responded to the IL with the patient's personal information which includes a MPI identifier.,
@@ -88,9 +90,11 @@ Usage: #definition
   * description = "This scenario demonstrates the process of updating the patient's record retrieved from FHIR by replacing the Restricted Patient Resource with the Data Supplying Patient Resource so that the patient's personal information can be included in the response back to the PoS."
 
   * insert ScenarioProcessStep(3.1, Remove Restricted Patient Resource, IL, IL, Mediator removes the Restricted Patient Resource from the bundle.)
-  /** step[=]
+  * step[=]
     * operation
-      * initiatorActive = false*/
+      * initiatorActive = true
 
   * insert ScenarioProcessStep(3.2, Insert Data Supplying Patient Resource, IL, IL, Mediator inserts the Data Supplying Patient Resource into the bundle and appends to it the patient's personal information and business identifiers as supplied by the CR.)
-  
+  * step[=]
+    * operation
+      * initiatorActive = false
