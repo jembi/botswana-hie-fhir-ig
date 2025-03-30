@@ -114,3 +114,6 @@ Usage: #definition
         * instanceReference = "pos.04"
   
   * insert ScenarioProcessStep(4.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
+  * step[=]
+    * operation
+      * receiverActive = true
