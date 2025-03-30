@@ -52,7 +52,7 @@ Usage: #definition
   //* insert ScenarioProcessStep(1.3, Match patient, CR, CR, Find the patient's personal information in the CR matching the business identifiers supplied in the search request.)
   
   
-  * insert ScenarioProcessStep(1.4, Success: match found, IL, IL, IL asserts that the response from CR contains the patient's personally identifiable information for the patient and a MPI.)
+  * insert ScenarioProcessStep(1.3, Success: Invoke FHIR mediator, IL, IL, IL asserts that the response from CR contains the patient's personally identifiable information for the patient and a MPI and passes the data to the mediator responsible for calling the endpoint for searching patient data in FHIR.)
 
   
 * insert ScenarioProcess(2, Retrieve Patient Record in FHIR, 
@@ -79,7 +79,7 @@ Usage: #definition
       * response
         * instanceReference = "pos.05"*/
 
-  * insert ScenarioProcessStep(2.3, Success: record found, IL, IL, IL asserts that the response Bundle from FHIR contains the patient's clinical data as well as incl. the Restricted Patient Resource which contains non-personally identifiable information for the patient.)
+  * insert ScenarioProcessStep(2.2, Success: Invoke IL mediator 1, IL, IL, Pass the data to a mediator for further processing. The IL asserts that the response Bundle from FHIR contains the patient's clinical data as well as incl. the Restricted Patient Resource which contains non-personally identifiable information for the patient.)
 
 * insert ScenarioProcess(3, Update Patient Record, 
     FHIR has responded with the patient's record.,
@@ -92,12 +92,18 @@ Usage: #definition
   * insert ScenarioProcessStep(3.1, Remove Restricted Patient Resource, IL, IL, Mediator removes the Restricted Patient Resource from the bundle as well as the MPI identifier.)
   * step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = false
 
   * insert ScenarioProcessStep(3.2, Insert Data Supplying Patient Resource, IL, IL, Mediator inserts the Data Supplying Patient Resource into the bundle and appends to it the patient's personal information and business identifiers as supplied by the CR.)
   * step[=]
     * operation
+      * initiatorActive = true
+
+  * insert ScenarioProcessStep(3.3, Success: Invoke IL mediator 2, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the search request request.)
+  * step[=]
+    * operation
       * initiatorActive = false
+
 
 * insert ScenarioProcess(4, Respond to Search Request, 
     FHIR entity has found the patient's record and replaced the Restricted Patient Resource with the Data Supplying Patient Resource which includes the patient's personal information and business identifiers.,
