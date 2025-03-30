@@ -107,7 +107,7 @@ Usage: #definition
   * title = "Respond to Search Request"
   * description = "This scenario demonstrates the process for responding to the PoS search request for the patient's record."
 
-  * insert ScenarioProcessStep(4.1, Patient record, IL, PoS, Mediator responds to the search request with the patient's record.)
+  * insert ScenarioProcessStep(4.1, Response, IL, PoS, Mediator responds to the search request with the patient's record.)
   * step[=]
     * operation
       * request

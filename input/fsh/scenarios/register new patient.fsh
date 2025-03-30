@@ -124,14 +124,14 @@ CR entity has stored the patient's personal information and sent a response back
   //* insert ScenarioProcessStep(2.6, Request status, FHIR, IL, FHIR generates HTTP status code indicating the request outcome.)
 
 * insert ScenarioProcess(3, Respond to Create Patient Request, 
-    FHIR entity has processed the request to create the patient record and issued an outcome response.,
+    FHIR entity has processed the request to create the patient record and has issued an outcome response.,
     IL entity has received the outcome response from FHIR and forwarded the response to the PoS system.)
 
 * process[=].step[=].process[+]
   * title = "Respond to Create Patient Request"
   * description = "This scenario demonstrates the process for responding to the PoS sytem who issued the create patient request."
 
-  * insert ScenarioProcessStep(3.1, Patient record, IL, PoS, Mediator responds to the create patient request.)
+  * insert ScenarioProcessStep(3.1, Response, IL, PoS, Mediator responds to the create patient request.)
   * step[=]
     * operation
       * request
