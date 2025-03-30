@@ -19,6 +19,9 @@ Usage: #definition
 * insert ScenarioContainedInstance(pos.01)
 * insert ScenarioInstance(pos.10, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
 * insert ScenarioContainedInstance(pos.09)
+* insert ScenarioInstance(pos.11, Endpoint, FHIR Validation outcome, The validation outcome as issued by the FHIR server., Endpoint, ValidatePatientResourceInFHIR)
+* insert ScenarioInstance(pos.12, Endpoint, Assined Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)
+* insert ScenarioInstance(pos.13, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
 
 * insert ScenarioProcess(1, Register Patient in CR, 
     PoS entity has submitted the Lab Order Bundle which contains the Data Supplying Patient Resource.,
@@ -31,44 +34,50 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.1, Lab order bundle, PoS, IL, Patient data contains PII and clinical information)
   * step[=]
     * operation
-      * receiverActive = true
-      * type = http://hl7.org/fhir/restful-interaction#update
+      * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "pos.08"
 
   * insert ScenarioProcessStep(1.2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
-
-  * insert ScenarioProcessStep(1.3, Verify patient data for compliance, IL, FHIR, Request for FHIR's $validate operation to check that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
-  * step[=]
-    * operation
-      * initiatorActive = false
-      * type = http://hl7.org/fhir/restful-interaction#operation
-
-  * insert ScenarioProcessStep(1.4, Validate, FHIR, FHIR, FHIR's $validate operation validates the message structure and its data to ensure that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
   * step[=]
     * operation
       * initiatorActive = true
-      * receiverActive = true
 
-  * insert ScenarioProcessStep(1.5, Validation response, FHIR, IL, FHIR issues a response to the validation request.)
+  * insert ScenarioProcessStep(1.3, Validate patient data for compliance, IL, FHIR, Request for FHIR's $validate operation to check that the supplied data is compliant with the Data Supplying Patient Resource Profile. FHIR's $validate operation validates the message structure and its data to ensure that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
   * step[=]
     * operation
-      * receiverActive = true
-
-  * insert ScenarioProcessStep(1.6, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing.)
-  * step[=]
-    * operation
-      * receiverActive = true
-      * type = http://hl7.org/fhir/restful-interaction#update
+      //* receiverActive = true
+      * type = $RestfulInteractionCodeSystem#operation
       * request
         * instanceReference = "pos.01"
+      * response
+        * instanceReference = "pos.11"
 
-  * insert ScenarioProcessStep(1.7, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
+  //* insert ScenarioProcessStep(1.4, Validate, FHIR, FHIR, FHIR's $validate operation validates the message structure and its data to ensure that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
+ 
 
-  * insert ScenarioProcessStep(1.8, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
+  /** insert ScenarioProcessStep(1.5, Validation response, FHIR, IL, FHIR issues a response to the validation request.)
   * step[=]
     * operation
-      * receiverActive = true
+      * receiverActive = true*/
+
+  * insert ScenarioProcessStep(1.4, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing. The CR associates a MPI with the patient record and stores it. )
+  * step[=]
+    * operation
+      * type = $ScenarioOpTypeCodeSystem#CREATE
+      * request
+        * instanceReference = "pos.01"
+      * response
+        * instanceReference = "pos.12"
+
+  * insert ScenarioProcessStep(1.5, Success: Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the new patient data in FHIR.)
+
+  //* insert ScenarioProcessStep(1.5, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
+
+  /** insert ScenarioProcessStep(1.6, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
+  * step[=]
+    * operation
+      * receiverActive = true*/
  
 
 * insert ScenarioProcess(2, Register Patient in FHIR, 
@@ -82,28 +91,53 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(2.1, Remove Data Supplying Patient Resource, IL, IL, Remove the Data Supplying Patient Resource from the lab order bundle and replace it with the Restricted Patient Resource)
   * step[=]
     * operation
-      * initiatorActive = false
+      * initiatorActive = true
 
   * insert ScenarioProcessStep(2.2, Add Restricted Patient Resource, IL, IL, Add the Restricted Patient Resource to the lab order bundle)
   * step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = false
+ 
 
   * insert ScenarioProcessStep(2.3, Add the MPI identifier, IL, IL, Add the MPI assigned by the CR as a business identifier in the Restricted Patient Resource)
   * step[=]
     * operation
-      * initiatorActive = false
+      * initiatorActive = true
+ 
 
   * insert ScenarioProcessStep(2.4, Set the Restricted Patient Resource literal ID, IL, IL, Set the literal ID in the Restricted Patient Resource to the same value as the ID used as a patient reference in the other resources in the bundle. Note: There can only be one!.)
   * step[=]
     * operation
-      * initiatorActive = true
+      * initiatorActive = false
 
-  * insert ScenarioProcessStep(2.5, Send data for further validation, IL, FHIR, Lab order bundle is sent to the FHIR server for further processing.)
+  * insert ScenarioProcessStep(2.5, Send data for consumption, IL, FHIR, Lab order bundle is sent to the FHIR server for further processing.)
   * step[=]
     * operation
-      * type = http://hl7.org/fhir/restful-interaction#update
+      * receiverActive = true
       * request
         * instanceReference = "pos.10"
+      * response
+        * instanceReference = "pos.13"
+  
+  * insert ScenarioProcessStep(2.6, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the create patient request.)
 
-  * insert ScenarioProcessStep(2.6, Request status, FHIR, IL, FHIR generates HTTP status code indicating the request outcome.)
+  //* insert ScenarioProcessStep(2.6, Request status, FHIR, IL, FHIR generates HTTP status code indicating the request outcome.)
+
+* insert ScenarioProcess(3, Respond to Create Patient Request, 
+    FHIR entity has processed the request to create the patient record and issued an outcome response.,
+    IL entity has received the outcome response from FHIR and forwarded the response to the PoS system.)
+
+* process[=].step[=].process[+]
+  * title = "Respond to Create Patient Request"
+  * description = "This scenario demonstrates the process for responding to the PoS sytem who issued the create patient request."
+
+  * insert ScenarioProcessStep(3.1, Patient record, IL, PoS, Mediator responds to the create patient request.)
+  * step[=]
+    * operation
+      * request
+        * instanceReference = "pos.13"
+  
+  * insert ScenarioProcessStep(3.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
+  * step[=]
+    * operation
+      * receiverActive = true

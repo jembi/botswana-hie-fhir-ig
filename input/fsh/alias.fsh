@@ -8,3 +8,5 @@ Alias: $MasterFacilityList = http://moh.bw.org/CodeSystem/cs-master-facility-lis
 Alias: $EndpointConnectionType = http://terminology.hl7.org/CodeSystem/endpoint-connection-type
 Alias: $EndpointPayloadType = http://terminology.hl7.org/CodeSystem/endpoint-payload-type
 Alias: $EndpointConnectionTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-connection-type-codes
+Alias: $ScenarioOpTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-scenario-op-type-codes
+Alias: $RestfulInteractionCodeSystem = http://hl7.org/fhir/restful-interaction

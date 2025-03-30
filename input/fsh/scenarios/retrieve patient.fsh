@@ -35,7 +35,7 @@ Usage: #definition
   * step[=]
     * operation
       //* initiatorActive = true
-      * type = http://hl7.org/fhir/restful-interaction#search
+      * type = $RestfulInteractionCodeSystem#search
       * request
         * instanceReference = "pos.02"
 
@@ -43,7 +43,7 @@ Usage: #definition
   * step[=]
     * operation
       //* initiatorActive = true
-      * type = http://hl7.org/fhir/restful-interaction#search
+      * type = $RestfulInteractionCodeSystem#search
       * request
         * instanceReference = "pos.06"
       * response
@@ -66,7 +66,7 @@ Usage: #definition
   * insert ScenarioProcessStep(2.1, Get patient record, IL, FHIR, Mediator uses the patient's MPI and executes a search request for the patient's record.)
   * step[=]
     * operation
-      * type = http://hl7.org/fhir/restful-interaction#search
+      * type = $RestfulInteractionCodeSystem#search
       * request
         * instanceReference = "pos.02"
       * response

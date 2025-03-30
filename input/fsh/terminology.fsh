@@ -1088,3 +1088,13 @@ Description: "A coded value that represents the technical details of the usage o
 * ^experimental = false
 * ^caseSensitive = true
 * #CR-rest "Client Registry" "Interact with the server interface using the client registry's RESTful interface."
+* #IL-rest "Interoperability Layer" "Interact with the targeted mediator using the interoperability layer's RESTful interface."
+
+CodeSystem: CSScenarioOperationTypeCodes
+Id: cs-scenario-op-type-codes
+Title: "Scenario Operation Type Codes"
+Description: "A coded value that represents the HTTP method when sending a request to a specified endpoint."
+* ^experimental = false
+* ^caseSensitive = true
+* #CREATE "CREATE"
+* #GET "GET"
