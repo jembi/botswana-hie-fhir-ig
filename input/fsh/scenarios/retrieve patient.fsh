@@ -16,7 +16,7 @@ Usage: #definition
 * insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
 * insert ScenarioInstance(pos.02, Endpoint, FHIR Search request, The search query to find a patient in FHIR using business identifiers., Endpoint, SearchForPatientInFHIR)
 * insert ScenarioInstance(pos.03, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
-* insert ScenarioInstance(pos.04, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record., LabOrdersBundle, lab-order-with-patient-bundle)
+* insert ScenarioInstance(pos.04, Bundle, Lab Order Bundle, The FHIR bundle containing the patient's record., LabOrdersBundle, lab-order-with-patient-bundle)
 * insert ScenarioContainedInstance(pos.01)
 * insert ScenarioInstance(pos.05, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
 * insert ScenarioContainedInstance(pos.03)
@@ -34,7 +34,7 @@ Usage: #definition
   * insert ScenarioProcessStep(1.1, Request for patient record, PoS, IL, Request contains one or more business identifiers.)
   * step[=]
     * operation
-      //* receiverActive = true
+      //* initiatorActive = true
       * type = http://hl7.org/fhir/restful-interaction#search
       * request
         * instanceReference = "pos.02"
@@ -89,7 +89,7 @@ Usage: #definition
   * title = "Update Patient Record"
   * description = "This scenario demonstrates the process of updating the patient's record retrieved from FHIR by replacing the Restricted Patient Resource with the Data Supplying Patient Resource so that the patient's personal information can be included in the response back to the PoS."
 
-  * insert ScenarioProcessStep(3.1, Remove Restricted Patient Resource, IL, IL, Mediator removes the Restricted Patient Resource from the bundle.)
+  * insert ScenarioProcessStep(3.1, Remove Restricted Patient Resource, IL, IL, Mediator removes the Restricted Patient Resource from the bundle as well as the MPI identifier.)
   * step[=]
     * operation
       * initiatorActive = true
@@ -98,3 +98,19 @@ Usage: #definition
   * step[=]
     * operation
       * initiatorActive = false
+
+* insert ScenarioProcess(4, Respond to Search Request, 
+    FHIR entity has found the patient's record and replaced the Restricted Patient Resource with the Data Supplying Patient Resource which includes the patient's personal information and business identifiers.,
+    IL entity has responded to the PoS search request which includes the patient's record.)
+
+* process[=].step[=].process[+]
+  * title = "Respond to Search Request"
+  * description = "This scenario demonstrates the process for responding to the PoS search request for the patient's record."
+
+  * insert ScenarioProcessStep(4.1, Patient record, IL, PoS, Mediator responds to the search request with the patient's record.)
+  * step[=]
+    * operation
+      * request
+        * instanceReference = "pos.04"
+  
+  * insert ScenarioProcessStep(4.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
