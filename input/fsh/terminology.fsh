@@ -1080,3 +1080,11 @@ Title: "Master Facility List (MFL) Codes"
 Description: "Codes found in the MFL."
 * ^experimental = false
 * include codes from system CSMasterFacilityListCodes
+
+CodeSystem: CSConnectionTypeCodes
+Id: cs-connection-type-codes
+Title: "Connection Type Codes"
+Description: "A coded value that represents the technical details of the usage of an endpoint."
+* ^experimental = false
+* ^caseSensitive = true
+* #CR-rest "Client Registry" "Interact with the server interface using the client registry's RESTful interface."
