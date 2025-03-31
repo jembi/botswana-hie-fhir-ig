@@ -14,14 +14,14 @@ Usage: #definition
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores clinical information for the patient included in the request submitted by PoS entity.)
 
 * insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
-* insert ScenarioInstance(pos.09, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
-* insert ScenarioInstance(pos.08, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record., LabOrdersBundle, lab-order-with-patient-bundle)
+* insert ScenarioInstance(pos.02, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
+* insert ScenarioInstance(pos.03, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record., LabOrdersBundle, lab-order-with-patient-bundle)
 * insert ScenarioContainedInstance(pos.01)
-* insert ScenarioInstance(pos.10, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
-* insert ScenarioContainedInstance(pos.09)
-* insert ScenarioInstance(pos.11, Endpoint, FHIR Validation outcome, The validation outcome as issued by the FHIR server., Endpoint, ValidatePatientResourceInFHIR)
-* insert ScenarioInstance(pos.12, Endpoint, Assigned Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)
-* insert ScenarioInstance(pos.13, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
+* insert ScenarioInstance(pos.04, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
+* insert ScenarioContainedInstance(pos.02)
+* insert ScenarioInstance(pos.05, Endpoint, FHIR Validation outcome, The validation outcome as issued by the FHIR server., Endpoint, ValidatePatientResourceInFHIR)
+* insert ScenarioInstance(pos.06, Endpoint, Assigned Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)
+* insert ScenarioInstance(pos.07, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
 
 * insert ScenarioProcess(1, Register Patient in CR, 
     PoS entity has submitted the Lab Order Bundle which contains the Data Supplying Patient Resource.,
@@ -36,7 +36,7 @@ CR entity has stored the patient's personal information and sent a response back
     * operation
       * type = $RestfulInteractionCodeSystem#update
       * request
-        * instanceReference = "pos.08"
+        * instanceReference = "pos.03"
 
   * insert ScenarioProcessStep(1.2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
   * step[=]
@@ -46,20 +46,11 @@ CR entity has stored the patient's personal information and sent a response back
   * insert ScenarioProcessStep(1.3, Validate patient data for compliance, IL, FHIR, Request for FHIR's $validate operation to check that the supplied data is compliant with the Data Supplying Patient Resource Profile. FHIR's $validate operation validates the message structure and its data to ensure that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
   * step[=]
     * operation
-      //* receiverActive = true
       * type = $RestfulInteractionCodeSystem#operation
       * request
         * instanceReference = "pos.01"
       * response
-        * instanceReference = "pos.11"
-
-  //* insert ScenarioProcessStep(1.4, Validate, FHIR, FHIR, FHIR's $validate operation validates the message structure and its data to ensure that the supplied data is compliant with the Data Supplying Patient Resource Profile.)
- 
-
-  /** insert ScenarioProcessStep(1.5, Validation response, FHIR, IL, FHIR issues a response to the validation request.)
-  * step[=]
-    * operation
-      * receiverActive = true*/
+        * instanceReference = "pos.05"
 
   * insert ScenarioProcessStep(1.4, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing. The CR associates a MPI with the patient record and stores it. )
   * step[=]
@@ -68,17 +59,9 @@ CR entity has stored the patient's personal information and sent a response back
       * request
         * instanceReference = "pos.01"
       * response
-        * instanceReference = "pos.12"
+        * instanceReference = "pos.06"
 
   * insert ScenarioProcessStep(1.5, Success: Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the new patient data in FHIR.)
-
-  //* insert ScenarioProcessStep(1.5, Generate MPI and store patient data, CR, CR, CR associates a MPI with the patient record and stores it.)
-
-  /** insert ScenarioProcessStep(1.6, Assigned MPI, CR, IL, CR responds with an MPI for the patient.)
-  * step[=]
-    * operation
-      * receiverActive = true*/
- 
 
 * insert ScenarioProcess(2, Register Patient in FHIR, 
     CR has provided a MPI identifier in its response sent back to the IL.,
@@ -103,7 +86,6 @@ CR entity has stored the patient's personal information and sent a response back
   * step[=]
     * operation
       * initiatorActive = true
- 
 
   * insert ScenarioProcessStep(2.4, Set the Restricted Patient Resource literal ID, IL, IL, Set the literal ID in the Restricted Patient Resource to the same value as the ID used as a patient reference in the other resources in the bundle. Note: There can only be one!.)
   * step[=]
@@ -115,13 +97,11 @@ CR entity has stored the patient's personal information and sent a response back
     * operation
       * receiverActive = true
       * request
-        * instanceReference = "pos.10"
+        * instanceReference = "pos.04"
       * response
-        * instanceReference = "pos.13"
+        * instanceReference = "pos.07"
   
   * insert ScenarioProcessStep(2.6, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the create patient request.)
-
-  //* insert ScenarioProcessStep(2.6, Request status, FHIR, IL, FHIR generates HTTP status code indicating the request outcome.)
 
 * insert ScenarioProcess(3, Respond to Create Patient Request, 
     FHIR entity has processed the request to create the patient record and has issued an outcome response.,
@@ -135,7 +115,7 @@ CR entity has stored the patient's personal information and sent a response back
   * step[=]
     * operation
       * request
-        * instanceReference = "pos.13"
+        * instanceReference = "pos.07"
   
   * insert ScenarioProcessStep(3.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
   * step[=]

@@ -11,7 +11,7 @@ Usage: #definition
 * insert ScenarioActor(PoS, system, Point of Service, The entity that registers the patient.)
 * insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the registration request submitted by PoS entity.)
 * insert ScenarioActor(CR, system, Client Registry, The entity that stores PII and demographic information for the patient included in the Patient Resource submitted by the PoS entity.)
-* insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores a restricted version of the Patient Resource submitted by PoS entity.)
+* insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores a restricted version of the Patient Resource submitted by the PoS entity.)
 
 * insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
 * insert ScenarioInstance(pos.02, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
@@ -99,3 +99,22 @@ CR entity has stored the patient's personal information and sent a response back
         * instanceReference = "pos.05"
   
   * insert ScenarioProcessStep(2.6, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the create patient request.)
+
+* insert ScenarioProcess(3, Respond to Create Patient Request, 
+    FHIR entity has processed the request to create the patient record and has issued an outcome response.,
+    IL entity has received the outcome response from FHIR and forwarded the response to the PoS system.)
+
+* process[=].step[=].process[+]
+  * title = "Respond to Create Patient Request"
+  * description = "This scenario demonstrates the process for responding to the PoS sytem who issued the create patient request."
+
+  * insert ScenarioProcessStep(3.1, Response, IL, PoS, Mediator responds to the create patient request.)
+  * step[=]
+    * operation
+      * request
+        * instanceReference = "pos.05"
+  
+  * insert ScenarioProcessStep(3.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
+  * step[=]
+    * operation
+      * receiverActive = true
