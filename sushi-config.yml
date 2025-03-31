@@ -91,6 +91,10 @@ jurisdiction: urn:iso:std:iso:3166#BW "Botswana"
 # The following are simple examples to demonstrate what this might
 # look like:
 resources:
+  ExampleScenario/RegisterNewPatient:
+    name: Register New Patient
+    description: Demonstrates the process flow between the Client Registry and FHIR server during patient registration.
+    exampleBoolean: false
   ExampleScenario/RegisterNewPatientInBundle:
     name: Register New Patient (Included in a Bundle Resource)
     description: Demonstrates the process flow between the Client Registry and FHIR server during patient registration.
