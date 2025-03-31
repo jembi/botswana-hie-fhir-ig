@@ -34,6 +34,7 @@ Usage: #definition
   * insert ScenarioProcessStep(1.1, Request for patient record, PoS, IL, Request contains one or more business identifiers.)
   * step[=]
     * operation
+      * initiatorActive = true
       * type = $RestfulInteractionCodeSystem#search
       * request
         * instanceReference = "pos.02"
@@ -102,8 +103,15 @@ Usage: #definition
   * insert ScenarioProcessStep(4.1, Response, IL, PoS, Mediator responds to the search request with the patient's record.)
   * step[=]
     * operation
+      * initiatorActive = true
       * request
         * instanceReference = "pos.04"
+
+  * insert ScenarioProcessStep(4.2, Log the outcome, PoS, PoS, PoS entity logs the outcome issued by the FHIR entity.)
+  * step[=]
+    * operation
+      * receiverActive = false
+
   
   * insert ScenarioProcessStep(4.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
   * step[=]

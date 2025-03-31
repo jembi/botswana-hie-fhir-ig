@@ -114,7 +114,7 @@ CR entity has stored the patient's personal information and sent a response back
       * request
         * instanceReference = "pos.05"
   
-  * insert ScenarioProcessStep(3.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
+  * insert ScenarioProcessStep(3.2, Log the outcome, PoS, PoS, PoS entity logs the outcome issued by the FHIR entity.)
   * step[=]
     * operation
       * receiverActive = true
