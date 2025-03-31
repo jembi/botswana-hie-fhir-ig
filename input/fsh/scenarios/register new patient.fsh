@@ -20,7 +20,7 @@ Usage: #definition
 * insert ScenarioInstance(pos.10, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
 * insert ScenarioContainedInstance(pos.09)
 * insert ScenarioInstance(pos.11, Endpoint, FHIR Validation outcome, The validation outcome as issued by the FHIR server., Endpoint, ValidatePatientResourceInFHIR)
-* insert ScenarioInstance(pos.12, Endpoint, Assined Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)
+* insert ScenarioInstance(pos.12, Endpoint, Assigned Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)
 * insert ScenarioInstance(pos.13, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
 
 * insert ScenarioProcess(1, Register Patient in CR, 
