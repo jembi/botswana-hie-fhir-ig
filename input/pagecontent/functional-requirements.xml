@@ -1,0 +1,19 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+    <p>Functional requirements describe the capabilities the system must have in order to meet the end-users’ needs and achieve tasks within the business process.</p>
+
+    <p>
+        <a href="Requirements-ClinicianRequirements.html">Clinician Requirements</a>
+    </p>
+
+    <p>
+        <a href="Requirements-LaboratoryTechnicianRequirements.html">Laboratory Technician Requirements</a>
+    </p>
+
+    <p>
+        <a href="Requirements-InteroperabilityLayerRequirements.html">Interoperability Layer Requirements</a>
+    </p>
+
+    <p>
+        <a href="Requirements-HIESystemRequirements.html">HIE System Requirements</a>
+    </p>
+</div>

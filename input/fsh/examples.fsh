@@ -430,8 +430,8 @@ Description:
 Instance: ClinicianActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "ActorDefinition - Clinician Example"
-Description: "Represents the medical professional responsible for the care of patients."
+Title: "ActorDefinition - Clinician"
+Description: "Represents the individual responsible for the care of patient."
 * name = "Clinician"
 * title = "Clinician"
 * status = #active
@@ -441,8 +441,8 @@ Description: "Represents the medical professional responsible for the care of pa
 Instance: LaboratoryTechnicianActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "ActorDefinition - Laboratory Technician Example"
-Description: "Represents the individual responsible for performing specimen tests in the laboratory."
+Title: "ActorDefinition - Laboratory Technician"
+Description: "Represents the individual responsible for conducting lab tests."
 * name = "LaboratoryTechnician"
 * title = "Laboratory Technician"
 * status = #active
@@ -452,8 +452,8 @@ Description: "Represents the individual responsible for performing specimen test
 Instance: InteroperabilityLayerActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "ActorDefinition - Interoperability Layer Example"
-Description: "Represents the system that enables simpler interoperability between disparate information systems."
+Title: "ActorDefinition - Interoperability Layer"
+Description: "Represents the architectural component responsible for coordinating transactions from one system to another during Health Information Exchange."
 * name = "InteroperabilityLayer"
 * title = "Interoperability Layer"
 * status = #active
@@ -463,7 +463,7 @@ Description: "Represents the system that enables simpler interoperability betwee
 Instance: HIESystemActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "ActorDefinition - HIE System Example"
+Title: "ActorDefinition - HIE System"
 Description: "Represents the system that enables the secure and electronic sharing of patient data among different healthcare providers and organizations, facilitating better coordination and quality of care."
 * name = "HIESystem"
 * title = "HIE System"
