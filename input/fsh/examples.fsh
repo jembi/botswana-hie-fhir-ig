@@ -427,42 +427,46 @@ Description:
   * mimeType[+] = #application/fhir+json
 * address = "http://server.url/IL/endpoint"
 
-Instance: ClinicianExample
+Instance: ClinicianActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "Clinician Example"
-Description: "Clinician Example"
+Title: "ActorDefinition - Clinician Example"
+Description: "Represents the medical professional responsible for the care of patients."
 * name = "Clinician"
 * title = "Clinician"
 * status = #active
+* purpose = "To help define the Clinician as an actor requesting the requirements"
 * type = #person
 
-Instance: LaboratoryTechnicianExample
+Instance: LaboratoryTechnicianActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "Laboratory Technician Example"
-Description: "Laboratory Technician Example"
-* name = "Laboratory Technician"
+Title: "ActorDefinition - Laboratory Technician Example"
+Description: "Represents the individual responsible for performing specimen tests in the laboratory."
+* name = "LaboratoryTechnician"
 * title = "Laboratory Technician"
 * status = #active
+* purpose = "To help define the Laboratory Technician as an actor requesting the requirements"
 * type = #person
 
-Instance: InteroperabilityLayerExample
+Instance: InteroperabilityLayerActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "Interoperability Layer Example"
-Description: "Interoperability Layer Example"
-* name = "Interoperability Layer"
+Title: "ActorDefinition - Interoperability Layer Example"
+Description: "Represents the system that enables simpler interoperability between disparate information systems."
+* name = "InteroperabilityLayer"
 * title = "Interoperability Layer"
 * status = #active
+* purpose = "To help define the Interoperability Layer as a system actor these requirements are requested for."
 * type = #system
 
-Instance: HIESystemExample
+Instance: HIESystemActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "HIE System Example"
-Description: "HIE System Example"
-* name = "HIE System"
+Title: "ActorDefinition - HIE System Example"
+Description: "Represents the system that enables the secure and electronic sharing of patient data among different healthcare providers and organizations, facilitating better coordination and quality of care."
+* name = "HIESystem"
 * title = "HIE System"
 * status = #active
+* purpose = "To help define the HIE System as a system actor these requirements are requested for."
 * type = #system

@@ -5,7 +5,7 @@ Title: "Clinician Requirements"
 Description: "Clinician Functional Requirements"
 * name = "ClinicianRequirements"
 * status = #active
-* actor = Canonical(ClinicianExample)
+* actor = Canonical(ClinicianActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-CR.001"
   * requirement = "I want to be able to log in to system and access the laboratory module."
@@ -35,7 +35,7 @@ Title: "Laboratory Technician Requirements"
 Description: "Laboratory Technician Functional Requirements"
 * name = "LaboratoryTechnicianRequirements"
 * status = #active
-* actor = Canonical(LaboratoryTechnicianExample)
+* actor = Canonical(LaboratoryTechnicianActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-LTR.001"
   * requirement = "I want to be able to log in to access the lab module in IPMS."
@@ -59,7 +59,7 @@ Title: "Interoperability Layer Requirements"
 Description: "Interoperability Layer Functional Requirements"
 * name = "InteroperabilityLayerRequirements"
 * status = #active
-* actor = Canonical(InteroperabilityLayerExample)
+* actor = Canonical(InteroperabilityLayerActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-ILR.001"
   * requirement = "Should be able to cache and store data from various interfacing systems in the shared health record (SHR)."
@@ -80,7 +80,7 @@ Title: "HIE System Requirements"
 Description: "HIE System Functional Requirements"
 * name = "HIESystemRequirements"
 * status = #active
-* actor = Canonical(HIESystemExample)
+* actor = Canonical(HIESystemActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-HIE.001"
   * requirement = "Should be able to send SMS notifications to patients that require urgent attention-(PIMS)."
