@@ -466,3 +466,43 @@ Description: "HIE System Example"
 * title = "HIE System"
 * status = #active
 * type = #system
+
+Instance: ClinicianExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "Clinician Example"
+Description: "Clinician Example"
+* name = "Clinician"
+* title = "Clinician"
+* status = #active
+* type = #person
+
+Instance: LaboratoryTechnicianExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "Laboratory Technician Example"
+Description: "Laboratory Technician Example"
+* name = "Laboratory Technician"
+* title = "Laboratory Technician"
+* status = #active
+* type = #person
+
+Instance: InteroperabilityLayerExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "Interoperability Layer Example"
+Description: "Interoperability Layer Example"
+* name = "Interoperability Layer"
+* title = "Interoperability Layer"
+* status = #active
+* type = #system
+
+Instance: HIESystemExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "HIE System Example"
+Description: "HIE System Example"
+* name = "HIE System"
+* title = "HIE System"
+* status = #active
+* type = #system
