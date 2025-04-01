@@ -426,3 +426,47 @@ Description:
   * type = $EndpointPayloadType#any
   * mimeType[+] = #application/fhir+json
 * address = "http://server.url/IL/endpoint"
+
+Instance: ClinicianActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Clinician"
+Description: "Represents the individual responsible for the care of patient."
+* name = "Clinician"
+* title = "Clinician"
+* status = #active
+* purpose = "The Clinician will request new lab orders and diagnose the patient based on the results returned from the lab."
+* type = #person
+
+Instance: LaboratoryTechnicianActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Laboratory Technician"
+Description: "Represents the individual responsible for conducting lab tests."
+* name = "LaboratoryTechnician"
+* title = "Laboratory Technician"
+* status = #active
+* purpose = "The Laboratory Technician will examine the specimens associated with the lab order and issue a diagnostic report."
+* type = #person
+
+Instance: InteroperabilityLayerActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Interoperability Layer"
+Description: "Represents the architectural component responsible for coordinating transactions from one system to another during Health Information Exchange."
+* name = "InteroperabilityLayer"
+* title = "Interoperability Layer"
+* status = #active
+* purpose = "The Interoperability Layer plays a vital role in ensuring that both lab orders and diagnostic reports are stored in the Shared Health Record."
+* type = #system
+
+Instance: HIESystemActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - HIE System (To Be Reviewed)"
+Description: "Represents the system that enables the secure and electronic sharing of patient data among different healthcare providers and organizations, facilitating better coordination and quality of care."
+* name = "HIESystem"
+* title = "HIE System"
+* status = #active
+* purpose = "need to figure out the pupose of this actor."
+* type = #system

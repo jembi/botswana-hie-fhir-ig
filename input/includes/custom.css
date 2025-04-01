@@ -8,3 +8,12 @@
     color: #337AB7;
     background-color: white !important;
 }
+
+.not-allowed {
+    cursor: not-allowed !important;
+    text-decoration: none !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
