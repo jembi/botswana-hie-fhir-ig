@@ -34,7 +34,7 @@ Usage: #definition
   * insert ScenarioProcessStep(1.1, Request for patient record, PoS, IL, Request contains one or more business identifiers.)
   * step[=]
     * operation
-      //* initiatorActive = true
+      * initiatorActive = true
       * type = $RestfulInteractionCodeSystem#search
       * request
         * instanceReference = "pos.02"
@@ -42,18 +42,13 @@ Usage: #definition
   * insert ScenarioProcessStep(1.2, Find patient, IL, CR, Request fo find the patient's personal information in the CR.)
   * step[=]
     * operation
-      //* initiatorActive = true
       * type = $RestfulInteractionCodeSystem#search
       * request
         * instanceReference = "pos.06"
       * response
         * instanceReference = "pos.07"
-
-  //* insert ScenarioProcessStep(1.3, Match patient, CR, CR, Find the patient's personal information in the CR matching the business identifiers supplied in the search request.)
-  
   
   * insert ScenarioProcessStep(1.3, Success: Invoke FHIR mediator, IL, IL, IL asserts that the response from CR contains the patient's personally identifiable information for the patient and a MPI and passes the data to the mediator responsible for calling the endpoint for searching patient data in FHIR.)
-
   
 * insert ScenarioProcess(2, Retrieve Patient Record in FHIR, 
     CR has matched the patient using provided business identifiers and responded to the IL with the patient's personal information which includes a MPI identifier.,
@@ -71,13 +66,6 @@ Usage: #definition
         * instanceReference = "pos.02"
       * response
         * instanceReference = "pos.05"
-
-  /** insert ScenarioProcessStep(2.2, Find patient, FHIR, FHIR, Find the patient's record using the MPI supplied in the search request.)
-  * step[=]
-    * operation
-      * initiatorActive = true
-      * response
-        * instanceReference = "pos.05"*/
 
   * insert ScenarioProcessStep(2.2, Success: Invoke IL mediator 1, IL, IL, Pass the data to a mediator for further processing. The IL asserts that the response Bundle from FHIR contains the patient's clinical data as well as incl. the Restricted Patient Resource which contains non-personally identifiable information for the patient.)
 
@@ -104,7 +92,6 @@ Usage: #definition
     * operation
       * initiatorActive = false
 
-
 * insert ScenarioProcess(4, Respond to Search Request, 
     FHIR entity has found the patient's record and replaced the Restricted Patient Resource with the Data Supplying Patient Resource which includes the patient's personal information and business identifiers.,
     IL entity has responded to the PoS search request which includes the patient's record.)
@@ -116,10 +103,17 @@ Usage: #definition
   * insert ScenarioProcessStep(4.1, Response, IL, PoS, Mediator responds to the search request with the patient's record.)
   * step[=]
     * operation
+      * initiatorActive = true
       * request
         * instanceReference = "pos.04"
+
+  * insert ScenarioProcessStep(4.2, Log the outcome, PoS, PoS, PoS entity logs the outcome issued by the FHIR entity.)
+  * step[=]
+    * operation
+      * receiverActive = false
+
   
-  * insert ScenarioProcessStep(4.2, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
+  * insert ScenarioProcessStep(4.3, Consume data, PoS, PoS, PoS entity consumes the data according to the user's needs.)
   * step[=]
     * operation
       * receiverActive = true
