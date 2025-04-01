@@ -435,7 +435,7 @@ Description: "Represents the individual responsible for the care of patient."
 * name = "Clinician"
 * title = "Clinician"
 * status = #active
-* purpose = "To help define the Clinician as an actor requesting the requirements"
+* purpose = "The Clinician will request new lab orders and diagnose the patient based on the results returned from the lab."
 * type = #person
 
 Instance: LaboratoryTechnicianActorDefinitionExample
@@ -446,7 +446,7 @@ Description: "Represents the individual responsible for conducting lab tests."
 * name = "LaboratoryTechnician"
 * title = "Laboratory Technician"
 * status = #active
-* purpose = "To help define the Laboratory Technician as an actor requesting the requirements"
+* purpose = "The Laboratory Technician will examine the specimens associated with the lab order and issue a diagnostic report."
 * type = #person
 
 Instance: InteroperabilityLayerActorDefinitionExample
@@ -457,16 +457,16 @@ Description: "Represents the architectural component responsible for coordinatin
 * name = "InteroperabilityLayer"
 * title = "Interoperability Layer"
 * status = #active
-* purpose = "To help define the Interoperability Layer as a system actor these requirements are requested for."
+* purpose = "The Interoperability Layer plays a vital role in ensuring that both lab orders and diagnostic reports are stored in the Shared Health Record."
 * type = #system
 
 Instance: HIESystemActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
-Title: "ActorDefinition - HIE System"
+Title: "ActorDefinition - HIE System (To Be Reviewed)"
 Description: "Represents the system that enables the secure and electronic sharing of patient data among different healthcare providers and organizations, facilitating better coordination and quality of care."
 * name = "HIESystem"
 * title = "HIE System"
 * status = #active
-* purpose = "To help define the HIE System as a system actor these requirements are requested for."
+* purpose = "need to figure out the pupose of this actor."
 * type = #system
