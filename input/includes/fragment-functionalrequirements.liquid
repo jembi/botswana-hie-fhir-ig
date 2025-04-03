@@ -1,11 +1,10 @@
 {% assign sitePages = site.pages %}
 
 {% for p in sitePages %}
-  {% assign check = p.url | split:'.' | last %}
+  {% assign check = p.url | split:'.' %}
 
-  {% if p.url contains "Requirements-ClinicianRequirement" and check == "json" %}
+  {% if check[0] contains "Requirements-ClinicianRequirement" and check[1] == "json" %}
     {% assign requirements = p.content %}
-    {{requirements}}
    
     {% for requirement in requirements %}
       {{requirement}}
