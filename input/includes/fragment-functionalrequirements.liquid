@@ -1,17 +1,15 @@
-{% for data_file in site.data %}
-  {% assign content = data_file[1] %}
-  {% assign resourceNames = "" | split: "" %}
-  
-  {% for resource in content %}
-    {% if resource.type == "Requirements" %}
-      {% assign resourceNames = resource.name | concat: resourceNames %}
-    {% endif %}
-  {% endfor %}
+{% assign sitePages = site.pages %}
 
-  {% for item in resourceNames %}
-    {% for resource in content %}
-      {{resource[0]}}
-        
+{% for p in sitePages %}
+  {% assign check = p.url | split:'.' | last %}
+
+  {% if p.url contains "Requirements-ClinicianRequirement" and check == "json" %}
+    {% assign requirements = p.content %}
+    {{requirements}}
+   
+    {% for requirement in requirements %}
+      {{requirement}}
+
 <div>
 <table class="table table-bordered">
 <thead class="thead-dark">
@@ -44,6 +42,8 @@
       </table>
 </div>
 <br> <!-- Adding a break between tables for visual separation -->
-    {% endfor %}
-  {% endfor %}
+
+{% endfor %}
+{% endif %}
+
 {% endfor %}
