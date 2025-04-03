@@ -1,59 +1,49 @@
 {% for data_file in site.data %}
   {% assign content = data_file[1] %}
-  {% assign resourceName = nil %}
-  {% assign requirementsResourceFound = false %}
-
+  {% assign resourceNames = "" | split: "" %}
+  
   {% for resource in content %}
     {% if resource.type == "Requirements" %}
-      {% assign resourceName = resource.name %}
-      {% assign requirementsResourceFound = true %}
+      {% assign resourceNames = resource.name | concat: resourceNames %}
     {% endif %}
-    
-    {% if requirementsResourceFound ==  true %}
-      {% for rec in resource[0] %}
-        {% assign resourceUrl = "Requirements-" | append: resource.name | append: ".html" %}
-        {{resource.name}}
-        {% if rec == resourceUrl %}
-          <h3>{{rec.title}}</h3>
+  {% endfor %}
+
+  {% for item in resourceNames %}
+    {% for resource in content %}
+      {{resource[0]}}
         
-
-          <div>
-          <table class="table table-bordered">
-          <thead class="thead-dark">
-                    <tr>
-                      <th>Key</th>
-                      <th>Requirement</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-            {% for ext in content.extension %}
-              {% if ext.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement" %}
+<div>
+<table class="table table-bordered">
+<thead class="thead-dark">
           <tr>
-                    {% for statement in ext.extension %}
-
-                      
-                      {% if statement.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement.key" %}
-          <td>{{ statement.valueId }}</td>
-                      {% endif %}
-
-                      {% if statement.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement.requirement" %}
-          <td>{{ statement.valueMarkdown | markdownify}}</td>
-                      {% endif %}
-                      
-                    {% endfor %}
+            <th>Key</th>
+            <th>Requirement</th>
           </tr>
-              {% endif %}
+        </thead>
+        <tbody>
+
+  {% for ext in content.extension %}
+    {% if ext.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement" %}
+<tr>
+          {% for statement in ext.extension %}
+
+            
+            {% if statement.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement.key" %}
+<td>{{ statement.valueId }}</td>
+            {% endif %}
+
+            {% if statement.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement.requirement" %}
+<td>{{ statement.valueMarkdown | markdownify}}</td>
+            {% endif %}
+            
           {% endfor %}
-                  </tbody>
-                </table>
-          </div>
-          <br> <!-- Adding a break between tables for visual separation -->
-
-        {% endif %}
-      {% endfor %}
-
-      {% assign requirementsResourceFound = false %}
+</tr>
     {% endif %}
+{% endfor %}
+        </tbody>
+      </table>
+</div>
+<br> <!-- Adding a break between tables for visual separation -->
+    {% endfor %}
   {% endfor %}
 {% endfor %}
