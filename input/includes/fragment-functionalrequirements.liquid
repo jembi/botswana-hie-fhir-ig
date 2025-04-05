@@ -4,7 +4,7 @@
   {% assign check = p.url | split:'.' %}
 
   {% if check[0] contains "Requirements-ClinicianRequirements" and check[1] == "json" %}
-    {% assign requirements = p.content | strip_html | jsonify | replace: "\r", nil | replace: "\n", nil | replace: "\t", nil | replace: '\', nil %}
+    {% assign requirements = p.content | strip_html %}
 
     
 <h3>ClinicianRequirements</h3>
@@ -13,11 +13,11 @@
     
       {% assign jsonStart = requirement | split:'"resourceType"' %}
 
-      {% assign jsonEnd = jsonStart[1] | split:"]}" %}
+      {% assign jsonEnd = jsonStart[1] | split:"] }" %}
 
-      {% assign jsonData = '{ "resourceType"' | append: jsonEnd[0] | append: "]}" %}
+      {% assign jsonData = '{ "resourceType"' | append: jsonEnd[0] %}
 
-      {{jsonData | parse_json}}
+      {{jsonData | json}}
 
 <div>
 <table class="table table-bordered">
