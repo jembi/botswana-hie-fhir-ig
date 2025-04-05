@@ -15,7 +15,7 @@
 
       {% assign jsonEnd = jsonStart[1] | split:"] }" %}
 
-      {% assign jsonData = '{ "resourceType"' | append: jsonEnd[0] %}
+      {%- assign jsonData = '{ "resourceType"' | append: jsonEnd[0] -%}
 
       {{jsonData | json}}
 
