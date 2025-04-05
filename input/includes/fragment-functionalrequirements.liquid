@@ -3,11 +3,18 @@
 {% for p in sitePages %}
   {% assign check = p.url | split:'.' %}
 
-  {% if check[0] contains "Requirements-ClinicianRequirement" and check[1] == "json" %}
-    {% assign requirements = p.content %}
-   
+  {% if check[0] contains "Requirements-ClinicianRequirements" and check[1] == "json" %}
+    {% assign requirements = p.content | strip_html | jsonify | replace: "\r", nil | replace: "\n", nil | replace: "\t", nil | replace: '\', nil %}
+
+    
+<h3>ClinicianRequirements</h3>
+ 
     {% for requirement in requirements %}
-      {{requirement}}
+    
+      {% assign jsonEnd = requirement | split:'}' | first %}
+      {% assign jsonData = jsonEnd | split:'{' %}
+
+      {{jsonEnd[1]}}
 
 <div>
 <table class="table table-bordered">
