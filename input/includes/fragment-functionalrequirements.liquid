@@ -11,10 +11,13 @@
  
     {% for requirement in requirements %}
     
-      {% assign jsonEnd = requirement | split:'}' | first %}
-      {% assign jsonData = jsonEnd | split:'{' %}
+      {% assign jsonStart = requirement | split:'"resourceType"' %}
 
-      {{jsonEnd[1]}}
+      {% assign jsonEnd = jsonStart[1] | split:"]}" %}
+
+      {% assign jsonData = '{ "resourceType"' | append: jsonEnd[0] | append: "]}" %}
+
+      {{jsonData | parse_json}}
 
 <div>
 <table class="table table-bordered">
