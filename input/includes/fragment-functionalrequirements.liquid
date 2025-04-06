@@ -3,6 +3,7 @@
 {% for p in sitePages %}
   {% assign check = p.url | split:'.' %}
 
+
   {% if check[0] contains "Requirements-ClinicianRequirements" and check[1] == "json" %}
     {% assign requirements = p.content | strip_html | strip_newlines %}
 
@@ -15,13 +16,19 @@
 
       {% assign jsonEnd = jsonStart[1] | split:"] }" %}
 
-      {%- assign jsonDataUncleaned = '{ "resourceType"' | append: jsonEnd[0] | replace: "\r", nil | replace: "\n", nil | replace: "\t", nil | replace: '\', nil -%}
+      {%- assign jsonDataUncleaned = '{ "resourceType"' | append: jsonEnd[0] -%}
 
       {% assign stringToRemove = jsonDataUncleaned | split:"]}" | last %}
 
-      {% assign jsonDataCleaned = jsonDataUncleaned | remove: stringToRemove | parse_json %}
+      {% assign jsonDataCleaned = jsonDataUncleaned | remove: stringToRemove |  remove: "&#x1F517;"  %}
 
-      {{ jsonDataCleaned }}
+      {% assign data = jsonDataCleaned | parse_json %}
+
+      {%- assign requirementsStatementsStart = data | split: '"statement" :' -%}
+
+      {%- assign requirementsStatementsEnd = requirementsStatementsStart[1] -%}
+
+      {{requirementsStatementsEnd}}
 
 <div>
 <table class="table table-bordered">
