@@ -470,3 +470,47 @@ Description: "Represents the system that enables the secure and electronic shari
 * status = #active
 * purpose = "need to figure out the pupose of this actor."
 * type = #system
+
+Instance: ClientRegistryActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Client Registry"
+Description: "Represents the system designed to uniquely identify individuals who receive healthcare services, often by maintaining a central record of patients and their demographics, assigning unique identifiers, and enabling healthcare workers to identify facilities where a patient has received care."
+* name = "ClientRegistry"
+* title = "Client Registry"
+* status = #active
+* purpose = "The client registry is important for the accurate and efficient identification and linking of patient records across different healthcare organizations within a health information exchange network."
+* type = #system
+
+Instance: OmangActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Omang"
+Description: "Represents the system used for national identification of the population in Botswana."
+* name = "Omang"
+* title = "Omang"
+* status = #active
+* purpose = "The population identification data stored in Omang is helpful when it comes to identifying the patient presented at a health facility."
+* type = #system
+
+Instance: BDRSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Birth and Death Registration System"
+Description: "Represents the system used for recording births and deaths, ensuring that citizens are formally recognized and provided with legal identification."
+* name = "BirthDeathRegistrationSystem"
+* title = "Birth and Death Registration System"
+* status = #active
+* purpose = "The helps in maintaining accurate population data, enabling effective policy-making, and ensuring access to services such as healthcare, social security, and education."
+* type = #system
+
+Instance: ICSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Immigration and Citizenship System"
+Description: "Represents the system used to manage the entry, stay, and exit of foreign nationals and to govern the acquisition and loss of citizenship in the country."
+* name = "ImmigrationCitizenshipSystem"
+* title = "Immigration and Citizenship System"
+* status = #active
+* purpose = "This helps in identifying foreign nationals when accessing services such as healthcare in a health facility."
+* type = #system

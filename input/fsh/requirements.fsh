@@ -161,3 +161,135 @@ Description: "Non Functional Requirements"
 * statement[+]
   * key = "BOTS.NFR.010"
   * requirement = "For maintainability - The software shall exhibit high maintainability to facilitate efficient and timely modifications, updates, and enhancements, ensuring that changes can be made with minimal impact on existing functionality." 
+
+Instance: ClientRegistryRequirements
+InstanceOf: Requirements
+Usage: #example
+Title: "Client Registry Requirements"
+Description: "Client Registry Functional Requirements"
+* name = "ClientRegistryRequirements"
+* status = #active
+* actor = Canonical(ClientRegistryActorDefinitionExample)
+* statement[+]
+  * key = "BOTS.FR-CR.001"
+  * requirement = "Should be able to support configurable entity matching, a service to assist in identifying duplicate patients."
+* statement[+]
+  * key = "BOTS.FR-CR.002"
+  * requirement = "Should be able to support patient linking and de-duplication."
+* statement[+]
+  * key = "BOTS.FR-CR.003"
+  * requirement = "Should be able to support the ability to track and monitor inbound/outbound transactions."
+* statement[+]
+  * key = "BOTS.FR-CR.004"
+  * requirement = "Should be able to support synchronization of client IDs with a Shared Health Record (SHR)."
+* statement[+]
+  * key = "BOTS.FR-CR.005"
+  * requirement = "Should be able to manage a full audit log of changes to data as well as configurations as well as users."
+* statement[+]
+  * key = "BOTS.FR-CR.006"
+  * requirement = "Should have functions including user management and access controls."
+* statement[+]
+  * key = "BOTS.FR-CR.007"
+  * requirement = "Should be able to persist the parent/child relationship, birth order, and multi-birth indicator."
+* statement[+]
+  * key = "BOTS.FR-CR.008"
+  * requirement = "Should support a UI to review and manually adjudicate uncertain (“potential”) matches, and override incorrect matches."
+* statement[+]
+  * key = "BOTS.FR-CR.009"
+  * requirement = "Should support configurable attributes that form a patient record and are used for matching."
+* statement[+]
+  * key = "BOTS.FR-CR.010"
+  * requirement = "Should support configurable attributes to make it easy to add attributes to the schema."
+* statement[+]
+  * key = "BOTS.FR-CR.011"
+  * requirement = "Should support configurable attributes to make it easy to remove attributes from the default model (or start over from scratch)."
+
+Instance: OmangRequirements
+InstanceOf: Requirements
+Usage: #example
+Title: "Omang Requirements"
+Description: "Omang Functional Requirements"
+* name = "OmangRequirements"
+* status = #active
+* actor = Canonical(OmangActorDefinitionExample)
+* statement[+]
+  * key = "BOTS.FR-OMANG.001"
+  * requirement = "Should be able to provide a status check that indicates uptime and connection status."
+* statement[+]
+  * key = "BOTS.FR-OMANG.002"
+  * requirement = "Should be able to authenticate with and connect to the appropriate Oracle View with Omang registry data."
+* statement[+]
+  * key = "BOTS.FR-OMANG.003"
+  * requirement = "Should be able to translate the Omang registry data model into valid FHIR resources."
+* statement[+]
+  * key = "BOTS.FR-OMANG.004"
+  * requirement = "Should be able to provide a FHIR Search API layer for handling queries for Omang patients by all identifiers and demographic parameters available in the Omang Oracle View."
+* statement[+]
+  * key = "BOTS.FR-OMANG.005"
+  * requirement = "Should be able to integrate with an HIE interoperability layer for incoming and outgoing communication."
+* statement[+]
+  * key = "BOTS.FR-OMANG.006"
+  * requirement = "Should be able to connect with a FHIR-based Client Registry through the HIE."
+* statement[+]
+  * key = "BOTS.FR-OMANG.007"
+  * requirement = "Should be able to synchronize patient data on demand between the Omang registry and a FHIR-based HIE Client Registry, with a configurable refresh timespan."
+
+Instance: BirthDeathRegistrationRequirements
+InstanceOf: Requirements
+Usage: #example
+Title: "Birth and Death Registration System Requirements"
+Description: "Birth and Death Registration System Functional Requirements"
+* name = "BirthDeathRegistrationRequirements"
+* status = #active
+* actor = Canonical(BDRSActorDefinitionExample)
+* statement[+]
+  * key = "BOTS.FR-BDRS.001"
+  * requirement = "Should be able to provide a status check that indicates uptime and connection status."
+* statement[+]
+  * key = "BOTS.FR-BDRS.002"
+  * requirement = "Should be able to authenticate with and connect to the appropriate Oracle View with BDRS registry data."
+* statement[+]
+  * key = "BOTS.FR-BDRS.003"
+  * requirement = "Should be able to translate the BDRS registry data model into valid FHIR resources."
+* statement[+]
+  * key = "BOTS.FR-BDRS.004"
+  * requirement = "Should be able to provide a FHIR Search API layer for handling queries for Omang patients by all identifiers and demographic parameters available in the BDRS Oracle View."
+* statement[+]
+  * key = "BOTS.FR-BDRS.005"
+  * requirement = "Should be able to integrate with an HIE interoperability layer for incoming and outgoing communication."
+* statement[+]
+  * key = "BOTS.FR-BDRS.006"
+  * requirement = "Should be able to connect with a FHIR-based Client Registry through the HIE."
+* statement[+]
+  * key = "BOTS.FR-BDRS.007"
+  * requirement = "Should be able to synchronize patient data on demand between the BDRS registry and a FHIR-based HIE Client Registry, with a configurable refresh timespan."
+
+Instance: ImmigrationCitizenshipSystemRequirements
+InstanceOf: Requirements
+Usage: #example
+Title: "Immigration and Citizenship System Requirements"
+Description: "Immigration and Citizenship System Functional Requirements"
+* name = "ImmigrationCitizenshipRequirements"
+* status = #active
+* actor = Canonical(ICSActorDefinitionExample)
+* statement[+]
+  * key = "BOTS.FR-ICS.001"
+  * requirement = "Should be able to provide a status check that indicates uptime and connection status."
+* statement[+]
+  * key = "BOTS.FR-ICS.002"
+  * requirement = "Should be able to authenticate with and connect to the appropriate Oracle View with ICS registry data."
+* statement[+]
+  * key = "BOTS.FR-ICS.003"
+  * requirement = "Should be able to translate the ICS registry data model into valid FHIR resources."
+* statement[+]
+  * key = "BOTS.FR-ICS.004"
+  * requirement = "Should be able to provide a FHIR Search API layer for handling queries for Omang patients by all identifiers and demographic parameters available in the ICS Oracle View."
+* statement[+]
+  * key = "BOTS.FR-ICS.005"
+  * requirement = "Should be able to integrate with an HIE interoperability layer for incoming and outgoing communication."
+* statement[+]
+  * key = "BOTS.FR-ICS.006"
+  * requirement = "Should be able to connect with a FHIR-based Client Registry through the HIE."
+* statement[+]
+  * key = "BOTS.FR-ICS.007"
+  * requirement = "Should be able to synchronize patient data on demand between the ICS registry and a FHIR-based HIE Client Registry, with a configurable refresh timespan."
