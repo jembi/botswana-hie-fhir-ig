@@ -22,7 +22,7 @@
 
       {% assign jsonDataCleaned = jsonDataUncleaned | remove: stringToRemove |  remove: "&#x1F517;"  %}
 
-      {% assign data = jsonDataCleaned | parse_json %}
+      {% assign data = jsonDataCleaned %}
 
       {% assign requirementsStatementsStart = data | split: '"statement" :' %}
 
