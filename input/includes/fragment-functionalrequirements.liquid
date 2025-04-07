@@ -5,7 +5,7 @@
   {% assign content = data_file[1] %}
    {% for resource in content %}
     {% if resource.type == "Requirements" %}
-      {% assign resourceNames = resource.name | concat: resourceNames %}
+      {% assign resourceNames = resource.name | concat: resourceNames | sort %}
     {% endif %}
   {% endfor %}
 {% endfor %}
