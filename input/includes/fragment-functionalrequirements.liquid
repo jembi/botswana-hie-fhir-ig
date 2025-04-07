@@ -40,12 +40,12 @@
 <div>
 <table class="table table-bordered">
 <thead class="thead-dark">
-        <tr>
-          <th>Key</th>
-          <th>Requirement</th>
-        </tr>
-      </thead>
-      <tbody>
+  <tr>
+    <th>Key</th>
+    <th>Requirement</th>
+  </tr>
+</thead>
+<tbody>
 
         {% for statement in requirementsStatements %}
           {%- assign key = statement | split: '",' | first -%}
@@ -53,16 +53,12 @@
           {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
           
 <tr>
-
-<td>{{key}}</td>
-
-<td>{{keyRequirement}}</td>
-
+  <td>{{key}}</td><td>{{keyRequirement}}</td>
 </tr>
         {% endfor %}
         
-      </tbody>
-      </table>
+</tbody>
+</table>
 </div>
 
 <br> <!-- Adding a break between tables for visual separation -->
