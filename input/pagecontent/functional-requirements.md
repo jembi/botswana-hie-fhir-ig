@@ -1,6 +1,6 @@
-<style>
-{% include custom.css %}
-</style>
+<script>
+    document.querySelector(".markdown-toc").remove();
+</script>
 
 Functional requirements describe the capabilities the system must have in order to meet the end-users’ needs and achieve tasks within the business process.
 
