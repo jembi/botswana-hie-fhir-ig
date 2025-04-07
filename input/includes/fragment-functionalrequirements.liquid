@@ -49,15 +49,20 @@
 </thead>
 <tbody>
 
-        {% for statement in requirementsStatements %}
-          {%- assign key = statement | split: '",' | first -%}
-          {%- assign requirementUncleaned = statement | split: '"requirement" : "' | last -%}
-          {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
+  {% for statement in requirementsStatements %}
+    {%- assign key = statement | split: '",' | first -%}
+    {%- assign requirementUncleaned = statement | split: '"requirement" : "' | last -%}
+    {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
+
+    {%- assign keyCheck = key | strip -%}
+
+    {% if keyCheck != "" and keyCheck != nil %}
           
 <tr>
   <td>{{key}}</td><td>{{keyRequirement}}</td>
 </tr>
-        {% endfor %}
+    {% endif %}
+  {% endfor %}
         
 </tbody>
 </table>
