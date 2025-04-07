@@ -15,7 +15,7 @@
     {% if p.url contains item and p.url contains ".json" and item != "NonFunctionalRequirements" %}
       {% assign requirements = p.content | strip_html | strip_newlines %}
 
-<h3>{{item}}</h3>
+<p class="heading">{{item}}</p>
 
       {% for requirement in requirements %}
       
@@ -61,7 +61,7 @@
 </table>
 </div>
 
-<br> <!-- Adding a break between tables for visual separation -->
+<br /> <!-- Adding a break between tables for visual separation -->
 
       {% endfor %}
 
