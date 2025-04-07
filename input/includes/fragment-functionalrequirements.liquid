@@ -15,7 +15,9 @@
     {% if p.url contains item and p.url contains ".json" and item != "NonFunctionalRequirements" %}
       {% assign requirements = p.content | strip_html | strip_newlines %}
 
-<h3>{{item}}</h3>
+      {% assign title = requirements | split: " - JSON Representation" | first %}
+
+<h3>{{title}}</h3>
 
       {% for requirement in requirements %}
       
