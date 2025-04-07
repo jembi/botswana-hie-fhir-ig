@@ -1,1 +1,0 @@
-document.querySelector(".markdown-toc").remove();
