@@ -16,7 +16,7 @@
 
       {% assign jsonEnd = jsonStart[1] | split:"] }" %}
 
-      {%- assign jsonDataUncleaned = '{ "resourceType"' | append: jsonEnd[0] -%}
+      {% assign jsonDataUncleaned = '{ "resourceType"' | append: jsonEnd[0] %}
 
       {% assign stringToRemove = jsonDataUncleaned | split:"]}" | last %}
 
@@ -24,11 +24,11 @@
 
       {% assign data = jsonDataCleaned | parse_json %}
 
-      {%- assign requirementsStatementsStart = data | split: '"statement" :' -%}
+      {% assign requirementsStatementsStart = data | split: '"statement" :' %}
 
-      {%- assign requirementsStatementsEnd = requirementsStatementsStart[1] -%}
+      {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
 
-      {{requirementsStatementsEnd}}
+      {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
 <div>
 <table class="table table-bordered">
@@ -40,30 +40,22 @@
         </thead>
         <tbody>
 
-  {% for ext in content.extension %}
-    {% if ext.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement" %}
+  {% for statement in requirementsStatements %}
+    {%- assign key = statement | split: '",' | first -%}
+    {%- assign requirementUncleaned = statement | split: '"requirement" : "' | last -%}
+    {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
+
 <tr>
-          {% for statement in ext.extension %}
-
-            
-            {% if statement.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement.key" %}
-<td>{{ statement.valueId }}</td>
-            {% endif %}
-
-            {% if statement.url == "http://hl7.org/fhir/5.0/StructureDefinition/extension-Requirements.statement.requirement" %}
-<td>{{ statement.valueMarkdown | markdownify}}</td>
-            {% endif %}
-            
-          {% endfor %}
+<td>{{key}}</td>
+<td>{{keyRequirement}}</td>
 </tr>
-    {% endif %}
-{% endfor %}
+  {% endfor %}
         </tbody>
-      </table>
+        </table>
 </div>
 <br> <!-- Adding a break between tables for visual separation -->
 
-{% endfor %}
-{% endif %}
 
+    {% endfor %}
+  {% endif %}
 {% endfor %}
