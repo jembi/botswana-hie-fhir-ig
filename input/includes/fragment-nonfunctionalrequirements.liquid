@@ -1,0 +1,79 @@
+{% assign sitePages = site.pages %}
+{% assign resourceNames = "" | split: "," %}
+
+{% for data_file in site.data %}
+  {% assign content = data_file[1] %}
+   {% for resource in content %}
+    {% if resource.type == "Requirements" %}
+      {% assign resourceNames = resource.name | concat: resourceNames | sort %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% for item in resourceNames %}
+  {% for p in sitePages | where_exp "p", "p.url contains" | append: {{item}} | append: ".json" %}
+    {% if p.url contains item and p.url contains ".json" and item == "NonFunctionalRequirements" %}
+      {% assign requirements = p.content | strip_html | strip_newlines %}
+
+      {% assign title = requirements | split: " - JSON Representation" | first %}
+
+<p class="heading" style="black !important;">{{title}}</p>
+
+      {% for requirement in requirements %}
+      
+        {% assign jsonStart = requirement | split:'"resourceType"' %}
+
+        {% assign jsonEnd = jsonStart[1] | split:"] }" %}
+
+        {% assign jsonDataUncleaned = '{ "resourceType"' | append: jsonEnd[0] %}
+
+        {% assign stringToRemove = jsonDataUncleaned | split:"]}" | last %}
+
+        {% assign jsonDataCleaned = jsonDataUncleaned | remove: stringToRemove |  remove: "&#x1F517;"  %}
+
+        {% assign data = jsonDataCleaned %}
+
+        {% assign requirementsStatementsStart = data | split: '"statement" :' %}
+
+        {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
+
+        {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
+
+<div>
+<table class="table table-bordered">
+<thead class="thead-dark">
+  <tr>
+    <th>Key</th>
+    <th>Requirement</th>
+  </tr>
+</thead>
+<tbody>
+
+  {% for statement in requirementsStatements %}
+    {%- assign key = statement | split: '",' | first -%}
+    {%- assign requirementUncleaned = statement | split: '"requirement" : "' | last -%}
+    {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
+
+    {%- assign keyCheck = key | strip -%}
+
+    {% if keyCheck != "" and keyCheck != nil %}
+          
+<tr>
+  <td>{{key}}</td><td>{{keyRequirement}}</td>
+</tr>
+    {% endif %}
+  {% endfor %}
+        
+</tbody>
+</table>
+
+</div>
+
+<br /> <!-- Adding a break between tables for visual separation -->
+
+      {% endfor %}
+
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
