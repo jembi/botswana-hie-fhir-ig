@@ -1,5 +1,5 @@
 {% assign sitePages = site.pages %}
-{% assign resourceNames = "" | split: "" %}
+{% assign resourceNames = "" | split: "," %}
 
 {% for data_file in site.data %}
   {% assign content = data_file[1] %}
@@ -11,13 +11,10 @@
 {% endfor %}
 
 {% for item in resourceNames %}
-  {% for p in sitePages where_exp %}
-    {% assign check = p.url | split:'.' %}
-
-    {% if check[0] contains "Requirements-" | append: {{item}} and item != "NonFunctionalRequirements" and check[1] == "json" %}
+  {% for p in sitePages | where_exp "p", "p.url contains" | append: {{item}} | append: ".json" %}
+    {% if p.url contains item and p.url contains ".json" and item != "NonFunctionalRequirements" %}
       {% assign requirements = p.content | strip_html | strip_newlines %}
 
-  
 <h3>{{item}}</h3>
 
       {% for requirement in requirements %}
@@ -56,15 +53,19 @@
           {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
           
 <tr>
+
 <td>{{key}}</td>
+
 <td>{{keyRequirement}}</td>
+
 </tr>
         {% endfor %}
+        
       </tbody>
       </table>
 </div>
-<br> <!-- Adding a break between tables for visual separation -->
 
+<br> <!-- Adding a break between tables for visual separation -->
 
       {% endfor %}
 
