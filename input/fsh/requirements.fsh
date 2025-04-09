@@ -1,8 +1,9 @@
 Instance: ClinicianRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Clinician Requirements"
 Description: "Clinician Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "ClinicianRequirements"
 * status = #active
 * actor = Canonical(ClinicianActorDefinitionExample)
@@ -29,10 +30,11 @@ Description: "Clinician Functional Requirements"
   * requirement = "I want to be able to receive pop up notification from PIMS indicating that new - results have been received."
 
 Instance: LaboratoryTechnicianRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Laboratory Technician Requirements"
 Description: "Laboratory Technician Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "LaboratoryTechnicianRequirements"
 * status = #active
 * actor = Canonical(LaboratoryTechnicianActorDefinitionExample)
@@ -53,10 +55,11 @@ Description: "Laboratory Technician Functional Requirements"
   * requirement = "I want to be able to submit the lab test results to the SHR through IPMS."
 
 Instance: InteroperabilityLayerRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Interoperability Layer Requirements"
 Description: "Interoperability Layer Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "InteroperabilityLayerRequirements"
 * status = #active
 * actor = Canonical(InteroperabilityLayerActorDefinitionExample)
@@ -74,10 +77,11 @@ Description: "Interoperability Layer Functional Requirements"
   * requirement = "Should be able to update SHR with results from IPMS and push the updated record to PIMS."
 
 Instance: HIESystemRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "HIE System Requirements"
 Description: "HIE System Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "HIESystemRequirements"
 * status = #active
 * actor = Canonical(HIESystemActorDefinitionExample)
@@ -125,10 +129,11 @@ Description: "HIE System Functional Requirements"
   * requirement = "Should capture monitoring statistics, such as transaction loads and performance metrics, and provide a view of these for monitoring the flow of messages through the HIE."
 
 Instance: NonFunctionalRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Non Functional Requirements"
 Description: "Non Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#non-functional
 * name = "NonFunctionalRequirements"
 * status = #active
 * statement[+]
@@ -163,10 +168,11 @@ Description: "Non Functional Requirements"
   * requirement = "For maintainability - The software shall exhibit high maintainability to facilitate efficient and timely modifications, updates, and enhancements, ensuring that changes can be made with minimal impact on existing functionality." 
 
 Instance: ClientRegistryRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Client Registry Requirements"
 Description: "Client Registry Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "ClientRegistryRequirements"
 * status = #active
 * actor = Canonical(ClientRegistryActorDefinitionExample)
@@ -205,10 +211,11 @@ Description: "Client Registry Functional Requirements"
   * requirement = "Should support configurable attributes to make it easy to remove attributes from the default model (or start over from scratch)."
 
 Instance: OmangRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Omang Requirements"
 Description: "Omang Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "OmangRequirements"
 * status = #active
 * actor = Canonical(OmangActorDefinitionExample)
@@ -235,10 +242,11 @@ Description: "Omang Functional Requirements"
   * requirement = "Should be able to synchronize patient data on demand between the Omang registry and a FHIR-based HIE Client Registry, with a configurable refresh timespan."
 
 Instance: BirthDeathRegistrationRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Birth and Death Registration System Requirements"
 Description: "Birth and Death Registration System Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "BirthDeathRegistrationRequirements"
 * status = #active
 * actor = Canonical(BDRSActorDefinitionExample)
@@ -265,10 +273,11 @@ Description: "Birth and Death Registration System Functional Requirements"
   * requirement = "Should be able to synchronize patient data on demand between the BDRS registry and a FHIR-based HIE Client Registry, with a configurable refresh timespan."
 
 Instance: ImmigrationCitizenshipSystemRequirements
-InstanceOf: Requirements
+InstanceOf: BwRequirements
 Usage: #example
 Title: "Immigration and Citizenship System Requirements"
 Description: "Immigration and Citizenship System Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "ImmigrationCitizenshipRequirements"
 * status = #active
 * actor = Canonical(ICSActorDefinitionExample)

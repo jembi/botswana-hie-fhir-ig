@@ -409,3 +409,13 @@ Description: "While this bundle contains all of the lab order profiles for manag
   * ^definition = "SHALL be set to the same ID used by all patient references in the bundle."
 
 * insert BundleEntry(RestrictedPatient, restrictedPatient)
+
+Profile: BwRequirements
+Parent: Requirements
+Id: bw-requirements
+Title: "Requirements"
+Description: "Represents the requirements for the use case described in this Implementation Guide."
+* name 1..1
+* actor MS
+* statement 1..*
+* extension contains RequirementsTypeExtension named RequirementsType 1..1

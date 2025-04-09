@@ -1,7 +1,7 @@
 {% assign sitePages = site.pages %}
 {% assign resourceNames = "" | split: "," %}
 
-{% for data_file in site.data %}
+{% for data_file in site.data | where_exp "data", "data[0] = canonicals" %}
   {% assign content = data_file[1] %}
    {% for resource in content %}
     {% if resource.type == "Requirements" %}
