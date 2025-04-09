@@ -22,11 +22,8 @@
 <p class="heading" style="black !important;">{{title}}</p>
 
       {% for requirement in requirements %}
-       {% assign requirementsTypeCodeSystem = requirement | split: '"http://moh.bw.org/StructureDefinition/requirements-type"' %}
-       {% assign requirementsTypeCode = RequirementsTypeCodeSystem[1] | split: '"code" : "' %}
-       {%- assign requirementsType = requirementsTypeCode[1] | split: '"          }' -%}
-
-       {{requirementsTypeCodeSystem}}
+       {% assign requirementsTypeCoding = requirement | split: '"system" : "http://moh.bw.org/CodeSystem/cs-requirements-type-codes",            "code" : "' %}
+       {%- assign requirementsType = requirementsTypeCoding[1] | split: '"' -%}
         
        {% if requirementsType == requirementsTypeFilter %}
 
@@ -58,12 +55,13 @@
   </tr>
             {% endif %}
           {% endfor %}
-        {% endif %}
+        
         
 </tbody>
 </table>
 
 </div>
+        {% endif %}
 
 <br /> <!-- Adding a break between tables for visual separation -->
 
