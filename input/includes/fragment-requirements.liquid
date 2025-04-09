@@ -29,6 +29,30 @@
 
           {% if requirementsTypeFilter != "non-functional" %}
 <p class="heading" style="black !important;">{{title}}</p>
+
+            {%- assign actorUrlsStart = requirements | split: '"actor" : [' -%}
+            {%- assign actorUrlsEnd = actorUrlsStart[1] | remove: '&#x1F517;' | split: ']' | first  -%}
+
+            {% assign actorUrls = "" | split: "," %}
+
+            {% for url in actorUrlsEnd  %}
+              {%- assign actorUrls = url | split: ',' | concat: actorUrls -%}
+            {% endfor %}
+
+            {% for item in actorUrls %}
+              {% for data_file in site.data | where_exp "data", "data[0] = resources" %}
+
+                {{data_file}}
+                {% if data_file[1].url == item %}
+                  
+                  <p><a href = {{data_file[1].url}}>{{data_file[1].title}}</a></p>
+
+                  {% break %}
+                {% endif %}
+
+              {% endfor %}
+            {% endfor %}
+
           {% endif %}
 <div>
 <table class="table table-bordered">

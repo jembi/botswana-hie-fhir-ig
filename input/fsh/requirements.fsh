@@ -6,7 +6,8 @@ Description: "Clinician Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "ClinicianRequirements"
 * status = #active
-* actor = Canonical(ClinicianActorDefinitionExample)
+* actor[+] = Canonical(ClinicianActorDefinitionExample)
+* actor[+] = Canonical(BDRSActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-C.001"
   * requirement = "I want to be able to log in to system and access the laboratory module."
