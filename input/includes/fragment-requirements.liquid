@@ -1,7 +1,5 @@
 {% assign sitePages = site.pages %}
 {% assign resourceNames = "" | split: "," %}
-{% assign requirementsTypeFilter = "" %}
-
 
 {% for data_file in site.data | where_exp "data", "data[0] = canonicals" %}
   {% assign content = data_file[1] %}
@@ -23,7 +21,7 @@
        {% assign requirementsTypeCoding = requirement | split: '"system" : "http://moh.bw.org/CodeSystem/cs-requirements-type-codes",            "code" : "' %}
        {%- assign requirementsType = requirementsTypeCoding[1] | split: '"' -%}
         
-       {% if requirementsType == requirementsTypeFilter %}
+       {% if requirementsType[0] == requirementsTypeFilter %}
 
           {% assign requirementsStatementsStart = requirement | split: '"statement" :' %}
           {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
@@ -61,6 +59,9 @@
 </table>
 
 </div>
+        {% else %}
+          {% break %}
+
         {% endif %}
 
 <br /> <!-- Adding a break between tables for visual separation -->

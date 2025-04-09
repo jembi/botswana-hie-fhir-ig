@@ -1,5 +1,5 @@
 <style>
-{% include custom.css %}
+    {% include custom.css %}
 </style>
 
 This page provides an overview of illustrative non-functional requirements that may be considered to kick-start the process of designing or adapting Botswana's Health Information Exchange to support lab orders.
@@ -8,4 +8,6 @@ Non-functional requirements provide the general attributes and features of the d
 
 <br />
 
-{% include fragment-requirements.liquid requirementsTypeFilter = "non-functional" %}
+{% assign requirementsTypeFilter = "non-functional" %}
+
+{% include fragment-requirements.liquid %}
