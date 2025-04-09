@@ -8,4 +8,4 @@ Non-functional requirements provide the general attributes and features of the d
 
 <br />
 
-{% include fragment-nonfunctionalrequirements.liquid %}
+{% include fragment-requirements.liquid requirementsTypeFilter = "non-functional" %}
