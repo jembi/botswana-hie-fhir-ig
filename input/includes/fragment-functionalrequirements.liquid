@@ -19,8 +19,6 @@
 
       {% assign title = requirements | split: " - JSON Representation" | first %}
 
-<p class="heading" style="black !important;">{{title}}</p>
-
       {% for requirement in requirements %}
        {% assign requirementsTypeCoding = requirement | split: '"system" : "http://moh.bw.org/CodeSystem/cs-requirements-type-codes",            "code" : "' %}
        {%- assign requirementsType = requirementsTypeCoding[1] | split: '"' -%}
@@ -31,6 +29,8 @@
           {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
           {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
+
+<p class="heading" style="black !important;">{{title}}</p>
 <div>
 <table class="table table-bordered">
 <thead class="thead-dark">
