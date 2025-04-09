@@ -1,5 +1,7 @@
 {% assign sitePages = site.pages %}
 {% assign resourceNames = "" | split: "," %}
+{% assign requirementsTypeFilter = "" %}
+
 
 {% for data_file in site.data | where_exp "data", "data[0] = canonicals" %}
   {% assign content = data_file[1] %}
@@ -12,7 +14,7 @@
 
 {% for item in resourceNames %}
   {% for p in sitePages | where_exp "p", "p.url contains" | append: {{item}} | append: ".json" %}
-    {% if p.url contains item and p.url contains ".json" and item != "NonFunctionalRequirements" %}
+    {% if p.url contains item and p.url contains ".json" %}
       {% assign requirements = p.content | strip_html | strip_newlines %}
 
       {% assign title = requirements | split: " - JSON Representation" | first %}
@@ -20,24 +22,17 @@
 <p class="heading" style="black !important;">{{title}}</p>
 
       {% for requirement in requirements %}
-      
-        {% assign jsonStart = requirement | split:'"resourceType"' %}
+       {% assign requirementsTypeCodeSystem = requirement | split: '"http://moh.bw.org/StructureDefinition/requirements-type"' %}
+       {% assign requirementsTypeCode = RequirementsTypeCodeSystem[1] | split: '"code" : "' %}
+       {%- assign requirementsType = requirementsTypeCode[1] | split: '"          }' -%}
 
-        {% assign jsonEnd = jsonStart[1] | split:"] }" %}
+       {{requirementsTypeCodeSystem}}
+        
+       {% if requirementsType == requirementsTypeFilter %}
 
-        {% assign jsonDataUncleaned = '{ "resourceType"' | append: jsonEnd[0] %}
-
-        {% assign stringToRemove = jsonDataUncleaned | split:"]}" | last %}
-
-        {% assign jsonDataCleaned = jsonDataUncleaned | remove: stringToRemove |  remove: "&#x1F517;"  %}
-
-        {% assign data = jsonDataCleaned %}
-
-        {% assign requirementsStatementsStart = data | split: '"statement" :' %}
-
-        {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
-
-        {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
+          {% assign requirementsStatementsStart = requirement | split: '"statement" :' %}
+          {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
+          {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
 <div>
 <table class="table table-bordered">
@@ -49,20 +44,21 @@
 </thead>
 <tbody>
 
-  {% for statement in requirementsStatements %}
-    {%- assign key = statement | split: '",' | first -%}
-    {%- assign requirementUncleaned = statement | split: '"requirement" : "' | last -%}
-    {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
+          {% for statement in requirementsStatements %}
+            {%- assign key = statement | split: '",' | first -%}
+            {%- assign requirementUncleaned = statement | split: '"requirement" : "' | last -%}
+            {%- assign keyRequirement = requirementUncleaned | split: '"' | first -%}
 
-    {%- assign keyCheck = key | strip -%}
+            {%- assign keyCheck = key | strip -%}
 
-    {% if keyCheck != "" and keyCheck != nil %}
-          
-<tr>
-  <td>{{key}}</td><td>{{keyRequirement}}</td>
-</tr>
-    {% endif %}
-  {% endfor %}
+            {% if keyCheck != "" and keyCheck != nil %}
+            
+  <tr>
+    <td>{{key}}</td><td>{{keyRequirement}}</td>
+  </tr>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
         
 </tbody>
 </table>
