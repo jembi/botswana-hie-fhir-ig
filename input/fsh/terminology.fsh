@@ -1098,3 +1098,19 @@ Description: "A coded value that represents the HTTP method when sending a reque
 * ^caseSensitive = true
 * #CREATE "CREATE"
 * #GET "GET"
+
+CodeSystem: CSRequirementsTypeCodes
+Id: cs-requirements-type-codes
+Title: "Requirements Type Codes"
+Description: "A coded value that represents the type of requirements contained in the Resource."
+* ^experimental = false
+* ^caseSensitive = true
+* #functional "Functional Requirements" "Functional requirements define the specific behaviors, features, and functions a system or product must perform. They describe what the system should do, including tasks, processes, and interactions."
+* #non-functional "Non-Functional Requirements" "Non-functional requirements specify the quality attributes, performance, and constraints of a system, such as reliability, scalability, security, and usability, rather than specific behaviors or functions."
+
+ValueSet: VSRequirementsTypeCodes
+Id: vs-requirements-type-codes
+Title: "Requirements Type Codes"
+Description: "A coded value that represents the type of requirements contained in the Resource."
+* ^experimental = false
+* include codes from system CSRequirementsTypeCodes

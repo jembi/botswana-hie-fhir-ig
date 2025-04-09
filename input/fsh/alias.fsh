@@ -10,3 +10,4 @@ Alias: $EndpointPayloadType = http://terminology.hl7.org/CodeSystem/endpoint-pay
 Alias: $EndpointConnectionTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-connection-type-codes
 Alias: $ScenarioOpTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-scenario-op-type-codes
 Alias: $RestfulInteractionCodeSystem = http://hl7.org/fhir/restful-interaction
+Alias: $RequirementsTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-requirements-type-codes
