@@ -1,17 +1,21 @@
 {% assign sitePages = site.pages %}
 {% assign resourceNames = "" | split: "," %}
 
-{% for data_file in site.data | where_exp "data", "data[0] = canonicals" %}
-  {% assign content = data_file[1] %}
-   {% for resource in content %}
-    {% if resource.type == "Requirements" %}
-      {% assign resourceNames = resource.name | concat: resourceNames | sort %}
-    {% endif %}
-  {% endfor %}
+{% for data_file in site.data %}
+  {% if data_file[0] == "canonicals" %}
+    {% assign content = data_file[1] %}
+    {% for resource in content %}
+      {% if resource.type == "Requirements" %}
+        {% assign resourceNames = resource.name | concat: resourceNames | sort %}
+      {% endif %}
+    {% endfor %}
+
+    {% break %}
+  {% endif %}
 {% endfor %}
 
 {% for item in resourceNames %}
-  {% for p in sitePages | where_exp "p", "p.url contains" | append: {{item}} | append: ".json" %}
+  {% for p in sitePages %}
     {% if p.url contains item and p.url contains ".json" %}
       {% assign requirements = p.content | strip_html | strip_newlines %}
 
@@ -29,6 +33,34 @@
 
           {% if requirementsTypeFilter != "non-functional" %}
 <p class="heading" style="black !important;">{{title}}</p>
+<br />
+
+            {%- assign actorUrlsStart = requirements | split: '"actor" : [' -%}
+            {%- assign actorUrlsEnd = actorUrlsStart[1] | remove: '&#x1F517;' | split: ']' | first  -%}
+
+            {% assign actorUrls = "" | split: "," %}
+
+            {% for url in actorUrlsEnd  %}
+              {%- assign actorUrls = url | split: ',' | concat: actorUrls -%}
+            {% endfor %}
+
+            {% assign actorCount = 1 %}
+
+            {% for item in actorUrls %}
+              {% for data_file in site.data %}
+                {% if data_file[0] == "resources" %}
+                  {% for item_data in data_file[1] %}
+                    {% if item contains item_data[1].url %}
+<p><strong>Actor {{actorCount}}</strong>: <a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
+                      {% assign actorCount = 1 | plus: 1 %}                     
+
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+
           {% endif %}
 <div>
 <table class="table table-bordered">
