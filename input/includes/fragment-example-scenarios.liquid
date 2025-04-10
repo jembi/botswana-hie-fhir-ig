@@ -1,0 +1,31 @@
+{% assign sitePages = site.pages %}
+{% assign resourceNames = "" | split: "," %}
+
+{% for data_file in site.data %}
+  {% if data_file[0] == "canonicals" %}
+    {% assign content = data_file[1] %}
+    {% for resource in content %}
+      {% if resource.type == "ExampleScenario" %}
+        {% assign resourceNames = resource.name | concat: resourceNames | sort %}
+      {% endif %}
+    {% endfor %}
+
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% for item in resourceNames %}
+    {% for p in sitePages %}
+        {% assign urlFilter = "/ExampleScenario-" | append: item | append: ".html" %}
+
+        {% if p.url == urlFilter %}
+            {% assign title = p.content | split: " - Botswana FHIR Implementation Guide v1.0.0" | first %}
+
+<p class="heading">{{title}}</p>
+{% include {{urlFilter |  remove: '/' }}-process-diagram.xhtml %}
+            
+            {% break %}
+
+        {% endif %}
+    {% endfor %}
+{% endfor %}
