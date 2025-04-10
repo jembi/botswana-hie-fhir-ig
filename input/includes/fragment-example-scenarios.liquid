@@ -19,10 +19,10 @@
         {% assign urlFilter = "/ExampleScenario-" | append: item | append: ".html" %}
 
         {% if p.url == urlFilter %}
-            {% assign title = p.content | split: " - Botswana FHIR Implementation Guide v1.0.0" | first %}
+            {% assign title = p.content | split: " - Botswana FHIR Implementation Guide" | first %}
 
 <p class="heading">{{title}}</p>
-{% include {{urlFilter |  remove: '/' }}-process-diagram.xhtml %}
+{% include {{"ExampleScenario-" | append: item}}-process-diagram.xhtml %}
             
             {% break %}
 
