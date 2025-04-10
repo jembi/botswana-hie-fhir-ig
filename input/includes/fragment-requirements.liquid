@@ -46,9 +46,11 @@
             {% for item in actorUrls %}
               {% for data_file in site.data %}
                 {% if data_file[0] == "resources" %}
+                  {% assign actorCount = 1 %}
                   {% for item_data in data_file[1] %}
                     {% if item contains item_data[1].url %}
-<p class="heading2"><a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
+<p>Actor {{actorCount}}: <a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
+                      {% increment actorCount %}                     
 
                       {% break %}
                     {% endif %}
