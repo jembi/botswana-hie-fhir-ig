@@ -7,5 +7,7 @@ Functional requirements describe the capabilities the system must have in order 
 <br />
 
 {% assign requirementsTypeFilter = "functional" %}
+{% assign showRequirementsHeading = true %}
+{% assign showRequirementsActors = true %}
 
 {% include fragment-requirements.liquid %}
