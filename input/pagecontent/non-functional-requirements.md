@@ -6,6 +6,6 @@ Non-functional requirements provide the general attributes and features of the d
 
 {% assign requirementsTypeFilter = "non-functional" %}
 {% assign showRequirementsHeading = false %}
-{% assign showrequirementsActors = false %}
+{% assign showRequirementsActors = false %}
 
 {% include fragment-requirements.liquid %}

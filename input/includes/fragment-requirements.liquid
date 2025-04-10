@@ -35,7 +35,7 @@
 <p class="heading" style="black !important; padding-bottom: 10px !important;">{{title}}</p>
           {% endif %}
           
-          {% if showrequirementsActors == true %}
+          {% if showRequirementsActors == true %}
             {%- assign actorUrlsStart = requirements | split: '"actor" : [' -%}
             {%- assign actorUrlsEnd = actorUrlsStart[1] | remove: '&#x1F517;' | split: ']' | first  -%}
 
