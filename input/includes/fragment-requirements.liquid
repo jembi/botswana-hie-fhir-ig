@@ -31,10 +31,11 @@
           {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
           {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
-          {% if requirementsTypeFilter != "non-functional" %}
-<p class="heading" style="black !important;">{{title}}</p>
-<br />
-
+          {% if showRequirementsHeading == true %}
+<p class="heading" style="black !important; padding-bottom: 10px !important;">{{title}}</p>
+          {% endif %}
+          
+          {% if showRequirementsActors == true %}
             {%- assign actorUrlsStart = requirements | split: '"actor" : [' -%}
             {%- assign actorUrlsEnd = actorUrlsStart[1] | remove: '&#x1F517;' | split: ']' | first  -%}
 
@@ -60,8 +61,8 @@
                 {% endif %}
               {% endfor %}
             {% endfor %}
-
           {% endif %}
+          
 <div>
 <table class="table table-bordered">
 <thead class="thead-dark">
