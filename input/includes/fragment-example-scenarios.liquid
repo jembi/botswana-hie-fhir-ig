@@ -16,8 +16,8 @@
 
 {% for item in resourceNames %}
     {% for p in sitePages %}
-        {% assign scenarioPage = "ExampleScenario-" | append: item | append: ".html" %}
-        {% assign urlFilter = "/" |  append: scenarioPage %}
+        {% assign scenarioPage = "ExampleScenario-" | append: item %}
+        {% assign urlFilter = "/" |  append: scenarioPage | append: ".html" %}
 
         {% if p.url == urlFilter %}
             {% assign title = p.content | split: " - Botswana FHIR Implementation Guide" | first %}
