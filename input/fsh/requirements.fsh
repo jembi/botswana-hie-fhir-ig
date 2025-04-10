@@ -311,10 +311,13 @@ Description: "Cross-Service API Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "CrossServiceAPIRequirements"
 * status = #active
-* actor = Canonical(APIActorDefinitionExample)
+* actor[+] = Canonical(APIActorDefinitionExample)
+* actor[+] = Canonical(BDRSActorDefinitionExample)
+* actor[+] = Canonical(ICSActorDefinitionExample)
+* actor[+] = Canonical(OmangActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-CSAPI.001"
-  * requirement = "Should be able to handle a valid FHIR search query that includes parameters  across  the Omang, BDRS, and Immigration services."
+  * requirement = "Should be able to handle a valid FHIR search query that includes parameters across the Omang, BDRS, and Immigration services."
 * statement[+]
   * key = "BOTS.FR-CSAPI.002"
   * requirement = "Should be able to return a search bundle with results representing a union of results from the three services."
