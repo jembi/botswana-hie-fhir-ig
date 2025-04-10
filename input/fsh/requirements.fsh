@@ -302,3 +302,22 @@ Description: "Immigration and Citizenship System Functional Requirements"
 * statement[+]
   * key = "BOTS.FR-ICS.007"
   * requirement = "Should be able to synchronize patient data on demand between the ICS registry and a FHIR-based HIE Client Registry, with a configurable refresh timespan."
+
+Instance: CrossServiceAPIRequirements
+InstanceOf: BwRequirements
+Usage: #example
+Title: "Cross-Service API Requirements"
+Description: "Cross-Service API Functional Requirements"
+* extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
+* name = "CrossServiceAPIRequirements"
+* status = #active
+* actor = Canonical(APIActorDefinitionExample)
+* statement[+]
+  * key = "BOTS.FR-CSAPI.001"
+  * requirement = "Should be able to handle a valid FHIR search query that includes parameters  across  the Omang, BDRS, and Immigration services."
+* statement[+]
+  * key = "BOTS.FR-CSAPI.002"
+  * requirement = "Should be able to return a search bundle with results representing a union of results from the three services."
+* statement[+]
+  * key = "BOTS.FR-CSAPI.003"
+  * requirement = "Needs to provide a separate endpoint that returns a single patient resource based on the first match, using a hierarchical matching algorithm."

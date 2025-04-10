@@ -514,3 +514,14 @@ Description: "Represents the system used to manage the entry, stay, and exit of 
 * status = #active
 * purpose = "This helps in identifying foreign nationals when accessing services such as healthcare in a health facility."
 * type = #system
+
+Instance: APIActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Cross-Service API"
+Description: "Represents the system used to provide a single entrypoint for demographic search queries that might have a mix of various query parameters."
+* name = "API"
+* title = "Cross-Service API"
+* status = #active
+* purpose = "When a FHIR search query comes in to this endpoint, it will be treated as a generic FHIR API search query, and applied across all services."
+* type = #system
