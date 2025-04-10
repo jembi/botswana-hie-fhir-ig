@@ -44,10 +44,11 @@
               {%- assign actorUrls = url | split: ',' | concat: actorUrls -%}
             {% endfor %}
 
+            {% assign actorCount = 1 %}
+
             {% for item in actorUrls %}
               {% for data_file in site.data %}
                 {% if data_file[0] == "resources" %}
-                  {% assign actorCount = 1 %}
                   {% for item_data in data_file[1] %}
                     {% if item contains item_data[1].url %}
 <p><strong>Actor {{actorCount}}</strong>: <a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
