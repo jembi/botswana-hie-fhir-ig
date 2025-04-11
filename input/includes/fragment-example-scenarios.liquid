@@ -24,9 +24,9 @@
             {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
 <div>
-<p class="heading" style="color: black !important; padding-bottom: 15px !important;">{{title}}</p>
+<h4>{{title}}</h4>
 
-<p><strong>See process details</strong>: <a href = "{{scenarioPage | append: '.html'}}">Interactions and steps</a></p>
+<p>See process details: <a href = "{{scenarioPage | append: '.html'}}">Interactions and steps</a></p>
 
 {% include {{scenarioPage}}-process-diagram.xhtml %}
 
