@@ -1,5 +1,5 @@
 Instance: RegisterNewPatientInBundle
-InstanceOf: ExampleScenario
+InstanceOf: BwScenario
 Usage: #definition
 * name = "RegisterNewPatientInBundle"
 * title = "Register New Patient (Included in a Bundle Resource)"

@@ -1,5 +1,5 @@
 Instance: RetrievePatientRecord
-InstanceOf: ExampleScenario
+InstanceOf: BwScenario
 Usage: #definition
 * name = "RetrievePatientRecord"
 * title = "Retrieve Patient Record"

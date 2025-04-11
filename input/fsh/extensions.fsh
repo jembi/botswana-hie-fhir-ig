@@ -16,3 +16,13 @@ Description: "An extension to capture the type of requirements contained in the 
 
 * ^context[+].type = #element
 * ^context[=].expression = "Requirements"
+
+Extension: ActorReferenceExtension
+Id: actor-reference
+Title: "Actor Reference"
+Description: "An extension to reference the Actor Resource describing additional details regarding the actor."
+* value[x] only Reference(ActorDefinition)
+* valueReference 1..1
+
+* ^context[+].type = #element
+* ^context[=].expression = "ExampleScenario.actor"

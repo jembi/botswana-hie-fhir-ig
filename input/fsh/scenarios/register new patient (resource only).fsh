@@ -1,5 +1,5 @@
 Instance: RegisterNewPatient
-InstanceOf: ExampleScenario
+InstanceOf: BwScenario
 Usage: #definition
 * name = "RegisterNewPatient"
 * title = "Register New Patient"
