@@ -23,13 +23,18 @@
             {% assign scenarioContent = p.content | strip_html | strip_newlines %}
             {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
-<p class="heading" style="black !important; padding-bottom: 20px !important;">{{title}}</p>
+<div>
+<p class="heading" style="color: black !important; padding-bottom: 15px !important;">{{title}}</p>
 
 <p><strong>See process details</strong>: <a href = "{{scenarioPage | append: '.html'}}">Interactions and steps</a></p>
 
 {% include {{scenarioPage}}-process-diagram.xhtml %}
 
 <br />
+<br />
+<br />
+
+</div>
             
             {% break %}
 
