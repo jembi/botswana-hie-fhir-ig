@@ -419,10 +419,3 @@ Description: "Represents the requirements for the use case described in this Imp
 * actor MS
 * statement 1..*
 * extension contains RequirementsTypeExtension named RequirementsType 1..1
-
-Profile: BwScenario
-Parent: ExampleScenario
-Id: bw-scenarios
-Title: "Use Case Scenarios"
-Description: "Represents the scenarios for the use case described in this Implementation Guide."
-* actor.extension contains ActorReferenceExtension named ActorReference 0..1 MS
