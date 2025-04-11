@@ -20,10 +20,14 @@
         {% assign urlFilter = "/" |  append: scenarioPage | append: ".html" %}
 
         {% if p.url == urlFilter %}
-            {% assign title = p.content | split: " - Botswana FHIR Implementation Guide" | first %}
+            {% assign scenarioContent = p.content | strip_html | strip_newlines %}
+            {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
 <p class="heading">{{title}}</p>
+
 {% include {{scenarioPage}}-process-diagram.xhtml %}
+
+<br />
             
             {% break %}
 
