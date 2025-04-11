@@ -32,7 +32,8 @@
           {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
           {% if showRequirementsHeading == true %}
-<p class="heading" style="black !important; padding-bottom: 10px !important;">{{title}}</p>
+<h4>{{title}}</h4>
+<br />
           {% endif %}
           
           {% if showRequirementsActors == true %}

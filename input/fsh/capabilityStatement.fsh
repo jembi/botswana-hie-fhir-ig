@@ -111,3 +111,11 @@ Usage: #definition
 * rest[=].resource[=].interaction[+].code = #create
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[+].code = #update
+
+* rest[=].resource[+].type = #Requirements
+* rest[=].resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension.valueCode = #SHALL
+* rest[=].resource[=].profile = "http://moh.bw.org/StructureDefinition/bw-requirements"
+* rest[=].resource[=].interaction[+].code = #create
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[+].code = #update
