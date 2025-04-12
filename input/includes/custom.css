@@ -17,3 +17,13 @@
 .pointer {
     cursor: pointer;
 }
+
+svg g a {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+svg g a text {
+    text-decoration: none !important;
+    fill: black !important;
+}
