@@ -50,12 +50,15 @@
 <tbody>
 
             {% for actor in actors %}
-              {%- assign key = actor | split: '",' | first -%}
+              {%- assign keyStart = actor | split: '"key" : "' -%}
+              {%- assign keyEnd = keyStart[1] | split: '",' | first -%}
+
+              {% for key in keyEnd %}
 
   <tr>
     <td>{{key}}</td><td></td><td></td>
   </tr>
-            
+              {% endfor %}
             {% endfor %}
 
 </tbody>
