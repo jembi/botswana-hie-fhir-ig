@@ -29,7 +29,7 @@
 
             {% assign actorsContentEnd = actorsContentStart[1] | split: '}  ]' %}
 
-            {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' %}
+            {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' |  split: ',' %}
           {% endfor %}
 
         {% endif %}
@@ -51,14 +51,16 @@
 
             {% for actor in actors %}
               {%- assign keyStart = actor | split: '"key" : "' -%}
-              {%- assign keyEnd = keyStart[1] | split: '",' | first -%}
+              {%- assign key = keyStart[1] | split: '"' | first -%}
 
-              {% for key in keyEnd %}
+              {%- assign keyCheck = key | strip -%}
+
+              {% if keyCheck != "" and keyCheck != nil %}
 
   <tr>
     <td>{{key}}</td><td></td><td></td>
   </tr>
-              {% endfor %}
+              {% endif %}
             {% endfor %}
 
 </tbody>
@@ -79,7 +81,7 @@
 </div>
             
             
-
+         
         {% endif %}
     {% endfor %}
 {% endfor %}
