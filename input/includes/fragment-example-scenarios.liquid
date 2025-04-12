@@ -19,9 +19,48 @@
         {% assign scenarioPage = "ExampleScenario-" | append: item %}
         {% assign urlFilter = "/" |  append: scenarioPage | append: ".html" %}
 
+        {% if p.url contains item and p.url contains ".json" %}
+          {% assign scenarioActorContent = p.content | strip_html | strip_newlines  %}
+
+          {% assign actors = nil %}
+
+          {% for scenarioActor in scenarioActorContent %}
+            {% assign actorsContentStart = scenarioActor | split: '"actor" :' %}
+
+            {% assign actorsContentEnd = actorsContentStart[1] | split: '}  ]' %}
+
+            {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' %}
+          {% endfor %}
+
+        {% endif %}
+
         {% if p.url == urlFilter %}
             {% assign scenarioContent = p.content | strip_html | strip_newlines %}
             {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
+
+<div>
+<table class="table table-bordered">
+<thead class="thead-dark">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+
+            {% for actor in actors %}
+              {%- assign key = actor | split: '",' | first -%}
+
+  <tr>
+    <td>{{key}}</td><td></td><td></td>
+  </tr>
+            
+            {% endfor %}
+
+</tbody>
+</table>
+</div>
 
 <div>
 <h4>{{title}}</h4>
@@ -36,7 +75,7 @@
 <br />
 </div>
             
-            {% break %}
+            
 
         {% endif %}
     {% endfor %}
