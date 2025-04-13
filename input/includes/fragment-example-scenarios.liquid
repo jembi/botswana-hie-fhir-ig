@@ -16,30 +16,35 @@
 
 {% for item in resourceNames %}
     {% for p in sitePages %}
-        {% assign scenarioPage = "ExampleScenario-" | append: item %}
-        {% assign baseUrlFilter = "/" |  append: scenarioPage %}
+      {% assign scenarioPage = "ExampleScenario-" | append: item %}
+      {% assign baseUrlFilter = "/" |  append: scenarioPage %}
 
-        {% assign htmlUrlFilter = baseUrlFilter | append: ".html" %}
-        {% assign jsonUrlFilter = baseUrlFilter | append: ".json.html" %}
+      {% assign htmlUrlFilter = baseUrlFilter | append: ".html" %}
+      {% assign jsonUrlFilter = baseUrlFilter | append: ".json.html" %}
 
-        {% if p.url == jsonUrlFilter %}
-          {% assign scenarioActorContent = p.content | strip_html | strip_newlines  %}
+      {% if p.url == htmlUrlFilter %}
 
-          {% assign actors = nil %}
+        {% for p2 in sitePages %}
+          {% if p2.url contains jsonUrlFilter %}
+            {% assign scenarioActorContent = p2.content | strip_html | strip_newlines  %}
 
-          {% for scenarioActor in scenarioActorContent %}
-            {% assign actorsContentStart = scenarioActor | split: '"actor" :' %}
+            {% assign actors = nil %}
 
-            {% assign actorsContentEnd = actorsContentStart[1] | split: '}  ]' %}
+            {% for scenarioActor in scenarioActorContent %}
+              {% assign actorsContentStart = scenarioActor | split: '"actor" :' %}
 
-            {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' |  split: ',' %}
-          {% endfor %}
+              {% assign actorsContentEnd = actorsContentStart[1] | split: '}  ]' %}
 
-        {% endif %}
+              {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' |  split: ',' %}
+            {% endfor %}
 
-        {% if p.url == htmlUrlFilter %}
-          {% assign scenarioContent = p.content | strip_html | strip_newlines %}
-          {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
+          {% break %}
+
+          {% endif %}
+        {% endfor %}
+
+        {% assign scenarioContent = p.content | strip_html | strip_newlines %}
+        {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
 
 
@@ -60,24 +65,24 @@
 </thead>
 <tbody>
 
-            {% assign actorsArrayTitles = "" | split: "," %}
-            {% assign actorsArrayDescriptions = "" | split: "," %}
+        {% assign actorsArrayTitles = "" | split: "," %}
+        {% assign actorsArrayDescriptions = "" | split: "," %}
 
-            {% for actor in actors %}
-              {%- assign titleStart = actor | split: '"title" : "' -%}
-              {%- assign titles = titleStart[1] | split: '"' | first -%}
+        {% for actor in actors %}
+          {%- assign titleStart = actor | split: '"title" : "' -%}
+          {%- assign titles = titleStart[1] | split: '"' | first -%}
 
-              {%- assign descriptionStart = actor | split: '"description" : "' -%}
-              {%- assign descriptions = descriptionStart[1] | split: '"' | first -%}
+          {%- assign descriptionStart = actor | split: '"description" : "' -%}
+          {%- assign descriptions = descriptionStart[1] | split: '"' | first -%}
 
-              {% for title in titles %}
-                {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
-              {% endfor %}
-
-              {% for description in descriptions %}
-                {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
-              {% endfor %}
+          {% for title in titles %}
+            {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
           {% endfor %}
+
+          {% for description in descriptions %}
+            {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
+          {% endfor %}
+      {% endfor %}
             
       {% for i in (0..actorsArrayTitles.size) %}
 <tr>
@@ -107,7 +112,7 @@
 </div>
             
         
-         
-        {% endif %}
+        {% break %}
+      {% endif %}
     {% endfor %}
 {% endfor %}
