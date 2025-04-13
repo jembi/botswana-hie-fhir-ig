@@ -23,7 +23,6 @@
         {% assign jsonUrlFilter = baseUrlFilter | append: ".json.html" %}
 
         {% if p.url == jsonUrlFilter %}
-          
           {% assign scenarioActorContent = p.content | strip_html | strip_newlines  %}
 
           {% assign actors = nil %}
@@ -39,7 +38,6 @@
         {% endif %}
 
         {% if p.url == htmlUrlFilter %}
-         
           {% assign scenarioContent = p.content | strip_html | strip_newlines %}
           {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
@@ -72,13 +70,13 @@
               {%- assign descriptionStart = actor | split: '"description" : "' -%}
               {%- assign descriptions = descriptionStart[1] | split: '"' | first -%}
 
-            {% for title in titles %}
-              {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
-            {% endfor %}
+              {% for title in titles %}
+                {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
+              {% endfor %}
 
-            {% for description in descriptions %}
-              {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
-            {% endfor %}
+              {% for description in descriptions %}
+                {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
+              {% endfor %}
           {% endfor %}
             
       {% for i in (0..actorsArrayTitles.size) %}
