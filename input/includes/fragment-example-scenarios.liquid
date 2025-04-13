@@ -23,7 +23,7 @@
         {% assign urlFilter = "/" |  append: scenarioPage | append: ".html" %}
 
         {% if p.url contains item and p.url contains ".json" %}
-          {% assign jsonFound = true %}
+          
           {% assign scenarioActorContent = p.content | strip_html | strip_newlines  %}
 
           {% assign actors = nil %}
@@ -39,7 +39,7 @@
         {% endif %}
 
         {% if p.url == urlFilter %}
-          {% assign htmlFound = true %}
+         
           {% assign scenarioContent = p.content | strip_html | strip_newlines %}
           {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
@@ -108,9 +108,7 @@
 <br />
 </div>
             
-        {% if jsonFound == true and htmlFound == true %}  
-          {% break %}
-        {% endif %}
+        
          
         {% endif %}
     {% endfor %}
