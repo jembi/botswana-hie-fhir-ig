@@ -16,13 +16,13 @@
 
 {% for item in resourceNames %}
     {% for p in sitePages %}
-      {% assign jsonFound = false %}
-      {% assign htmlFound = false %}
-
         {% assign scenarioPage = "ExampleScenario-" | append: item %}
-        {% assign urlFilter = "/" |  append: scenarioPage | append: ".html" %}
+        {% assign baseUrlFilter = "/" |  append: scenarioPage %}
 
-        {% if p.url contains item and p.url contains ".json" %}
+        {% assign htmlUrlFilter = baseUrlFilter | append: ".html" %}
+        {% assign jsonUrlFilter = baseUrlFilter | append: ".json.html" %}
+
+        {% if p.url == jsonUrlFilter %}
           
           {% assign scenarioActorContent = p.content | strip_html | strip_newlines  %}
 
@@ -38,7 +38,7 @@
 
         {% endif %}
 
-        {% if p.url == urlFilter %}
+        {% if p.url == htmlUrlFilter %}
          
           {% assign scenarioContent = p.content | strip_html | strip_newlines %}
           {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
