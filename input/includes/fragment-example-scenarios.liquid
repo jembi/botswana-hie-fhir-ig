@@ -16,10 +16,14 @@
 
 {% for item in resourceNames %}
     {% for p in sitePages %}
+      {% assign jsonFound = false %}
+      {% assign htmlFound = false %}
+
         {% assign scenarioPage = "ExampleScenario-" | append: item %}
         {% assign urlFilter = "/" |  append: scenarioPage | append: ".html" %}
 
         {% if p.url contains item and p.url contains ".json" %}
+          {% assign jsonFound = true %}
           {% assign scenarioActorContent = p.content | strip_html | strip_newlines  %}
 
           {% assign actors = nil %}
@@ -35,8 +39,9 @@
         {% endif %}
 
         {% if p.url == urlFilter %}
-            {% assign scenarioContent = p.content | strip_html | strip_newlines %}
-            {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
+          {% assign htmlFound = true %}
+          {% assign scenarioContent = p.content | strip_html | strip_newlines %}
+          {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
 
 
@@ -57,49 +62,36 @@
 </thead>
 <tbody>
 
-            {% for actor in actors %}
-            
+            {% assign actorsArrayTitles = "" | split: "," %}
+            {% assign actorsArrayDescriptions = "" | split: "," %}
 
+            {% for actor in actors %}
               {%- assign titleStart = actor | split: '"title" : "' -%}
               {%- assign titles = titleStart[1] | split: '"' | first -%}
-
-            
 
               {%- assign descriptionStart = actor | split: '"description" : "' -%}
               {%- assign descriptions = descriptionStart[1] | split: '"' | first -%}
 
-             
-              {% assign actorsArrayTitles = "" | split: "," %}
-           
-              {% assign actorsArrayDescriptions = "" | split: "," %}
-
-            
-
-              {% for title in titles %}
-                {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
-              {% endfor %}
-
-             
-
-              {% for description in descriptions %}
-                {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
-              {% endfor %}
-
-
-               {% for title in actorsArrayTitles %}
-<tr>
-<td>{{title}}</td>
-                {% endfor %}
-
-           
-
-                {% for description in actorsArrayDescriptions %}
-
-<td>{{description}}</td>
-</tr>                               
-                {% endfor %}
-       
+            {% for title in titles %}
+              {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
             {% endfor %}
+
+            {% for description in descriptions %}
+              {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
+            {% endfor %}
+          {% endfor %}
+            
+      {% for i in (0..actorsArrayTitles.size) %}
+<tr>
+<td>{{actorsArrayTitles[i]}}</td><td>{{actorsArrayDescriptions[i]}}</td>
+</tr>
+        {% assign limit = actorsArrayTitles.size | minus: 1 %}
+
+        {% if i == limit %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+            
 
 </tbody>
 </table>
@@ -116,7 +108,9 @@
 <br />
 </div>
             
-            
+        {% if jsonFound == true and htmlFound == true %}  
+          {% break %}
+        {% endif %}
          
         {% endif %}
     {% endfor %}
