@@ -60,12 +60,18 @@
               {%- assign keyStart = actor | split: '"key" : "' -%}
               {%- assign key = keyStart[1] | split: '"' | first -%}
 
+              {%- assign typeStart = actor | split: '"type" : "' -%}
+              {%- assign type = typeStart[1] | split: '"' | first -%}
+
+              {%- assign descriptionStart = actor | split: '"description" : "' -%}
+              {%- assign description = descriptionStart[1] | split: '"' | first -%}
+
               {%- assign keyCheck = key | strip -%}
 
               {% if keyCheck != "" and keyCheck != nil %}
 
   <tr>
-    <td>{{key}}</td><td></td><td></td>
+    <td>{{key}}</td><td>{{type}}</td><td>{{description}}</td>
   </tr>
               {% endif %}
             {% endfor %}
