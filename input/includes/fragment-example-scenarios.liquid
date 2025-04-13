@@ -49,6 +49,7 @@
 <table class="table table-bordered">
 <thead class="thead-dark">
   <tr>
+    <th>Key</th>
     <th>Name</th>
     <th>Type</th>
     <th>Description</th>
@@ -58,22 +59,62 @@
 
             {% for actor in actors %}
               {%- assign keyStart = actor | split: '"key" : "' -%}
-              {%- assign key = keyStart[1] | split: '"' | first -%}
+              {%- assign keys = keyStart[1] | split: '"' | first -%}
+
+              {%- assign titleStart = actor | split: '"title" : "' -%}
+              {%- assign titles = titleStart[1] | split: '"' | first -%}
 
               {%- assign typeStart = actor | split: '"type" : "' -%}
-              {%- assign type = typeStart[1] | split: '"' | first -%}
+              {%- assign types = typeStart[1] | split: '"' | first -%}
 
               {%- assign descriptionStart = actor | split: '"description" : "' -%}
-              {%- assign description = descriptionStart[1] | split: '"' | first -%}
+              {%- assign descriptions = descriptionStart[1] | split: '"' | first -%}
 
-              {%- assign keyCheck = key | strip -%}
+              {% assign actorsArrayKeys = "" | split: "," %}
+              {% assign actorsArrayTitles = "" | split: "," %}
+              {% assign actorsArrayTypes = "" | split: "," %}
+              {% assign actorsArrayDescriptions = "" | split: "," %}
 
-              {% if keyCheck != "" and keyCheck != nil %}
+              {% for key in keys %}
+                {% assign actorsArrayKeys = key | concat: actorsArrayKeys %}
+              {% endfor %}
 
-  <tr>
-    <td>{{key}}</td><td>{{type}}</td><td>{{description}}</td>
-  </tr>
-              {% endif %}
+              {% for title in titles %}
+                {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
+              {% endfor %}
+
+              {% for type in types %}
+                {% assign actorsArrayTypes = type | concat: actorsArrayTypes %}
+              {% endfor %}
+
+              {% for description in descriptions %}
+                {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
+              {% endfor %}
+
+              {% for key in actorsArrayKeys %}
+
+<tr>
+  <td>{{key}}</td>
+
+
+               {% endfor %}
+
+               {% for title in actorsArrayTitles %}
+<td>{{title}}</td>
+                {% endfor %}
+
+               {% for type in actorsArrayTypes %}
+
+ <td>{{type}}</td>
+                
+                {% endfor %}
+
+                {% for description in actorsArrayDescriptions %}
+
+<td>{{description}}</td>
+</tr>                               
+                {% endfor %}
+       
             {% endfor %}
 
 </tbody>
