@@ -525,3 +525,58 @@ Description: "Represents the system used to provide a single entrypoint for demo
 * status = #active
 * purpose = "When a FHIR search query comes in to this endpoint, it will be treated as a generic FHIR API search query, and applied across all services."
 * type = #system
+
+Instance: SHRActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Shared Health Record"
+Description: "Represents the system that stores a defined set of normalized patient data, serving as a longitudinal health record across different facilities, ensuring continuity of care."
+* name = "SharedHealthRecord"
+* title = "Shared Health Record (SHR)"
+* status = #active
+* purpose = "The SHR enables seamless sharing of clinical data among health information systems, enhancing patient care and outcomes."
+* type = #system
+
+Instance: PIMSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - PIMS"
+Description: "Represents the system used to capture and collect patient data for HIV case reporting and follow up."
+* name = "PatientInformationManagementSystem"
+* title = "Patient Information Management System (PIMS)"
+* status = #active
+* purpose = "The system supports efficient HIV treatment as it keeps records of health and treatment for the required interval."
+* type = #system
+
+Instance: IPMSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - IPMS"
+Description: "Represents the system designed to manage laboratory test orders and results."
+* name = "IntegratedPatientManagementSystem"
+* title = "Integrated Patient Management System (IPMS)"
+* status = #active
+* purpose = "Helps facilitates the ordering of laboratory tests and the reporting of results."
+* type = #system
+
+Instance: OpenMRSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - OpenMRS"
+Description: "Represents the system used to manage patient data and support services such as mobile telemedicine."
+* name = "OpenMRS"
+* title = "OpenMRS"
+* status = #active
+* purpose = "Helps supports the management of TB patient data."
+* type = #system
+
+Instance: MFLActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Master Facility List"
+Description: "Represents the system that has complete listing of health facilities in Botswana, both public and private and is comprised of a set of administrative information and information that identifies each facility."
+* name = "MasterFacilityList"
+* title = "Master Facility List (MFL)"
+* status = #active
+* purpose = "Contains contact information, type of facility and other information that is useful for administrative purposes."
+* type = #system
