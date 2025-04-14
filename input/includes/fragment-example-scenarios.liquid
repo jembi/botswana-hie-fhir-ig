@@ -29,13 +29,14 @@
             {% assign scenarioActorContent = p2.content | strip_html | strip_newlines  %}
 
             {% assign actors = nil %}
+            {% assign actorExtensions = nil %}
 
             {% for scenarioActor in scenarioActorContent %}
               {% assign actorsContentStart = scenarioActor | split: '"actor" :' %}
 
               {% assign actorsContentEnd = actorsContentStart[1] | split: '}  ]' %}
 
-              {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' |  split: ',' %}
+              {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' | split: "," %}
             {% endfor %}
 
           {% break %}
@@ -46,8 +47,6 @@
         {% assign scenarioContent = p.content | strip_html | strip_newlines %}
         {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
-
-
 <div>
 <h4>{{title}}</h4>
 <br />
@@ -57,16 +56,17 @@
 <table class="table table-bordered">
 <thead class="thead-dark">
   <tr>
-
     <th>Name</th>
- 
     <th>Description</th>
+    <th>Actor Reference</th>
   </tr>
 </thead>
 <tbody>
 
         {% assign actorsArrayTitles = "" | split: "," %}
         {% assign actorsArrayDescriptions = "" | split: "," %}
+        {% assign actorsArrayExtensions = "" | split: "," %}
+        {% assign actorsArrayTitleWithExtensions = "" | split: "," %}
 
         {% for actor in actors %}
           {%- assign titleStart = actor | split: '"title" : "' -%}
@@ -82,11 +82,24 @@
           {% for description in descriptions %}
             {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
           {% endfor %}
+
+          {%- assign extensionsStart = actor | split: '"extension" :' -%}
+          {%- assign extensionsValueStart = extensionsStart[0] | split: '"reference" : "' -%}
+          {%- assign extensions = titles | append:  extensionsValueStart[1] | split: '"' | first -%}
+
+          {% assign actorsArrayExtensions = extensions | concat: actorsArrayExtensions %}
+
+      {% endfor %}
+
+      {% for extension in actorsArrayExtensions %}
+          {{extension}} <br />
       {% endfor %}
             
       {% for i in (0..actorsArrayTitles.size) %}
 <tr>
-<td>{{actorsArrayTitles[i]}}</td><td>{{actorsArrayDescriptions[i]}}</td>
+<td>{{actorsArrayTitles[i]}}</td>
+<td>{{actorsArrayDescriptions[i]}}</td>
+<td><a href="{{actorsArrayExtensions[i]}}.html">Details</a></td>
 </tr>
         {% assign limit = actorsArrayTitles.size | minus: 1 %}
 
