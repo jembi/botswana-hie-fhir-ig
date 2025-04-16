@@ -109,26 +109,23 @@
         {% endif %}
       {% endfor %}
 
+
       {% assign actorsArrayExtensionsLimit = actorsArrayExtensions.size | minus: 1 %}
       {% for i in (0..actorsArrayExtensionsLimit) %}
-        {% assign actor = actorsArrayExtensions[i] | split: "," %}
+        {% assign actorDetails = actorsArrayExtensions[i] | split: "," %}
 
-        {% if actor[0] == "" or  actor[0] == nil%}
+        {% if actorDetails[0] == "" or  actorDetails[0] == nil %}
           {% assign actorTitleForExtensionIndex = i | minus: 1 %}
-          {% assign actorDetails = actorsArrayExtensions[actorTitleForExtensionIndex] | split: "," %}
+          {% assign previousActorDetails = actorsArrayExtensions[actorTitleForExtensionIndex] | split: "," %}
 
-          {% assign actorsArrayCleanedWithExtensions = actorDetails[0] | append: actor[1] | concat: actorsArrayCleanedWithExtensions %}
+          {% assign actorsArrayCleanedWithExtensions = previousActorDetails[0] | append: ',' | append: actorDetails[1] | concat: actorsArrayCleanedWithExtensions %}
         {% else %}
-          {% assign actorsArrayCleanedWithExtensions = actor[0] | append: ',' | append: actor[1] | concat: actorsArrayCleanedWithExtensions %}
+          {% assign actorsArrayCleanedWithExtensions = actorDetails[0] | append: ',' | append: actorDetails[1] | concat: actorsArrayCleanedWithExtensions %}
         {% endif %}
  
         {% if i == actorsArrayExtensionsLimit %}
           {% break %}
         {% endif %}
-      {% endfor %}
-
-      {% for details in actorsArrayCleanedWithExtensions %}
-      
       {% endfor %}
             
       {% assign actorsArrayTitlesLimit = actorsArrayTitles.size | minus: 1 %}
@@ -138,10 +135,20 @@
 <td>{{actorsArrayTitles[i]}}</td>
 <td>{{actorsArrayDescriptions[i]}}</td>
 
-        {% for extension in actorsArrayExtensions %}
+        {% assign previousActorDefinition = "" %}
+
+        {% for extension in actorsArrayCleanedWithExtensions %}
           {%- assign extensionData = extension | split: "," -%}
+
           
+          
+          {% if previousActorDefinition != actorsArrayTitles[i] %}
+            {% assign previousActorDefinition = extensionData[0] %}
+
+          {% endif %}
+
           {% if extensionData[0] == actorsArrayTitles[i] %}
+
             {% assign actorDefinition = extensionData[1] | replace: '/', '-'  %}
             {% assign actorDefinitionUrlFilter = "/" |  append: actorDefinition | append: ".json.html"  %}
 
@@ -156,7 +163,6 @@
                 {% break %}
               {% endif %}
             {% endfor %}
-
 
 <td><a href="{{actorDefinition |  append: ".html"}}">{{actorDefinitionTitle}}</a></td>
 
