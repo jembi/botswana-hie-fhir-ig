@@ -87,7 +87,9 @@
           {% endfor %}
       {% endfor %}
 
-      {% for i in (0..actorsArrayStartingPoint.size) %} 
+      {% assign actorsArrayStartingPointLimit = actorsArrayStartingPoint.size | minus: 1 %}
+
+      {% for i in (0..actorsArrayStartingPointLimit) %} 
         {% if actorsArrayStartingPoint[i] contains "http://moh.bw.org/StructureDefinition/actor-reference" %}
           {% assign titleIndex = i | plus: 4 %}
           {%- assign titleStart = actorsArrayStartingPoint[titleIndex] | split: '"title" : "' -%}
@@ -101,16 +103,14 @@
           {% assign actorsArrayExtensions = titleAndExtension | concat: actorsArrayExtensions %}
         {% endif %}
 
-        {% assign limit = actorsArrayStartingPoint.size | minus: 1 %}
-
         {% if i == limit %}
           {% break %}
         {% endif %}
       {% endfor %}
             
-      {% assign limit = actorsArrayTitles.size | minus: 1 %}
+      {% assign actorsArrayTitlesLimit = actorsArrayTitles.size | minus: 1 %}
       
-      {% for i in (0..actorsArrayTitles.size) %}
+      {% for i in (0..actorsArrayTitlesLimit) %}
 <tr>
 <td>{{actorsArrayTitles[i]}}</td>
 <td>{{actorsArrayDescriptions[i]}}</td>
