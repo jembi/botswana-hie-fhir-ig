@@ -108,6 +108,8 @@
         {% endif %}
       {% endfor %}
             
+      {% assign limit = actorsArrayTitles.size | minus: 1 %}
+      
       {% for i in (0..actorsArrayTitles.size) %}
 <tr>
 <td>{{actorsArrayTitles[i]}}</td>
@@ -122,8 +124,8 @@
             {% break %}
           {% endif %}
         {% endfor %}
+
 </tr>
-        {% assign limit = actorsArrayTitles.size | minus: 1 %}
 
         {% if i == limit %}
           {% break %}
