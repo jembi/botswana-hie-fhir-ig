@@ -21,6 +21,9 @@ Usage: #definition
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores clinical information for the patient included in the request submitted by PoS entity.)
+* actor[=]
+  * extension[+].valueReference = Reference(SHRActorDefinitionExample)
+  * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
 * insert ScenarioInstance(rnp-b.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
 * insert ScenarioInstance(rnp-b.02, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)

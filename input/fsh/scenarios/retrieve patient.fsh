@@ -20,6 +20,9 @@ Usage: #definition
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
 * insert ScenarioActor(FHIR, system, FHIR Server, The entity that will provide the clinical information for the patient.)
+* actor[=]
+  * extension[+].valueReference = Reference(SHRActorDefinitionExample)
+  * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
 * insert ScenarioInstance(rp.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
 * insert ScenarioInstance(rp.02, Endpoint, FHIR Search request, The search query to find a patient in FHIR using business identifiers., Endpoint, SearchForPatientInFHIR)
