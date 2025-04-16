@@ -66,6 +66,7 @@
         {% assign actorsArrayTitles = "" | split: "," %}
         {% assign actorsArrayDescriptions = "" | split: "," %}
         {% assign actorsArrayExtensions = "" | split: "," %}
+        {% assign actorsArrayCleanedWithExtensions = "" | split: "," %}
         {% assign actorsArrayStartingPoint = "" | split: "," %}
 
         {% assign actorsArrayStartingPoint = actors | concat: actorsArrayStartingPoint %}
@@ -103,9 +104,31 @@
           {% assign actorsArrayExtensions = titleAndExtension | concat: actorsArrayExtensions %}
         {% endif %}
 
-        {% if i == limit %}
+        {% if i == actorsArrayStartingPointLimit %}
           {% break %}
         {% endif %}
+      {% endfor %}
+
+      {% assign actorsArrayExtensionsLimit = actorsArrayExtensions.size | minus: 1 %}
+      {% for i in (0..actorsArrayExtensionsLimit) %}
+        {% assign actor = actorsArrayExtensions[i] | split: "," %}
+
+        {% if actor[0] == "" or  actor[0] == nil%}
+          {% assign actorTitleForExtensionIndex = i | minus: 1 %}
+          {% assign actorDetails = actorsArrayExtensions[actorTitleForExtensionIndex] | split: "," %}
+
+          {% assign actorsArrayCleanedWithExtensions = actorDetails[0] | append: actor[1] | concat: actorsArrayCleanedWithExtensions %}
+        {% else %}
+          {% assign actorsArrayCleanedWithExtensions = actor[0] | append: ',' | append: actor[1] | concat: actorsArrayCleanedWithExtensions %}
+        {% endif %}
+ 
+        {% if i == actorsArrayExtensionsLimit %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% for details in actorsArrayCleanedWithExtensions %}
+      
       {% endfor %}
             
       {% assign actorsArrayTitlesLimit = actorsArrayTitles.size | minus: 1 %}
@@ -143,7 +166,7 @@
 
 </tr>
 
-        {% if i == limit %}
+        {% if i == actorsArrayTitlesLimit %}
           {% break %}
         {% endif %}
       {% endfor %}
