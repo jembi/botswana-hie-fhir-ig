@@ -4,10 +4,10 @@
 
 #### USE CASE NAME: CAPTURING LAB ORDERS
 
-ACTORS: Clinician
+ACTORS: <a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Clinician</a>
 
 DEPENDENCIES:
-- Availability of PIMS.
+- Availability of <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>.
 
 DESCRIPTION:
 - Clinician login the system and access the lab module. Clinician then enters Lab specimen details using a lab form available in the lab module.
