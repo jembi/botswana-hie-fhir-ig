@@ -119,7 +119,23 @@
           {%- assign extensionData = extension | split: "," -%}
           
           {% if extensionData[0] == actorsArrayTitles[i] %}
-<td><a href="{{extensionData[1] | replace: '/', '-' }}.html">Details</a></td>
+            {% assign actorDefinition = extensionData[1] | replace: '/', '-'  %}
+            {% assign actorDefinitionUrlFilter = "/" |  append: actorDefinition | append: ".json.html"  %}
+
+            {% assign actorDefinitionTitle = nil %}
+
+            {% for p in sitePages %}
+              {% if p.url == actorDefinitionUrlFilter %}
+                {% assign actorDefinitionContent = p.content | strip_html | strip_newlines  %}
+
+                {% assign actorDefinitionTitle = actorDefinitionContent | split: " - JSON Representation" | first %}
+
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+
+<td><a href="{{actorDefinition |  append: ".html"}}">{{actorDefinitionTitle}}</a></td>
 
             {% break %}
           {% endif %}
