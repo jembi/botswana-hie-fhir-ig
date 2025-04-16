@@ -525,3 +525,58 @@ Description: "Represents the system used to provide a single entrypoint for demo
 * status = #active
 * purpose = "When a FHIR search query comes in to this endpoint, it will be treated as a generic FHIR API search query, and applied across all services."
 * type = #system
+
+Instance: SHRActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Shared Health Record"
+Description: "Represents the system that stores a defined set of normalized patient data, serving as a longitudinal health record across different facilities, ensuring continuity of care."
+* name = "SharedHealthRecord"
+* title = "Shared Health Record (SHR)"
+* status = #active
+* purpose = "To facilitate the exchange and access of patient health information across different healthcare settings, improving care delivery and decision-making."
+* type = #system
+
+Instance: PIMSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - PIMS"
+Description: "Represents the system used to collect, manage, and track patient health records across healthcare facilities, supporting improved care, reporting, and decision-making."
+* name = "PatientInformationManagementSystem"
+* title = "Patient Information Management System (PIMS)"
+* status = #active
+* purpose = "To collect, organize, and store patient data in a way that is easily accessible and usable by healthcare providers."
+* type = #system
+
+Instance: IPMSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - IPMS"
+Description: "Represents a centralized electronic medical record (EMR) system implemented by the Ministry of Health and Wellness. It aims to enhance patient care by providing a unified platform for managing medical records across public health facilitie."
+* name = "IntegratedPatientManagementSystem"
+* title = "Integrated Patient Management System (IPMS)"
+* status = #active
+* purpose = "To transition from paper-based to a technology-based medical record system. This system aims to enhance efficiency, ensure secure management of patient information, and improve the quality and accessibility of healthcare services, particularly in rural areas."
+* type = #system
+
+Instance: OpenMRSActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - OpenMRS"
+Description: "Represents an open-source electronic medical record system that is used to manage patient data, support HIV care, and strengthen health information systems across the country’s healthcare facilities."
+* name = "OpenMRS"
+* title = "OpenMRS"
+* status = #active
+* purpose = "Used as the main patient care system and electronic medical record (EMR) system, providing a platform to manage patient data and improve healthcare delivery, particularly in resource-constrained environments."
+* type = #system
+
+Instance: MFLActorDefinitionExample
+InstanceOf: ActorDefinition
+Usage: #example
+Title: "ActorDefinition - Master Facility List"
+Description: "Represents a comprehensive, standardized registry of all health facilities—both public and private—across the country. Managed by the Ministry of Health and Wellness, the MFL assigns unique codes to each facility, ensuring accurate identification and facilitating interoperability across health information systems. This system supports efficient health data management, reporting, and planning."
+* name = "MasterFacilityList"
+* title = "Master Facility List (MFL)"
+* status = #active
+* purpose = "Serves as a comprehensive, authoritative record of all health facilities within the country, both public and private. It's a crucial tool for the Ministry of Health and Wellness to manage, plan, and monitor the health system."
+* type = #system
