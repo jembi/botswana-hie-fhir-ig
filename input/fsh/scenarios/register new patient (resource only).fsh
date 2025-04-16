@@ -10,14 +10,25 @@ Usage: #definition
 
 * insert ScenarioActor(PoS, system, Point of Service, The entity that registers the patient.)
 * insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the registration request submitted by PoS entity.)
-* insert ScenarioActor(CR, system, Client Registry, The entity that stores PII and demographic information for the patient included in the Patient Resource submitted by the PoS entity.)
-* insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores a restricted version of the Patient Resource submitted by the PoS entity.)
+* actor[=]
+  * extension[+].valueReference = Reference(InteroperabilityLayerActorDefinitionExample)
+  * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
-* insert ScenarioInstance(pos.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
-* insert ScenarioInstance(pos.02, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
-* insert ScenarioInstance(pos.03, Endpoint, FHIR Validation outcome, The validation outcome as issued by the FHIR server., Endpoint, ValidatePatientResourceInFHIR)
-* insert ScenarioInstance(pos.04, Endpoint, Assigned Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)
-* insert ScenarioInstance(pos.05, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
+* insert ScenarioActor(CR, system, Client Registry, The entity that stores PII and demographic information for the patient included in the Patient Resource submitted by the PoS entity.)
+* actor[=]
+  * extension[+].valueReference = Reference(ClientRegistryActorDefinitionExample)
+  * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
+
+* insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores a restricted version of the Patient Resource submitted by the PoS entity.)
+* actor[=]
+  * extension[+].valueReference = Reference(SHRActorDefinitionExample)
+  * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
+
+* insert ScenarioInstance(rnp.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
+* insert ScenarioInstance(rnp.02, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
+* insert ScenarioInstance(rnp.03, Endpoint, FHIR Validation outcome, The validation outcome as issued by the FHIR server., Endpoint, ValidatePatientResourceInFHIR)
+* insert ScenarioInstance(rnp.04, Endpoint, Assigned Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)
+* insert ScenarioInstance(rnp.05, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
 
 * insert ScenarioProcess(1, Register Patient in CR, 
     PoS entity has submitted a create patient request which contains the Data Supplying Patient Resource.,
@@ -32,7 +43,7 @@ CR entity has stored the patient's personal information and sent a response back
     * operation
       * type = $RestfulInteractionCodeSystem#update
       * request
-        * instanceReference = "pos.01"
+        * instanceReference = "rnp.01"
 
   * insert ScenarioProcessStep(1.2, Get patient data, IL, IL, Mediator extracts the patient data from the Patient Resource which includes all personal identifiers.)
   * step[=]
@@ -44,18 +55,18 @@ CR entity has stored the patient's personal information and sent a response back
     * operation
       * type = $RestfulInteractionCodeSystem#operation
       * request
-        * instanceReference = "pos.01"
+        * instanceReference = "rnp.01"
       * response
-        * instanceReference = "pos.03"
+        * instanceReference = "rnp.03"
 
   * insert ScenarioProcessStep(1.4, Validation success: Send patient data, IL, CR, Patient Resource is sent to the CR for processing. The CR associates a MPI with the patient record and stores it. )
   * step[=]
     * operation
       * type = $ScenarioOpTypeCodeSystem#CREATE
       * request
-        * instanceReference = "pos.01"
+        * instanceReference = "rnp.01"
       * response
-        * instanceReference = "pos.04"
+        * instanceReference = "rnp.04"
 
   * insert ScenarioProcessStep(1.5, Success: Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the new patient data in FHIR.)
 
@@ -94,9 +105,9 @@ CR entity has stored the patient's personal information and sent a response back
     * operation
       * receiverActive = true
       * request
-        * instanceReference = "pos.02"
+        * instanceReference = "rnp.02"
       * response
-        * instanceReference = "pos.05"
+        * instanceReference = "rnp.05"
   
   * insert ScenarioProcessStep(2.6, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the create patient request.)
 
@@ -112,7 +123,7 @@ CR entity has stored the patient's personal information and sent a response back
   * step[=]
     * operation
       * request
-        * instanceReference = "pos.05"
+        * instanceReference = "rnp.05"
   
   * insert ScenarioProcessStep(3.2, Log the outcome, PoS, PoS, PoS entity logs the outcome issued by the FHIR entity.)
   * step[=]
