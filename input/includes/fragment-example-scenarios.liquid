@@ -58,7 +58,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th>Actor Reference<sup>*</sup></th>
+    <th>Actor References<sup>*</sup></th>
   </tr>
 </thead>
 <tbody>
@@ -135,24 +135,19 @@
 <td>{{actorsArrayTitles[i]}}</td>
 <td>{{actorsArrayDescriptions[i]}}</td>
 
-        {% assign previousActorDefinition = "" %}
+        {% assign actorDefinitionTitle = nil %}
+        {% assign actorDefinitionForOutput = "" | split: "," %}
+        {% assign actorsArrayCleanedWithExtensionsLimit = actorsArrayCleanedWithExtensions.size | minus: 1 %}
 
-        {% for extension in actorsArrayCleanedWithExtensions %}
-          {%- assign extensionData = extension | split: "," -%}
-
-          
-          
-          {% if previousActorDefinition != actorsArrayTitles[i] %}
-            {% assign previousActorDefinition = extensionData[0] %}
-
-          {% endif %}
+        {% for x in (0..actorsArrayCleanedWithExtensionsLimit) %}
+          {%- assign extensionData = actorsArrayCleanedWithExtensions[x] | split: "," -%}
 
           {% if extensionData[0] == actorsArrayTitles[i] %}
 
             {% assign actorDefinition = extensionData[1] | replace: '/', '-'  %}
             {% assign actorDefinitionUrlFilter = "/" |  append: actorDefinition | append: ".json.html"  %}
 
-            {% assign actorDefinitionTitle = nil %}
+            {% assign actorDefinitionForOutput = actorDefinition | concat: actorDefinitionForOutput %}
 
             {% for p in sitePages %}
               {% if p.url == actorDefinitionUrlFilter %}
@@ -164,11 +159,38 @@
               {% endif %}
             {% endfor %}
 
-<td><a href="{{actorDefinition |  append: ".html"}}">{{actorDefinitionTitle}}</a></td>
 
+
+          {% endif %}
+
+          {% if x == actorsArrayCleanedWithExtensionsLimit %}
             {% break %}
           {% endif %}
+
         {% endfor %}
+
+<td>
+
+        {% assign actorDefinitionForOutputLimit = actorDefinitionForOutput.size | minus: 1 %}
+
+        {% for z in (0..actorDefinitionForOutputLimit) %}
+          {%- assign details = actorDefinitionForOutput[z] | split: "," -%}
+
+      
+
+          {% if actorDefinitionForOutput.size > 1 and z < actorDefinitionForOutputLimit %}
+<a href="{{details[0] |  append: ".html"}}">{{actorDefinitionTitle}}</a>, <br /> 
+          {% else %}
+<a href="{{details[0] |  append: ".html"}}">{{actorDefinitionTitle}}</a>
+          {% endif %}
+
+          {% if z == actorDefinitionForOutputLimit %}
+            {% break %}
+          {% endif %}
+
+        {% endfor %}
+
+</td>
 
 </tr>
 
