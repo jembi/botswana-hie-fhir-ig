@@ -1,21 +1,20 @@
 {% assign sitePages = site.pages %}
 {% assign resourceNames = "" | split: "," %}
 
-{% for data_file in site.data %}
+{%- for data_file in site.data -%}
   {% if data_file[0] == "canonicals" %}
-    {% assign content = data_file[1] %}
-    {% for resource in content %}
+    {%- for resource in data_file[1] -%}
       {% if resource.type == "ExampleScenario" %}
         {% assign resourceNames = resource.name | concat: resourceNames | sort %}
       {% endif %}
-    {% endfor %}
+    {%- endfor -%}
 
     {% break %}
   {% endif %}
-{% endfor %}
+{%- endfor -%}
 
-{% for item in resourceNames %}
-    {% for p in sitePages %}
+{%- for item in resourceNames -%}
+    {%- for p in sitePages -%}
       {% assign scenarioPage = "ExampleScenario-" | append: item %}
       {% assign baseUrlFilter = "/" |  append: scenarioPage %}
 
@@ -24,25 +23,23 @@
 
       {% if p.url == htmlUrlFilter %}
 
-        {% for p2 in sitePages %}
+        {% assign actors = nil %}
+        
+        {%- for p2 in sitePages -%}
           {% if p2.url contains jsonUrlFilter %}
             {% assign scenarioActorContent = p2.content | strip_html | strip_newlines  %}
 
-            {% assign actors = nil %}
-            {% assign actorExtensions = nil %}
-
-            {% for scenarioActor in scenarioActorContent %}
+            {%- for scenarioActor in scenarioActorContent -%}
               {% assign actorsContentStart = scenarioActor | split: '"actor" :' %}
-
               {% assign actorsContentEnd = actorsContentStart[1] | split: '}  ]' %}
 
               {% assign actors = actorsContentEnd[0] |  append: "}  ]" | remove: '&#x1F517;' |  split: ',' %}
-            {% endfor %}
+            {%- endfor -%}
 
           {% break %}
 
           {% endif %}
-        {% endfor %}
+        {%- endfor -%}
 
         {% assign scenarioContent = p.content | strip_html | strip_newlines %}
         {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
@@ -72,25 +69,25 @@
         {% assign actorsArrayStartingPoint = actors | concat: actorsArrayStartingPoint %}
         
 
-        {% for actor in actors %}
+        {%- for actor in actors -%}
           {%- assign titleStart = actor | split: '"title" : "' -%}
           {%- assign titles = titleStart[1] | split: '"' | first -%}
 
           {%- assign descriptionStart = actor | split: '"description" : "' -%}
           {%- assign descriptions = descriptionStart[1] | split: '"' | first -%}
 
-          {% for title in titles %}
+          {%- for title in titles -%}
             {% assign actorsArrayTitles = title | concat: actorsArrayTitles %}
-          {% endfor %}
+          {%- endfor -%}
 
-          {% for description in descriptions %}
+          {%- for description in descriptions -%}
             {% assign actorsArrayDescriptions = description | concat: actorsArrayDescriptions %}
-          {% endfor %}
-      {% endfor %}
+          {%- endfor -%}
+      {%- endfor -%}
 
       {% assign actorsArrayStartingPointLimit = actorsArrayStartingPoint.size | minus: 1 %}
 
-      {% for i in (0..actorsArrayStartingPointLimit) %} 
+      {%- for i in (0..actorsArrayStartingPointLimit) -%} 
         {% if actorsArrayStartingPoint[i] contains "http://moh.bw.org/StructureDefinition/actor-reference" %}
           {% assign titleIndex = i | plus: 4 %}
           {%- assign titleStart = actorsArrayStartingPoint[titleIndex] | split: '"title" : "' -%}
@@ -107,11 +104,10 @@
         {% if i == actorsArrayStartingPointLimit %}
           {% break %}
         {% endif %}
-      {% endfor %}
-
+      {%- endfor -%}
 
       {% assign actorsArrayExtensionsLimit = actorsArrayExtensions.size | minus: 1 %}
-      {% for i in (0..actorsArrayExtensionsLimit) %}
+      {%- for i in (0..actorsArrayExtensionsLimit) -%}
         {% assign actorDetails = actorsArrayExtensions[i] | split: "," %}
 
         {% if actorDetails[0] == "" or  actorDetails[0] == nil %}
@@ -126,30 +122,28 @@
         {% if i == actorsArrayExtensionsLimit %}
           {% break %}
         {% endif %}
-      {% endfor %}
+      {%- endfor -%}
             
       {% assign actorsArrayTitlesLimit = actorsArrayTitles.size | minus: 1 %}
       
-      {% for i in (0..actorsArrayTitlesLimit) %}
+      {%- for i in (0..actorsArrayTitlesLimit) -%}
 <tr>
 <td>{{actorsArrayTitles[i]}}</td>
 <td>{{actorsArrayDescriptions[i]}}</td>
 
-        {% assign actorDefinitionTitle = nil %}
         {% assign actorDefinitionForOutput = "" | split: "," %}
         {% assign actorsArrayCleanedWithExtensionsLimit = actorsArrayCleanedWithExtensions.size | minus: 1 %}
 
-        {% for x in (0..actorsArrayCleanedWithExtensionsLimit) %}
+        {%- for x in (0..actorsArrayCleanedWithExtensionsLimit) -%}
           {%- assign extensionData = actorsArrayCleanedWithExtensions[x] | split: "," -%}
+          {% assign actorDefinitionTitle = nil %}
 
           {% if extensionData[0] == actorsArrayTitles[i] %}
 
             {% assign actorDefinition = extensionData[1] | replace: '/', '-'  %}
             {% assign actorDefinitionUrlFilter = "/" |  append: actorDefinition | append: ".json.html"  %}
 
-           
-
-            {% for p in sitePages %}
+            {%- for p in sitePages -%}
               {% if p.url == actorDefinitionUrlFilter %}
                 {% assign actorDefinitionContent = p.content | strip_html | strip_newlines  %}
 
@@ -159,7 +153,7 @@
 
                 {% break %}
               {% endif %}
-            {% endfor %}
+            {%- endfor -%}
 
 
 
@@ -169,13 +163,13 @@
             {% break %}
           {% endif %}
 
-        {% endfor %}
+        {%- endfor -%}
 
 <td>
 
         {% assign actorDefinitionForOutputLimit = actorDefinitionForOutput.size | minus: 1 %}
 
-        {% for z in (0..actorDefinitionForOutputLimit) %}
+        {%- for z in (0..actorDefinitionForOutputLimit) -%}
           {%- assign details = actorDefinitionForOutput[z] | split: "," -%}
 
           {% if actorDefinitionForOutput.size > 1 and z < actorDefinitionForOutputLimit %}
@@ -188,7 +182,7 @@
             {% break %}
           {% endif %}
 
-        {% endfor %}
+        {%- endfor -%}
 
 </td>
 
@@ -197,7 +191,7 @@
         {% if i == actorsArrayTitlesLimit %}
           {% break %}
         {% endif %}
-      {% endfor %}
+      {%- endfor -%}
             
 
 </tbody>
@@ -218,9 +212,8 @@
 <br />
 <br />
 </div>
-            
-        
+    
         {% break %}
       {% endif %}
-    {% endfor %}
-{% endfor %}
+    {%- endfor -%}
+{%- endfor -%}
