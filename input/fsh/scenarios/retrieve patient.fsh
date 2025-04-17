@@ -9,6 +9,12 @@ Usage: #definition
 * purpose = "This serves to demonstrate the retrieval of a patient's record, from the Client Registry (CR) and a FHIR datastore."
 
 * insert ScenarioActor(PoS, system, Point of Service, The entity that submits a request for a patient record.)
+* actor[=]
+  * extension[+].valueReference = Reference(PIMSActorDefinitionExample)
+  * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
+  * extension[+].valueReference = Reference(OpenMRSActorDefinitionExample)
+  * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
+
 * insert ScenarioActor(IL, system, Interoperability Layer, The entity that retrieves the patient data from the CR and FHIR entities.)
 * actor[=]
   * extension[+].valueReference = Reference(InteroperabilityLayerActorDefinitionExample)
