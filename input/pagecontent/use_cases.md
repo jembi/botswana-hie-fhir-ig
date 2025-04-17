@@ -7,9 +7,9 @@
 PRIMARY ACTOR: <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
 
 SECONDARY ACTORS: 
-<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
-<a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
-<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer</a>
+<a href="ActorDefinition-SHRActorDefinitionExample.html">Shared Health Record (SHR)</a>,
+<a href="ActorDefinition-PIMSActorDefinitionExample.html">Patient Information Management System (PIMS)</a>,
+<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer (IL)</a>
 
 DEPENDENCIES:
 - Availability of <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>.
@@ -59,7 +59,7 @@ PRIMARY ACTOR: <a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExamp
 
 SECONDARY ACTORS:
 <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
-<a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>
+<a href="ActorDefinition-IPMSActorDefinitionExample.html">Integrated Patient Management System (IPMS)</a>
 <br />
 
 DEPENDENCIES:
@@ -147,18 +147,18 @@ STEP/s:
 PRIMARY ACTORS: 
 <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
 <a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>,
-<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer</a>,
+<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>,
 <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
-<a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">OpenCR</a>
+<a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Open Client Registry (CR)</a>
 
 SECONDARY ACTORS:
-<a href="ActorDefinition-MFLActorDefinitionExample.html">MFL</a>,
+<a href="ActorDefinition-MFLActorDefinitionExample.html">Master Facility List (MFL)</a>,
 <a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>,
-<a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System</a>
+<a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System (BDRS)</a>
 <br />
 <br />
 DEPENDENCIES:
-- Active connection to <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer</a>.
+- Active connection to <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>.
 
 DESCRIPTION:
 - An interoperability layer facilitates information exchange of clinical laboratory orders between the electronic medical record and the laboratory information system, via the longitudinal record system (SHR). 
