@@ -1,8 +1,8 @@
 @startuml LabOrderResulting
 top to bottom direction
 rectangle "OpenHIE - Lab Order Resulting" as LabOrderResulting {
-  actor "Lab Tech" as labTech
-  rectangle IPMS {
+  actor "[[ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html Lab Tech]]" as labTech
+  rectangle "[[ActorDefinition-IPMSActorDefinitionExample.html IPMS]]" as IPMS {
   usecase "Login" as LOR1
   usecase "Authentication" as LOR2
   usecase "Lab Order Resulting" as LOR3
@@ -16,9 +16,9 @@ labTech --> LOR1 : "Enters Credentials"
 
 LOR1 --> LOR3 : "Successful Login"
 
-  rectangle "Interoperability Layer" {
+  rectangle "[[ActorDefinition-InteroperabilityLayerActorDefinitionExample.html Interoperability Layer]]" as InteroperabilityLayer {
   usecase "Mediator" as IL1
-  usecase "Shared Health Record" as IL2
+  usecase "[[ActorDefinition-SHRActorDefinitionExample.html Shared Health Record]]" as IL2
   usecase "HL7 v2.4 to FHIR translation" as IL3
   }
   LOR3 --> IL1 : "Receives HL7 v2.4 messages"
