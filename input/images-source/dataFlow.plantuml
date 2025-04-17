@@ -1,0 +1,30 @@
+@startuml DataFlow
+
+activate "OpenMRS"
+"OpenMRS" -> "MFL": Get facility ID
+"OpenMRS" -> "OpenHIM": Send Lab order request (FHIR bundle)
+deactivate "OpenMRS"
+
+activate "OpenHIM"
+"OpenHIM" -> "SharedHealthRecord": Forward Lab order request
+deactivate "OpenHIM"
+
+activate "SharedHealthRecord"
+"SharedHealthRecord" --> "SharedHealthRecord": Map facility ID to IPMS Mnemonics
+"SharedHealthRecord" --> "IPMS": Send HL7 ADT message
+"SharedHealthRecord" --> "IPMS": Send HL7 ORM message
+deactivate "SharedHealthRecord"
+
+activate "IPMS"
+"IPMS" --> "SharedHealthRecord": Return ORU message (Lab result)
+deactivate "IPMS"
+
+activate "SharedHealthRecord"
+"SharedHealthRecord" --> "OpenHIM": Send Lab result
+deactivate "SharedHealthRecord"
+
+activate "OpenHIM"
+"OpenHIM" --> "OpenMRS": Forward Lab request
+deactivate "OpenHIM"
+
+@enduml

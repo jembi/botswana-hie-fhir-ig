@@ -1,0 +1,31 @@
+@startuml LabOrderResulting
+top to bottom direction
+rectangle "OpenHIE - Lab Order Resulting" as LabOrderResulting {
+  actor "Lab Tech" as labTech
+  rectangle IPMS {
+  usecase "Login" as LOR1
+  usecase "Authentication" as LOR2
+  usecase "Lab Order Resulting" as LOR3
+  usecase "Receives New Lab Orders" as LOR4
+  }
+
+labTech --> LOR1 : "Enters Credentials"
+
+(LOR2) ..> (LOR1) : "<<use>>"
+(LOR3) ..> (LOR4) : "<<use>>"
+
+LOR1 --> LOR3 : "Successful Login"
+
+  rectangle "Interoperability Layer" {
+  usecase "Mediator" as IL1
+  usecase "Shared Health Record" as IL2
+  usecase "HL7 v2.4 to FHIR translation" as IL3
+  }
+  LOR3 --> IL1 : "Receives HL7 v2.4 messages"
+
+  IL1 --> IL2 : "Update Lab Orders"
+
+  (IL1) ..> (IL3) : "<<use>>"
+}
+
+@enduml

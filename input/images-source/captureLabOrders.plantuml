@@ -1,0 +1,42 @@
+@startuml CaptureLabOrders
+top to bottom direction
+rectangle "OpenHIE - Capture Lab Orders" as CaptureLabOrders {
+  actor "Clinician" as clinician
+  rectangle PIMS {
+  usecase "Login" as CLO1
+  usecase "Authenticate User" as CLO2
+  usecase "Capture Lab Orders" as CLO3
+  usecase "Translation to FHIR" as CLO4
+  usecase "Generates Lab Order ID" as CLO5
+  }
+
+clinician --> CLO1
+
+(CLO1) ..> (CLO2) : "<<use>>"
+(CLO3) ..> (CLO5) : "<<use>>"
+
+CLO1 --> CLO3
+CLO3 --> CLO4 : "Label"
+
+ 
+  rectangle "Interoperability Layer" as OpenHIM {
+    usecase "Update records" as OHIM1
+    usecase "Shared Health Record" as OHIM2
+    usecase "Validate Patients details" as OHIM3
+    usecase "Validate Facility Information" as OHIM4
+  }
+
+  CLO4 --> OHIM2 : "Push lab orders to SHR"
+
+  (OHIM2) ..> (OHIM1) : "<<use>>"
+  (OHIM2) ..> (OHIM3) : "<<use>>"
+  (OHIM2) ..> (OHIM4) : "<<use>>"
+
+  rectangle "Omang, Births and Deaths register" as Omang
+  rectangle MFL
+
+  (Omang) --> (OHIM3) : "Pull Patient details"
+  (MFL) --> (OHIM4) : "Pull Facility data"
+}
+
+@enduml
