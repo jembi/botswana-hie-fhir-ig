@@ -1,8 +1,8 @@
 @startuml CaptureLabOrders
 top to bottom direction
 rectangle "OpenHIE - Capture Lab Orders" as CaptureLabOrders {
-  actor "Clinician" as clinician
-  rectangle PIMS {
+  actor "[[ActorDefinition-ClinicianActorDefinitionExample.html Clinician]]" as clinician
+  rectangle "[[ActorDefinition-PIMSActorDefinitionExample.html PIMS]]" as PIMS {
   usecase "Login" as CLO1
   usecase "Authenticate User" as CLO2
   usecase "Capture Lab Orders" as CLO3
@@ -19,9 +19,9 @@ CLO1 --> CLO3
 CLO3 --> CLO4 : "Label"
 
  
-  rectangle "Interoperability Layer" as OpenHIM {
+  rectangle "[[ActorDefinition-InteroperabilityLayerActorDefinitionExample.html Interoperability Layer]]" as OpenHIM {
     usecase "Update records" as OHIM1
-    usecase "Shared Health Record" as OHIM2
+    usecase "[[ActorDefinition-SHRActorDefinitionExample.html Shared Health Record]]" as OHIM2
     usecase "Validate Patients details" as OHIM3
     usecase "Validate Facility Information" as OHIM4
   }
@@ -32,10 +32,12 @@ CLO3 --> CLO4 : "Label"
   (OHIM2) ..> (OHIM3) : "<<use>>"
   (OHIM2) ..> (OHIM4) : "<<use>>"
 
-  rectangle "Omang, Births and Deaths register" as Omang
-  rectangle MFL
+  rectangle "[[ActorDefinition-OmangActorDefinitionExample.html Omang]]" as Omang
+  rectangle "[[ActorDefinition-BDRSActorDefinitionExample.html Births and Deaths Register]]" as BDRS
+  rectangle "[[ActorDefinition-MFLActorDefinitionExample.html MFL]]" as MFL
 
   (Omang) --> (OHIM3) : "Pull Patient details"
+  (BDRS) --> (OHIM3) : "Pull Patient details"
   (MFL) --> (OHIM4) : "Pull Facility data"
 }
 

@@ -4,7 +4,12 @@
 
 #### USE CASE NAME: CAPTURING LAB ORDERS
 
-ACTORS: <a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Clinician</a>
+PRIMARY ACTOR: <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
+
+SECONDARY ACTORS: 
+<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
+<a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
+<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer</a>
 
 DEPENDENCIES:
 - Availability of <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>.
@@ -50,7 +55,11 @@ STEPS:
 #### USE CASE NAME: LAB ORDER RESULTING
 <br />
 
-ACTORS: Laboratory technicians 
+PRIMARY ACTOR: <a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html">Laboratory technicians</a> 
+
+SECONDARY ACTORS:
+<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
+<a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>
 <br />
 
 DEPENDENCIES:
@@ -90,10 +99,13 @@ STEPS:
 
 #### USE CASE NAME: RETRIEVING LAB TEST RESULTS
 
-ACTORS:  Clinicians 
+PRIMARY ACTOR:  <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
+
+SECONDARY ACTOR:
+<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
 
 DEPENDENCIES:
-- Up to date synchronization of the SHR.
+- Up to date synchronization of the <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>.
 
 DESCRIPTION:
 - This use case enables clinicians to retrieve lab order results at the facility and have the option to print out the results.
@@ -132,11 +144,21 @@ STEP/s:
 
 #### USE CASE NAME: TRANSMISSION OF LABORATORY RESULTS
 <br />
-ACTOR: PIMS, IPMS, Interoperability Layer, SHR, OpenCR
+PRIMARY ACTORS: 
+<a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
+<a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>,
+<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer</a>,
+<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
+<a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">OpenCR</a>
+
+SECONDARY ACTORS:
+<a href="ActorDefinition-MFLActorDefinitionExample.html">MFL</a>,
+<a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>,
+<a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System</a>
 <br />
 <br />
 DEPENDENCIES:
-- Active connection to interoperability layer.
+- Active connection to <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer</a>.
 
 DESCRIPTION:
 - An interoperability layer facilitates information exchange of clinical laboratory orders between the electronic medical record and the laboratory information system, via the longitudinal record system (SHR). 

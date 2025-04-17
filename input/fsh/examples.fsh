@@ -455,7 +455,7 @@ Usage: #example
 Title: "ActorDefinition - Interoperability Layer"
 Description: "Represents the architectural component responsible for coordinating transactions from one system to another during Health Information Exchange."
 * name = "InteroperabilityLayer"
-* title = "Interoperability Layer"
+* title = "Interoperability Layer (IL)"
 * status = #active
 * purpose = "The Interoperability Layer plays a vital role in ensuring that both lab orders and diagnostic reports are stored in the Shared Health Record."
 * type = #system
@@ -477,7 +477,7 @@ Usage: #example
 Title: "ActorDefinition - Client Registry"
 Description: "Represents the system designed to uniquely identify individuals who receive healthcare services, often by maintaining a central record of patients and their demographics, assigning unique identifiers, and enabling healthcare workers to identify facilities where a patient has received care."
 * name = "ClientRegistry"
-* title = "Client Registry"
+* title = "Client Registry (CR)"
 * status = #active
 * purpose = "The client registry is important for the accurate and efficient identification and linking of patient records across different healthcare organizations within a health information exchange network."
 * type = #system
@@ -499,7 +499,7 @@ Usage: #example
 Title: "ActorDefinition - Birth and Death Registration System"
 Description: "Represents the system used for recording births and deaths, ensuring that citizens are formally recognized and provided with legal identification."
 * name = "BirthDeathRegistrationSystem"
-* title = "Birth and Death Registration System"
+* title = "Birth and Death Registration System (BDRS)"
 * status = #active
 * purpose = "The helps in maintaining accurate population data, enabling effective policy-making, and ensuring access to services such as healthcare, social security, and education."
 * type = #system
@@ -510,7 +510,7 @@ Usage: #example
 Title: "ActorDefinition - Immigration and Citizenship System"
 Description: "Represents the system used to manage the entry, stay, and exit of foreign nationals and to govern the acquisition and loss of citizenship in the country."
 * name = "ImmigrationCitizenshipSystem"
-* title = "Immigration and Citizenship System"
+* title = "Immigration and Citizenship System (ICS)"
 * status = #active
 * purpose = "This helps in identifying foreign nationals when accessing services such as healthcare in a health facility."
 * type = #system
@@ -521,7 +521,7 @@ Usage: #example
 Title: "ActorDefinition - Cross-Service API"
 Description: "Represents the system used to provide a single entrypoint for demographic search queries that might have a mix of various query parameters."
 * name = "API"
-* title = "Cross-Service API"
+* title = "Cross-Service API (API)"
 * status = #active
 * purpose = "When a FHIR search query comes in to this endpoint, it will be treated as a generic FHIR API search query, and applied across all services."
 * type = #system

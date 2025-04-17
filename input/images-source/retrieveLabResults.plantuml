@@ -1,8 +1,8 @@
 @startuml RetrieveLabResults
 
 rectangle "OpenHIE - Retrieve Lab Results" as RetrieveLabResults {
-  actor "Clinician" as clinician
-    rectangle PIMS {
+  actor "[[ActorDefinition-ClinicianActorDefinitionExample.html Clinician]]" as clinician
+    rectangle "[[ActorDefinition-PIMSActorDefinitionExample.html PIMS]]" as PIMS {
   usecase "Login" as RLR1
   usecase "Authenticate User" as RLR2
   usecase "Retrieve Lab Results" as RLR3
@@ -18,9 +18,9 @@ clinician --> RLR1
 RLR1 --> RLR3
 RLR5 --> RLR3 : "Query available lab results"
 
-  rectangle "Interoperability Layer" as IL {
+  rectangle "[[ActorDefinition-InteroperabilityLayerActorDefinitionExample.html Interoperability Layer]]" as IL {
   usecase "Update DB records" as IL1
-  usecase "Shared Health Record" as IL2
+  usecase "[[ActorDefinition-SHRActorDefinitionExample.html Shared Health Record]]" as IL2
   }
 
   IL2 --> RLR5

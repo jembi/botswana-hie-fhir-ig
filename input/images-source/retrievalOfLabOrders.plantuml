@@ -1,8 +1,8 @@
 @startuml RetrievalOfLabOrders
 left to right direction
 rectangle "OpenHIE - Retrieval Of Lab Orders" as RetrievalOfLabOrders {
-  actor "Lab Tech" as labTech
-  rectangle IPMS {
+  actor "[[ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html Lab Tech]]" as labTech
+  rectangle "[[ActorDefinition-IPMSActorDefinitionExample.html IPMS]]" as IPMS {
   usecase "Login" as RLO1
   usecase "Authenticate User" as RLO2
   usecase "Lab Order module" as RLO3
@@ -18,12 +18,12 @@ labTech --> RLO1
 RLO1 --> RLO3
 RLO5 --> RLO3 : "Extends"
 
-  rectangle "Interoperability Layer" {
+  rectangle "[[ActorDefinition-InteroperabilityLayerActorDefinitionExample.html Interoperability Layer]]" as InteroperabilityLayer {
   usecase "Update records" as IL1
-  usecase "Shared Health Record" as IL2
+  usecase "[[ActorDefinition-SHRActorDefinitionExample.html Shared Health Record]]" as IL2
   usecase "Mediator" as IL3
   usecase "Translate FHIR messages to HL7 v2.4" as IL4
-  usecase "OpenCR" as IL5
+  usecase "[[ActorDefinition-ClientRegistryActorDefinitionExample.html OpenCR]]" as IL5
   }
 
   IL3 --> RLO3 : "Pushes HL7 v2.4 messages"
@@ -35,10 +35,12 @@ RLO5 --> RLO3 : "Extends"
   (IL2) ..> (IL1) : "<<use>>"
   (IL3) ..> (IL4) : "<<use>>"
 
-  rectangle "Omang and BDRS" as Omang
-  rectangle "Master Facility List" as MFL
+  rectangle "[[ActorDefinition-OmangActorDefinitionExample.html Omang]]" as Omang
+  rectangle "[[ActorDefinition-BDRSActorDefinitionExample.html Births and Deaths Register]]" as BDRS
+  rectangle "[[ActorDefinition-MFLActorDefinitionExample.html Master Facility List]]" as MFL
 
   (Omang) --> (IL5) : "Update Patients details"
+  (BDRS) --> (IL5) : "Update Patients details"
   (MFL) --> (IL5) : "Update Facility details"
 }
 
