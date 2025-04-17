@@ -418,4 +418,4 @@ Description: "Represents the requirements for the use case described in this Imp
 * name 1..1
 * actor MS
 * statement 1..*
-* extension contains RequirementsTypeExtension named RequirementsType 1..1
+* extension contains RequirementsTypeExtension named RequirementsType 1..*
