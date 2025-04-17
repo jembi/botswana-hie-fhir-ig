@@ -25,8 +25,7 @@
        {% assign requirementsTypeCoding = requirement | split: '"system" : "http://moh.bw.org/CodeSystem/cs-requirements-type-codes",            "code" : "' %}
        {%- assign requirementsType = requirementsTypeCoding[1] | split: '"' -%}
         
-       {% if requirementsType[0] == requirementsTypeFilter %}
-
+       {% if requirementsType[0] == requirementsTypeFilter %}        
           {% assign requirementsStatementsStart = requirement | split: '"statement" :' %}
           {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
           {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
@@ -40,11 +39,21 @@
             {%- assign actorUrlsStart = requirements | split: '"actor" : [' -%}
             {%- assign actorUrlsEnd = actorUrlsStart[1] | remove: '&#x1F517;' | split: ']' | first  -%}
 
+            {%- assign actorClassificationExtensionStart = requirement | split: '"_actor" :' -%}
+            {%- assign actorClassificationExtensionEnd = '{"_actor" :' |  append: actorClassificationExtensionStart[1] |  remove: '&#x1F517;'  | split: '}  ]' -%}
+            {%- assign actorClassification = actorClassificationExtensionEnd[0] | append: '}  ]}' -%}
+            {%- assign actorClassificationCoding = actorClassification | split: '"coding"' -%}
+            {{actorClassificationCoding[1]}}
+            
+           
+
             {% assign actorUrls = "" | split: "," %}
 
             {% for url in actorUrlsEnd  %}
               {%- assign actorUrls = url | split: ',' | concat: actorUrls -%}
             {% endfor %}
+
+            
 
             {% assign actorCount = 1 %}
 
