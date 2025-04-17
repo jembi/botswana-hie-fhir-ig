@@ -147,13 +147,15 @@
             {% assign actorDefinition = extensionData[1] | replace: '/', '-'  %}
             {% assign actorDefinitionUrlFilter = "/" |  append: actorDefinition | append: ".json.html"  %}
 
-            {% assign actorDefinitionForOutput = actorDefinition | concat: actorDefinitionForOutput %}
+           
 
             {% for p in sitePages %}
               {% if p.url == actorDefinitionUrlFilter %}
                 {% assign actorDefinitionContent = p.content | strip_html | strip_newlines  %}
 
                 {% assign actorDefinitionTitle = actorDefinitionContent | split: " - JSON Representation" | first %}
+
+                {% assign actorDefinitionForOutput = actorDefinitionTitle |  append: ',' | append: actorDefinition | concat: actorDefinitionForOutput %}
 
                 {% break %}
               {% endif %}
@@ -176,12 +178,10 @@
         {% for z in (0..actorDefinitionForOutputLimit) %}
           {%- assign details = actorDefinitionForOutput[z] | split: "," -%}
 
-      
-
           {% if actorDefinitionForOutput.size > 1 and z < actorDefinitionForOutputLimit %}
-<a href="{{details[0] |  append: ".html"}}">{{actorDefinitionTitle}}</a>, <br /> 
+<a href="{{details[1] |  append: ".html"}}">{{details[0]}}</a>, <br /> 
           {% else %}
-<a href="{{details[0] |  append: ".html"}}">{{actorDefinitionTitle}}</a>
+<a href="{{details[1] |  append: ".html"}}">{{details[0]}}</a>
           {% endif %}
 
           {% if z == actorDefinitionForOutputLimit %}
