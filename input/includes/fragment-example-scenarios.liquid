@@ -65,10 +65,8 @@
         {% assign actorsArrayExtensions = "" | split: "," %}
         {% assign actorsArrayCleanedWithExtensions = "" | split: "," %}
         {% assign actorsArrayStartingPoint = "" | split: "," %}
-
         {% assign actorsArrayStartingPoint = actors | concat: actorsArrayStartingPoint %}
         
-
         {%- for actor in actors -%}
           {%- assign titleStart = actor | split: '"title" : "' -%}
           {%- assign titles = titleStart[1] | split: '"' | first -%}
@@ -154,19 +152,13 @@
                 {%- break -%}
               {%- endif -%}
             {%- endfor -%}
-
-
-
           {%- endif -%}
 
           {%- if x == actorsArrayCleanedWithExtensionsLimit -%}
             {%- break -%}
           {%- endif -%}
-
         {%- endfor -%}
-
 <td>
-
         {% assign actorDefinitionForOutputLimit = actorDefinitionForOutput.size | minus: 1 %}
 
         {%- for z in (0..actorDefinitionForOutputLimit) -%}
@@ -181,29 +173,20 @@
           {%- if z == actorDefinitionForOutputLimit -%}
             {%- break -%}
           {%- endif -%}
-
         {%- endfor -%}
-
 </td>
-
 </tr>
-
         {%- if i == actorsArrayTitlesLimit -%}
           {%- break -%}
         {%- endif -%}
       {%- endfor -%}
-            
-
 </tbody>
 </table>
-
 <p>
   <sup>*</sup> An actor reference will only be available if a reference was provided in the <a href="StructureDefinition-actor-reference.html">"Actor Reference"</a> extension.
 </p>
 </div>
-
 <br />
-
 <p>See process details: <a href = "{{scenarioPage | append: '.html'}}">Interactions and steps</a></p>
 
 {% include {{scenarioPage}}-process-diagram.xhtml %}
