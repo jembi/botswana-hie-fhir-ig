@@ -417,5 +417,6 @@ Title: "Requirements"
 Description: "Represents the requirements for the use case described in this Implementation Guide."
 * name 1..1
 * actor MS
+  * extension contains ActorClassificationExtension named ActorClassification 0..1 MS
 * statement 1..*
 * extension contains RequirementsTypeExtension named RequirementsType 1..*

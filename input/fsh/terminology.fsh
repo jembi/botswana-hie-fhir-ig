@@ -1114,3 +1114,19 @@ Title: "Requirements Type Codes"
 Description: "A coded value that represents the type of requirements contained in the Resource."
 * ^experimental = false
 * include codes from system CSRequirementsTypeCodes
+
+CodeSystem: CSActorClassificationCodes
+Id: cs-actor-classification-codes
+Title: "Actor Classification Codes"
+Description: "A coded value that represents whether the actor is primary or secondary in the context of the requirements defintion."
+* ^experimental = false
+* ^caseSensitive = true
+* #primary "Primary Actor" "A primary actor is the one who initiates the interaction with the system to achieve a specific goal. They are typically the main users of the system or those who directly benefit from the outcome of the use case."
+* #secondary "Secondary Actor" "A secondary actor is a system, person, or organization that the system needs help from to accomplish the goal of the use case. They support the process but don’t initiate the use case"
+
+ValueSet: VSActorClassificationCodes
+Id: vs-actor-classification-codes
+Title: "Actor Classification Codes"
+Description: "A coded value that represents whether the actor is primary or secondary in the context of the requirements defintion."
+* ^experimental = false
+* include codes from system CSActorClassificationCodes

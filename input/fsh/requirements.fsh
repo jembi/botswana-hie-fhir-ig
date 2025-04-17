@@ -7,8 +7,11 @@ Description: "Clinician Functional Requirements"
 * name = "ClinicianRequirements"
 * status = #active
 * actor[+] = Canonical(ClinicianActorDefinitionExample)
+  * extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#primary
 * actor[+] = Canonical(SHRActorDefinitionExample)
+  * extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#secondary
 * actor[+] = Canonical(PIMSActorDefinitionExample)
+  * extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#secondary
 * statement[+]
   * key = "BOTS.FR-C.001"
   * requirement = "I want to be able to log in to system and access the laboratory module."
