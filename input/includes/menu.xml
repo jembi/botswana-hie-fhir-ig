@@ -13,9 +13,6 @@
   <li>
     <a href="index.html">Home</a>
   </li>
-  <li>
-    <a href="toc.html">Table of Contents</a>
-  </li>
   <li class="dropdown">
     <a data-toggle="dropdown" href="#" class="dropdown-toggle">Business Requirements
       <b class="caret"></b>
@@ -48,5 +45,9 @@
         <a href="artifacts.html">Artifacts</a>
       </li>
     </ul>
+  </li>
+
+   <li>
+    <a href="downloads.html">Downloads</a>
   </li>
 </ul>
