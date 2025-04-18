@@ -49,26 +49,62 @@
             {% assign actorClassificationStartingPoint = "" | split: "," %}
             {% assign actorClassificationStartingPoint = classifications | concat: actorClassificationStartingPoint %}
             
-            {% assign actorClassificationStartingPointLimit = actorClassificationStartingPoint.size | minus: 1 %}
-
-            {%- for i in (0..actorClassificationStartingPointLimit) -%} 
-              {%- assign actorClassificationExtensionCodeStart = actorClassificationStartingPoint[i] | split: '"code" : "' -%}
-              {%- assign actorClassificationExtensionCodeEnd = actorClassificationExtensionCodeStart[1] | split: '"' | first  -%}
-
-
-              {% if i == actorClassificationStartingPointLimit %}
-                {% break %}
-              {% endif %}
-            {%- endfor -%}
-            
-           
             {% assign actorUrls = "" | split: "," %}
 
             {% for url in actorUrlsEnd  %}
               {%- assign actorUrls = url | split: ',' | concat: actorUrls -%}
             {% endfor %}
 
-            
+            {% assign actorWithClassifications = "" | split: "," %}
+
+            {%- assign actorUrlExamplesArray = "" | split: ','  -%}
+            {%- assign actorClasificationsArray = "" | split: ','  -%}
+
+            {% assign actorClassificationStartingPointLimit = actorClassificationStartingPoint.size | minus: 1 %}
+
+            {%- for i in (0..actorClassificationStartingPointLimit) -%} 
+              {%- assign actorClassificationExtensionCodeStart = actorClassificationStartingPoint[i] | split: '"code" : "' -%}
+              {%- assign actorClassificationExtensionCodeEnd = actorClassificationExtensionCodeStart[1] | split: '"' | first  -%}
+              {%- assign actorUrlExampleStart = actorUrls[i] | split: 'ActorDefinition/' | last  -%}
+              {%- assign actorUrlExampleEnd = actorUrlExampleStart | split: '"' | first  -%}
+
+              {% for example in actorUrlExampleEnd  %}
+                {% assign actorUrlExamplesArray = example | concat: actorUrlExamplesArray %}
+              {% endfor %}
+
+              {% for actorExampleClassification in actorClassificationExtensionCodeEnd  %}
+                {% assign actorClasificationsArray = actorExampleClassification | concat: actorClasificationsArray %}
+              {% endfor %}
+
+           
+
+              {%- assign actorWithClassifications = actorUrlExampleEnd |  append: ',' |  append: actorClassificationExtensionCodeEnd | concat: actorWithClassifications -%}
+
+              {% if i == actorClassificationStartingPointLimit %}
+                {% break %}
+              {% endif %}
+            {%- endfor -%}
+
+            {% assign actorExamplesArrayLimit = actorUrlExamplesArray.size | minus: 1 %}
+
+            {% for x in (0..actorExamplesArrayLimit) %}
+              {{actorUrlExamplesArray[x]}} - {{actorClasificationsArray[x]}}
+
+                {% if x == actorExamplesArrayLimit %}
+                  {% break %}
+                {% endif %}
+            {%- endfor -%}
+
+            {% assign actorWithClassificationsLimit = actorWithClassifications.size | minus: 1 %}
+
+            {%- for i in (0..actorWithClassificationsLimit) -%} 
+
+              
+
+              {% if i == actorWithClassificationsLimit %}
+                {% break %}
+              {% endif %}
+            {%- endfor -%}
 
             {% assign actorCount = 1 %}
 
