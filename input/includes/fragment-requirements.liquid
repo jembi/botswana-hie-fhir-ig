@@ -51,16 +51,17 @@
             
             {% assign actorClassificationStartingPointLimit = actorClassificationStartingPoint.size | minus: 1 %}
 
-            {% for i in (0..actorClassificationStartingPointLimit) %} 
-              {{actorClassificationStartingPoint[i]}} <br />
+            {%- for i in (0..actorClassificationStartingPointLimit) -%} 
+              {%- assign actorClassificationExtensionCodeStart = actorClassificationStartingPoint[i] | split: '"code" : "' -%}
+              {%- assign actorClassificationExtensionCodeEnd = actorClassificationExtensionCodeStart[1] | split: '"' | first  -%}
+
 
               {% if i == actorClassificationStartingPointLimit %}
                 {% break %}
               {% endif %}
-            {% endfor %}
+            {%- endfor -%}
             
            
-
             {% assign actorUrls = "" | split: "," %}
 
             {% for url in actorUrlsEnd  %}
