@@ -416,7 +416,22 @@ Id: bw-requirements
 Title: "Requirements"
 Description: "Represents the requirements for the use case described in this Implementation Guide."
 * name 1..1
+
 * actor MS
-  * extension contains ActorClassificationExtension named ActorClassification 0..1 MS
+
+* insert Slice(actor, value, extension.value, open, Slicing the actor classification extension based on the code value, false)
+
+* actor contains
+    Primary 1..1 MS and
+    Secondary 0..* MS
+
+* actor[Primary].extension contains ActorClassificationExtension named ActorClassification 1..1
+* actor[Primary].extension[ActorClassification].valueCodeableConcept 1..1
+* actor[Primary].extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#primary
+
+* actor[Secondary].extension contains ActorClassificationExtension named ActorClassification 1..1
+* actor[Secondary].extension[ActorClassification].valueCodeableConcept 1..1
+* actor[Secondary].extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#secondary
+
 * statement 1..*
 * extension contains RequirementsTypeExtension named RequirementsType 1..*

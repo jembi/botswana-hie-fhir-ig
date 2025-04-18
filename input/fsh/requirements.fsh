@@ -6,12 +6,9 @@ Description: "Clinician Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "ClinicianRequirements"
 * status = #active
-* actor[+] = Canonical(ClinicianActorDefinitionExample)
-  * extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#primary
-* actor[+] = Canonical(SHRActorDefinitionExample)
-  * extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#secondary
-* actor[+] = Canonical(PIMSActorDefinitionExample)
-  * extension[ActorClassification].valueCodeableConcept = $ActorClassificationCodeSystem#secondary
+* actor[Primary] = Canonical(ClinicianActorDefinitionExample)
+* actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
+* actor[Secondary][+] = Canonical(PIMSActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-C.001"
   * requirement = "I want to be able to log in to system and access the laboratory module."
@@ -42,8 +39,8 @@ Description: "Laboratory Technician Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "LaboratoryTechnicianRequirements"
 * status = #active
-* actor[+] = Canonical(LaboratoryTechnicianActorDefinitionExample)
-* actor[+] = Canonical(IPMSActorDefinitionExample)
+* actor[Primary] = Canonical(LaboratoryTechnicianActorDefinitionExample)
+* actor[Secondary][+] = Canonical(IPMSActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-LT.001"
   * requirement = "I want to be able to log in to access the lab module in IPMS."
@@ -68,10 +65,10 @@ Description: "Interoperability Layer Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "InteroperabilityLayerRequirements"
 * status = #active
-* actor[+] = Canonical(InteroperabilityLayerActorDefinitionExample)
-* actor[+] = Canonical(SHRActorDefinitionExample)
-* actor[+] = Canonical(PIMSActorDefinitionExample)
-* actor[+] = Canonical(IPMSActorDefinitionExample)
+* actor[Primary] = Canonical(InteroperabilityLayerActorDefinitionExample)
+* actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
+* actor[Secondary][+] = Canonical(PIMSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(IPMSActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-IL.001"
   * requirement = "Should be able to cache and store data from various interfacing systems in the shared health record (SHR)."
@@ -93,11 +90,11 @@ Description: "HIE System Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "HIESystemRequirements"
 * status = #active
-* actor[+] = Canonical(HIESystemActorDefinitionExample)
-* actor[+] = Canonical(SHRActorDefinitionExample)
-* actor[+] = Canonical(PIMSActorDefinitionExample)
-* actor[+] = Canonical(IPMSActorDefinitionExample)
-* actor[+] = Canonical(InteroperabilityLayerActorDefinitionExample)
+* actor[Primary] = Canonical(HIESystemActorDefinitionExample)
+* actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
+* actor[Secondary][+] = Canonical(PIMSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(IPMSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-HIE.001"
   * requirement = "Should be able to send SMS notifications to patients that require urgent attention-(PIMS)."
@@ -188,8 +185,8 @@ Description: "Client Registry Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "ClientRegistryRequirements"
 * status = #active
-* actor[+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[+] = Canonical(SHRActorDefinitionExample)
+* actor[Primary] = Canonical(ClientRegistryActorDefinitionExample)
+* actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-CR.001"
   * requirement = "Should be able to support configurable entity matching, a service to assist in identifying duplicate patients."
@@ -232,11 +229,11 @@ Description: "Omang Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "OmangRequirements"
 * status = #active
-* actor[+] = Canonical(OmangActorDefinitionExample)
-* actor[+] = Canonical(InteroperabilityLayerActorDefinitionExample)
-* actor[+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[+] = Canonical(HIESystemActorDefinitionExample)
-* actor[+] = Canonical(APIActorDefinitionExample)
+* actor[Primary] = Canonical(OmangActorDefinitionExample)
+* actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
+* actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
+* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
+* actor[Secondary][+] = Canonical(APIActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-OMANG.001"
   * requirement = "Should be able to provide a status check that indicates uptime and connection status."
@@ -267,12 +264,12 @@ Description: "Birth and Death Registration System Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "BirthDeathRegistrationRequirements"
 * status = #active
-* actor[+] = Canonical(BDRSActorDefinitionExample)
-* actor[+] = Canonical(InteroperabilityLayerActorDefinitionExample)
-* actor[+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[+] = Canonical(HIESystemActorDefinitionExample)
-* actor[+] = Canonical(APIActorDefinitionExample)
-* actor[+] = Canonical(OmangActorDefinitionExample)
+* actor[Primary] = Canonical(BDRSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
+* actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
+* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
+* actor[Secondary][+] = Canonical(APIActorDefinitionExample)
+* actor[Secondary][+] = Canonical(OmangActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-BDRS.001"
   * requirement = "Should be able to provide a status check that indicates uptime and connection status."
@@ -303,12 +300,12 @@ Description: "Immigration and Citizenship System Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "ImmigrationCitizenshipRequirements"
 * status = #active
-* actor[+] = Canonical(ICSActorDefinitionExample)
-* actor[+] = Canonical(InteroperabilityLayerActorDefinitionExample)
-* actor[+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[+] = Canonical(HIESystemActorDefinitionExample)
-* actor[+] = Canonical(APIActorDefinitionExample)
-* actor[+] = Canonical(OmangActorDefinitionExample)
+* actor[Primary] = Canonical(ICSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
+* actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
+* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
+* actor[Secondary][+] = Canonical(APIActorDefinitionExample)
+* actor[Secondary][+] = Canonical(OmangActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-ICS.001"
   * requirement = "Should be able to provide a status check that indicates uptime and connection status."
@@ -339,10 +336,10 @@ Description: "Cross-Service API Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "CrossServiceAPIRequirements"
 * status = #active
-* actor[+] = Canonical(APIActorDefinitionExample)
-* actor[+] = Canonical(BDRSActorDefinitionExample)
-* actor[+] = Canonical(ICSActorDefinitionExample)
-* actor[+] = Canonical(OmangActorDefinitionExample)
+* actor[Primary] = Canonical(APIActorDefinitionExample)
+* actor[Secondary][+] = Canonical(BDRSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(ICSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(OmangActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-CSAPI.001"
   * requirement = "Should be able to handle a valid FHIR search query that includes parameters across the Omang, BDRS, and Immigration services."
@@ -361,9 +358,9 @@ Description: "Patient Information Management System Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "PatientInformationManagementSystemRequirements"
 * status = #active
-* actor[+] = Canonical(PIMSActorDefinitionExample)
-* actor[+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[+] = Canonical(SHRActorDefinitionExample)
+* actor[Primary] = Canonical(PIMSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
+* actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-PIMS.001"
   * requirement = "Must be able to create new patients and save patient details in the CR/MPI."
@@ -391,9 +388,9 @@ Description: "Integrated Patient Management System Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "IntegratedPatientManagementSystemRequirements"
 * status = #active
-* actor[+] = Canonical(IPMSActorDefinitionExample)
-* actor[+] = Canonical(OmangActorDefinitionExample)
-* actor[+] = Canonical(MFLActorDefinitionExample)
+* actor[Primary] = Canonical(IPMSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(OmangActorDefinitionExample)
+* actor[Secondary][+] = Canonical(MFLActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-IPMS.001"
   * requirement = "Must receive a new lab order from the HIE as an ORM Hl7v2 message over MLLP."
@@ -418,9 +415,9 @@ Description: "OpenMRS Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "OpenMRSRequirements"
 * status = #active
-* actor[+] = Canonical(OpenMRSActorDefinitionExample)
-* actor[+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[+] = Canonical(SHRActorDefinitionExample)
+* actor[Primary] = Canonical(OpenMRSActorDefinitionExample)
+* actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
+* actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-OMRS.001"
   * requirement = "Must be able to create new patients and save patient details in the CR/MPI."

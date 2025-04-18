@@ -36,14 +36,28 @@
           {% endif %}
           
           {% if showRequirementsActors == true %}
-            {%- assign actorUrlsStart = requirements | split: '"actor" : [' -%}
+            {% assign classifications = nil %}
+
+            {%- assign actorUrlsStart = requirements | split: '"actor" :' -%}
             {%- assign actorUrlsEnd = actorUrlsStart[1] | remove: '&#x1F517;' | split: ']' | first  -%}
 
             {%- assign actorClassificationExtensionStart = requirement | split: '"_actor" :' -%}
-            {%- assign actorClassificationExtensionEnd = '{"_actor" :' |  append: actorClassificationExtensionStart[1] |  remove: '&#x1F517;'  | split: '}  ]' -%}
-            {%- assign actorClassification = actorClassificationExtensionEnd[0] | append: '}  ]}' -%}
-            {%- assign actorClassificationCoding = actorClassification | split: '"coding"' -%}
-            {{actorClassificationCoding[1]}}
+            {%- assign actorClassificationExtensionEnd = '{"_actor" :' |  append: actorClassificationExtensionStart[1] | split: '}  ]' -%}
+            {% assign classifications = actorClassificationExtensionEnd[0] | append: '}  ]}' | remove: '&#x1F517;' |  split: ',' %}
+            
+
+            {% assign actorClassificationStartingPoint = "" | split: "," %}
+            {% assign actorClassificationStartingPoint = classifications | concat: actorClassificationStartingPoint %}
+            
+            {% assign actorClassificationStartingPointLimit = actorClassificationStartingPoint.size | minus: 1 %}
+
+            {% for i in (0..actorClassificationStartingPointLimit) %} 
+              {{actorClassificationStartingPoint[i]}} <br />
+
+              {% if i == actorClassificationStartingPointLimit %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
             
            
 
