@@ -1,7 +1,6 @@
 ### Use Case Narrative
 
 #### Capture Lab Results
-<br />
 
 <strong>Primary Actor:</strong> 
 - <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
@@ -42,7 +41,6 @@
 <br />
 
 #### Lab Results
-<br />
 
 <strong>Primary Actor:</strong> 
 - <a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html">Laboratory technicians<a> 
@@ -79,7 +77,6 @@
 <br />
 
 #### Retrieve Lab Results
-<br />
 
 <strong>Primary Actor:</strong>  
 - <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
@@ -114,7 +111,6 @@
 <br />
 
 #### Transmission of Lab Results
-<br />
 
 <strong>Primary Actors:</strong>  
 - <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>
@@ -159,8 +155,6 @@
 <br />
 
 ### Use Case Diagrams
-
-<br />
 
 #### Capture Lab Results
 <figure>
