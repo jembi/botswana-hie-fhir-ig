@@ -5,8 +5,8 @@
 - <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
 
 <strong>Secondary Actors:</strong> 
-- <a href="ActorDefinition-SHRActorDefinitionExample.html">Shared Health Record (SHR)</a>,
-- <a href="ActorDefinition-PIMSActorDefinitionExample.html">Patient Information Management System (PIMS)</a>,
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">Shared Health Record (SHR)</a>
+- <a href="ActorDefinition-PIMSActorDefinitionExample.html">Patient Information Management System (PIMS)</a>
 - <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer (IL)</a>
 
 <strong>Dependencies:</strong>
@@ -46,7 +46,7 @@
 - <a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html">Laboratory technicians<a> 
 
 <strong>Secondary Actors:</strong>
-- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
 - <a href="ActorDefinition-IPMSActorDefinitionExample.html">Integrated Patient Management System (IPMS)</a>
 <br />
 
@@ -115,18 +115,17 @@
 <br />
 
 <strong>Primary Actors:</strong>  
-- <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
-- <a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>,
-- <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>,
-- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
+- <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>
+- <a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>
+- <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
 - <a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Open Client Registry (CR)</a>
 
 <strong>Secondary Actors:</strong>
-- <a href="ActorDefinition-MFLActorDefinitionExample.html">Master Facility List (MFL)</a>,
-- <a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>,
+- <a href="ActorDefinition-MFLActorDefinitionExample.html">Master Facility List (MFL)</a>
+- <a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>
 - <a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System (BDRS)</a>
-<br />
-<br />
+
 <strong>Dependencies:</strong>
 - Active connection to <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>.
 
