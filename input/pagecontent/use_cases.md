@@ -1,30 +1,26 @@
+#### Use Case Name: Capture Lab Results
 
+Primary Actor: <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
 
-### USE CASES
-
-#### USE CASE NAME: CAPTURING LAB ORDERS
-
-PRIMARY ACTOR: <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
-
-SECONDARY ACTORS: 
+Secondary Actors: 
 <a href="ActorDefinition-SHRActorDefinitionExample.html">Shared Health Record (SHR)</a>,
 <a href="ActorDefinition-PIMSActorDefinitionExample.html">Patient Information Management System (PIMS)</a>,
 <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer (IL)</a>
 
-DEPENDENCIES:
+Dependencies:
 - Availability of <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>.
 
-DESCRIPTION:
+Description:
 - Clinician login the system and access the lab module. Clinician then enters Lab specimen details using a lab form available in the lab module.
 
-PRE-CONDITION:
+Preconditions:
 - User successfully logs in to the system.
 
-ORDINARY SEQUENCE:
+Ordinary Sequence:
 
-STEPS:
+Steps:
 
-    > ACTIONS:
+    > Actions:
 
 > 1. Log into the system.
 > 2. Access the Laboratory module.
@@ -32,19 +28,19 @@ STEPS:
 > 4. Save the order details.
 > 5. Send the lab order details to SHR.
 
-POST-CONDITION:
+Postconditions:
 - Data successfully pushed to the interoperability layer.
 
-ASSUMPTIONS:
+Assumptions:
 - PIMS is hosted in the facility with access to the operability layer.
 - The lab order form is sent to the laboratory with the specimen.
 - The specimen ID is attached to the container with the specimen.
 
-EXCEPTIONS:
+Exceptions:
 
-STEPS:
+Steps:
 
-    > ACTIONS:
+    > Actions:
 
 > 1. Where the patient does not exist, the clinician creates the patient before paturing the order.
 > 2. System caches the lab order details when there is network failure and resend late
@@ -52,89 +48,89 @@ STEPS:
 
 <br />
 
-#### USE CASE NAME: LAB ORDER RESULTING
+#### Use Case Name: Lab Results
 <br />
 
-PRIMARY ACTOR: <a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html">Laboratory technicians</a> 
+Primary Actor: <a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html">Laboratory technicians</a> 
 
-SECONDARY ACTORS:
+Secondary Actors:
 <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
 <a href="ActorDefinition-IPMSActorDefinitionExample.html">Integrated Patient Management System (IPMS)</a>
 <br />
 
-DEPENDENCIES:
+Dependencies:
 - Received specimen with order form.
 
-DESCRIPTION:
+Description:
 - The use case enables laboratory technicians to enter lab order details into IPMS at the laboratory facility.
 
-PRE-CONDITION:
+Preconditions:
 - User successfully logs in to the system.
 
-ORDINARY SEQUENCE:
+Ordinary Sequence:
 
-STEPS:
+Steps:
 
-    > ACTIONS:
+    > Actions:
 
 > 1. Access the Lab Order component/module.
 > 2. Access lab order details in to IPMS.
 > 3. Update order details with lab test results.
 > 4. Save the updated lab test results.
 
-POST-CONDITION:
+Postconditions:
 - Lab order results synchronized to SHR.
 
-ASSUMPTIONS:
+Assumptions:
 - Some orders will be entered directly in to IPMS at the facility.
 
-EXCEPTIONS:
+Exceptions:
 
-STEPS:
+Steps:
 
-    > ACTIONS:
+    > Actions:
 
 > 1. Enter/Capture the lab order.
 
 
-#### USE CASE NAME: RETRIEVING LAB TEST RESULTS
+#### Use Case Name: Retrieve Lab Results
 
-PRIMARY ACTOR:  <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
+Primary Actor:  <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
 
 SECONDARY ACTOR:
 <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
 
-DEPENDENCIES:
+Dependencies:
 - Up to date synchronization of the <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>.
 
-DESCRIPTION:
+Description:
 - This use case enables clinicians to retrieve lab order results at the facility and have the option to print out the results.
 
-PRE-CONDITION:
+Preconditions:
 - Log into the system.
 
-ORDINARY SEQUENCE:
+Ordinary Sequence:
 
-STEPS:
+Steps:
 
-    > ACTIONS:
+    > Actions:
 
 > 1. Access the Lab Order module.
 > 2. Search lab test results using lab order ID or Patient ID.
 > 3. Open the selected results and consult with the patient.
 > 4. Print results out (optional).
 
-POST-CONDITION:
+Postconditions:
  - Lab results received by the clinician.
 
-ASSUMPTIONS:
+Assumptions:
 - Lab test results can also be queried from the pool using a combination of patient identifiers.
 
-EXCEPTIONS:
+Exceptions:
 
 STEP/s:
 
-    > ACTIONS
+    > Actions
 
  > 1. Access the results using the client module.
 
@@ -142,35 +138,35 @@ STEP/s:
 <br />
 
 
-#### USE CASE NAME: TRANSMISSION OF LABORATORY RESULTS
+#### Use Case Name: Transmission of Lab Results
 <br />
-PRIMARY ACTORS: 
+Primary Actors: 
 <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
 <a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>,
 <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>,
 <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
 <a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Open Client Registry (CR)</a>
 
-SECONDARY ACTORS:
+Secondary Actors:
 <a href="ActorDefinition-MFLActorDefinitionExample.html">Master Facility List (MFL)</a>,
 <a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>,
 <a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System (BDRS)</a>
 <br />
 <br />
-DEPENDENCIES:
+Dependencies:
 - Active connection to <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>.
 
-DESCRIPTION:
+Description:
 - An interoperability layer facilitates information exchange of clinical laboratory orders between the electronic medical record and the laboratory information system, via the longitudinal record system (SHR). 
 
-PRE-CONDITION:
+Preconditions:
 - Queries are sent between interfacing systems and the interoperability layer to update and store new data.
 
-ORDINARY SEQUENCE:
+Ordinary Sequence:
 
-STEPS:
+Steps:
 
-    > ACTIONS:
+    > Actions:
 
 > 1. PIMS/IPMS send captured orders to the interoperability layer and store them in the SHR
 > 2. MFL update the facility information in the SHR
@@ -179,28 +175,28 @@ STEPS:
 > 5. PIMS pings the interoperability layer for lab test results
 > 6. Available results in the SHR are pulled to PIMS.
 
-POST-CONDITION:
+Postconditions:
 - Lab orders, lab test results, facility information and patient information updated and stored in the SHR.
 
-ASSUMPTIONS:
+Assumptions:
 - Each and every order that is created is assigned an identifier by IPMS.
 - Lab orders are assigned identifiers by the system.
 - No data is pushed to IPMS from SHR, only a pull is allowed.
 
-EXCEPTIONS:
+Exceptions:
 
-STEPS:
+Steps:
 
-    > ACTIONS:
+    > Actions:
 
 > 1. Unidentifiable orders and order results sent to the interoperability layer are rejected.
 
 <br />
 
-### USE CASE DIAGRAM
+### Use Case Diagrams
 <br />
 
-#### CAPTURE LAB ORDERS
+#### Capture Lab Results
 <figure>
   {% include CaptureLabOrders.svg %}
 </figure>
@@ -209,7 +205,7 @@ STEPS:
 <br />
 <br />
 
-#### RETRIEVAL OF LAB ORDERS
+#### Retrieve Lab Orders
 <figure>
   {% include RetrievalOfLabOrders.svg %}
 </figure>
