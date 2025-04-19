@@ -1,4 +1,6 @@
-#### Use Case Name: Capture Lab Results
+### Use Case Narrative
+
+#### Capture Lab Results
 <br />
 
 <strong>Primary Actor:</strong> 
@@ -39,7 +41,7 @@
 
 <br />
 
-#### Use Case Name: Lab Results
+#### Lab Results
 <br />
 
 <strong>Primary Actor:</strong> 
@@ -76,7 +78,7 @@
 
 <br />
 
-#### Use Case Name: Retrieve Lab Results
+#### Retrieve Lab Results
 <br />
 
 <strong>Primary Actor:</strong>  
@@ -111,7 +113,7 @@
 
 <br />
 
-#### Use Case Name: Transmission of Lab Results
+#### Transmission of Lab Results
 <br />
 
 <strong>Primary Actors:</strong>  
@@ -157,6 +159,7 @@
 <br />
 
 ### Use Case Diagrams
+
 <br />
 
 #### Capture Lab Results
