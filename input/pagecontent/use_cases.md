@@ -200,7 +200,7 @@ Steps:
 <figure>
   {% include CaptureLabOrders.svg %}
 </figure>
-<!--<img src="captureLabOrders.png" alt="drawing" style="width: 80%; margin: 0 10%;"/>-->
+
 <br />
 <br />
 <br />
@@ -209,31 +209,30 @@ Steps:
 <figure>
   {% include RetrievalOfLabOrders.svg %}
 </figure>
-<!--<img src="retrieveLabOrders.png" alt="drawing" style="width: 80%; margin: 0 10%;"/>-->
+
 <br />
 <br />
 <br />
 
-#### DATA TRANSMISSION LAYER 
+#### Data Transmission Layer
 <figure>
   {% include DataTransmissionLayer.svg %}
 </figure>
-<!--<img src="dataTransmissionLayer.png" alt="drawing" style="width: 80%; margin: 0 10%;"/>-->
+
 <br />
 <br />
 <br />
 
-#### LAB ORDER RESULTING
+#### Lab Order Resulting
 <figure>
   {% include LabOrderResulting.svg %}
 </figure>
-<!--<img src="LabOrderResulting.png" alt="drawing" style="width: 80%; margin: 0 10%;"/>-->
+
 <br />
 <br />
 <br />
 
-#### RETRIEVE LAB RESULTS
+#### Retrieve Lab Results
 <figure>
   {% include RetrieveLabResults.svg %}
-</figure>
-<!--<img src="retrieveLabResults.png" alt="drawing" style="width: 80%; margin: 0 10%;"/>-->
+</figure>>
