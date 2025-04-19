@@ -11,7 +11,7 @@
 - <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer (IL)</a>
 
 <strong>Dependencies:</strong>
-- Availability of <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>.
+- Availability of PIMS.
 
 <strong>Description:</strong>
 - Clinician login the system and access the lab module. Clinician then enters Lab specimen details using a lab form available in the lab module.
@@ -85,7 +85,7 @@
 - <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
 
 <strong>Dependencies:</strong>
-- Up to date synchronization of the <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>.
+- Up to date synchronization of the SHR.
 
 <strong>Description:</strong>
 - This use case enables clinicians to retrieve lab order results at the facility and have the option to print out the results.
@@ -113,19 +113,19 @@
 #### Transmission of Lab Results
 
 <strong>Primary Actors:</strong>  
-- <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>
-- <a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>
 - <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>
-- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
-- <a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Open Client Registry (CR)</a>
 
 <strong>Secondary Actors:</strong>
+- <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>
+- <a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>
 - <a href="ActorDefinition-MFLActorDefinitionExample.html">Master Facility List (MFL)</a>
 - <a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>
 - <a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System (BDRS)</a>
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
+- <a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Open Client Registry (CR)</a>
 
 <strong>Dependencies:</strong>
-- Active connection to <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>.
+- Active connection to IL.
 
 <strong>Description:</strong>
 - An interoperability layer facilitates information exchange of clinical laboratory orders between the electronic medical record and the laboratory information system, via the longitudinal record system (SHR). 
