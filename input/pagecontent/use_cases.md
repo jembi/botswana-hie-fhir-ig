@@ -2,12 +2,12 @@
 <br />
 
 <strong>Primary Actor:</strong> 
-<a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
+- <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
 
 <strong>Secondary Actors:</strong> 
-<a href="ActorDefinition-SHRActorDefinitionExample.html">Shared Health Record (SHR)</a>,
-<a href="ActorDefinition-PIMSActorDefinitionExample.html">Patient Information Management System (PIMS)</a>,
-<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer (IL)</a>
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">Shared Health Record (SHR)</a>,
+- <a href="ActorDefinition-PIMSActorDefinitionExample.html">Patient Information Management System (PIMS)</a>,
+- <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">Interoperability Layer (IL)</a>
 
 <strong>Dependencies:</strong>
 - Availability of <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>.
@@ -43,11 +43,11 @@
 <br />
 
 <strong>Primary Actor:</strong> 
-<a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html">Laboratory technicians<a> 
+- <a href="ActorDefinition-LaboratoryTechnicianActorDefinitionExample.html">Laboratory technicians<a> 
 
 <strong>Secondary Actors:</strong>
-<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
-<a href="ActorDefinition-IPMSActorDefinitionExample.html">Integrated Patient Management System (IPMS)</a>
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
+- <a href="ActorDefinition-IPMSActorDefinitionExample.html">Integrated Patient Management System (IPMS)</a>
 <br />
 
 <strong>Dependencies:</strong>
@@ -80,10 +80,10 @@
 <br />
 
 <strong>Primary Actor:</strong>  
-<a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
+- <a href="ActorDefinition-ClinicianActorDefinitionExample.html">Clinician</a>
 
 <strong>Secondary Actors:</strong> 
-<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>
 
 <strong>Dependencies:</strong>
 - Up to date synchronization of the <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>.
@@ -115,16 +115,16 @@
 <br />
 
 <strong>Primary Actors:</strong>  
-<a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
-<a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>,
-<a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>,
-<a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
-<a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Open Client Registry (CR)</a>
+- <a href="ActorDefinition-PIMSActorDefinitionExample.html">PIMS</a>,
+- <a href="ActorDefinition-IPMSActorDefinitionExample.html">IPMS</a>,
+- <a href="ActorDefinition-InteroperabilityLayerActorDefinitionExample.html">IL</a>,
+- <a href="ActorDefinition-SHRActorDefinitionExample.html">SHR</a>,
+- <a href="ActorDefinition-ClientRegistryActorDefinitionExample.html">Open Client Registry (CR)</a>
 
 <strong>Secondary Actors:</strong>
-<a href="ActorDefinition-MFLActorDefinitionExample.html">Master Facility List (MFL)</a>,
-<a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>,
-<a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System (BDRS)</a>
+- <a href="ActorDefinition-MFLActorDefinitionExample.html">Master Facility List (MFL)</a>,
+- <a href="ActorDefinition-OmangActorDefinitionExample.html">Omang</a>,
+- <a href="ActorDefinition-BDRSActorDefinitionExample.html">Birth and Death Registration System (BDRS)</a>
 <br />
 <br />
 <strong>Dependencies:</strong>
