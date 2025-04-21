@@ -1,4 +1,6 @@
-
+<style>
+  {% include liquid-templates.css %}
+</style>
 
 ### USE CASES
 
