@@ -119,3 +119,10 @@ Usage: #definition
 * rest[=].resource[=].interaction[+].code = #create
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[+].code = #update
+* rest[=].resource[=].supportedProfile[+] = "http://moh.bw.org/StructureDefinition/requirements-type"
+* rest[=].resource[=].supportedProfile[+] = "http://moh.bw.org/StructureDefinition/actor-classification"
+
+* rest[=].resource[+].type = #StructureDefinition
+* rest[=].resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension.valueCode = #MAY
+* rest[=].resource[=].profile = "http://moh.bw.org/StructureDefinition/actor-reference"
