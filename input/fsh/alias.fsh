@@ -11,3 +11,4 @@ Alias: $EndpointConnectionTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-conne
 Alias: $ScenarioOpTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-scenario-op-type-codes
 Alias: $RestfulInteractionCodeSystem = http://hl7.org/fhir/restful-interaction
 Alias: $RequirementsTypeCodeSystem = http://moh.bw.org/CodeSystem/cs-requirements-type-codes
+Alias: $ActorClassificationCodeSystem = http://moh.bw.org/CodeSystem/cs-actor-classification-codes

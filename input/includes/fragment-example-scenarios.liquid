@@ -64,6 +64,7 @@
         {% assign actorsArrayDescriptions = "" | split: "," %}
         {% assign actorsArrayExtensions = "" | split: "," %}
         {% assign actorsArrayCleanedWithExtensions = "" | split: "," %}
+
         {% assign actorsArrayStartingPoint = "" | split: "," %}
         {% assign actorsArrayStartingPoint = actors | concat: actorsArrayStartingPoint %}
         
@@ -183,7 +184,7 @@
 </tbody>
 </table>
 <p>
-  <sup>*</sup> An actor reference will only be available if a reference was provided in the <a href="StructureDefinition-actor-reference.html">"Actor Reference"</a> extension.
+  <sup>*</sup> An actor reference will only be available if a reference was provided using the <a href="StructureDefinition-actor-reference.html">"Actor Reference"</a> extension.
 </p>
 </div>
 <br />

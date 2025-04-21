@@ -25,36 +25,94 @@
        {% assign requirementsTypeCoding = requirement | split: '"system" : "http://moh.bw.org/CodeSystem/cs-requirements-type-codes",            "code" : "' %}
        {%- assign requirementsType = requirementsTypeCoding[1] | split: '"' -%}
         
-       {% if requirementsType[0] == requirementsTypeFilter %}
-
+       {% if requirementsType[0] == requirementsTypeFilter %}        
           {% assign requirementsStatementsStart = requirement | split: '"statement" :' %}
           {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
           {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
           {% if showRequirementsHeading == true %}
 <h4>{{title}}</h4>
-<br />
           {% endif %}
           
           {% if showRequirementsActors == true %}
-            {%- assign actorUrlsStart = requirements | split: '"actor" : [' -%}
+            {% assign classifications = nil %}
+
+            {%- assign actorUrlsStart = requirements | split: '"actor" :' -%}
             {%- assign actorUrlsEnd = actorUrlsStart[1] | remove: '&#x1F517;' | split: ']' | first  -%}
 
+            {%- assign actorClassificationExtensionStart = requirement | split: '"_actor" :' -%}
+            {%- assign actorClassificationExtensionEnd = '{"_actor" :' |  append: actorClassificationExtensionStart[1] | split: '}  ]' -%}
+            {% assign classifications = actorClassificationExtensionEnd[0] | append: '}  ]}' | remove: '&#x1F517;' |  split: ',' %}
+            
+
+            {% assign actorClassificationStartingPoint = "" | split: "," %}
+            {% assign actorClassificationStartingPoint = classifications | concat: actorClassificationStartingPoint %}
+            
             {% assign actorUrls = "" | split: "," %}
 
             {% for url in actorUrlsEnd  %}
               {%- assign actorUrls = url | split: ',' | concat: actorUrls -%}
             {% endfor %}
 
+            {%- assign actorUrlExamplesArray = "" | split: ','  -%}
+            {%- assign actorClasificationsArray = "" | split: ','  -%}
+
+            {% assign actorClassificationStartingPointLimit = actorClassificationStartingPoint.size | minus: 1 %}
+
+            {%- for i in (0..actorClassificationStartingPointLimit) -%} 
+              {%- assign actorClassificationExtensionCodeStart = actorClassificationStartingPoint[i] | split: '"code" : "' -%}
+              {%- assign actorClassificationExtensionCodeEnd = actorClassificationExtensionCodeStart[1] | split: '"' | first  -%}
+              {%- assign actorUrlExampleStart = actorUrls[i] | split: 'ActorDefinition/' | last  -%}
+              {%- assign actorUrlExampleEnd = actorUrlExampleStart | split: '"' | first  -%}
+
+              {% for example in actorUrlExampleEnd  %}
+                {% assign actorUrlExamplesArray = example | concat: actorUrlExamplesArray %}
+              {% endfor %}
+
+              {% for actorExampleClassification in actorClassificationExtensionCodeEnd  %}
+                {% assign actorClasificationsArray = actorExampleClassification | concat: actorClasificationsArray %}
+              {% endfor %}
+
+              {% if i == actorClassificationStartingPointLimit %}
+                {% break %}
+              {% endif %}
+            {%- endfor -%}
+
             {% assign actorCount = 1 %}
+            {% assign secondaryActorHeadingCreated = false %}
 
             {% for item in actorUrls %}
               {% for data_file in site.data %}
                 {% if data_file[0] == "resources" %}
                   {% for item_data in data_file[1] %}
                     {% if item contains item_data[1].url %}
+                      {% assign actorExamplesArrayLimit = actorUrlExamplesArray.size | minus: 1 %}
+
+                      {% for x in (0..actorExamplesArrayLimit) %}
+                        {% if item contains actorUrlExamplesArray[x] %}
+                          {% if actorClasificationsArray[x] == "primary" %}
+<h5>Primary Actor</h5>
+<p><a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
+                            {% break %}
+                          {% else %}
+                              {% if secondaryActorHeadingCreated == false %}
+<h5>Secondary Actors</h5>
+                                {% assign secondaryActorHeadingCreated = true %}
+                              {% endif %}
+
 <p><strong>Actor {{actorCount}}</strong>: <a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
-                      {% assign actorCount = actorCount | plus: 1 %}                     
+
+                              {% assign actorCount = actorCount | plus: 1 %} 
+                          {% endif %}
+
+                        {% endif %}
+          
+                        {% if x == actorExamplesArrayLimit %}
+                          {% break %}
+                        {% endif %}
+                      {%- endfor -%}
+
+                                          
 
                       {% break %}
                     {% endif %}
