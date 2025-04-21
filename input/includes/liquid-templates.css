@@ -6,6 +6,7 @@ div .markdown-toc::before {
     font-family: verdana;
     font-weight: bold;
     font-size: 1.4em;
+    margin: 5px;
 }
 
 svg g a {
