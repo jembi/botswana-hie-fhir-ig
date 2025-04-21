@@ -1118,7 +1118,7 @@ Description: "A coded value that represents the type of requirements contained i
 CodeSystem: CSActorClassificationCodes
 Id: cs-actor-classification-codes
 Title: "Actor Classification Codes"
-Description: "A coded value that represents whether the actor is primary or secondary in the context of the requirements defintion."
+Description: "A coded value that represents whether the actor is primary or secondary in the context of the requirements definition."
 * ^experimental = false
 * ^caseSensitive = true
 * #primary "Primary Actor" "A primary actor is the one who initiates the interaction with the system to achieve a specific goal. They are typically the main users of the system or those who directly benefit from the outcome of the use case."
@@ -1127,6 +1127,6 @@ Description: "A coded value that represents whether the actor is primary or seco
 ValueSet: VSActorClassificationCodes
 Id: vs-actor-classification-codes
 Title: "Actor Classification Codes"
-Description: "A coded value that represents whether the actor is primary or secondary in the context of the requirements defintion."
+Description: "A coded value that represents whether the actor is primary or secondary in the context of the requirements definition."
 * ^experimental = false
 * include codes from system CSActorClassificationCodes

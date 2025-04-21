@@ -30,7 +30,7 @@ Description: "An extension to reference the Actor Resource describing additional
 Extension: ActorClassificationExtension
 Id: actor-classification
 Title: "Actor Classification"
-Description: "An extension to capture whether teh actor is primary or secondary in the context of the requirements defintion."
+Description: "An extension to capture whether the actor is primary or secondary in the context of the requirements defintion."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from VSActorClassificationCodes (required)
