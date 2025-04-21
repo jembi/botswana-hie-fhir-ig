@@ -15,7 +15,7 @@ Usage: #definition
   * extension[+].valueReference = Reference(OpenMRSActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
-* insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the lab order request submitted by PoS entity.)
+* insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the lab order request submitted by the PoS entity.)
 * actor[=]
   * extension[+].valueReference = Reference(InteroperabilityLayerActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
