@@ -55,3 +55,9 @@ RuleSet: ScenarioProcessStep(number, name, initiator, receiver, description)
     * title = "{versionTitle}"
     * description = "{versionDescription}"
     * content = Reference({exampleResource})
+
+RuleSet: ScenarioContainedInstanceWithVersion(resourceId, versionReference)
+* instance[=]
+  * containedInstance[+]
+    * instanceReference = "{resourceId}"
+    * versionReference = "{versionReference}"

@@ -30,4 +30,8 @@ Usage: #definition
   * extension[+].valueReference = Reference(IPMSActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
-* insert ScenarioInstanceWithVersion(laborder.01, Task, Task Resource, Tracks the state of completion of the lab order., LabOrderTask, LabOrderTaskExample, laborder.request.ver.01, Lab Order Request, The state of the task when the order is requested.)
+* insert ScenarioInstance(laborder.01, Patient, Patient Resource, The patient associated with the lab order., BwPatient, BwPatientExample)
+* insert ScenarioInstanceWithVersion(laborder.02, ServiceRequest, Service Request Resource, The service request for the lab order to be carried out., LabOrderServiceRequest, LabOrderActiveServiceRequestExample, laborder.service-request.ver.01, Lab Order Service Request, The active service request attatched to Task Resource that is in progress.)
+* insert ScenarioInstanceWithVersion(laborder.03, Task, Task Resource, Tracks the state of completion of the lab order., LabOrderTask, LabOrderTaskExample, laborder.task.ver.01, Lab Order Task, The lab order request has started.)
+* insert ScenarioContainedInstance(laborder.01)
+* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
