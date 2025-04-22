@@ -105,7 +105,7 @@ resources:
     description: Demonstrates the process flow to retrieve a patient record from the Client Registry and FHIR server.
     exampleBoolean: false
   ExampleScenario/SubmitNewLabOrders:
-    name: Submit New Lab Orders
+    name: Submit New Lab Orders (Using a Bundle)
     description: Demonstrates the process flow to submit a new lab order from the Point-of-Service application to the FHIR server.
     exampleBoolean: false
 #  Patient/my-example-patient:
