@@ -43,21 +43,24 @@ RuleSet: ScenarioProcessStep(number, name, initiator, receiver, description)
     * receiver = "{receiver}"
     * description = "{description}"
 
-  RuleSet: ScenarioInstanceWithVersion(resourceId, resourceType, name, description, structureProfileCanonical, exampleResource, versionKey, versionTitle, versionDescription)
+RuleSet: ScenarioInstanceWithVersion(resourceId, resourceType, name, description, structureProfileCanonical, exampleResource, versionKey, versionTitle, versionDescription)
 * instance[+]
   * key = "{resourceId}"
   * structureType = http://hl7.org/fhir/fhir-types#{resourceType}
   * title = "{name}"
   * description = "{description}"
   * structureProfileCanonical	= Canonical({structureProfileCanonical})
-  * version[+]
-    * key = "{versionKey}"
-    * title = "{versionTitle}"
-    * description = "{versionDescription}"
-    * content = Reference({exampleResource})
+  * insert ScenarioInstanceVersion({exampleResource}, {versionKey}, {versionTitle}, {versionDescription})
 
 RuleSet: ScenarioContainedInstanceWithVersion(resourceId, versionReference)
 * instance[=]
   * containedInstance[+]
     * instanceReference = "{resourceId}"
     * versionReference = "{versionReference}"
+
+RuleSet: ScenarioInstanceVersion(exampleResource, versionKey, versionTitle, versionDescription)
+* version[+]
+  * key = "{versionKey}"
+  * title = "{versionTitle}"
+  * description = "{versionDescription}"
+  * content = Reference({exampleResource})
