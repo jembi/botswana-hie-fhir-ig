@@ -580,3 +580,18 @@ Description: "Represents a comprehensive, standardized registry of all health fa
 * status = #active
 * purpose = "Serves as a comprehensive, authoritative record of all health facilities within the country, both public and private. It's a crucial tool for the Ministry of Health and Wellness to manage, plan, and monitor the health system."
 * type = #system
+
+Instance: ProcessFHIRBundle
+InstanceOf: Endpoint
+Usage: #definition
+Title: "Process FHIR Bundle"
+Description: 
+    "Point-of-Service systems can submit \"PUT\" or \"POST\" requests using a FHIR Bundle Resource."
+* status = #active
+* connectionType = $EndpointConnectionType#hl7-fhir-rest
+* name = "Bundle"
+* description = "The Bundle endpoint coming with the FHIR API."
+* payload[+]
+  * type = $EndpointPayloadType#any
+  * mimeType[+] = #application/fhir+json
+* address = "http://server.url/fhir"
