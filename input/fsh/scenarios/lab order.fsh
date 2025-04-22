@@ -52,7 +52,18 @@ Usage: #definition
 * insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
 
-* insert ScenarioProcess(1, Create Lab Order, 
+* insert ScenarioProcess(1, Register Patient, 
+  PoS blah.,
+  FHIR eblah.)
+
+* process[=].step[=].process[+]
+  * title = "Create Lab Order"
+  * description = "This scenario demonstrates the process of storing the patient's lab order information in the FHIR datastore."
+  * step[+]
+    * number = "2.1"
+    * workflow = Canonical(RegisterNewPatientInBundle)
+
+* insert ScenarioProcess(2, Create Lab Order, 
   PoS entity has submitted a lab order request.,
   FHIR entity has stored the lab order details for the patient.)
 
@@ -60,11 +71,11 @@ Usage: #definition
   * title = "Create Lab Order"
   * description = "This scenario demonstrates the process of storing the patient's lab order information in the FHIR datastore."
 
-  * insert ScenarioProcessStep(1.1, Submit lab order, PoS, IL, Lab order information)
+  * insert ScenarioProcessStep(2.1, Submit lab order, PoS, IL, Lab order information)
   * step[=]
     * operation
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.06"
     
-  * insert ScenarioProcessStep(1.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
+  * insert ScenarioProcessStep(2.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
