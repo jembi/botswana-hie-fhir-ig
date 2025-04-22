@@ -31,7 +31,32 @@ Usage: #definition
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
 * insert ScenarioInstance(laborder.01, Patient, Patient Resource, The patient associated with the lab order., BwPatient, BwPatientExample)
+
 * insert ScenarioInstanceWithVersion(laborder.02, ServiceRequest, Service Request Resource, The service request for the lab order to be carried out., LabOrderServiceRequest, LabOrderActiveServiceRequestExample, laborder.service-request.ver.01, Lab Order Service Request, The active service request attatched to Task Resource that is in progress.)
+* insert ScenarioContainedInstance(laborder.01)
+* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.01)
+
 * insert ScenarioInstanceWithVersion(laborder.03, Task, Task Resource, Tracks the state of completion of the lab order., LabOrderTask, LabOrderTaskExample, laborder.task.ver.01, Lab Order Task, The lab order request has started.)
 * insert ScenarioContainedInstance(laborder.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
+
+* insert ScenarioInstanceWithVersion(laborder.04, Specimen, Specimen Resource, The specimen associated with the lab order., LabOrderSpecimen, AvailableSpecimenForActiveRequestsExample, laborder.specimen.ver.01, Lab Order Specimen, The specimen attatched to the active Service Request Resource.)
+* insert ScenarioContainedInstance(laborder.01)
+* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
+
+* insert ScenarioInstance(laborder.05, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
+
+* insert ScenarioProcess(1, Create Lab Order, 
+    PoS entity has submitted a lab order request.,
+FHIR entity has stored the lab order details for the patient.)
+
+* process[=].step[=].process[+]
+  * title = "Create Lab Order"
+  * description = "This scenario demonstrates the process of storing the patient's lab order information in the FHIR datastore."
+
+  * insert ScenarioProcessStep(1.1, Patient resource, PoS, IL, Patient personal information)
+  * step[=]
+    * operation
+      * type = $RestfulInteractionCodeSystem#update
+      * request
+        * instanceReference = "rnp.01"
