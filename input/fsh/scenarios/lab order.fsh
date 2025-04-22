@@ -29,3 +29,5 @@ Usage: #definition
 * actor[=]
   * extension[+].valueReference = Reference(IPMSActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
+
+* insert ScenarioInstanceWithVersion(laborder.01, Task, Task Resource, Tracks the state of completion of the lab order., LabOrderTask, LabOrderTaskExample, laborder.request.ver.01, Lab Order Request, The state of the task when the order is requested.)
