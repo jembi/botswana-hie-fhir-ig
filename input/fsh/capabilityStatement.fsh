@@ -15,7 +15,7 @@ Usage: #definition
 
 * kind = #requirements
 
-* fhirVersion = #4.0.1
+* fhirVersion = #5.0.0
 
 * format[0] = #application/fhir+json
 * format[+] = #json
@@ -44,8 +44,8 @@ Usage: #definition
 * rest[=].resource[=].operation.extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].operation.extension.valueCode = #SHOULD
 * rest[=].resource[=].operation.name = "validate"
-* rest[=].resource[=].operation.definition = "https://hl7.org/fhir/R4/operation-resource-validate"
-* rest[=].resource[=].operation.documentation = "https://hl7.org/fhir/R4/operation-resource-validate"
+* rest[=].resource[=].operation.definition = "https://hl7.org/fhir/operation-resource-validate.html"
+* rest[=].resource[=].operation.documentation = "https://hl7.org/fhir/resource-operation-validate.html"
 
 * rest[=].resource[+].type = #Encounter
 * rest[=].resource[=].extension.url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
