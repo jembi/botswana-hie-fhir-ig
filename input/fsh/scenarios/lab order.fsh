@@ -124,6 +124,7 @@ Usage: #definition
   * insert ScenarioProcessStep(2.3, Send data for consumption, IL, FHIR, Request for FHIR to process the information in the lab order bundle.)
   * step[=]
     * operation
+      * receiverActive = true
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.08"
