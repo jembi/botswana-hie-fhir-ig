@@ -63,7 +63,7 @@ Usage: #definition
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
 
 * insert ScenarioInstance(laborder.07, Endpoint, FHIR request, FHIR processes each request in the bundle using the HTTP request method defined for each Resource included in the Bundle., Endpoint, ProcessFHIRBundle)
-* insert ScenarioContainedInstance(laborder.06)
+* insert ScenarioContainedInstanceWithVersion(laborder.06, laborder.bundle.ver.01)
 
 /** process[+]
   * title = "Register Patient"
@@ -118,6 +118,20 @@ Usage: #definition
       * request
         * instanceReference = "laborder.08"
         * versionReference = "laborder.bundle.ver.02"
+
+  * insert ScenarioProcessStep(2.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
+  * step[=]
+    * operation
+      * initiatorActive = true
+
+  * insert ScenarioProcessStep(2.3, Send data for consumption, IL, FHIR, Request for FHIR to process the information in the lab order bundle.)
+  * step[=]
+    * operation
+      * type = $RestfulInteractionCodeSystem#update
+      * request
+        * instanceReference = "laborder.07"
+      * response
+        * instanceReference = "laborder.05"
 
 * insert ScenarioProcess(3, Respond to Lab Order Request, 
     FHIR entity has processed the request to create the lab order information and has issued an outcome response.,
