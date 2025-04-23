@@ -82,6 +82,7 @@ Usage: #definition
   * insert ScenarioProcessStep(1.1, Submit lab order, PoS, IL, Lab order information)
   * step[=]
     * operation
+      * initiatorActive = true
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.06"
@@ -149,6 +150,3 @@ Usage: #definition
         * instanceReference = "laborder.05"
   
   * insert ScenarioProcessStep(3.2, Log the outcome, PoS, PoS, PoS entity logs the outcome issued by the FHIR entity.)
-  * step[=]
-    * operation
-      * receiverActive = true
