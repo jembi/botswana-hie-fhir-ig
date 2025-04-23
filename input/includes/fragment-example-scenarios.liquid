@@ -44,12 +44,11 @@
         {% assign scenarioContent = p.content | strip_html | strip_newlines %}
         {% assign title = scenarioContent | split: " - Botswana FHIR Implementation Guide" | first %}
 
-<div>
-<h4>{{title}}</h4>
-<br />
+{{  "### " | append: title }}
 
-<p class="heading2">Actors</p>
-<div>
+
+{{  "#### Actors" }}
+
 <table class="table table-bordered">
 <thead class="thead-dark">
   <tr>
@@ -186,7 +185,7 @@
 <p>
   <sup>*</sup> An actor reference will only be available if a reference was provided using the <a href="StructureDefinition-actor-reference.html">"Actor Reference"</a> extension.
 </p>
-</div>
+
 <br />
 <p>See process details: <a href = "{{scenarioPage | append: '.html'}}">Interactions and steps</a></p>
 
@@ -195,7 +194,6 @@
 <br />
 <br />
 <br />
-</div>
     
         {%- break -%}
       {%- endif -%}

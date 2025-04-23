@@ -31,7 +31,9 @@
           {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
           {% if showRequirementsHeading == true %}
-<h4>{{title}}</h4>
+
+{{  "### " | append: title }}
+
           {% endif %}
           
           {% if showRequirementsActors == true %}
@@ -91,12 +93,16 @@
                       {% for x in (0..actorExamplesArrayLimit) %}
                         {% if item contains actorUrlExamplesArray[x] %}
                           {% if actorClasificationsArray[x] == "primary" %}
-<h5>Primary Actor</h5>
+
+{{  "#### Primary Actor" }}
+
 <p><a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
                             {% break %}
                           {% else %}
                               {% if secondaryActorHeadingCreated == false %}
-<h5>Secondary Actors</h5>
+
+{{  "#### Secondary Actors" }}
+
                                 {% assign secondaryActorHeadingCreated = true %}
                               {% endif %}
 

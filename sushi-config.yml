@@ -97,12 +97,16 @@ resources:
     description: Demonstrates the process flow between the Client Registry and FHIR server during patient registration.
     exampleBoolean: false
   ExampleScenario/RegisterNewPatientInBundle:
-    name: Register New Patient (Included in a Bundle Resource)
+    name: "Register New Patient (Using a Bundle)"
     description: Demonstrates the process flow between the Client Registry and FHIR server during patient registration.
     exampleBoolean: false
   ExampleScenario/RetrievePatientRecord:
     name: Retrieve Patient Record
     description: Demonstrates the process flow to retrieve a patient record from the Client Registry and FHIR server.
+    exampleBoolean: false
+  ExampleScenario/SubmitNewLabOrders:
+    name: Submit New Lab Orders (Using a Bundle)
+    description: Demonstrates the process flow to submit a new lab order from the Point-of-Service application to the FHIR server.
     exampleBoolean: false
 #  Patient/my-example-patient:
 #    name: My Example Patient

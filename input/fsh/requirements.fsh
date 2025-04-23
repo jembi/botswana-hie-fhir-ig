@@ -399,7 +399,7 @@ Description: "Integrated Patient Management System Functional Requirements"
   * requirement = "Must send an ACK message to the HIE with the IPMS-specific lab order number for the lab order generated on the IPMS side by the ORM message AND the IPMS-specific MRN for the existing patient."
 * statement[+]
   * key = "BOTS.FR-IPMS.003"
-  * requirement = "On registration of a new patient on IPMS must send an ADT04 Message that includes IPMS-specific MRN and the patient’s Omang and/or passport number to the specified IP and Port number."
+  * requirement = "On registration of a new patient on IPMS, IPMS must send an HL7 v2.3 - Admit, Discharge and Transfer 04 message that includes IPMS-specific MRN and the patient’s Omang and/or passport number to the specified IP and Port number."
 * statement[+]
   * key = "BOTS.FR-IPMS.004"
   * requirement = "Should be able to send a HL7V2 ORU message to the HIE with lab order result information as soon as this information is available in IPMS.  The message must include IPMS-specific identifiers for the patient and the lab order that correspond to the identifiers sent with the ACK for the ORM messages and with the ADT messages."
