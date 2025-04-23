@@ -76,7 +76,7 @@ Usage: #definition
   FHIR entity has stored the lab order details for the patient and sent an outcome response for the request to the IL entity.)
 
 * process[=].step[=].process[+]
-  * title = "Lab Order"
+  * title = "New Lab Order"
   * description = "This scenario demonstrates the process of storing the patient's lab order information in the FHIR datastore."
 
   * insert ScenarioProcessStep(1.1, Submit lab order, PoS, IL, Lab order information)
@@ -105,7 +105,7 @@ Usage: #definition
 
 * insert ScenarioProcess(2, Cancel Lab Order, 
   PoS entity submitted a request for the lab order to be cancelled.,
-  FHIR entity has updated the Task Resource for the lab order by setting its status to cancelled.)
+  FHIR entity has updated the statuses for the Task and ServiceRequest resources by indicating its status as cancelled.)
 
 * process[=].step[=].process[+]
   * title = "Cancel Lab Order"
