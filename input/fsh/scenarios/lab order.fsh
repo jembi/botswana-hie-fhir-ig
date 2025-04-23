@@ -134,15 +134,15 @@ Usage: #definition
 
   * insert ScenarioProcessStep(2.4, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the cancellation request.)
 
-* insert ScenarioProcess(3, Respond to Lab Order Request, 
-    FHIR entity has processed the request to create the lab order information and has issued an outcome response.,
+* insert ScenarioProcess(3, Respond to Request, 
+    FHIR entity has processed the request and has issued an outcome response.,
     IL entity has received the outcome response from FHIR and forwarded the response to the PoS system.)
 
 * process[=].step[=].process[+]
-  * title = "Respond to Lab Order Request"
-  * description = "This scenario demonstrates the process for responding to the PoS sytem who submitted the lab order request."
+  * title = "Respond to Request"
+  * description = "This scenario demonstrates the process for responding to the PoS sytem who submitted the request."
 
-  * insert ScenarioProcessStep(3.1, Response, IL, PoS, Mediator responds to the create patient request.)
+  * insert ScenarioProcessStep(3.1, Response, IL, PoS, Mediator responds to the request.)
   * step[=]
     * operation
       * request
