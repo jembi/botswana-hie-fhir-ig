@@ -120,9 +120,6 @@ Usage: #definition
         * versionReference = "laborder.bundle.ver.02"
 
   * insert ScenarioProcessStep(2.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for cancelling the lab order information in FHIR.)
-  * step[=]
-    * operation
-      * initiatorActive = true
 
   * insert ScenarioProcessStep(2.3, Send data for consumption, IL, FHIR, Request for FHIR to process the information in the lab order bundle.)
   * step[=]
@@ -130,6 +127,7 @@ Usage: #definition
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.08"
+        * versionReference = "laborder.bundle.ver.02"
       * response
         * instanceReference = "laborder.05"
 
