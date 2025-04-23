@@ -27,9 +27,9 @@ Usage: #definition
 
 * insert ScenarioInstance(laborder.01, Patient, Patient Resource, The patient associated with the lab order., BwPatient, BwPatientExample)
 
-* insert ScenarioInstanceWithVersion(laborder.02, ServiceRequest, Service Request Resource, The service request for the lab order to be carried out., LabOrderServiceRequest, LabOrderActiveServiceRequestExample, laborder.service-request.ver.01, Active Lab Order Service Request, The active service request attatched to the Task Resource that is in progress.)
+* insert ScenarioInstanceWithVersion(laborder.02, ServiceRequest, Service Request Resource, The service request for the lab order to be carried out., LabOrderServiceRequest, LabOrderActiveServiceRequestExample, laborder.service-request.ver.01, Active Lab Order Service Request, The active service request attached to the Task Resource that is in progress.)
 * instance[=]
-  * insert ScenarioInstanceVersion(LabOrderRevokedServiceRequestExample, laborder.service-request.ver.02, Cancelled Lab Order Service Request, The cancelled service request attatched to the Task Resource pending cancellation.)
+  * insert ScenarioInstanceVersion(LabOrderRevokedServiceRequestExample, laborder.service-request.ver.02, Cancelled Lab Order Service Request, The cancelled service request attached to the Task Resource pending cancellation.)
 * insert ScenarioContainedInstance(laborder.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.02)
@@ -41,9 +41,9 @@ Usage: #definition
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
 
-* insert ScenarioInstanceWithVersion(laborder.04, Specimen, Specimen Resource, The specimen associated with the lab order., LabOrderSpecimen, AvailableSpecimenForActiveRequestsExample, laborder.specimen.ver.01, Lab Order Specimen ver 1, The specimen attatched to the active Service Request Resource.)
+* insert ScenarioInstanceWithVersion(laborder.04, Specimen, Specimen Resource, The specimen associated with the lab order., LabOrderSpecimen, AvailableSpecimenForActiveRequestsExample, laborder.specimen.ver.01, Lab Order Specimen ver 1, The specimen attached to the active Service Request Resource.)
 * instance[=]
-  * insert ScenarioInstanceVersion(AvailableSpecimenForRevokedRequestsExample, laborder.specimen.ver.02, Lab Order Specimen ver 2, The specimen attatched to the Service Request Resource pending cancellation.)
+  * insert ScenarioInstanceVersion(AvailableSpecimenForRevokedRequestsExample, laborder.specimen.ver.02, Lab Order Specimen ver 2, The specimen attached to the Service Request Resource pending cancellation.)
 * insert ScenarioContainedInstance(laborder.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
