@@ -71,7 +71,7 @@ Usage: #definition
     * number = "1.1"
     * workflow = Canonical(RegisterNewPatientInBundle)*/
 
-* insert ScenarioProcess(1, Lab Order, 
+* insert ScenarioProcess(1, New Lab Order, 
   PoS entity has submitted a lab order request.,
   FHIR entity has stored the lab order details for the patient and sent an outcome response for the request to the IL entity.)
 
@@ -119,7 +119,7 @@ Usage: #definition
         * instanceReference = "laborder.08"
         * versionReference = "laborder.bundle.ver.02"
 
-  * insert ScenarioProcessStep(2.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
+  * insert ScenarioProcessStep(2.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for cancelling the lab order information in FHIR.)
   * step[=]
     * operation
       * initiatorActive = true
@@ -129,9 +129,11 @@ Usage: #definition
     * operation
       * type = $RestfulInteractionCodeSystem#update
       * request
-        * instanceReference = "laborder.07"
+        * instanceReference = "laborder.08"
       * response
         * instanceReference = "laborder.05"
+
+  * insert ScenarioProcessStep(2.4, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the cancellation request.)
 
 * insert ScenarioProcess(3, Respond to Lab Order Request, 
     FHIR entity has processed the request to create the lab order information and has issued an outcome response.,
