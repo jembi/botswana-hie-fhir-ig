@@ -75,34 +75,38 @@ Usage: #definition
   PoS entity has submitted a lab order request.,
   FHIR entity has stored the lab order details for the patient and sent an outcome response for the request to the IL entity.)
 
-* process[=].step[=].process[+]
-  * title = "New Lab Order"
-  * description = "This scenario demonstrates the process of storing the patient's lab order information in the FHIR datastore."
+* process[=]
+  * step[+]
+    * workflow = Canonical(RegisterNewPatientInBundle)
 
-  * insert ScenarioProcessStep(1.1, Submit lab order, PoS, IL, Lab order information)
-  * step[=]
-    * operation
-      * initiatorActive = true
-      * type = $RestfulInteractionCodeSystem#update
-      * request
-        * instanceReference = "laborder.06"
-        * versionReference = "laborder.bundle.ver.01"
-    
-  * insert ScenarioProcessStep(1.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
-  * step[=]
-    * operation
-      * initiatorActive = true
+  * step[=].process[+]
+    * title = "New Lab Order"
+    * description = "This scenario demonstrates the process of storing the patient's lab order information in the FHIR datastore."
 
-  * insert ScenarioProcessStep(1.3, Send data for consumption, IL, FHIR, Request for FHIR to process the information in the lab order bundle.)
-  * step[=]
-    * operation
-      * type = $RestfulInteractionCodeSystem#update
-      * request
-        * instanceReference = "laborder.07"
-      * response
-        * instanceReference = "laborder.05"
+    * insert ScenarioProcessStep(1.1, Submit lab order, PoS, IL, Lab order information)
+    * step[=]
+      * operation
+        * initiatorActive = true
+        * type = $RestfulInteractionCodeSystem#update
+        * request
+          * instanceReference = "laborder.06"
+          * versionReference = "laborder.bundle.ver.01"
+      
+    * insert ScenarioProcessStep(1.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
+    * step[=]
+      * operation
+        * initiatorActive = true
 
-  * insert ScenarioProcessStep(1.4, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the lab order request.)
+    * insert ScenarioProcessStep(1.3, Send data for consumption, IL, FHIR, Request for FHIR to process the information in the lab order bundle.)
+    * step[=]
+      * operation
+        * type = $RestfulInteractionCodeSystem#update
+        * request
+          * instanceReference = "laborder.07"
+        * response
+          * instanceReference = "laborder.05"
+
+    * insert ScenarioProcessStep(1.4, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the lab order request.)
 
 * insert ScenarioProcess(2, Cancel Lab Order, 
   PoS entity submitted a request for the lab order to be cancelled.,
