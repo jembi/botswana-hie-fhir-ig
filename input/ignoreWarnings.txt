@@ -1,7 +1,7 @@
 == Suppressed Messages ==
 
 # These errors are not serious! Occurs due to the custom version of the publisher generated SVG object illustrating the sequence diagram.
-%sequence-diagrams.html#/html/body/div/div/div/div/div/p/svg/g/a%
+%sequence-diagrams.html#/html/body/div/div/div/div/div/svg/g/a%
 
 # Known issue - See https://jira.hl7.org/browse/FHIR-48492
 %Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction|5.0.0%

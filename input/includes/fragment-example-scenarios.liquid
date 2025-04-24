@@ -189,7 +189,12 @@
 <br />
 <p>See process details: <a href = "{{scenarioPage | append: '.html'}}">Interactions and steps</a></p>
 
-{% include {{scenarioPage}}-process-diagram.xhtml %}
+{% capture svg %}
+  {% include {{scenarioPage}}-process-diagram.xhtml %}
+{% endcapture %}
+
+{{ svg | replace: '<?xml version="1.0" encoding="us-ascii" standalone="no"?>', '' }}
+
 
 <br />
 <br />
