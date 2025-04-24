@@ -1,74 +1,72 @@
-Instance: SubmitNewLabOrders
+Instance: CancelLabOrder
 InstanceOf: ExampleScenario
 Usage: #definition
-* name = "SubmitNewLabOrders"
-* title = "Submit New Lab Orders (Using a Bundle)"
+* name = "CancelLabOrder"
+* title = "Cancel Lab Order (Using a Bundle)"
 * version = "1"
 * status = #active
 * experimental = false
-* purpose = "This serves to demonstrate the submission of a new lab orders, from the Point-of-Service (PoS) application to the FHIR datastore."
+* purpose = "This serves to demonstrate the submission of a request to cancel an active lab order, from the Point-of-Service (PoS) application to the FHIR datastore."
 
-* insert ScenarioActor(PoS, system, Point of Service, The entity that creates the lab order.)
+* insert ScenarioActor(PoS, system, Point of Service, The entity that request the lab order cancellation.)
 * actor[=]
   * extension[+].valueReference = Reference(PIMSActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
   * extension[+].valueReference = Reference(OpenMRSActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
-* insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the lab order request submitted by the PoS entity.)
+* insert ScenarioActor(IL, system, Interoperability Layer, The entity that receives the lab order cancellation request submitted by the PoS entity.)
 * actor[=]
   * extension[+].valueReference = Reference(InteroperabilityLayerActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
-* insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores the details for the lab order submitted by the PoS entity.)
+* insert ScenarioActor(FHIR, system, FHIR Server, The entity that stores the cancellation details for the lab order previously submitted by the PoS entity.)
 * actor[=]
   * extension[+].valueReference = Reference(SHRActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
 * insert ScenarioInstance(laborder.01, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
-* insert ScenarioInstance(laborder.02, Bundle, Lab Order Bundle - New Lab Orders, To be override, LabOrdersBundle, lab-order-with-patient-bundle)
+
+* insert ScenarioInstance(laborder.02, Bundle, Lab Order Bundle - Cancel Lab Order, To be override., LabOrdersBundle, cancelled-lab-order-bundle)
 * instance[=]
   * description = """
-  The FHIR bundle provided by the PoS entity when submitting the lab order service request.
+  The FHIR bundle provided by the PoS entity when submitting a request to cancel the lab order service request.
   
   This bundle includes the following resources:
-  - [Ready Lab Order](Task-LabOrderTaskExample.html)
-  - [Lab Order Specimen](Specimen-AvailableSpecimenForActiveRequestsExample.html)
-  - [Active Lab Order Service Request](ServiceRequest-LabOrderActiveServiceRequestExample.html)
+  - [Cancelled Lab Order Task](Task-LabOrderCancellationTaskExample.html)
+  - [Lab Order Specimen](Specimen-AvailableSpecimenForRevokedRequestsExample.html)
+  - [Cancelled Lab Order Service Request](ServiceRequest-LabOrderRevokedServiceRequestExample.html)
   """
 * insert ScenarioInstance(laborder.03, Endpoint, FHIR request, FHIR processes each request in the bundle using the HTTP request method defined for each Resource included in the Bundle., Endpoint, ProcessFHIRBundle)
 
-* insert ScenarioProcess(1, New Lab Order, 
-  PoS entity has submitted a lab order request.,
-  FHIR entity has stored the lab order details for the patient and sent an outcome response for the request to the IL entity.)
+* insert ScenarioProcess(1, Cancel Lab Order, 
+  PoS entity submitted a request for the lab order to be cancelled.,
+  FHIR entity has updated the statuses for the Task and ServiceRequest resources by indicating its status as cancelled.)
 
 * process[=].step[=].process[+]
-  * title = "New Lab Order"
-  * description = "This scenario demonstrates the process of storing the patient's lab order information in the FHIR datastore."
+  * title = "Cancel Lab Order"
+  * description = "This scenario demonstrates the process of cancelling the requested lab order."
 
-  * insert ScenarioProcessStep(1.1, Submit lab order, PoS, IL, Lab order information)
+  * insert ScenarioProcessStep(1.1, Cancel lab order, PoS, IL, Updated lab order information)
   * step[=]
     * operation
-      * initiatorActive = true
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.02"
-    
-  * insert ScenarioProcessStep(1.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
-  * step[=]
-    * operation
-      * initiatorActive = true
+
+  * insert ScenarioProcessStep(1.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for cancelling the lab order information in FHIR.)
 
   * insert ScenarioProcessStep(1.3, Send data for consumption, IL, FHIR, Request for FHIR to process the information in the lab order bundle.)
   * step[=]
     * operation
+      * receiverActive = true
       * type = $RestfulInteractionCodeSystem#update
       * request
-        * instanceReference = "laborder.03"
+        * instanceReference = "laborder.02"
       * response
         * instanceReference = "laborder.01"
 
-  * insert ScenarioProcessStep(1.4, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the lab order request.)
+  * insert ScenarioProcessStep(1.4, Success: Invoke IL mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint that must send a response back the PoS system who initiated the cancellation request.)
 
 * insert ScenarioProcess(2, Respond to Request, 
     FHIR entity has processed the request and has issued an outcome response.,
