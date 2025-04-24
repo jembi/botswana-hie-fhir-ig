@@ -30,13 +30,19 @@ Usage: #definition
   * extension[+].valueReference = Reference(SHRActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
-* insert ScenarioInstance(rp.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
+//* insert ScenarioInstance(rp.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
 * insert ScenarioInstance(rp.02, Endpoint, FHIR Search request, The search query to find a patient in FHIR using business identifiers., Endpoint, SearchForPatientInFHIR)
-* insert ScenarioInstance(rp.03, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
-* insert ScenarioInstance(rp.04, Bundle, Lab Order Bundle, The FHIR bundle containing the patient's record., LabOrdersBundle, lab-order-with-patient-bundle)
-* insert ScenarioContainedInstance(rp.01)
-* insert ScenarioInstance(rp.05, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
-* insert ScenarioContainedInstance(rp.03)
+//* insert ScenarioInstance(rp.03, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
+* insert ScenarioInstance(rp.04, Bundle, Lab Order Bundle, To be override., LabOrdersBundle, lab-order-with-patient-bundle)
+* instance[=]
+  * description = "The FHIR bundle containing the patient's record. This includes the [Data Supplying Patient Resource](StructureDefinition-bw-patient.html)."
+
+//* insert ScenarioContainedInstance(rp.01)
+* insert ScenarioInstance(rp.05, Bundle, Lab Order Bundle excl. PII, To be override., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
+* instance[=]
+  * description = "The FHIR bundle after being updated by the IL by replacing the [Data Supplying Patient Resource](StructureDefinition-bw-patient.html) with the [Restricted Patient Resource](StructureDefinition-patient-identity-cross-reference.html)."
+
+//* insert ScenarioContainedInstance(rp.03)
 * insert ScenarioInstance(rp.06, Endpoint, CR Search request, The search query to find a patient in CR using XXX., Endpoint, SearchForPatientInCR)
 * insert ScenarioInstance(rp.07, Endpoint, CR Search response, The response to the search request issued by the CR., Endpoint, SearchForPatientInCRResponse)
 
