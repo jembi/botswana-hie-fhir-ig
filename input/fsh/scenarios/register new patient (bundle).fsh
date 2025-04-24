@@ -31,13 +31,16 @@ Usage: #definition
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
 * insert ScenarioInstance(rnp-b.01, Patient, Data Supplying Patient Resource, The Patient involved in the scenario., BwPatient, BwPatientExample)
-* insert ScenarioInstance(rnp-b.02, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
+//* insert ScenarioInstance(rnp-b.02, Patient, Restricted Patient Resource, The restricted Patient Resource excl. all PII., RestrictedPatient, RestrictedPatientExample1)
 
 * insert ScenarioInstance(rnp-b.03, Bundle, Lab Order Bundle, The FHIR bundle provided by the PoS entity to create the patient record., LabOrdersBundle, lab-order-with-patient-bundle)
-* insert ScenarioContainedInstance(rnp-b.01)
+//* insert ScenarioContainedInstance(rnp-b.01)
 
-* insert ScenarioInstance(rnp-b.04, Bundle, Lab Order Bundle excl. PII, The FHIR bundle after being updated by the IL by replacing the \"Data Supplying Patient Resource\" with the \"Restricted Patient Resource\"., ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
-* insert ScenarioContainedInstance(rnp-b.02)
+* insert ScenarioInstance(rnp-b.04, Bundle, Lab Order Bundle excl. PII, To be override, ProcessPatientInFHIRBundle, lab-order-with-restricted-patient-bundle)
+* instance[=]
+  * description = "The FHIR bundle after being updated by the IL by replacing the [Data Supplying Patient Resource](StructureDefinition-bw-patient.html) with the [Restricted Patient Resource](StructureDefinition-patient-identity-cross-reference.html)."
+
+//* insert ScenarioContainedInstance(rnp-b.02)
 
 * insert ScenarioInstance(rnp-b.05, Endpoint, FHIR Validation outcome, The validation outcome as issued by the FHIR server., Endpoint, ValidatePatientResourceInFHIR)
 * insert ScenarioInstance(rnp-b.06, Endpoint, Assigned Master Patient Index identifier, A Master Patient Index identifier assigned by the CR when new patients are created., Endpoint, MPIForPatientIssuedByCR)

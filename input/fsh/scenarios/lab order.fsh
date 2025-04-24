@@ -25,42 +25,51 @@ Usage: #definition
   * extension[+].valueReference = Reference(SHRActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
 
-* insert ScenarioInstance(laborder.01, Patient, Patient Resource, The patient associated with the lab order., BwPatient, BwPatientExample)
+//* insert ScenarioInstance(laborder.01, Patient, Patient Resource, The patient associated with the lab order., BwPatient, BwPatientExample)
 
-* insert ScenarioInstanceWithVersion(laborder.02, ServiceRequest, Service Request Resource, The service request for the lab order to be carried out., LabOrderServiceRequest, LabOrderActiveServiceRequestExample, laborder.service-request.ver.01, Active Lab Order Service Request, The active service request attached to the Task Resource that is in progress.)
+/** insert ScenarioInstanceWithVersion(laborder.02, ServiceRequest, Service Request Resource, The service request for the lab order to be carried out., LabOrderServiceRequest, LabOrderActiveServiceRequestExample, laborder.service-request.ver.01, Active Lab Order Service Request, The active service request attached to the Task Resource that is in progress.)
 * instance[=]
   * insert ScenarioInstanceVersion(LabOrderRevokedServiceRequestExample, laborder.service-request.ver.02, Cancelled Lab Order Service Request, The cancelled service request attached to the Task Resource pending cancellation.)
-* insert ScenarioContainedInstance(laborder.01)
+//* insert ScenarioContainedInstance(laborder.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.01)
-* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.02)
+* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.02)*/
 
-* insert ScenarioInstanceWithVersion(laborder.03, Task, Task Resource, Tracks the state of completion of the lab order., LabOrderTask, LabOrderTaskExample, laborder.task.ver.01, Ready Lab Order Task, The lab order request has started.)
+/** insert ScenarioInstanceWithVersion(laborder.03, Task, Task Resource, Tracks the state of completion of the lab order., LabOrderTask, LabOrderTaskExample, laborder.task.ver.01, Ready Lab Order Task, The lab order request has started.)
 * instance[=]
   * insert ScenarioInstanceVersion(LabOrderCancellationTaskExample, laborder.task.ver.02, Cancelled Lab Order Task, The lab order is pending cancellation.)
-* insert ScenarioContainedInstance(laborder.01)
+//* insert ScenarioContainedInstance(laborder.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
-* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
+* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)*/
 
-* insert ScenarioInstanceWithVersion(laborder.04, Specimen, Specimen Resource, The specimen associated with the lab order., LabOrderSpecimen, AvailableSpecimenForActiveRequestsExample, laborder.specimen.ver.01, Lab Order Specimen ver 1, The specimen attached to the active Service Request Resource.)
+/** insert ScenarioInstanceWithVersion(laborder.04, Specimen, Specimen Resource, The specimen associated with the lab order., LabOrderSpecimen, AvailableSpecimenForActiveRequestsExample, laborder.specimen.ver.01, Lab Order Specimen ver 1, The specimen attached to the active Service Request Resource.)
 * instance[=]
   * insert ScenarioInstanceVersion(AvailableSpecimenForRevokedRequestsExample, laborder.specimen.ver.02, Lab Order Specimen ver 2, The specimen attached to the Service Request Resource pending cancellation.)
-* insert ScenarioContainedInstance(laborder.01)
+//* insert ScenarioContainedInstance(laborder.01)
 * insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
-* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
+* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)*/
 
 * insert ScenarioInstance(laborder.05, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
 
-* insert ScenarioInstanceWithVersion(laborder.06, Bundle, Lab Order Bundle - New Lab Orders, The FHIR bundle provided by the PoS entity when submitting the lab order service request., LabOrdersBundle, lab-order-with-patient-bundle, laborder.bundle.ver.01, Lab order Bundle, The Bundle Resource containing all of the lab order information.)
-* insert ScenarioContainedInstance(laborder.01)
-* insert ScenarioContainedInstanceWithVersion(laborder.03, laborder.task.ver.01)
-* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.01)
-* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
+* insert ScenarioInstanceWithVersion(laborder.06, Bundle, Lab Order Bundle - New Lab Orders, To be override, LabOrdersBundle, lab-order-with-patient-bundle, laborder.bundle.ver.01, Lab order Bundle, The Bundle Resource containing all of the lab order information.)
+* instance[=]
+  * description = """
+  The FHIR bundle provided by the PoS entity when submitting the lab order service request.
+  
+  This bundle includes the folowing resources:
+  - [Ready Lab Order](Task-LabOrderTaskExample.html)
+  - [Lab Order Specimen](Specimen-AvailableSpecimenForActiveRequestsExample.html)
+  - [Active Lab Order Service Request](ServiceRequest-LabOrderActiveServiceRequestExample.html)
+  """
+//* insert ScenarioContainedInstance(laborder.01)
+//* insert ScenarioContainedInstanceWithVersion(laborder.03, laborder.task.ver.01)
+//* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.01)
+//* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
 
 * insert ScenarioInstanceWithVersion(laborder.08, Bundle, Lab Order Bundle - Cancel Lab Order, The FHIR bundle provided by the PoS entity when submitting a request to cancel the lab order service request., LabOrdersBundle, cancelled-lab-order-bundle, laborder.bundle.ver.02, Lab order Bundle, The Bundle Resource containing all of the lab order information.)
-* insert ScenarioContainedInstance(laborder.01)
-* insert ScenarioContainedInstanceWithVersion(laborder.03, laborder.task.ver.02)
-* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.02)
-* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
+//* insert ScenarioContainedInstance(laborder.01)
+//* insert ScenarioContainedInstanceWithVersion(laborder.03, laborder.task.ver.02)
+//* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.02)
+//* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
 
 * insert ScenarioInstance(laborder.07, Endpoint, FHIR request, FHIR processes each request in the bundle using the HTTP request method defined for each Resource included in the Bundle., Endpoint, ProcessFHIRBundle)
 * insert ScenarioContainedInstanceWithVersion(laborder.06, laborder.bundle.ver.01)
