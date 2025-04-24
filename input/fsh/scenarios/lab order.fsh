@@ -50,12 +50,13 @@ Usage: #definition
 
 * insert ScenarioInstance(laborder.05, Endpoint, Outcome response, FHIR issues an outcome response to each CRUD request., Endpoint, FHIRResourceProcessResponse)
 
-* insert ScenarioInstanceWithVersion(laborder.06, Bundle, Lab Order Bundle - New Lab Orders, To be override, LabOrdersBundle, lab-order-with-patient-bundle, laborder.bundle.ver.01, Lab order Bundle, The Bundle Resource containing all of the lab order information.)
+//* insert ScenarioInstanceWithVersion(laborder.06, Bundle, Lab Order Bundle - New Lab Orders, To be override, LabOrdersBundle, lab-order-with-patient-bundle, laborder.bundle.ver.01, Lab order Bundle, The Bundle Resource containing all of the lab order information.)
+* insert ScenarioInstance(laborder.06, Bundle, Lab Order Bundle - New Lab Orders, To be override, LabOrdersBundle, lab-order-with-patient-bundle)
 * instance[=]
   * description = """
   The FHIR bundle provided by the PoS entity when submitting the lab order service request.
   
-  This bundle includes the folowing resources:
+  This bundle includes the following resources:
   - [Ready Lab Order](Task-LabOrderTaskExample.html)
   - [Lab Order Specimen](Specimen-AvailableSpecimenForActiveRequestsExample.html)
   - [Active Lab Order Service Request](ServiceRequest-LabOrderActiveServiceRequestExample.html)
@@ -65,14 +66,25 @@ Usage: #definition
 //* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.01)
 //* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.01)
 
-* insert ScenarioInstanceWithVersion(laborder.08, Bundle, Lab Order Bundle - Cancel Lab Order, The FHIR bundle provided by the PoS entity when submitting a request to cancel the lab order service request., LabOrdersBundle, cancelled-lab-order-bundle, laborder.bundle.ver.02, Lab order Bundle, The Bundle Resource containing all of the lab order information.)
+//* insert ScenarioInstanceWithVersion(laborder.08, Bundle, Lab Order Bundle - Cancel Lab Order, To be override., LabOrdersBundle, cancelled-lab-order-bundle, laborder.bundle.ver.02, Lab order Bundle, The Bundle Resource containing all of the lab order information.)
+* insert ScenarioInstance(laborder.08, Bundle, Lab Order Bundle - Cancel Lab Order, To be override., LabOrdersBundle, cancelled-lab-order-bundle)
+* instance[=]
+  * description = """
+  The FHIR bundle provided by the PoS entity when submitting a request to cancel the lab order service request.
+  
+  This bundle includes the following resources:
+  - [Cancelled Lab Order Task](Task-LabOrderCancellationTaskExample.html)
+  - [Lab Order Specimen](Specimen-AvailableSpecimenForRevokedRequestsExample.html)
+  - [Cancelled Lab Order Service Request](ServiceRequest-LabOrderRevokedServiceRequestExample.html)
+  """
+
 //* insert ScenarioContainedInstance(laborder.01)
 //* insert ScenarioContainedInstanceWithVersion(laborder.03, laborder.task.ver.02)
 //* insert ScenarioContainedInstanceWithVersion(laborder.04, laborder.specimen.ver.02)
 //* insert ScenarioContainedInstanceWithVersion(laborder.02, laborder.service-request.ver.02)
 
 * insert ScenarioInstance(laborder.07, Endpoint, FHIR request, FHIR processes each request in the bundle using the HTTP request method defined for each Resource included in the Bundle., Endpoint, ProcessFHIRBundle)
-* insert ScenarioContainedInstanceWithVersion(laborder.06, laborder.bundle.ver.01)
+//* insert ScenarioContainedInstanceWithVersion(laborder.06, laborder.bundle.ver.01)
 
 /** process[+]
   * title = "Register Patient"
@@ -95,7 +107,7 @@ Usage: #definition
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.06"
-        * versionReference = "laborder.bundle.ver.01"
+        //* versionReference = "laborder.bundle.ver.01"
     
   * insert ScenarioProcessStep(1.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for creating the lab order information in FHIR.)
   * step[=]
@@ -127,7 +139,7 @@ Usage: #definition
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.08"
-        * versionReference = "laborder.bundle.ver.02"
+        //* versionReference = "laborder.bundle.ver.02"
 
   * insert ScenarioProcessStep(2.2, Invoke FHIR mediator, IL, IL, Pass the data to the mediator responsible for calling the endpoint for cancelling the lab order information in FHIR.)
 
@@ -138,7 +150,7 @@ Usage: #definition
       * type = $RestfulInteractionCodeSystem#update
       * request
         * instanceReference = "laborder.08"
-        * versionReference = "laborder.bundle.ver.02"
+        //* versionReference = "laborder.bundle.ver.02"
       * response
         * instanceReference = "laborder.05"
 
