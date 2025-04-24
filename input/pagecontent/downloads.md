@@ -1,3 +1,7 @@
+<style>
+  {% include liquid-templates.css %}
+</style>
+
 ### Package
 
 This is the technical package containing the artifacts in this Implementation Guide:
