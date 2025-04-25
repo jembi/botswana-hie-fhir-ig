@@ -90,11 +90,10 @@ Description: "HIE System Functional Requirements"
 * extension[RequirementsType].valueCodeableConcept = $RequirementsTypeCodeSystem#functional
 * name = "HIESystemRequirements"
 * status = #active
-* actor[Primary] = Canonical(HIESystemActorDefinitionExample)
-* actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
-* actor[Secondary][+] = Canonical(PIMSActorDefinitionExample)
-* actor[Secondary][+] = Canonical(IPMSActorDefinitionExample)
-* actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
+* actor[Primary][+] = Canonical(SHRActorDefinitionExample)
+* actor[Primary][+] = Canonical(PIMSActorDefinitionExample)
+* actor[Primary][+] = Canonical(IPMSActorDefinitionExample)
+* actor[Primary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-HIE.001"
   * requirement = "Should be able to send SMS notifications to patients that require urgent attention-(PIMS)."
@@ -232,7 +231,7 @@ Description: "Omang Functional Requirements"
 * actor[Primary] = Canonical(OmangActorDefinitionExample)
 * actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
 * actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
+//* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
 * actor[Secondary][+] = Canonical(APIActorDefinitionExample)
 * statement[+]
   * key = "BOTS.FR-OMANG.001"
@@ -267,7 +266,7 @@ Description: "Birth and Death Registration System Functional Requirements"
 * actor[Primary] = Canonical(BDRSActorDefinitionExample)
 * actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
 * actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
+//* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
 * actor[Secondary][+] = Canonical(APIActorDefinitionExample)
 * actor[Secondary][+] = Canonical(OmangActorDefinitionExample)
 * statement[+]
@@ -303,7 +302,7 @@ Description: "Immigration and Citizenship System Functional Requirements"
 * actor[Primary] = Canonical(ICSActorDefinitionExample)
 * actor[Secondary][+] = Canonical(InteroperabilityLayerActorDefinitionExample)
 * actor[Secondary][+] = Canonical(ClientRegistryActorDefinitionExample)
-* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
+//* actor[Secondary][+] = Canonical(HIESystemActorDefinitionExample)
 * actor[Secondary][+] = Canonical(APIActorDefinitionExample)
 * actor[Secondary][+] = Canonical(OmangActorDefinitionExample)
 * statement[+]

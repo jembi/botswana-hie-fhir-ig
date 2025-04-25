@@ -422,7 +422,7 @@ Description: "Represents the requirements for the use case described in this Imp
 * insert Slice(actor, value, extension.value, open, Slicing the actor classification extension based on the code value, false)
 
 * actor contains
-    Primary 1..1 MS and
+    Primary 1..* MS and
     Secondary 0..* MS
 
 * actor[Primary].extension contains ActorClassificationExtension named ActorClassification 1..1

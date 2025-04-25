@@ -460,7 +460,7 @@ Description: "Represents the architectural component responsible for coordinatin
 * purpose = "The Interoperability Layer plays a vital role in ensuring that both lab orders and diagnostic reports are stored in the Shared Health Record."
 * type = #system
 
-Instance: HIESystemActorDefinitionExample
+/*Instance: HIESystemActorDefinitionExample
 InstanceOf: ActorDefinition
 Usage: #example
 Title: "ActorDefinition - HIE System (To Be Reviewed)"
@@ -469,7 +469,7 @@ Description: "Represents the system that enables the secure and electronic shari
 * title = "HIE System"
 * status = #active
 * purpose = "need to figure out the pupose of this actor."
-* type = #system
+* type = #system*/
 
 Instance: ClientRegistryActorDefinitionExample
 InstanceOf: ActorDefinition
