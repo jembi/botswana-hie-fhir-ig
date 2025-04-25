@@ -39,15 +39,7 @@ By standardizing data exchange between health information systems, the FHIR IG f
 This interoperability ensures that critical patient data is accessible across facilities, reduces the need for duplicate data entry, and supports timely decision-making. 
 Ultimately, such advancements contribute to improved patient outcomes in HIV care and other health programs, reflecting the strategic vision of Botswana's eHealth initiatives.</p>
 
-<h3>Download</h3> <a name="download"></a>
-  <p>You can also download:</p>
-  <ul>
-    <li><a href="full-ig.zip">this entire guide</a>,</li>
-    <li>the definition resources in <a href="definitions.json.zip">json</a>, <a href="definitions.xml.zip">xml</a>, <a href="definitions.ttl.zip">ttl</a>, or <a href="csvs.zip">csv</a> format, or</li>
-    <li>the example resources in <a href="examples.json.zip">json</a>, <a href="examples.xml.zip">xml</a> or <a href="examples.ttl.zip">ttl</a> format.</li>
-  </ul>
 
-  <p>The source code for this Implementation Guide can be found on <a href="https://github.com/jembi/botswana-hie-fhir-ig">GitHub</a>.</p>
 <!--Cross Version Analysis-->
   <h3>Cross Version Analysis</h3> <a name="cross-version-analysis"></a>
   <div>

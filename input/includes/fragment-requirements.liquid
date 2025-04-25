@@ -81,6 +81,7 @@
             {%- endfor -%}
 
             {% assign actorCount = 1 %}
+            {% assign primaryActorHeadingCreated = false %}
             {% assign secondaryActorHeadingCreated = false %}
 
             {% for item in actorUrls %}
@@ -94,13 +95,18 @@
                         {% if item contains actorUrlExamplesArray[x] %}
                           {% if actorClasificationsArray[x] == "primary" %}
 
-{{  "#### Primary Actor" }}
+                            {% if primaryActorHeadingCreated == false %}
+                              {% assign actorCount = 1 %}
+{{  "#### Primary Actors" }}
+                              {% assign primaryActorHeadingCreated = true %}
+                            {% endif %}
 
-<p><a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
-                            {% break %}
+<p><strong>Actor {{actorCount}}</strong>: <a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
+ 
+                              {% assign actorCount = actorCount | plus: 1 %} 
                           {% else %}
                               {% if secondaryActorHeadingCreated == false %}
-
+                                {% assign actorCount = 1 %}
 {{  "#### Secondary Actors" }}
 
                                 {% assign secondaryActorHeadingCreated = true %}
@@ -108,9 +114,9 @@
 
 <p><strong>Actor {{actorCount}}</strong>: <a href = "{{item_data[1].path}}">{{item_data[1].title}}</a></p>
 
-                              {% assign actorCount = actorCount | plus: 1 %} 
+                            {% assign actorCount = actorCount | plus: 1 %} 
+  
                           {% endif %}
-
                         {% endif %}
           
                         {% if x == actorExamplesArrayLimit %}
