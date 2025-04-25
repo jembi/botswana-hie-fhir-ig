@@ -112,6 +112,14 @@ resources:
     name: Cancel Lab Order (Using a Bundle)
     description: Demonstrates the process flow to submit a cancellation request for an active lab order from the Point-of-Service application to the FHIR server.
     exampleBoolean: false
+  ExampleScenario/LabOrderResults:
+    name: Lab Order Results (Using a Bundle)
+    description: Demonstrates the process flow to submit lab results from the Point-of-Service application to the FHIR server.
+    exampleBoolean: false
+  ExampleScenario/RejectLabOrder:
+    name: Reject Lab Order (Using a Bundle)
+    description: Demonstrates the process flow to submit a rejection request for an active lab order from the Point-of-Service application to the FHIR server.
+    exampleBoolean: false
 #  Patient/my-example-patient:
 #    name: My Example Patient
 #    description: An example Patient
