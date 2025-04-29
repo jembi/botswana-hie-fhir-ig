@@ -1,0 +1,33 @@
+{% assign sitePages = site.pages %}
+
+<div>
+<table class="table table-bordered">
+<thead class="thead-dark">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+
+{% for data_file in site.data %}
+  {% if data_file[0] == "resources" %}
+    {% assign content = data_file[1] | sort: resource[0] %}
+    {% for resource in content %}
+      {% assign resourceType = resource[0] | split: '/' %}
+
+      {% if resourceType[0] contains resourceFilter %}
+<tr>
+  <td><a href="{{resource[1].path}}">{{resource[1].title}}</a></td><td>{{resource[1].description}}</td>
+</tr>
+      {% endif %}
+    {% endfor %}
+
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+</tbody>
+</table>
+
+</div>

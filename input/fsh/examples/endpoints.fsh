@@ -9,7 +9,6 @@ Description:
 * name = "Patient"
 * description = "The Patient endpoint coming with the FHIR API."
 * payload[+]
-  * type = $EndpointPayloadType#any
   * mimeType[+] = #application/fhir+json
 * address = "http://server.url/fhir/Patient?identifier=http://moh.bw.org/identifier/omang|omang123,identifier=http://moh.bw.org/identifier/birth|birth456,identifier=http://moh.bw.org/identifier/passport|passport789"
 
@@ -24,7 +23,6 @@ Description:
 * name = "CR endpoint name"
 * description = "The endpoint used for XXX."
 * payload[+]
-  * type = $EndpointPayloadType#any
   * mimeType[+] = #application/json
 * address = "http://server.url/CR/endopint?params"
 
@@ -39,7 +37,6 @@ Description:
 * name = "IL endpoint name"
 * description = "The endpoint used for XXX."
 * payload[+]
-  * type = $EndpointPayloadType#any
   * mimeType[+] = #application/json
 * address = "http://server.url/IL/endpoint"
 
@@ -54,7 +51,6 @@ Description:
 * name = "$validate"
 * description = "The $validate operation checks whether the suppplied content will be accepted by the server, based on the constraints applied to one or more profiles referenced by the Resource containing the data."
 * payload[+]
-  * type = $EndpointPayloadType#any
   * mimeType[+] = #application/fhir+json
 * address = "http://server.url/fhir/Patient/$validate"
 
@@ -69,7 +65,6 @@ Description:
 * name = "IL endpoint name"
 * description = "The endpoint used for XXX."
 * payload[+]
-  * type = $EndpointPayloadType#any
   * mimeType[+] = #application/json
 * address = "http://server.url/IL/endpoint"
 
@@ -84,7 +79,6 @@ Description:
 * name = "IL endpoint name"
 * description = "The endpoint used for XXX. See https://www.hl7.org/fhir/http.html."
 * payload[+]
-  * type = $EndpointPayloadType#any
   * mimeType[+] = #application/fhir+json
 * address = "http://server.url/IL/endpoint"
 
@@ -99,6 +93,5 @@ Description:
 * name = "Bundle"
 * description = "The Bundle endpoint coming with the FHIR API."
 * payload[+]
-  * type = $EndpointPayloadType#any
   * mimeType[+] = #application/fhir+json
 * address = "http://server.url/fhir"
