@@ -7,7 +7,8 @@
 <br />
 
 {% assign resourcesForListing =
-"Capability Statements,CapabilityStatement~
+"
+Capability Statements,CapabilityStatement~
 Profiles and Extensions,StructureDefinition" | split: "~" %}
 
 {% assign resourcesForListingLimit = resourcesForListing.size | minus: 1 %}
@@ -16,7 +17,7 @@ Profiles and Extensions,StructureDefinition" | split: "~" %}
   {% assign data = resourcesForListing[i] | split: ',' %}
   {% assign resourceFilterValue = data[1] %}
 
-{{  "### " | append: data[0] }}
+{{  "### " | append: data[0] | strip_newlines }}
 
   {% include artifacts-reusable.liquid resourceFilter=resourceFilterValue %}
 
