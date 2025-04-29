@@ -8,7 +8,7 @@ Usage: #definition
 * experimental = false
 * purpose = "This serves to demonstrate the submission of a request to cancel an active lab order, from the Point-of-Service (PoS) application to the FHIR datastore."
 
-* insert ScenarioActor(PoS, system, Point of Service, The entity that request the lab order cancellation.)
+* insert ScenarioActor(PoS, system, Point of Service, The entity that requested the lab order cancellation.)
 * actor[=]
   * extension[+].valueReference = Reference(PIMSActorDefinitionExample)
   * extension[=].url = "http://moh.bw.org/StructureDefinition/actor-reference"
@@ -34,8 +34,8 @@ Usage: #definition
   
   This bundle includes the following resources:
   - [Cancelled Lab Order Task](Task-LabOrderCancellationTaskExample.html)
-  - [Lab Order Specimen](Specimen-AvailableSpecimenForRevokedRequestsExample.html)
-  - [Cancelled Lab Order Service Request](ServiceRequest-LabOrderRevokedServiceRequestExample.html)
+  - [Lab Order Specimen](Specimen-AvailableSpecimenForCancelledRequestsExample.html)
+  - [Cancelled Lab Order Service Request](ServiceRequest-LabOrderRevokedServiceRequestOrderCancelledExample.html)
   """
 * insert ScenarioInstance(laborder.03, Endpoint, FHIR request, FHIR processes each request in the bundle using the HTTP request method defined for each Resource included in the Bundle., Endpoint, ProcessFHIRBundle)
 
@@ -62,7 +62,7 @@ Usage: #definition
       * receiverActive = true
       * type = $RestfulInteractionCodeSystem#update
       * request
-        * instanceReference = "laborder.02"
+        * instanceReference = "laborder.03"
       * response
         * instanceReference = "laborder.01"
 

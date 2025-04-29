@@ -63,7 +63,7 @@ Usage: #definition
       * receiverActive = true
       * type = $RestfulInteractionCodeSystem#update
       * request
-        * instanceReference = "laborder.02"
+        * instanceReference = "laborder.03"
       * response
         * instanceReference = "laborder.01"
 

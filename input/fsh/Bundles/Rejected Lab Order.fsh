@@ -6,5 +6,5 @@ Description: "Lab order has been rejected"
 * type = #transaction
 
 * insert ExampleTransactionalEntry(LabOrderRejectionTaskExample, Task, task)
-* insert ExampleTransactionalEntry(AvailableSpecimenForCompletedRequestsExample, Specimen, specimens)
-* insert ExampleTransactionalEntry(LabOrderCompletedServiceRequestExample, ServiceRequest, serviceRequest)
+* insert ExampleTransactionalEntry(UnsatisfactorySpecimenForRevokedRequestsExample, Specimen, specimens)
+* insert ExampleTransactionalEntry(LabOrderRevokedServiceRequestPoorSpecimenExample, ServiceRequest, serviceRequest)

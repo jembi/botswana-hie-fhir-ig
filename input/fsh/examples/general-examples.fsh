@@ -94,10 +94,10 @@ Description: "Represents an active service request for the lab order."
 * performer = Reference(ServiceProviderExample)
 * specimen = Reference(AvailableSpecimenForActiveRequestsExample)
 
-Instance: LabOrderRevokedServiceRequestExample
+Instance: LabOrderRevokedServiceRequestPoorSpecimenExample
 InstanceOf: LabOrderServiceRequest
 Usage: #example
-Title: "ServiceRequest - Lab Order (Revoked)"
+Title: "ServiceRequest - Lab Order (Revoked - Unsatisfactory Specimen)"
 Description: "Represents a service request that has been revoked before it could be fully attended to."
 * identifier[PLAC].value = "ORDER12345"
 
@@ -109,7 +109,7 @@ Description: "Represents a service request that has been revoked before it could
 * occurrenceDateTime = "2012-12-20"
 * requester = Reference(BwPractitionerExample)
 * performer = Reference(ServiceProviderExample)
-* specimen = Reference(AvailableSpecimenForRevokedRequestsExample)
+* specimen = Reference(UnsatisfactorySpecimenForRevokedRequestsExample)
 
 Instance: LabOrderCompletedServiceRequestExample
 InstanceOf: LabOrderServiceRequest
@@ -143,11 +143,11 @@ Description: "The specimen associated with the lab order that will be used durin
 * status = #available
 * request = Reference(LabOrderActiveServiceRequestExample)
 
-Instance: AvailableSpecimenForRevokedRequestsExample
+Instance: UnsatisfactorySpecimenForRevokedRequestsExample
 InstanceOf: LabOrderSpecimen
 Usage: #example
-Title: "Specimen - Considered Ready For Testing"
-Description: "The specimen associated with the lab order that was considered ready for testing but the service request was revoked."
+Title: "Specimen - Unsatisfactory"
+Description: "The specimen associated with the lab order that was considered ready for testing but the service request was revoked due to an unsatisfactory specimen."
 * identifier[USID].value = "abc123"
 
 * type = $LNC#LA17760-2
@@ -155,8 +155,8 @@ Description: "The specimen associated with the lab order that was considered rea
 * subject = Reference(BwPatientExample)
 * collection.collectedDateTime = "2012-12-21"
 * receivedTime = "2012-12-22"
-* status = #available
-* request = Reference(LabOrderRevokedServiceRequestExample)
+* status = #unsatisfactory
+* request = Reference(LabOrderRevokedServiceRequestPoorSpecimenExample)
 
 Instance: AvailableSpecimenForCompletedRequestsExample
 InstanceOf: LabOrderSpecimen
@@ -213,7 +213,7 @@ Title: "Task - Lab Order Rejected by Laboratory"
 Description: "Indicates that the task that has been initiated for the lab request has been rejected by the receiving laboratory/lab technician."
 * identifier[FILL].value = "ORDER12345"
 
-* basedOn = Reference(LabOrderCompletedServiceRequestExample)
+* basedOn = Reference(LabOrderRevokedServiceRequestPoorSpecimenExample)
 * status = #rejected
 * intent = #order
 * executionPeriod.start = "2012-12-22"
@@ -229,7 +229,7 @@ Title: "Task - Lab Order Cancelled by Requester"
 Description: "Indicates that the task that has been initiated for the lab request has been cancelled by the requestiong organization/practitioner."
 * identifier[FILL].value = "ORDER12345"
 
-* basedOn = Reference(LabOrderRevokedServiceRequestExample)
+* basedOn = Reference(LabOrderRevokedServiceRequestOrderCancelledExample)
 * status = #cancelled
 * intent = #order
 * executionPeriod.start = "2012-12-22"
@@ -336,3 +336,35 @@ Usage: #inline
 * telecom[+].system = #email
 * telecom[=].value = "someone@something.org"
 * telecom[=].use = #home
+
+Instance: LabOrderRevokedServiceRequestOrderCancelledExample
+InstanceOf: LabOrderServiceRequest
+Usage: #example
+Title: "ServiceRequest - Lab Order (Revoked - Order Cancelled)"
+Description: "Represents a service request that has been revoked before it could be fully attended to."
+* identifier[PLAC].value = "ORDER12345"
+
+* status = #revoked
+* intent = #order
+* code = $OpenMrsLabOrderCodeSystem#3076341
+* subject = Reference(BwPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* occurrenceDateTime = "2012-12-20"
+* requester = Reference(BwPractitionerExample)
+* performer = Reference(ServiceProviderExample)
+* specimen = Reference(AvailableSpecimenForCompletedRequestsExample)
+
+Instance: AvailableSpecimenForCancelledRequestsExample
+InstanceOf: LabOrderSpecimen
+Usage: #example
+Title: "Specimen - Used During Testing (Order Cancelled)"
+Description: "The specimen associated with the lab order that was used during testing."
+* identifier[USID].value = "abc123"
+
+* type = $LNC#LA17760-2
+* type.text = "Plasma specimen"
+* subject = Reference(BwPatientExample)
+* collection.collectedDateTime = "2012-12-21"
+* receivedTime = "2012-12-22"
+* status = #available
+* request = Reference(LabOrderRevokedServiceRequestOrderCancelledExample)
