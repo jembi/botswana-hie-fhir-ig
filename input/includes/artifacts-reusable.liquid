@@ -1,4 +1,5 @@
 {% assign sitePages = site.pages %}
+{% assign resourceDetails = "" | split: "~" %}
 
 <div>
 <table class="table table-bordered">
@@ -16,10 +17,8 @@
     {% for resource in content %}
       {% assign resourceType = resource[0] | split: '/' %}
 
-      {% if resourceType[0] contains resourceFilter %}
-<tr>
-  <td><a href="{{resource[1].path}}">{{resource[1].title}}</a></td><td>{{resource[1].description}}</td>
-</tr>
+      {% if resourceType[0] == {{include.resourceFilter}} %}
+        {% assign resourceDetails = resource[1].title | append: '>>>>' | append: resource[1].description | append: '>>>>' | append: resource[1].path | append: '>>>>' | concat: resourceDetails | sort %}
       {% endif %}
     {% endfor %}
 
@@ -27,7 +26,20 @@
   {% endif %}
 {% endfor %}
 
+{% assign resourceDetailsLimit = resourceDetails.size | minus: 1 %}
+
+{% for i in (0..resourceDetailsLimit) %}
+  {% assign data = resourceDetails[i] | split: '>>>>' %}
+
+<tr>
+  <td><a href="{{data[2]}}">{{data[0]}}</a></td><td>{{data[1]}}</td>
+</tr>
+
+  {% if i == resourceDetailsLimit %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
 </tbody>
 </table>
-
 </div>
