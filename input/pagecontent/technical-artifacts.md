@@ -9,7 +9,10 @@
 {% assign resourcesForListing =
 "
 Capability Statements,CapabilityStatement~
-Profiles and Extensions,StructureDefinition" | split: "~" %}
+Profiles and Extensions,StructureDefinition~
+Actor Definitions,ActorDefinition~
+Requirements,Requirements~
+Sequence Diagrams,ExampleScenario" | split: "~" %}
 
 {% assign resourcesForListingLimit = resourcesForListing.size | minus: 1 %}
 

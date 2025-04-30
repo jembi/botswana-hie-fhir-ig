@@ -6,8 +6,4 @@
 
 <br />
 
-{% assign requirementsTypeFilter = "functional" %}
-{% assign showRequirementsHeading = true %}
-{% assign showRequirementsActors = true %}
-
-{% include fragment-requirements.liquid %}
+{% include fragment-requirements.liquid requirementsTypeFilter="functional" showRequirementsHeading=true showRequirementsActors=true %}
