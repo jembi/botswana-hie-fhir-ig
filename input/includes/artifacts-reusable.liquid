@@ -1,0 +1,62 @@
+{% assign resourceDetails = "" | split: "~" %}
+
+{% capture jsonData %}
+  {% include ActorDefinition-APIActorDefinitionExample.json %}
+{% endcapture %}
+
+{% assign jsonDataSplit = jsonData | split: ':' %}
+
+{% assign jsonDataSplitLimit = jsonDataSplit[0].size | minus: 1 %}
+
+{% for i in (0..jsonDataSplitLimit) %}
+  {% assign item = jsonDataSplit[i] | split: ',' %}
+
+  {{ item }}
+
+  {% if i == jsonDataSplitLimit %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div>
+<table class="table table-bordered">
+<thead class="thead-dark">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+
+{% for data_file in site.data %}
+  {% if data_file[0] == "resources" %}
+    {% assign content = data_file[1] | sort: resource[0] %}
+    {% for resource in content %}
+      {% assign resourceType = resource[0] | split: '/' %}
+
+      {% if resourceType[0] == {{include.resourceFilter}} %}
+        {% assign resourceDetails = resource[1].title | append: '>>>>' | append: resource[1].description | append: '>>>>' | append: resource[1].path | append: '>>>>' | concat: resourceDetails | sort %}
+      {% endif %}
+    {% endfor %}
+
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign resourceDetailsLimit = resourceDetails.size | minus: 1 %}
+
+{% for i in (0..resourceDetailsLimit) %}
+  {% assign data = resourceDetails[i] | split: '>>>>' %}
+
+<tr>
+  <td><a href="{{data[2]}}">{{data[0]}}</a></td><td>{{data[1]}}</td>
+</tr>
+
+  {% if i == resourceDetailsLimit %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+</tbody>
+</table>
+</div>
