@@ -4,8 +4,4 @@
 
 <br />
 
-{% assign requirementsTypeFilter = "non-functional" %}
-{% assign showRequirementsHeading = false %}
-{% assign showRequirementsActors = false %}
-
-{% include fragment-requirements.liquid %}
+{% include fragment-requirements.liquid requirementsTypeFilter="non-functional" showRequirementsHeading=false showRequirementsActors=false %}

@@ -25,18 +25,18 @@
        {% assign requirementsTypeCoding = requirement | split: '"system" : "http://moh.bw.org/CodeSystem/cs-requirements-type-codes",            "code" : "' %}
        {%- assign requirementsType = requirementsTypeCoding[1] | split: '"' -%}
         
-       {% if requirementsType[0] == requirementsTypeFilter %}        
+       {% if requirementsType[0] == {{include.requirementsTypeFilter}} %}        
           {% assign requirementsStatementsStart = requirement | split: '"statement" :' %}
           {% assign requirementsStatementsEnd = '{"statement" :' | append: requirementsStatementsStart[1] %}
           {% assign requirementsStatements = requirementsStatementsEnd | remove: '{"statement" : [    {' | split: '"key" : "'  %}
 
-          {% if showRequirementsHeading == true %}
+          {% if {{include.showRequirementsHeading}} == true %}
 
 {{  "### " | append: title }}
 
           {% endif %}
           
-          {% if showRequirementsActors == true %}
+          {% if {{include.showRequirementsActors}} == true %}
             {% assign classifications = nil %}
 
             {%- assign actorUrlsStart = requirements | split: '"actor" :' -%}
