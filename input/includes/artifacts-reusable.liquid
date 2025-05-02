@@ -4,18 +4,15 @@
   {% include ActorDefinition-APIActorDefinitionExample.json %}
 {% endcapture %}
 
-{% assign jsonDataSplit = jsonData | split: ':' %}
+{% assign jsonDataSplit = jsonData | split: ',"' %}
 
-{% assign jsonDataSplitLimit = jsonDataSplit[0].size | minus: 1 %}
+{% for data in jsonDataSplit %}
 
-{% for i in (0..jsonDataSplitLimit) %}
-  {% assign item = jsonDataSplit[i] | split: ',' %}
+  {% assign dataSplit = data | split: ':' %}
+  {% assign key = dataSplit[0] | replace: '"', nil | replace: '{', nil %}
+  {% assign values = dataSplit[1] %}
 
-  {{ item }}
-
-  {% if i == jsonDataSplitLimit %}
-    {% break %}
-  {% endif %}
+  {{key}} : {{values}} <br />
 {% endfor %}
 
 <div>
