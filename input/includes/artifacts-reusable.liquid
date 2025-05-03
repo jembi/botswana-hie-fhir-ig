@@ -4,15 +4,16 @@
   {% include ActorDefinition-APIActorDefinitionExample.json %}
 {% endcapture %}
 
-{% assign jsonDataSplit = jsonData | split: ',"' %}
+{% assign generatedTextSplit = jsonData | split: '"text":{' %}
+{% assign generatedText = generatedTextSplit[1] | split: '}' %}
+{% assign dataWithoutGeneratedText = jsonData | remove: '"text":{' | remove: generatedText[0] | remove_first: '}' %}
+
+{% assign jsonDataSplit = dataWithoutGeneratedText | split: ',"' | remove_first: '{' | remove_last: '}' %}
 
 {% for data in jsonDataSplit %}
+  {% assign dataTrimmed = data | replace: '":', ':' %}
 
-  {% assign dataSplit = data | split: ':' %}
-  {% assign key = dataSplit[0] | replace: '"', nil | replace: '{', nil %}
-  {% assign values = dataSplit[1] %}
-
-  {{key}} : {{values}} <br />
+  {{dataTrimmed}} <br />
 {% endfor %}
 
 <div>
