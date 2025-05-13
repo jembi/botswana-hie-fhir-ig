@@ -58,6 +58,7 @@ Description: "Is used to document demographics and other personal information ab
     OMANG 0..1 MS and
     Birth 0..1 MS and
     Passport 0..1 MS and
+    Immigration 0..1 MS and
     Internal 0..1 MS and
     PIMS 0..1 MS and
     OpenMRS 0..1 MS
@@ -73,6 +74,9 @@ Description: "Is used to document demographics and other personal information ab
 
 * identifier[Passport].value 1..1
 * identifier[Passport].system = "http://moh.bw.org/identifier/passport"
+
+* identifier[Immigration].value 1..1
+* identifier[Immigration].system = "http://moh.bw.org/identifier/immigration"
 
 * identifier[Internal].value 1..1
 * identifier[Internal].system = "http://moh.bw.org/identifier/internalid"
