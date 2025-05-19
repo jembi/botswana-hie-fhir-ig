@@ -1,30 +1,30 @@
 Instance: SearchForPatientInFHIR
 InstanceOf: Endpoint
 Usage: #example
-Title: "Search Patient in FHIR - Using business identifiers."
+Title: "Search Patient in FHIR."
 Description: 
-    "Point-of-Service systems can search for a patient in FHIR using one or more business identifiers."
+    "Point-of-Service systems can search for a patient in FHIR using one or more business identifiers (Omang, BDRS, Immigration) or Demographics."
 * status = #active
 * connectionType = $EndpointConnectionType#hl7-fhir-rest
 * name = "Patient"
 * description = "The Patient endpoint coming with the FHIR API."
 * payload[+]
   * mimeType[+] = #application/fhir+json
-* address = "http://server.url/fhir/Patient?identifier=http://moh.bw.org/identifier/omang|omang123,identifier=http://moh.bw.org/identifier/birth|birth456,identifier=http://moh.bw.org/identifier/passport|passport789"
+* address = "http://server.url/fhir/Patient?identifier=http://moh.bw.org/identifier/omang|omang123,identifier=http://moh.bw.org/identifier/birth|birth456,identifier=http://moh.bw.org/identifier/passport|passport789,identifier=http://moh.bw.org/identifier/immigration|immigration789,given=someName"
 
 Instance: SearchForPatientInCR
 InstanceOf: Endpoint
 Usage: #example
-Title: "Search Patient in Client Registry - Using XXX."
+Title: "Search Patient in Client Registry."
 Description: 
-    "Interoperability layer searches for a patient in the client registry using XXX."
+    "Interoperability layer searches for a patient in the client registry using business identifiers (Omang, BDRS, Immigration) or Demographics."
 * status = #active
 * connectionType = $EndpointConnectionTypeCodeSystem#CR-rest
-* name = "CR endpoint name"
-* description = "The endpoint used for XXX."
+* name = "Patient"
+* description = "This endoint is used for searching patients in the Client Registry."
 * payload[+]
-  * mimeType[+] = #application/json
-* address = "http://server.url/CR/endopint?params"
+  * mimeType[+] = #application/fhir+json
+* address = "http://omang-api:80/api/Patient/get?identifier=http://moh.bw.org/identifier/identifierType|identifierValue"
 
 Instance: SearchForPatientInCRResponse
 InstanceOf: Endpoint
@@ -34,11 +34,10 @@ Description:
     "Interoperability layer receives a response from the CR for the search request."
 * status = #active
 * connectionType = $EndpointConnectionTypeCodeSystem#IL-rest
-* name = "IL endpoint name"
-* description = "The endpoint used for XXX."
+* description = "The Client Registry's Patient endpoint that was used to find the patient."
 * payload[+]
   * mimeType[+] = #application/json
-* address = "http://server.url/IL/endpoint"
+* address = "https://openhim-core:5001"
 
 Instance: ValidatePatientResourceInFHIR
 InstanceOf: Endpoint
@@ -59,14 +58,13 @@ InstanceOf: Endpoint
 Usage: #example
 Title: "Master Patient Index identifier issued by the Client Registry."
 Description: 
-    "Interoperability layer receives a MPI as part of the response from the CR when creating new patients."
+    "Interoperability layer receives an MPI as part of the response from the CR when creating new patients."
 * status = #active
 * connectionType = $EndpointConnectionTypeCodeSystem#IL-rest
-* name = "IL endpoint name"
-* description = "The endpoint used for XXX."
+* description = "The Client Registry's Patient endpoint that initiated the request for a MPI to be generated."
 * payload[+]
   * mimeType[+] = #application/json
-* address = "http://server.url/IL/endpoint"
+* address = "https://openhim-core:5001"
 
 Instance: FHIRResourceProcessResponse
 InstanceOf: Endpoint
@@ -76,11 +74,10 @@ Description:
     "Interoperability layer receives an outcome response for each CRUD request."
 * status = #active
 * connectionType = $EndpointConnectionTypeCodeSystem#IL-rest
-* name = "IL endpoint name"
-* description = "The endpoint used for XXX. See https://www.hl7.org/fhir/http.html."
+* description = "FHIR issues an outcome response to each request."
 * payload[+]
   * mimeType[+] = #application/fhir+json
-* address = "http://server.url/IL/endpoint"
+* address = "https://openhim-core:5001"
 
 Instance: ProcessFHIRBundle
 InstanceOf: Endpoint
