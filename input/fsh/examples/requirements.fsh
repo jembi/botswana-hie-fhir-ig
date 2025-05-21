@@ -9,6 +9,7 @@ Description: "Clinician Functional Requirements"
 * actor[Primary] = Canonical(ClinicianActorDefinitionExample)
 * actor[Secondary][+] = Canonical(SHRActorDefinitionExample)
 * actor[Secondary][+] = Canonical(PIMSActorDefinitionExample)
+* reference 
 * statement[+]
   * key = "BOTS.FR-C.001"
   * requirement = "I want to be able to log in to system and access the laboratory module."
@@ -18,15 +19,19 @@ Description: "Clinician Functional Requirements"
 * statement[+]
   * key = "BOTS.FR-C.003"
   * requirement = "I want to be able to capture patient details at the facility using the system."
+  * reference = "https://build.fhir.org/ig/jembi/botswana-hie-fhir-ig/Patient-BwPatientExample.html"
 * statement[+]
   * key = "BOTS.FR-C.004"
   * requirement = "I want to be able to capture lab order details at the facility using the system."
+  * reference = "https://build.fhir.org/ig/jembi/botswana-hie-fhir-ig/ServiceRequest-LabOrderActiveServiceRequestExample.html"
 * statement[+]
   * key = "BOTS.FR-C.005"
   * requirement = "I want to be able to submit lab order details to the SHR."
 * statement[+]
   * key = "BOTS.FR-C.006"
   * requirement = "I want to be able to access the lab test results from PIMS."
+  * reference[0] = "https://build.fhir.org/ig/jembi/botswana-hie-fhir-ig/Observation-LabResultObservationExample.html"
+  * reference[1] =  "https://build.fhir.org/ig/jembi/botswana-hie-fhir-ig/DiagnosticReport-LabResultsDiagnosticReportExample.html"
 * statement[+]
   * key = "BOTS.FR-C.007"
   * requirement = "I want to be able to receive pop up notification from PIMS indicating that new - results have been received."
