@@ -246,7 +246,7 @@ Description: "Represents the results for the lab order."
 * category = $LNC#11502-2
 * basedOn = Reference(LabOrderCompletedServiceRequestExample)
 * status = #final
-* code = $PimsLabOrderCodeSystem#129
+* code = $PimsLabOrderCodeSystem#131
 * code.text = "Xpert"
 * subject = Reference(BwPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
@@ -261,7 +261,7 @@ Title: "Observation - Diagnostic Test Result"
 Description: "Documents the patient's diagnostic test result."
 * status = #final
 * category = $ObservationCategory#laboratory
-* code = $PimsLabOrderCodeSystem#129
+* code = $PimsLabOrderCodeSystem#131
 * code.text = "Xpert"
 * subject = Reference(BwPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
