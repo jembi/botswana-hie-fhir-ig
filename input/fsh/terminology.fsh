@@ -4,14 +4,20 @@ Title: "PIMS Lab Codes"
 Description: "Codes used during PIMS lab orders."
 * ^experimental = false
 * ^caseSensitive = true
-* #P-1 "CD4" "PIMS Lab Code"
-* #128 "Sputum AAFB" "PIMS Lab Code"
-* #129 "Xpert" "PIMS Lab Code"
-* #1 "CD4 Count" "PIMS Lab Code"
-* #3 "Viral Load" "PIMS Lab Code"
-* #87 "Erythrocyte sedim rate" "PIMS Lab Code"
-* #14 "Erythrocyte sed rate" "PIMS Lab Code"
+* #1 "CD4 count" "PIMS Lab Code"
 * #2 "CD4%" "PIMS Lab Code"
+* #3 "Viral load" "PIMS Lab Code"
+* #19 "Culture sensitive test" "PIMS Lab Code"
+* #26 "Pleural tap" "PIMS Lab Code"
+* #27 "CSF" "PIMS Lab Code"
+* #28 "Lymph node biopsy" "PIMS Lab Code"
+* #87 "Erythrocyte sedim rate" "PIMS Lab Code"
+* #99 "Gram stain" "PIMS Lab Code"
+* #101 "Culture and organism identification" "PIMS Lab Code"
+* #102 "Susceptibility testing" "PIMS Lab Code"
+* #128 "Sputum AAFB" "PIMS Lab Code"
+* #130 "Sputum microscopy" "PIMS Lab Code"
+* #131 "Xpert" "PIMS Lab Code"
 
 CodeSystem: CSOpenMrsLabOrderCodes
 Id: cs-openmrs-lab-codes
