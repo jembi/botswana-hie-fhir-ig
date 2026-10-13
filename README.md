@@ -1,13 +1,13 @@
 Botswana HIE
 ---
 This is a Laboratory IG for Botswana.
-<br> </br>
+<br>
 ###
 ### Publication
 This Implementation Guide is published in the following locations:
 
 Canonical / permanent URL: __https://build.fhir.org/ig/jembi/botswana-hie-fhir-ig/__
-<br> </br>
+<br>
 
 ### Issues
 Issues and change requests are managed here:  
