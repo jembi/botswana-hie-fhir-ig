@@ -175,6 +175,7 @@ Description: "Non Functional Requirements"
 * statement[+]
   * key = "BOTS.NFR.010"
   * requirement = "For maintainability - The software shall exhibit high maintainability to facilitate efficient and timely modifications, updates, and enhancements, ensuring that changes can be made with minimal impact on existing functionality." 
+  
 
 Instance: ClientRegistryRequirements
 InstanceOf: BwRequirements
